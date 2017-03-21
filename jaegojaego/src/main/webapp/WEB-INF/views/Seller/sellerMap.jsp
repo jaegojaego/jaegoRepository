@@ -12,6 +12,7 @@
 <input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
 <div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div>
 
+<script type="text/javascript" src="./resources/js/jquery-3.1.1.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script src="//apis.daum.net/maps/maps3.js?apikey=1e403c6110d8f3b7f15a41476c1642be&libraries=services"></script>
 <script>
@@ -30,7 +31,7 @@
         position: new daum.maps.LatLng(37.537187, 127.005476),
         map: map
     });
-
+    
     function sample5_execDaumPostcode() {
         new daum.Postcode({
             oncomplete: function(data) {
@@ -62,7 +63,21 @@
                         // 해당 주소에 대한 좌표를 받아서
                         var coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
                         //여기서 result.addr[0].lat, result.addr[0].lng 이걸받아와서 저장하면 될듯
+
                         
+                        
+						//20170320 박진우 : alert 테스트
+    					var sellerLat = result.addr[0].lat;
+    					var sellerLong = result.addr[0].lng;
+                        alert(sellerLat); 
+                        alert(sellerLong);
+
+						//20170321 박진우 : 경도 및 위도 값을 넘겨줌
+						opener.document.getElementById("sellerName").value = sellerLat;
+						opener.document.getElementById("sellerShopName").value = sellerLong;
+
+
+
                         // 지도를 보여준다.
                         mapContainer.style.display = "block";
                         map.relayout();
@@ -70,11 +85,17 @@
                         map.setCenter(coords);
                         // 마커를 결과값으로 받은 위치로 옮긴다.
                         marker.setPosition(coords)
+                        
+                        
+                        
+
+                        
                     }
                 });
             }
         }).open();
     }
+
 </script>
 
 
