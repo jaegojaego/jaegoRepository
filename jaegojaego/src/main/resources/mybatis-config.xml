@@ -4,16 +4,12 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	
-	<!-- 20170320 박진우
 	<typeAliases>
-		<typeAlias type="사용할 VO의 패키지 주소" alias="VO의 별칭" />
+		<typeAlias type="com.jaego.web.VO.Seller" alias="Seller" />
 	</typeAliases>
-	-->
 
-	<!-- 20170320 박진우 
 	<mappers>
-		<mapper resource="매퍼.xml" />
+		<mapper resource="sellerMapper.xml" />
 	</mappers>
-	 -->
 	 
 </configuration>
