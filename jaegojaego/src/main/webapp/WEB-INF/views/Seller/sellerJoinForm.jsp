@@ -75,6 +75,18 @@ function sellerMap() {
 			<input type="text" name="sellerTOB" id="sellerTOB">
 		</td>
 	</tr>
+		<tr>
+		<td>위도</td>
+		<td>
+			<input type="hidden" name="sellerLat" id="sellerLat">
+		</td>
+	</tr>
+		<tr>
+		<td>경도</td>
+		<td>
+			<input type="hidden" name="sellerLong" id="sellerLong">
+		</td>
+	</tr>
 </table>
 <input type="submit" value="가입">
 </form>

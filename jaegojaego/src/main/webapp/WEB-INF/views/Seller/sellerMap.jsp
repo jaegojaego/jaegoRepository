@@ -73,8 +73,8 @@
                         alert(sellerLong);
 
 						//20170321 박진우 : 경도 및 위도 값을 넘겨줌
-						opener.document.getElementById("sellerName").value = sellerLat;
-						opener.document.getElementById("sellerShopName").value = sellerLong;
+						opener.document.getElementById("sellerLat").value = sellerLat;
+						opener.document.getElementById("sellerLong").value = sellerLong;
 
 
 
