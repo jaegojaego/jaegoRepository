@@ -5,7 +5,7 @@
 
 <mapper namespace="com.jaego.web.DAO.SellerMapper">
 
-	<insert id="addSeller" parameterType="Seller">
+	<insert id="addSeller" parameterType="Seller">	<!-- 20170321 박진우 -->
 		insert into
 			Seller(
 				sellerCRN

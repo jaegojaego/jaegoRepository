@@ -1,3 +1,4 @@
+//박진우 : 판매자 컨트롤러
 package com.jaego.web.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,7 @@ import com.jaego.web.VO.Seller;
 import com.jaego.web.DAO.SellerDAO;
 import com.jaego.web.Util.FileService;
 
-@Controller		//박진우 : 판매자 컨트롤러
+@Controller
 public class SellerController {
 	
 	@Autowired
