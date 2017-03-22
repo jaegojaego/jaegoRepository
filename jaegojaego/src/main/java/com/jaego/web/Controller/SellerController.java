@@ -29,6 +29,7 @@ public class SellerController {
 		return "./Seller/sellerMap";
 	}
 
+	//20170320 : 판매자 가입
 	@RequestMapping(value="sellerJoin", method = RequestMethod.POST)
 	public String sellerJoin(Seller seller, MultipartFile upload) {
 	
@@ -36,24 +37,12 @@ public class SellerController {
 		if (!upload.isEmpty()) {		//★ upload는 null로 체크가 불가능! (그래서 isEmpty()라는 함수 사용)
 			String savedfile = FileService.saveFile(upload, uploadPath);	//FileService는 Static으로 등록됐기 때문에 이렇게 '.함수명' 형식으로 saveFile()을 사용할 수 있음
 																			//실질적인 파일 업로드 처리는 이 FileService에서 다~~ 해주고 있음
-
-//			board.setOriginalfile(upload.getOriginalFilename());
 			seller.setSellerShopOimg(upload.getOriginalFilename());
-			System.out.println("sellerShopOimg : " + upload.getOriginalFilename());
-
-//			board.setSavedfile(savedfile);
 			seller.setSellerShopSimg(savedfile);
-			System.out.println("sellerShopSimg : " + savedfile);
-
-			System.out.println(seller);
-
 		}
-		
 		dao.addSeller(seller);
 		return "./Seller/sellerJoin";		//Q) redirect로 바꿀까...
 
 	}
-
-
 
 }

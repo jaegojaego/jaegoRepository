@@ -7,6 +7,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript"></script>
+
+<script>
+function idcheck() {
+	window.open("idcheck","width=400,height=300");
+}
+</script>
+
 </head>
 <body>
 <h1>[ 회원 가입 ]</h1>
@@ -59,12 +66,10 @@
 	<tr>
 		<td>매장 주소</td>
 		<td>
-			<%--
-			<input type="text" name="sellerBEA" id="sellerBEA">
-			<input type="button" onclick="sellerMap()" value="주소 입력">
-			--%>
-			<input type="text" name="sellerBEA" id="sellerBEA" placeholder="주소소소">
+			<input type="text" name="sellerBEA" id="sellerBEA" placeholder="주소">
 			<input type="button" onclick="sample5_execDaumPostcode()" value="주소 입력">
+			<input type="hidden" name="sellerLat" id="sellerLat">
+			<input type="hidden" name="sellerLong" id="sellerLong"><br>
 		</td>
 	</tr>		
 	<tr>
@@ -79,19 +84,6 @@
 		<td>
 		<%--<input type="text" name="sellerShopOimg" id="sellerShopOimg">--%>
 			<input type="file" name="upload">
-		</td>
-	</tr>
-
-	<tr>
-		<td>위도</td>
-		<td>
-			<input type="hidden" name="sellerLat" id="sellerLat">
-		</td>
-	</tr>
-	<tr>
-		<td>경도</td>
-		<td>
-			<input type="hidden" name="sellerLong" id="sellerLong">
 		</td>
 	</tr>
 </table>
