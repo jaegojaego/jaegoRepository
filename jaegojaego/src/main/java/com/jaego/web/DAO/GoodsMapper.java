@@ -1,5 +1,5 @@
 //20170321권록헌
-package com.jaego.web.dao;
+package com.jaego.web.DAO;
 
 import com.jaego.web.VO.Goods;
 

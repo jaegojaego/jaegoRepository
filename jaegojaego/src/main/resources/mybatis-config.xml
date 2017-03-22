@@ -6,15 +6,11 @@
 	
 	<typeAliases>
 		<typeAlias type="com.jaego.web.VO.Seller" alias="Seller" />		<!-- 20170321 박진우 -->
-		
-		
 		<typeAlias type="com.jaego.web.VO.Goods" alias="Goods" /> 		<!-- 20170322 권록헌 -->
 	</typeAliases>
 
 	<mappers>
-		<mapper resource="sellerMapper.xml" />							<!-- 20170321 박진우 -->
-		
-		
+		<mapper resource="mapper/sellerMapper.xml" />					<!-- 20170321 박진우 -->
 		<mapper resource="mapper/goodsMapper.xml" />					<!-- 20170322 권록헌 -->
 	</mappers>
 

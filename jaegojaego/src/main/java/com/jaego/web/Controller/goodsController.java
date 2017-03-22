@@ -12,8 +12,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.jaego.web.VO.Goods;
 
-import com.jaego.web.dao.GoodsDao;
-import com.jaego.web.util.FileService;
+import com.jaego.web.DAO.GoodsDao;
+import com.jaego.web.Util.FileService;
 
 @Controller
 public class goodsController {
