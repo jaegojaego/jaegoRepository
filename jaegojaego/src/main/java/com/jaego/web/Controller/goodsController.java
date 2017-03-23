@@ -35,25 +35,31 @@ public class goodsController {
 		goods.setSellerCRN(sellerCRN);
 		//상품코드함수
 		int codeSize=1;
-		final char[] possiblecode={'1','2','3','4','5','6','7','8','9','0','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+		final char[] possiblecode={'1','2','3','4','5','6','7','8','9','0','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
 		final int possiblecodenum = possiblecode.length;
 		String[] arr=new String[codeSize];
 		Random rnd=new Random();
 		int currentindex=0;
 		int i=0;
 		String codenum = null;
+		
 		while(currentindex < codeSize){
 			StringBuffer buf=new StringBuffer(16);
 			for(i=8; i>0; i--){
 				buf.append(possiblecode[rnd.nextInt(possiblecodenum)]);
 			}
 			codenum=buf.toString();
-			System.out.println(codenum);
 			arr[currentindex]=codenum;
-			currentindex++;
+			
+			if(dao.selectOne(codenum)==null){
+				currentindex++;
+				break;
+			}
+			else{
+				continue;
+			}
 		}
-		System.out.println("-------");
-		System.out.println(codenum);
+	
 		goods.setGoodsCode(codenum);
 		//file저장
 		if(!upload.isEmpty()){
@@ -64,7 +70,7 @@ public class goodsController {
 		dao.insertGoods(goods);
 		
 		return "redirect:/";
+		}
 		
 	}
-	
-}
+
