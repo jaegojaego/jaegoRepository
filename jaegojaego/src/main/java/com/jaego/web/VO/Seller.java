@@ -16,15 +16,7 @@ public class Seller {
    private String sellerLat;
    private String sellerLong;
    
-   
-   
-   private Seller() {
-      super();
-   }
-
-
-
-   private Seller(String sellerCRN, String sellerId, String sellerPw, String sellerName, String sellerShopName,
+   public Seller(String sellerCRN, String sellerId, String sellerPw, String sellerName, String sellerShopName,
          String sellerPhone, String sellerEmail, String sellerBEA, String sellerTOB, String sellerShopOimg,
          String sellerShopSimg, String sellerLat, String sellerLong) {
       super();
@@ -43,7 +35,9 @@ public class Seller {
       this.sellerLong = sellerLong;
    }
 
+   public Seller() {
 
+   }
 
    /**
     * @return the sellerCRN

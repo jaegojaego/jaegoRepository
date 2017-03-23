@@ -21,4 +21,16 @@ public class SellerDAO {
 		SellerMapper mapper = sqlsession.getMapper(SellerMapper.class);
 		mapper.addSeller(seller);
 	}
+	
+	//판매자 검색
+	public Seller selectOne(String id) {
+			System.out.println("되나? 1");
+		SellerMapper mapper = sqlsession.getMapper(SellerMapper.class);
+			System.out.println("되나? 2");
+		Seller seller = mapper.selectOne(id);
+			System.out.println("되나? 3");
+			System.out.println("DAO - seller : " + seller);
+		return seller;
+	}
+	
 }

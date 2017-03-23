@@ -5,4 +5,5 @@ import com.jaego.web.VO.Seller;
 
 public interface SellerMapper {
 	public void addSeller(Seller seller);
+	public Seller selectOne(String id);
 }

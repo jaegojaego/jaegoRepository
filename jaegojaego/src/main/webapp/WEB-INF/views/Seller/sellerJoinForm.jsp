@@ -9,8 +9,9 @@
 <script type="text/javascript"></script>
 
 <script>
-function idcheck() {
-	window.open("idcheck","width=400,height=300");
+function sellerIDcheck() {
+//	alert('중복 체크지롱');
+	window.open("sellerIDcheck","width=400,height=300");
 }
 </script>
 
@@ -30,6 +31,7 @@ function idcheck() {
 		<td>ID</td>
 		<td>
 			<input type="text" name="sellerId" id="sellerId">
+			<input type="button" onclick="sellerIDcheck()" value="ID 중복 체크">
 		</td>
 	</tr>	
 	<tr>
