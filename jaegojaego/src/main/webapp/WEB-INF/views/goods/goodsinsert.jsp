@@ -1,9 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%-- ìƒí’ˆë“±ë¡ : ê¶Œë¡í—Œ --%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
 </head>
@@ -23,7 +24,7 @@
 						state.className = 'fail';
 					} else {
 						state.className = 'success';
-						state.innerHTML = 'ÀÌ¹ÌÁö';
+						state.innerHTML = 'ì´ë¯¸ì§€';
 					}
 
 					upload.onchange = function(e) {
@@ -45,15 +46,15 @@
 						return false;
 					};
 				</script> 
-				<br> »óÇ°ÀÌ¸§ <input type="text" id="goodsName" name="goodsName">
-				<br> »óÇ°°¡°İ <input type="text" id="goodsPrice" name="goodsPrice">
-				<br> »óÇ°¼ö·® <input type="text" id="goodsQuantity" name="goodsQuantity"> 
-				<br> »óÇ°¼³¸í <input type="text" id="goodsInfo" name="goodsInfo"> 
+				<br> ìƒí’ˆì´ë¦„ <input type="text" id="goodsName" name="goodsName">
+				<br> ìƒí’ˆê°€ê²© <input type="text" id="goodsPrice" name="goodsPrice">
+				<br> ìƒí’ˆìˆ˜ëŸ‰ <input type="text" id="goodsQuantity" name="goodsQuantity"> 
+				<br> ìƒí’ˆì„¤ëª… <input type="text" id="goodsInfo" name="goodsInfo"> 
 				<input type="hidden" id="goodsCode">
 				<input type="hidden" id="goodsDateOfUpload">
 				<input type="hidden" id="goodsDateOfUpdate">
 				<input type="hidden" id="goodsStatus">
-				<br> <input type="submit" value="µî·Ï">
+				<br> <input type="submit" value="ë“±ë¡">
 				
 			</div>
 		</div>

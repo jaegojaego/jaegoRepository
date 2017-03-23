@@ -25,5 +25,10 @@ public class GoodsDao {
 		return result;
 	}
 	
-	
+	//검색기능
+		public Goods selectOne(String goodscode){
+			GoodsMapper mapper = sqlsession.getMapper(GoodsMapper.class);
+			Goods goods = mapper.selectOne(goodscode);
+			return goods;
+		}
 }

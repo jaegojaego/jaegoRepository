@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.jaego.web.dao.GoodsMapper">
+<mapper namespace="com.jaego.web.DAO.GoodsMapper">
 	<insert id="insertGoods" parameterType="Goods">
 		insert into
 		Goods(
@@ -31,5 +31,9 @@
 		)
 
 	</insert>
-
+	
+	<select id="selectOne" parameterType="String" resultType="Goods">
+		select goodscode from goods where goodscode=#{goodscode}
+	</select>
+	
 </mapper>
