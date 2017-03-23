@@ -37,12 +37,10 @@ public class SellerController {
 	}
 	
 	//실제 ID 체크(DB 조회)
-	@ResponseBody		//Ajax 통신에서는 이 @ResponseBody를 붙여줘야 함!
+	@ResponseBody		//★ Ajax 통신에서는 이 @ResponseBody를 붙여줘야 함!
 	@RequestMapping(value="sellerIDcheck",method=RequestMethod.POST)
 	public Seller sellerIDcheck(String idcheck_to_ctr) {
-		System.out.println(idcheck_to_ctr);
 		Seller seller = dao.selectOne(idcheck_to_ctr);
-		System.out.println("seller : " + seller);
 		return seller;
 	}
 

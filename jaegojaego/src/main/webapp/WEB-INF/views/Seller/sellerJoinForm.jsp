@@ -1,4 +1,5 @@
 <%-- 회원가입 : 박진우 --%>
+<%-- 20170323 : ★ 버튼을 A태그로 바꾸는 작업 해야 함 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -10,9 +11,10 @@
 
 <script>
 function sellerIDcheck() {
-//	alert('중복 체크지롱');
 	window.open("sellerIDcheck","width=400,height=300");
 }
+
+
 </script>
 
 </head>
@@ -152,8 +154,6 @@ function sellerIDcheck() {
 						//20170320 박진우 : alert 테스트
     					var sellerLat = result.addr[0].lat;
     					var sellerLong = result.addr[0].lng;
-                        alert(sellerLat); 
-                        alert(sellerLong);
 
 						//20170321 박진우 : 경도 및 위도 값을 넘겨줌
 						document.getElementById("sellerLat").value = sellerLat;

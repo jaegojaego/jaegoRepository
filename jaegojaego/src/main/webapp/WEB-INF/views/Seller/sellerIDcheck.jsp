@@ -34,7 +34,6 @@ $(function(){
 			},
 			success : function (data){
 				console.log(data);	//확인용
-				alert('되나유? success');
 				if(data == "") {
 					$('#idcheck_tf').val(idcheck_tf);
 					alert('사용할 수 있는 ID입니다.');
@@ -46,7 +45,6 @@ $(function(){
 				}
 			},
 			error : function(e){
-				alert('되나유? error');
 				console.log(e);
 			}
 		});
