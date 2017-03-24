@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.jaego.web.VO.Seller;
@@ -27,6 +28,20 @@ public class SellerController {
 	@RequestMapping(value="sellerMap", method = RequestMethod.GET)
 	public String sellerMap() {
 		return "./Seller/sellerMap";
+	}
+	
+	//ID 체크 폼 불러오기
+	@RequestMapping(value="sellerIDcheck",method=RequestMethod.GET)
+	public String sellerIDcheck() {
+		return "./Seller/sellerIDcheck";
+	}
+	
+	//실제 ID 체크(DB 조회)
+	@ResponseBody		//★ Ajax 통신에서는 이 @ResponseBody를 붙여줘야 함!
+	@RequestMapping(value="sellerIDcheck",method=RequestMethod.POST)
+	public Seller sellerIDcheck(String idcheck_to_ctr) {
+		Seller seller = dao.selectOne(idcheck_to_ctr);
+		return seller;
 	}
 
 	//20170320 : 판매자 가입

@@ -5,6 +5,27 @@
 
 <mapper namespace="com.jaego.web.DAO.SellerMapper">
 
+	<select id="selectOne" parameterType="String" resultType="Seller">
+		select
+				sellerCRN
+				,sellerId
+				,sellerPw
+				,sellerName
+				,sellerShopName
+				,sellerPhone
+				,sellerEmail
+				,sellerBEA
+				,sellerTOB
+				,sellerShopOimg
+				,sellerShopSimg
+				,sellerLat
+				,sellerLong
+		from
+			seller
+		where
+			sellerId = #{sellerId}		
+	</select>
+
 	<insert id="addSeller" parameterType="Seller">	<!-- 20170321 박진우 -->
 		insert into
 			Seller(

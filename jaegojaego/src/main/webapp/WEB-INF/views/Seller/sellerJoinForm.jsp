@@ -1,4 +1,5 @@
 <%-- 회원가입 : 박진우 --%>
+<%-- 20170323 : ★ 버튼을 A태그로 바꾸는 작업 해야 함 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -9,9 +10,11 @@
 <script type="text/javascript"></script>
 
 <script>
-function idcheck() {
-	window.open("idcheck","width=400,height=300");
+function sellerIDcheck() {
+	window.open("sellerIDcheck","width=400,height=300");
 }
+
+
 </script>
 
 </head>
@@ -30,6 +33,7 @@ function idcheck() {
 		<td>ID</td>
 		<td>
 			<input type="text" name="sellerId" id="sellerId">
+			<input type="button" onclick="sellerIDcheck()" value="ID 중복 체크">
 		</td>
 	</tr>	
 	<tr>
@@ -150,8 +154,6 @@ function idcheck() {
 						//20170320 박진우 : alert 테스트
     					var sellerLat = result.addr[0].lat;
     					var sellerLong = result.addr[0].lng;
-                        alert(sellerLat); 
-                        alert(sellerLong);
 
 						//20170321 박진우 : 경도 및 위도 값을 넘겨줌
 						document.getElementById("sellerLat").value = sellerLat;
