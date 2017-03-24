@@ -36,4 +36,22 @@
 		select goodscode from goods where goodscode=#{goodscode}
 	</select>
 	
+	<update id="updateGoods" parameterType="Goods">
+		update
+		Goods
+		set
+		goodsName = #{goodsName}
+		,goodsPrice = #{goodsPrice}
+		,goodsQuantity =#{goodsQuantity}
+		<if test='goodsOimage != null and goodsSimage !=null'>
+			,goodsOimage =#{goodsOimage}
+			,goodsSimage = #{goodsSimage}
+		</if>
+		,goodsInfo =#{goodsInfo}
+		,goodsDateOfUpdate=sysdate
+		where
+			goodsCode =#{goodsCode}
+		and
+			sellerCRN=#{sellerCRN}
+	</update>
 </mapper>

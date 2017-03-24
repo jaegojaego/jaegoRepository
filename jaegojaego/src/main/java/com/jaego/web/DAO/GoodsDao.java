@@ -31,4 +31,16 @@ public class GoodsDao {
 			Goods goods = mapper.selectOne(goodscode);
 			return goods;
 		}
+		
+	//수정기능
+		public int updateGoods(Goods goods){
+			GoodsMapper mapper=sqlsession.getMapper(GoodsMapper.class);
+			int result=0;
+			try{
+			result=mapper.updateGoods(goods);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+			return result;
+		}
 }
