@@ -1,11 +1,11 @@
 <%-- 회원가입 : 박진우 --%>
-<%-- 20170323 : ★ 버튼을 A태그로 바꾸는 작업 해야 함 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="./resources/js/jquery-3.1.1.js"></script>
 <title>Insert title here</title>
 <script type="text/javascript"></script>
 
@@ -15,13 +15,23 @@ function sellerIDcheck() {
 }
 
 
+
+//20170324 가입(a태그)
+$(function(){
+	$("#a_submit").on("click",function(){
+		document.getElementById('sellerJoinForm').submit();		//form을 submit해줌
+	})
+})
+
+
+
 </script>
 
 </head>
 <body>
 <h1>[ 회원 가입 ]</h1>
 
-<form action="sellerJoin" method="post" enctype="multipart/form-data">
+<form action="sellerJoin" method="post" id="sellerJoinForm" enctype="multipart/form-data">		<%-- form에 id를 줌으로써 JavaScript에서 submit해줌 --%>
 <table>
 	<tr>
 		<td>사업자번호</td>
@@ -94,10 +104,10 @@ function sellerIDcheck() {
 
 
 
-<%-- ↓ API 사용부 --%>
+<%----------------------------------------------------------------------------------------------------------------------------------------------------------------------%>
+<%-- ↓ API 지도 표시부 --%>
 <div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div>
 
-<script type="text/javascript" src="./resources/js/jquery-3.1.1.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script src="//apis.daum.net/maps/maps3.js?apikey=1e403c6110d8f3b7f15a41476c1642be&libraries=services"></script>
 <script>
@@ -151,11 +161,9 @@ function sellerIDcheck() {
 
                         
                         
-						//20170320 박진우 : alert 테스트
+						//20170321 박진우 : 경도 및 위도 값을 넘겨줌
     					var sellerLat = result.addr[0].lat;
     					var sellerLong = result.addr[0].lng;
-
-						//20170321 박진우 : 경도 및 위도 값을 넘겨줌
 						document.getElementById("sellerLat").value = sellerLat;
 						document.getElementById("sellerLong").value = sellerLong;
 
@@ -169,21 +177,22 @@ function sellerIDcheck() {
                         // 마커를 결과값으로 받은 위치로 옮긴다.
                         marker.setPosition(coords)
                         
-                        
-                        
-
-                        
                     }
                 });
             }
         }).open();
-    }
-
+    }    
 </script>
+<%----------------------------------------------------------------------------------------------------------------------------------------------------------------------%>
 
 
 
-<input type="submit" value="가입">
+<%-- 20170324 가입(a태그) --%>
+<%--<input type="submit" value="가입">--%>
+<a href="#" id="a_submit">가입(a태그)</a>
+
+
+
 </form>
 
 </body>
