@@ -1,4 +1,4 @@
-<%-- 회원가입 : 박진우 --%>
+<%-- 회원가입 : 박진우 / 20170324 업로드할 파일 이름이 한 박자 느리게 표시되는 상태 - 그냥 Ajax로 파일 이름 표시하지 않고, 썸네일만 표시할까... --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -15,13 +15,27 @@ function sellerIDcheck() {
 }
 
 
-
+var name;
 //20170324 가입(a태그)
 $(function(){
 	$("#a_submit").on("click",function(){
 		document.getElementById('sellerJoinForm').submit();		//form을 submit해줌
 	})
+	$('#fileA').on("click",function(){
+		$('#upload').trigger("click");
+		name = $('#upload').val();
+		alert(name);
+	});
+	
 })
+
+
+
+<%-- 20170324 업로드할 파일 이름이 한 박자 느리게 표시되는 상태 - 그냥 Ajax로 파일 이름 표시하지 않고, 썸네일만 표시할까... --%>
+function file_click() {
+	
+	
+}
 
 
 
@@ -43,7 +57,8 @@ $(function(){
 		<td>ID</td>
 		<td>
 			<input type="text" name="sellerId" id="sellerId">
-			<input type="button" onclick="sellerIDcheck()" value="ID 중복 체크">
+<%--		<input type="button" onclick="sellerIDcheck()" value="ID 중복 체크">--%>
+			<a href="#" onclick="sellerIDcheck()">ID 중복 체크(a태그)</a>
 		</td>
 	</tr>	
 	<tr>
@@ -81,7 +96,8 @@ $(function(){
 		<td>매장 주소</td>
 		<td>
 			<input type="text" name="sellerBEA" id="sellerBEA" placeholder="주소">
-			<input type="button" onclick="sample5_execDaumPostcode()" value="주소 입력">
+<%--		<input type="button" onclick="sample5_execDaumPostcode()" value="주소 입력">--%>
+			<a href="#" onclick="sample5_execDaumPostcode()">주소 입력(a 태그)</a>			
 			<input type="hidden" name="sellerLat" id="sellerLat">
 			<input type="hidden" name="sellerLong" id="sellerLong"><br>
 		</td>
@@ -97,7 +113,9 @@ $(function(){
 		<td>매장 사진</td>
 		<td>
 		<%--<input type="text" name="sellerShopOimg" id="sellerShopOimg">--%>
-			<input type="file" name="upload">
+		<%--<input type="file" name="upload">--%>
+		<a href="#" id="fileA">파일 업로드</a>		 <%-- a 태그 클릭시 파일 버튼으로 연결--%>
+		<input type="file" name="upload" id="upload" <%--style="display:none"--%>/>   			
 		</td>
 	</tr>
 </table>
