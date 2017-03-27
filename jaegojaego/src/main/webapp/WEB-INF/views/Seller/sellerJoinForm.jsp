@@ -1,4 +1,4 @@
-<%-- 회원가입 : 박진우 / 20170324 업로드할 파일 이름이 한 박자 느리게 표시되는 상태 - 그냥 Ajax로 파일 이름 표시하지 않고, 썸네일만 표시할까... --%>
+<%-- 회원가입 : 박진우 / 20170324 업로드할 파일 이름이 한 박자 느리게 표시되는 상태 - 업로드만 버튼으로 하자! --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -14,31 +14,12 @@ function sellerIDcheck() {
 	window.open("sellerIDcheck","width=400,height=300");
 }
 
-
-var name;
 //20170324 가입(a태그)
-$(function(){
-	$("#a_submit").on("click",function(){
+$(function(){		//ready 함수
+	$("#submitA").on("click",function(){
 		document.getElementById('sellerJoinForm').submit();		//form을 submit해줌
 	})
-	$('#fileA').on("click",function(){
-		$('#upload').trigger("click");
-		name = $('#upload').val();
-		alert(name);
-	});
-	
 })
-
-
-
-<%-- 20170324 업로드할 파일 이름이 한 박자 느리게 표시되는 상태 - 그냥 Ajax로 파일 이름 표시하지 않고, 썸네일만 표시할까... --%>
-function file_click() {
-	
-	
-}
-
-
-
 </script>
 
 </head>
@@ -114,8 +95,8 @@ function file_click() {
 		<td>
 		<%--<input type="text" name="sellerShopOimg" id="sellerShopOimg">--%>
 		<%--<input type="file" name="upload">--%>
-		<a href="#" id="fileA">파일 업로드</a>		 <%-- a 태그 클릭시 파일 버튼으로 연결--%>
-		<input type="file" name="upload" id="upload" <%--style="display:none"--%>/>   			
+<%--	<a href="#" id="uploadA">파일 업로드</a>--%>	<%-- a 태그 클릭시 파일 버튼으로 연결--%>
+		<input type="file" name="upload" id="uploadB" <%--style="display:none"--%>/>   			
 		</td>
 	</tr>
 </table>
@@ -207,7 +188,7 @@ function file_click() {
 
 <%-- 20170324 가입(a태그) --%>
 <%--<input type="submit" value="가입">--%>
-<a href="#" id="a_submit">가입(a태그)</a>
+<a href="#" id="submitA">가입(a태그)</a>
 
 
 
