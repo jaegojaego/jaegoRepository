@@ -1,5 +1,9 @@
 package com.jaego.web.Controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 //20170321권록헌
 import java.util.Random;
 
@@ -7,8 +11,10 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.jaego.web.VO.Goods;
@@ -31,7 +37,7 @@ public class goodsController {
 
 	// 상품등록부컨트롤러
 	@RequestMapping(value = "rgoodsinsert", method = RequestMethod.POST)
-	public String rgoodsinsert(Goods goods, HttpSession session, MultipartFile upload) {
+	public String rgoodsinsert(Goods goods, HttpSession session, MultipartFile upload,Model model) {
 		// String sellerCRN=(String) session.getAttribute("0000");
 		String sellerCRN = "0";
 		goods.setSellerCRN(sellerCRN);
@@ -72,8 +78,9 @@ public class goodsController {
 			goods.setGoodsSimage(savedfile);
 		}
 		dao.insertGoods(goods);
-
-		return "redirect:/";
+		List<HashMap>result = dao.list();
+		model.addAttribute("list",result);
+		return "./goods/goodslist";
 	}
 
 	@RequestMapping(value = "goodsupdate", method = RequestMethod.GET)
@@ -82,7 +89,7 @@ public class goodsController {
 	}
 	//상품수정
 	@RequestMapping(value="rgoodsupdate",method=RequestMethod.POST)
-	public String rgoodsupdate(Goods goods,HttpSession session,MultipartFile upload){
+	public String rgoodsupdate(Goods goods,HttpSession session,MultipartFile upload,Model model){
 		// String sellerCRN=(String) session.getAttribute("0000");
 				String sellerCRN = "0";
 				goods.setSellerCRN(sellerCRN);
@@ -108,8 +115,39 @@ public class goodsController {
 		}
 		
 		dao.updateGoods(goods);
+		List<HashMap>result = dao.list();
+		model.addAttribute("list",result);
 		
+		return "./goods/goodslist";
+	}
+	
+	//목록 가져오기
+	@RequestMapping(value = "goodslist", method = RequestMethod.GET)
+	public String goodslist(Model model){
+		//날짜 띄우기
+		SimpleDateFormat today = new SimpleDateFormat("yyyy년 MM월 dd일");
+		String todate = today.format(new Date());
+		model.addAttribute("todate",todate);
 		
-		return "redirect:/";
+		List<HashMap>result = dao.list();
+		System.out.println(result);//
+		model.addAttribute("list",result);
+		return "./goods/goodslist";
+	}
+
+	//삭제하기
+	@ResponseBody
+	@RequestMapping(value="del", method = RequestMethod.GET)
+	public int del(String goodsCode){
+		int result = dao.del(goodsCode);
+		return result;
+	}
+	
+	//수량 수정
+	@ResponseBody
+	@RequestMapping(value="update", method = RequestMethod.GET)
+	public int update(String goodsCode, int goodsQuantity){
+		int result = dao.update(goodsQuantity, goodsCode);
+		return result;
 	}
 }

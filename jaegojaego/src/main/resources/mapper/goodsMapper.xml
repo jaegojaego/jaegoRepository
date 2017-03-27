@@ -54,4 +54,26 @@
 		and
 			sellerCRN=#{sellerCRN}
 	</update>
+	
+	<select id="list" resultType="HashMap">
+		select 
+			*
+		from goods
+	</select>
+	
+	<delete id="del" parameterType="String">
+		delete
+			goods
+		where
+			goodsCode=#{goodsCode}
+	</delete>
+	
+	<update id ="update" parameterType="List">
+		update 
+			goods
+		set
+			goodsQuantity = #{0}
+		where
+			goodsCode = #{1} 
+	</update>
 </mapper>

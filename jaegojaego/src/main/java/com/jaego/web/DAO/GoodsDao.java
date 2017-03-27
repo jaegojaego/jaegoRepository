@@ -1,11 +1,16 @@
 //20170321권록헌
 package com.jaego.web.DAO;
 
+import java.util.HashMap;
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.jaego.web.VO.Goods;
+
+
 
 @Repository
 public class GoodsDao {
@@ -42,5 +47,23 @@ public class GoodsDao {
 				e.printStackTrace();
 			}
 			return result;
+		}
+		
+		//목록불러오기
+		public List<HashMap>list(){
+			GoodsMapper mapper = sqlsession.getMapper(GoodsMapper.class);
+			return mapper.list();
+		}
+		
+		//상품삭제하기
+		public int del(String goodsCode){
+			GoodsMapper mapper = sqlsession.getMapper(GoodsMapper.class);
+			return mapper.del(goodsCode);
+		}
+		
+		//수량수정하기
+		public int update(int goodsQuantity, String goodsCode){
+			GoodsMapper mapper = sqlsession.getMapper(GoodsMapper.class);
+			return mapper.update(goodsQuantity,goodsCode);
 		}
 }
