@@ -15,6 +15,16 @@ function sellerIDcheck() {
 	window.open("sellerIDcheck","width=400,height=300");
 }
 
+
+//innerHTML로 주소2 추가
+function add_sellerBEA2() {
+	alert("주소2!");
+	var html = "<input type='text' id='sellerBEA2' placeholder='주소소소'>";
+	$("#div_sellerBEA2").html(html);
+
+	alert("주소2 완료!");
+}
+
 //20170324 가입(a태그)
 $(function(){		//ready 함수
 	$("#submitA").on("click",function(){
@@ -131,24 +141,20 @@ $(function(){		//ready 함수
 			<input type="hidden" name="sellerLat" id="sellerLat">
 			<input type="hidden" name="sellerLong" id="sellerLong"><br>
 		</td>
-	</tr>		
+	</tr>
 	<tr>
-		<td>업종</td>
+		<td></td>
 		<td>
-			<input type="text" name="sellerTOB" id="sellerTOB">
+			<div id="div_sellerBEA2"></div>
 		</td>
 	</tr>
 
+
+
 	<tr>
-		<td>매장 사진</td>
 		<td>
-		<%--<input type="text" name="sellerShopOimg" id="sellerShopOimg">--%>
-		<%--<input type="file" name="upload">--%>
-<%--	<a href="#" id="uploadA">파일 업로드</a>--%>	<%-- a 태그 클릭시 파일 버튼으로 연결--%>
-		<input type="file" name="upload" id="uploadB" <%--style="display:none"--%>/>   			
 		</td>
-	</tr>
-</table>
+		<td>
 
 
 
@@ -218,7 +224,9 @@ $(function(){		//ready 함수
 
 
                         // 지도를 보여준다.
-                        mapContainer.style.display = "block";
+//						mapContainer.style.display = "block";		//20170328 안나오는 걸로 변경...
+						add_sellerBEA2();
+
                         map.relayout();
                         // 지도 중심을 변경한다.
                         map.setCenter(coords);
@@ -232,6 +240,28 @@ $(function(){		//ready 함수
     }    
 </script>
 <%----------------------------------------------------------------------------------------------------------------------------------------------------------------------%>
+
+
+
+		</td>
+	</tr>		
+	<tr>
+		<td>업종</td>
+		<td>
+			<input type="text" name="sellerTOB" id="sellerTOB">
+		</td>
+	</tr>
+
+	<tr>
+		<td>매장 사진</td>
+		<td>
+		<%--<input type="text" name="sellerShopOimg" id="sellerShopOimg">--%>
+		<%--<input type="file" name="upload">--%>
+<%--	<a href="#" id="uploadA">파일 업로드</a>--%>	<%-- a 태그 클릭시 파일 버튼으로 연결--%>
+		<input type="file" name="upload" id="uploadB" <%--style="display:none"--%>/>   			
+		</td>
+	</tr>
+</table>
 
 
 
