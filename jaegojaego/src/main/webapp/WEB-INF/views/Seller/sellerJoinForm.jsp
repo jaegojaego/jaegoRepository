@@ -16,7 +16,7 @@ function sellerIDcheck() {
 }
 
 
-//innerHTML로 주소2 추가
+//innerHTML로 주소2 추가a
 function add_sellerBEA2() {
 	alert("주소2!");
 	var html = "<input type='text' id='sellerBEA2' placeholder='주소소소'>";
