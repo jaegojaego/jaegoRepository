@@ -1,11 +1,12 @@
 <%-- 회원가입 : 박진우 / 20170324 업로드할 파일 이름이 한 박자 느리게 표시되는 상태 - 업로드만 버튼으로 하자! --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script type="text/javascript" src="./resources/js/jquery-3.1.1.js"></script>
+<script src='<c:url value="/resources/js/jquery-3.1.1.js"/>' ></script>
 <title>Insert title here</title>
 <script type="text/javascript"></script>
 
@@ -17,7 +18,55 @@ function sellerIDcheck() {
 //20170324 가입(a태그)
 $(function(){		//ready 함수
 	$("#submitA").on("click",function(){
+		
+		//회원가입 전 체크-------------------------------------------------------------- 
+		var sellerCRN = document.getElementById('sellerCRN').value;
+		var sellerId = document.getElementById('sellerId').value;
+		var sellerPw = document.getElementById('sellerPw').value;
+		var sellerPw2 = document.getElementById('sellerPw2').value;
+		var sellerName = document.getElementById('sellerName').value;
+		var sellerShopName = document.getElementById('sellerShopName').value;
+		var sellerPhone = document.getElementById('sellerPhone').value;
+		var sellerEmail = document.getElementById('sellerEmail').value;
+		var sellerBEA = document.getElementById('sellerBEA').value;
+		var sellerTOB = document.getElementById('sellerTOB').value;
+		
+		if (sellerCRN == '') {
+			alert('사업자번호를 입력하세요.');
+			return false;
+		} else if (sellerId == '') {
+			alert('ID를 입력하세요.');
+			return false;
+		} else if (sellerPw == '') {
+			alert('비밀번호를 입력하세요.');
+			return false;
+		} else if (sellerPw != sellerPw2) {
+			alert('비밀번호가 일치하지 않습니다.');
+			return false;
+		} else if (sellerName == '') {
+			alert('대표자 성명을 입력하세요');
+			return false;
+		} else if (sellerShopName == '') {
+			alert('상호를 입력하세요');
+			return false;
+		} else if (sellerPhone == '') {
+			alert('매장 전화번호를 입력하세요');
+			return false;
+		} else if (sellerEmail == '') {
+			alert('이메일을 입력하세요');
+			return false;
+		} else if (sellerBEA == '') {
+			alert('매장 주소를 입력하세요');
+			return false;
+		} else if (sellerTOB == '') {
+			alert('업종을 입력하세요');
+			return false;
+		}
+		//------------------------------------------------------------------------------
+		
+		//이상 없으면 정상 진행		
 		document.getElementById('sellerJoinForm').submit();		//form을 submit해줌
+
 	})
 })
 </script>
