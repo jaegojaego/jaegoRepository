@@ -140,7 +140,9 @@
 		</div>
 		<c:forEach var="map" items="${list }">
 			<div class="tr">
-				<div><img src="./resources/image/${map.GOODSOIMAGE  }" width="50" height="30"></div>
+				<div>
+					<img src="download?goodsCode=${map.GOODSCODE }" width="50" height="30">
+				</div>
 				<div>${map.GOODSNAME }</div>
 				<div class="goodscode">${map.GOODSCODE }</div>
 				<div>${map.GOODSPRICE  }</div>

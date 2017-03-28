@@ -55,6 +55,13 @@ public class GoodsDao {
 			return mapper.list();
 		}
 		
+		//사진
+		public Goods selectPic(String goodsCode){
+			GoodsMapper mapper= sqlsession.getMapper(GoodsMapper.class);
+			Goods goods=mapper.selectPic(goodsCode);
+			return goods;
+		}
+		
 		//상품삭제하기
 		public int del(String goodsCode){
 			GoodsMapper mapper = sqlsession.getMapper(GoodsMapper.class);
