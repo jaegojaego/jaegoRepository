@@ -1,5 +1,9 @@
 package com.jaego.web.Controller;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -7,18 +11,20 @@ import java.util.List;
 //20170321권록헌
 import java.util.Random;
 
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.jaego.web.VO.Goods;
-
 import com.jaego.web.DAO.GoodsDao;
 import com.jaego.web.Util.FileService;
 
@@ -133,6 +139,35 @@ public class goodsController {
 		System.out.println(result);//
 		model.addAttribute("list",result);
 		return "./goods/goodslist";
+	}
+	
+	//사진
+	@RequestMapping(value="download",method=RequestMethod.GET)
+	public String download(String goodsCode,HttpServletResponse response){
+		Goods goods=dao.selectPic(goodsCode);
+		try {
+			response.setHeader("Content-Disposition", "attachment;filename="+URLEncoder.encode(goods.getGoodsOimage(),"UTF-8"));
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//저장된 파일 경로
+		String fullPath=uploadPath +"/"+goods.getGoodsSimage();
+		//서버의 파일을 읽을 입력 스트림
+		//클라이언트에게 전달할 출력 스트림
+		FileInputStream fis=null;
+		ServletOutputStream sos=null;
+		try {
+			fis=new FileInputStream(fullPath);
+			sos=response.getOutputStream();
+			//Spring 파일 관련 유틸
+			FileCopyUtils.copy(fis, sos);
+			fis.close();
+			sos.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return "null";
 	}
 
 	//삭제하기

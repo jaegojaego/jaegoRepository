@@ -61,6 +61,16 @@
 		from goods
 	</select>
 	
+	<select id="selectPic" resultType="Goods">
+		select 
+			*
+		from 
+			goods
+		where
+			goodsCode=#{goodsCode}
+	</select>
+	
+	
 	<delete id="del" parameterType="String">
 		delete
 			goods
