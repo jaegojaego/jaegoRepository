@@ -20,10 +20,12 @@ public class SellerController {
 
 	final String uploadPath = "/sellerShopOimg";		//업로드시 저장 폴더 설정 (C:\sellerShopOimg 이런 식으로 폴더 생성함)
 
-	//20170327 부트스트랩 적용 테스트
-	@RequestMapping(value="tables_basic", method = RequestMethod.GET)
+
+
+	//20170329 부트스트랩 적용 테스트
+	@RequestMapping(value="form_elements", method = RequestMethod.GET)
 	public String tables_basic() {
-		return "./Seller/tables_basic";
+		return "./Seller/form_elements";
 	}
 
 
