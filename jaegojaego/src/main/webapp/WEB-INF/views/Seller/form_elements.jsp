@@ -31,7 +31,7 @@
             <li>YOU ARE HERE</li>
             <li class="active">Form Elements</li>
         </ol>
-        <h1 class="page-title">Form - <span class="fw-semi-bold">판매자 등로쿠</span></h1>
+        <h1 class="page-title">Form - <span class="fw-semi-bold">판매자 등록</span></h1>
         <div class="row">
             <div class="col-md-6">
                 <section class="widget">
