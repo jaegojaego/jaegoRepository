@@ -16,13 +16,10 @@ function sellerIDcheck() {
 }
 
 
-//innerHTML로 주소2 추가a
+//innerHTML로 주소2 추가
 function add_sellerBEA2() {
-	alert("주소2!");
-	var html = "<input type='text' id='sellerBEA2' placeholder='주소소소'>";
+	var html = "<input type='text' id='sellerBEA2' placeholder='상세 주소'>";
 	$("#div_sellerBEA2").html(html);
-
-	alert("주소2 완료!");
 }
 
 //20170324 가입(a태그)
@@ -38,7 +35,7 @@ $(function(){		//ready 함수
 		var sellerShopName = document.getElementById('sellerShopName').value;
 		var sellerPhone = document.getElementById('sellerPhone').value;
 		var sellerEmail = document.getElementById('sellerEmail').value;
-		var sellerBEA = document.getElementById('sellerBEA').value;
+		var sellerBEA = document.getElementById('sellerBEA').value;		
 		var sellerTOB = document.getElementById('sellerTOB').value;
 		
 		if (sellerCRN == '') {
@@ -47,12 +44,18 @@ $(function(){		//ready 함수
 		} else if (sellerId == '') {
 			alert('ID를 입력하세요.');
 			return false;
+		} else if (sellerId.length < 6) {
+			alert('ID는 영문 or 숫자 6자 이상이어야 합니다.');
+			return false;			
 		} else if (sellerPw == '') {
 			alert('비밀번호를 입력하세요.');
 			return false;
 		} else if (sellerPw != sellerPw2) {
 			alert('비밀번호가 일치하지 않습니다.');
 			return false;
+		} else if (sellerPw.length < 6 || sellerPw.length < 6 ) {
+			alert('비밀번호는 영문 or 숫자 6자 이상이어야 합니다.');
+			return false;			
 		} else if (sellerName == '') {
 			alert('대표자 성명을 입력하세요');
 			return false;
@@ -90,13 +93,13 @@ $(function(){		//ready 함수
 	<tr>
 		<td>사업자번호</td>
 		<td>
-			<input type="text" name="sellerCRN" id="sellerCRN">
+			<input type="text" name="sellerCRN" id="sellerCRN" placeholder='사업자번호'>
 		</td>
 	</tr>
 	<tr>
 		<td>ID</td>
 		<td>
-			<input type="text" name="sellerId" id="sellerId">
+			<input type="text" name="sellerId" id="sellerId" placeholder='영문 or 숫자 6자 이상'>
 <%--		<input type="button" onclick="sellerIDcheck()" value="ID 중복 체크">--%>
 			<a href="#" onclick="sellerIDcheck()">ID 중복 체크(a태그)</a>
 		</td>
@@ -104,38 +107,38 @@ $(function(){		//ready 함수
 	<tr>
 		<td>비밀번호</td>
 		<td>
-			<input type="password" name="sellerPw" id="sellerPw"><br>
-			<input type="password" id="sellerPw2">
+			<input type="password" name="sellerPw" id="sellerPw" placeholder='영문 or 숫자 6자 이상'><br>
+			<input type="password" id="sellerPw2" placeholder='비밀번호 재입력'>
 		</td>
 	</tr>
 	<tr>
 		<td>대표자 성명</td>
 		<td>
-			<input type="text" name="sellerName" id="sellerName">
+			<input type="text" name="sellerName" id="sellerName" placeholder='대표자 성명'>
 		</td>
 	</tr>
 	<tr>
 		<td>상호</td>
 		<td>
-			<input type="text" name="sellerShopName" id="sellerShopName">
+			<input type="text" name="sellerShopName" id="sellerShopName" placeholder='상호'>
 		</td>
 	</tr>
 	<tr>
 		<td>매장 전화번호</td>
 		<td>
-			<input type="text" name="sellerPhone" id="sellerPhone">
+			<input type="text" name="sellerPhone" id="sellerPhone" placeholder='매장 전화번호'>
 		</td>
 	</tr>
 	<tr>
 		<td>이메일</td>
 		<td>
-			<input type="text" name="sellerEmail" id="sellerEmail">
+			<input type="text" name="sellerEmail" id="sellerEmail" placeholder='이메일'>
 		</td>
 	</tr>
 	<tr>
 		<td>매장 주소</td>
 		<td>
-			<input type="text" name="sellerBEA" id="sellerBEA" placeholder="주소">
+			<input type="text" name="sellerBEA" id="sellerBEA" placeholder='매장 주소'>
 <%--		<input type="button" onclick="sample5_execDaumPostcode()" value="주소 입력">--%>
 			<a href="#" onclick="sample5_execDaumPostcode()">주소 입력(a 태그)</a>			
 			<input type="hidden" name="sellerLat" id="sellerLat">
@@ -248,7 +251,7 @@ $(function(){		//ready 함수
 	<tr>
 		<td>업종</td>
 		<td>
-			<input type="text" name="sellerTOB" id="sellerTOB">
+			<input type="text" name="sellerTOB" id="sellerTOB" placeholder='업종'>
 		</td>
 	</tr>
 
@@ -258,7 +261,7 @@ $(function(){		//ready 함수
 		<%--<input type="text" name="sellerShopOimg" id="sellerShopOimg">--%>
 		<%--<input type="file" name="upload">--%>
 <%--	<a href="#" id="uploadA">파일 업로드</a>--%>	<%-- a 태그 클릭시 파일 버튼으로 연결--%>
-		<input type="file" name="upload" id="uploadB" <%--style="display:none"--%>/>   			
+		<input type="file" name="upload" id="uploadB" <%--style="display:none"--%>/ placeholder='매장 사진'>   			
 		</td>
 	</tr>
 </table>
