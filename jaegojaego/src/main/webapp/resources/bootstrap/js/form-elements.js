@@ -91,6 +91,6 @@ $(function(){
             delete this.holder_data;
         });
     }
-    pageLoad();
-    SingApp.onPageLoad(pageLoad);
+//    pageLoad();
+//    SingApp.onPageLoad(pageLoad);
 });

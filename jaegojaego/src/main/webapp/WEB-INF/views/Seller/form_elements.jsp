@@ -46,13 +46,13 @@
                         </div>
                     </header>
                     <div class="widget-body">
-                        <form class="form-horizontal" role="form">
+                        <form class="form-horizontal" role="form" action="test">
                             <fieldset>
                                 <legend><strong>Horizontal</strong> form</legend>
                                 <div class="form-group">
                                     <label for="normal-field" class="col-sm-4 control-label">사업자 번호</label>
                                     <div class="col-sm-7">
-                                        <input type="text" id="normal-field" class="form-control" placeholder="사업자 번호를 입력하세요">
+                                        <input type="text" id="normal-field" name="test" class="form-control" placeholder="사업자 번호를 입력하세요">
                                     </div>
                                 </div>
                                 <div class="form-group">
