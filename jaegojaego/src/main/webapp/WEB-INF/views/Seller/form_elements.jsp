@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Sing - Forms</title>
+    <title>가입 F</title>
     <link href="./resources/bootstrap/css/application.min.css" rel="stylesheet">
     <!-- as of IE9 cannot parse css files with more that 4K classes separating in two files -->
     <!--[if IE 9]>
@@ -30,10 +30,12 @@
     function sellerIDcheck() {
     	window.open("sellerIDcheck","width=400,height=300");
     }
-    </script>
+    function add_sellerBEA2() {
+    	var html = "<div class='form-group'><label for='normal-field' class='col-sm-4 control-label'></label><div class='col-sm-7'><input type='text' id='sellerBEA2' class='form-control' placeholder='상세 주소'></div></div>";
+    	$("#div_sellerBEA2").html(html);
+    }
 
-    <script>    
-	function beforeSubmit() {
+    function beforeSubmit() {
     
 		//회원가입 전 체크-------------------------------------------------------------- 
 		var sellerCRN = document.getElementById('sellerCRN').value;
@@ -44,11 +46,11 @@
 		var sellerShopName = document.getElementById('sellerShopName').value;
 		var sellerPhone = document.getElementById('sellerPhone').value;
 		var sellerEmail = document.getElementById('sellerEmail').value;
-		var sellerBEA = document.getElementById('sellerBEA').value;		
+		var sellerBEA_tf = document.getElementById('sellerBEA_tf').value;		
 		var sellerTOB = document.getElementById('sellerTOB').value;
-		
+
 		if (sellerCRN == '') {
-			alert('사업자번호를 입력하세요.');
+			alert('사업자 번호를 입력하세요.');
 			return false;
 		} else if (sellerId == '') {
 			alert('ID를 입력하세요.');
@@ -77,16 +79,25 @@
 		} else if (sellerEmail == '') {
 			alert('이메일을 입력하세요');
 			return false;
-//		} else if (sellerBEA == '') {
-//			alert('매장 주소를 입력하세요');
-//			return false;
+		} else if (sellerBEA_tf == '') {
+			alert('매장 주소를 입력하세요');
+			return false;
 		} else if (sellerTOB == '') {
 			alert('업종을 입력하세요');
 			return false;
 		}
 		//------------------------------------------------------------------------------
 		
-		//이상 없으면 정상 진행		
+		//이상 없으면 정상 진행
+		
+		var sellerBEA2 = document.getElementById('sellerBEA2').value;
+		if (sellerBEA2 != null) {
+			alert('상세주소 not null');
+			sellerBEA_tf = sellerBEA_tf + " " + sellerBEA2;
+			alert('전체 주소 : ' + sellerBEA_tf);
+			document.getElementById("sellerBEA").value = sellerBEA_tf;
+		}
+		
 		document.getElementById('sellerJoinForm').submit();		//form을 submit해줌
 		return true;
 	}
@@ -123,10 +134,10 @@
 
 
                                 <div class="form-group">
-                                    <label for="normal-field" class="col-sm-4 control-label">사업자번호</label>
+                                    <label for="normal-field" class="col-sm-4 control-label">사업자 번호</label>
                                     <div class="col-sm-7">
 										<input type="text" name="sellerCRN" id="sellerCRN"
-											class="form-control" placeholder="사업자번호를 입력하세요">
+											class="form-control" placeholder="사업자 번호를 입력하세요">
 									</div>
                                 </div>
 
@@ -137,7 +148,7 @@
                                     <div class="col-sm-7">
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                            <input type="text" name="sellerId" id="sellerId" class="form-control" size="16" type="text" placeholder="Username">
+                                            <input type="text" name="sellerId" id="sellerId" class="form-control" size="16" type="text" placeholder='ID'>
                                         </div>
                                         <a href="#" onclick="sellerIDcheck()">ID 중복 체크(a태그)</a>
                                     </div>
@@ -147,7 +158,7 @@
                                     <div class="col-sm-7">
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                            <input type="password" class="form-control" name="sellerPw" id="sellerPw" placeholder="Password">
+                                            <input type="password" class="form-control" name="sellerPw" id="sellerPw" placeholder='영문 or 숫자 6자 이상'>
                                         </div>
                                     </div>
                                 </div>
@@ -156,7 +167,7 @@
                                     <div class="col-sm-7">
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                            <input type="password" class="form-control" id="sellerPw2" placeholder="Password">
+                                            <input type="password" class="form-control" id="sellerPw2" placeholder="비밀번호 재입력">
                                         </div>
                                     </div>
                                 </div>
@@ -167,7 +178,7 @@
                                         <%--<span class="help-block">Some help text</span>--%>
                                     </label>
                                     <div class="col-sm-7">
-                                        <input type="text" name="sellerName" id="sellerName" class="form-control">
+                                        <input type="text" name="sellerName" id="sellerName" class="form-control" placeholder='대표자 성명'>
                                     </div>
                                 </div>
 
@@ -177,7 +188,7 @@
                                         <%--<span class="help-block">Some help text</span>--%>
                                     </label>
                                     <div class="col-sm-7">
-                                        <input type="text" name="sellerShopName" id="sellerShopName" class="form-control">
+                                        <input type="text" name="sellerShopName" id="sellerShopName" class="form-control" placeholder='상호'>
                                     </div>
                                 </div>
                                 
@@ -194,28 +205,119 @@
                                 <div class="form-group">
                                     <label for="normal-field" class="col-sm-4 control-label">E-mail</label>
                                     <div class="col-sm-7">
-                                        <input type="text" name="sellerEmail" id="sellerEmail" class="form-control" placeholder="사업자 번호를 입력하세요">
+                                        <input type="text" name="sellerEmail" id="sellerEmail" class="form-control" placeholder='E-mail'>
                                     </div>
                                 </div> 
 
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label" for="disabled-input">매장 주소</label>
                                     <div class="col-sm-7">
-                                        <input type="text" id="sellerBEA<%--disabled-input--%>" class="form-control"
-                                               disabled="disabled">
+                                        <input type="text" id="sellerBEA_tf<%--disabled-input--%>" name="sellerBEA_tf" class="form-control"
+                                               disabled="disabled" placeholder='매장 주소'>
+										<input type="hidden" id="sellerBEA" name="sellerBEA">                                               
+										<a href="#" onclick="sample5_execDaumPostcode()">주소 입력(a 태그)</a>
+
+<%----------------------------------------------------------------------------------------------------------------------------------------------------------------------%>
+<%-- ↓ API 지도 표시부 --%>
+<div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div>
+
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script src="//apis.daum.net/maps/maps3.js?apikey=1e403c6110d8f3b7f15a41476c1642be&libraries=services"></script>
+<script>
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+        mapOption = {
+            center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
+            level: 5 // 지도의 확대 레벨
+        };
+
+    //지도를 미리 생성
+    var map = new daum.maps.Map(mapContainer, mapOption);
+    //주소-좌표 변환 객체를 생성
+    var geocoder = new daum.maps.services.Geocoder();
+    //마커를 미리 생성
+    var marker = new daum.maps.Marker({
+        position: new daum.maps.LatLng(37.537187, 127.005476),
+        map: map
+    });
+    
+    function sample5_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var fullAddr = data.address; // 최종 주소 변수
+                var extraAddr = ''; // 조합형 주소 변수
+
+                // 기본 주소가 도로명 타입일때 조합한다.
+                if(data.addressType === 'R'){
+                    //법정동명이 있을 경우 추가한다.
+                    if(data.bname !== ''){
+                        extraAddr += data.bname;
+                    }
+                    // 건물명이 있을 경우 추가한다.
+                    if(data.buildingName !== ''){
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    // 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소를 만든다.
+                    fullAddr += (extraAddr !== '' ? ' ('+ extraAddr +')' : '');
+                }
+
+                // 주소 정보를 해당 필드에 넣는다.
+                document.getElementById("sellerBEA_tf").value = fullAddr;
+                // 주소로 좌표를 검색
+                geocoder.addr2coord(data.address, function(status, result) {
+                    // 정상적으로 검색이 완료됐으면
+                    if (status === daum.maps.services.Status.OK) {
+                        // 해당 주소에 대한 좌표를 받아서
+                        var coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
+                        //여기서 result.addr[0].lat, result.addr[0].lng 이걸받아와서 저장하면 될듯
+
+                        
+                        
+						//20170321 박진우 : 경도 및 위도 값을 넘겨줌
+    					var sellerLat = result.addr[0].lat;
+    					var sellerLong = result.addr[0].lng;
+						document.getElementById("sellerLat").value = sellerLat;
+						document.getElementById("sellerLong").value = sellerLong;
+
+
+
+                        // 지도를 보여준다.
+//						mapContainer.style.display = "block";		//20170328 안나오는 걸로 변경...
+						add_sellerBEA2();
+
+                        map.relayout();
+                        // 지도 중심을 변경한다.
+                        map.setCenter(coords);
+                        // 마커를 결과값으로 받은 위치로 옮긴다.
+                        marker.setPosition(coords)
+                        
+                    }
+                });
+            }
+        }).open();
+    }    
+</script>
+<%----------------------------------------------------------------------------------------------------------------------------------------------------------------------%>
 										<input type="hidden" name="sellerLat" id="sellerLat">
 										<input type="hidden" name="sellerLong" id="sellerLong"><br>                                               
                                     </div>
                                 </div>
-                                
-                                <div id="div_sellerBEA2"></div>
+
+
+
+								<div id="div_sellerBEA2">
+									<%-- 상세주소 확장부 --%>								                                
+                                </div>                                
+
+
 
                                 <div class="form-group">
                                     <label for="normal-field" class="col-sm-4 control-label">업종</label>
                                     <div class="col-sm-7">
-                                        <input type="text" name="sellerTOB" id="sellerTOB" class="form-control" placeholder="">
+                                        <input type="text" name="sellerTOB" id="sellerTOB" class="form-control" placeholder='업종'>
                                     </div>
-                                </div> 
+                                </div>
 
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label" for="transparent-input">
