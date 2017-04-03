@@ -10,18 +10,88 @@
     <!--[if IE 9]>
         <link href="css/application-ie9-part2.css" rel="stylesheet">
     <![endif]-->
-    <link rel="shortcut icon" href="./resources/bootstrap/img/favicon.png">
+<%--<link rel="shortcut icon" href="./resources/bootstrap/img/favicon.png">--%>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="">
     <meta name="author" content="">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<script src='<c:url value="/resources/js/jquery-3.1.1.js"/>' ></script>    
     <script>
         /* yeah we need this empty stylesheet here. It's cool chrome & chromium fix
            chrome fix https://code.google.com/p/chromium/issues/detail?id=167083
                       https://code.google.com/p/chromium/issues/detail?id=332189
         */
     </script>
+    <script>
+    function testt() {
+    	alert("clicked!");
+    }
+    function sellerIDcheck() {
+    	window.open("sellerIDcheck","width=400,height=300");
+    }
+    </script>
+
+    <script>    
+	function beforeSubmit() {
+    
+		//회원가입 전 체크-------------------------------------------------------------- 
+		var sellerCRN = document.getElementById('sellerCRN').value;
+		var sellerId = document.getElementById('sellerId').value;
+		var sellerPw = document.getElementById('sellerPw').value;
+		var sellerPw2 = document.getElementById('sellerPw2').value;
+		var sellerName = document.getElementById('sellerName').value;
+		var sellerShopName = document.getElementById('sellerShopName').value;
+		var sellerPhone = document.getElementById('sellerPhone').value;
+		var sellerEmail = document.getElementById('sellerEmail').value;
+		var sellerBEA = document.getElementById('sellerBEA').value;		
+		var sellerTOB = document.getElementById('sellerTOB').value;
+		
+		if (sellerCRN == '') {
+			alert('사업자번호를 입력하세요.');
+			return false;
+		} else if (sellerId == '') {
+			alert('ID를 입력하세요.');
+			return false;
+		} else if (sellerId.length < 6) {
+			alert('ID는 영문 or 숫자 6자 이상이어야 합니다.');
+			return false;			
+		} else if (sellerPw == '') {
+			alert('비밀번호를 입력하세요.');
+			return false;
+		} else if (sellerPw != sellerPw2) {
+			alert('비밀번호가 일치하지 않습니다.');
+			return false;
+		} else if (sellerPw.length < 6 || sellerPw.length < 6 ) {
+			alert('비밀번호는 영문 or 숫자 6자 이상이어야 합니다.');
+			return false;			
+		} else if (sellerName == '') {
+			alert('대표자 성명을 입력하세요');
+			return false;
+		} else if (sellerShopName == '') {
+			alert('상호를 입력하세요');
+			return false;
+		} else if (sellerPhone == '') {
+			alert('매장 전화번호를 입력하세요');
+			return false;
+		} else if (sellerEmail == '') {
+			alert('이메일을 입력하세요');
+			return false;
+//		} else if (sellerBEA == '') {
+//			alert('매장 주소를 입력하세요');
+//			return false;
+		} else if (sellerTOB == '') {
+			alert('업종을 입력하세요');
+			return false;
+		}
+		//------------------------------------------------------------------------------
+		
+		//이상 없으면 정상 진행		
+		document.getElementById('sellerJoinForm').submit();		//form을 submit해줌
+		return true;
+	}
+</script>
+    
 </head>
 <body>
 <div class="content-wrap">
@@ -46,94 +116,116 @@
                         </div>
                     </header>
                     <div class="widget-body">
-                        <form class="form-horizontal" role="form" action="test">
+                        <form method="post" id="sellerJoinForm" enctype="multipart/form-data" class="form-horizontal" role="form" action="sellerJoin">
                             <fieldset>
                                 <legend><strong>Horizontal</strong> form</legend>
+
+
+
                                 <div class="form-group">
-                                    <label for="normal-field" class="col-sm-4 control-label">사업자 번호</label>
+                                    <label for="normal-field" class="col-sm-4 control-label">사업자번호</label>
                                     <div class="col-sm-7">
-                                        <input type="text" id="normal-field" name="test" class="form-control" placeholder="사업자 번호를 입력하세요">
-                                    </div>
+										<input type="text" name="sellerCRN" id="sellerCRN"
+											class="form-control" placeholder="사업자번호를 입력하세요">
+									</div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="hint-field" class="col-sm-4 control-label">
-                                        Label hint
-                                        <span class="help-block">Some help text</span>
-                                    </label>
-                                    <div class="col-sm-7">
-                                        <input type="text" id="hint-field" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-4 control-label" for="tooltip-enabled">Tooltip enabled</label>
-                                    <div class="col-sm-7">
-                                        <input type="text" id="tooltip-enabled" class="form-control"
-                                               data-placement="top" data-original-title="Some explanation text here"
-                                               placeholder="Hover over me..">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-4 control-label" for="disabled-input">Disabled input</label>
-                                    <div class="col-sm-7">
-                                        <input type="text" id="disabled-input" class="form-control"
-                                               disabled="disabled" value="Default value" >
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-4 control-label" for="max-length">Max length</label>
-                                    <div class="col-sm-7">
-                                        <input type="text" id="max-length" maxlength="3"
-                                               class="form-control"
-                                               placeholder="Max length 3 characters"
-                                               data-placement="top" data-original-title="You cannot write more than 3 characters.">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-4 control-label" for="prepended-input">Prepended input</label>
+
+
+
+								<div class="form-group">
+                                    <label class="col-sm-4 control-label" for="prepended-input">ID</label>
                                     <div class="col-sm-7">
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                            <input id="prepended-input" class="form-control" size="16" type="text" placeholder="Username">
+                                            <input type="text" name="sellerId" id="sellerId" class="form-control" size="16" type="text" placeholder="Username">
                                         </div>
+                                        <a href="#" onclick="sellerIDcheck()">ID 중복 체크(a태그)</a>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label" for="password-field">Password</label>
+                                    <label class="col-sm-4 control-label" for="password-field">비밀번호</label>
                                     <div class="col-sm-7">
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                            <input type="password" class="form-control" id="password-field" placeholder="Password">
+                                            <input type="password" class="form-control" name="sellerPw" id="sellerPw" placeholder="Password">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label" for="appended-input">Appended input</label>
+                                    <label class="col-sm-4 control-label" for="password-field">비밀번호 확인</label>
                                     <div class="col-sm-7">
                                         <div class="input-group">
-                                            <input id="appended-input" class="form-control" size="16" type="text">
-                                            <span class="input-group-addon">.00</span>
+                                            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                            <input type="password" class="form-control" id="sellerPw2" placeholder="Password">
                                         </div>
                                     </div>
                                 </div>
+                                
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label" for="combined-input">Combined</label>
+                                    <label for="hint-field" class="col-sm-4 control-label">
+                                        대표자 성명
+                                        <%--<span class="help-block">Some help text</span>--%>
+                                    </label>
                                     <div class="col-sm-7">
-                                        <div class="input-group">
-                                            <span class="input-group-addon">$</span>
-                                            <input id="combined-input" class="form-control" size="16" type="text">
-                                            <span class="input-group-addon">.00</span>
-                                        </div>
+                                        <input type="text" name="sellerName" id="sellerName" class="form-control">
                                     </div>
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="hint-field" class="col-sm-4 control-label">
+                                        상호
+                                        <%--<span class="help-block">Some help text</span>--%>
+                                    </label>
+                                    <div class="col-sm-7">
+                                        <input type="text" name="sellerShopName" id="sellerShopName" class="form-control">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="hint-field" class="col-sm-4 control-label">
+                                        전화번호
+                                        <span class="help-block">-를 제외한 번호만 입력하세요</span>
+                                    </label>
+                                    <div class="col-sm-7">
+                                        <input type="text" name="sellerPhone" id="sellerPhone" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="normal-field" class="col-sm-4 control-label">E-mail</label>
+                                    <div class="col-sm-7">
+                                        <input type="text" name="sellerEmail" id="sellerEmail" class="form-control" placeholder="사업자 번호를 입력하세요">
+                                    </div>
+                                </div> 
+
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label" for="disabled-input">매장 주소</label>
+                                    <div class="col-sm-7">
+                                        <input type="text" id="sellerBEA<%--disabled-input--%>" class="form-control"
+                                               disabled="disabled">
+										<input type="hidden" name="sellerLat" id="sellerLat">
+										<input type="hidden" name="sellerLong" id="sellerLong"><br>                                               
+                                    </div>
+                                </div>
+                                
+                                <div id="div_sellerBEA2"></div>
+
+                                <div class="form-group">
+                                    <label for="normal-field" class="col-sm-4 control-label">업종</label>
+                                    <div class="col-sm-7">
+                                        <input type="text" name="sellerTOB" id="sellerTOB" class="form-control" placeholder="">
+                                    </div>
+                                </div> 
+
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label" for="transparent-input">
-                                        Append Transparent
+                                        매장 사진
                                     </label>
                                     <div class="col-sm-7">
                                         <div class="input-group input-group-transparent">
-                                            <input id="transparent-input" class="form-control" type="text">
+                                            <input name="upload" id="uploadB" class="form-control" type="text">
                                             <span class="input-group-addon">
-                                                <i class="fa fa-camera"></i>
+                                                <i class="fa fa-camera" onclick="testt()"></i>
                                             </span>
                                         </div>
                                     </div>
@@ -142,7 +234,7 @@
                             <div class="form-actions">
                                 <div class="row">
                                     <div class="col-sm-offset-4 col-sm-7">
-                                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                                        <button type="submit" onclick="return beforeSubmit()" class="btn btn-primary">Save Changes</button>
                                         <button type="button" class="btn btn-inverse">Cancel</button>
                                     </div>
                                 </div>

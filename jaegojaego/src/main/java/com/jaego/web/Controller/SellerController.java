@@ -57,6 +57,7 @@ public class SellerController {
 	//20170320 : 판매자 가입
 	@RequestMapping(value="sellerJoin", method = RequestMethod.POST)
 	public String sellerJoin(Seller seller, MultipartFile upload) {
+		System.out.println(seller);
 	
 		//파일 업로드 위한 코드
 		if (!upload.isEmpty()) {		//★ upload는 null로 체크가 불가능! (그래서 isEmpty()라는 함수 사용)
