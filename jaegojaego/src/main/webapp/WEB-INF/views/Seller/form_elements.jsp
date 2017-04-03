@@ -5,7 +5,8 @@
 <html>
 <head>
     <title>가입 F</title>
-    <link href="./resources/bootstrap/css/application.min.css" rel="stylesheet">
+<%--<link href="./resources/bootstrap/css/application.min.css" rel="stylesheet">--%>
+	<link href="./resources/bootstrap/css/application.css" rel="stylesheet">    
     <!-- as of IE9 cannot parse css files with more that 4K classes separating in two files -->
     <!--[if IE 9]>
         <link href="css/application-ie9-part2.css" rel="stylesheet">
@@ -195,10 +196,10 @@
                                 <div class="form-group">
                                     <label for="hint-field" class="col-sm-4 control-label">
                                         전화번호
-                                        <span class="help-block">-를 제외한 번호만 입력하세요</span>
+                                        <%--<span class="help-block">-를 제외한 번호만 입력하세요</span>--%>
                                     </label>
                                     <div class="col-sm-7">
-                                        <input type="text" name="sellerPhone" id="sellerPhone" class="form-control">
+                                        <input type="text" name="sellerPhone" id="sellerPhone" class="form-control" placeholder='-를 제외한 번호만 입력하세요'>
                                     </div>
                                 </div>
 
@@ -325,10 +326,11 @@
                                     </label>
                                     <div class="col-sm-7">
                                         <div class="input-group input-group-transparent">
-                                            <input name="upload" id="uploadB" class="form-control" type="text">
-                                            <span class="input-group-addon">
-                                                <i class="fa fa-camera" onclick="testt()"></i>
-                                            </span>
+                                        <%--<input name="upload" id="uploadB" class="form-control" type="text">--%>
+                                        <input type="file" name="upload" id="uploadB" <%--style="display:none"--%> placeholder='매장 사진'>
+                                            <%--<span class="input-group-addon">--%>
+                                            <%--<i class="fa fa-camera" onclick="testt()"></i>--%>
+                                            <%--</span>--%>
                                         </div>
                                     </div>
                                 </div>
@@ -336,8 +338,8 @@
                             <div class="form-actions">
                                 <div class="row">
                                     <div class="col-sm-offset-4 col-sm-7">
-                                        <button type="submit" onclick="return beforeSubmit()" class="btn btn-primary">Save Changes</button>
-                                        <button type="button" class="btn btn-inverse">Cancel</button>
+                                        <button type="submit" onclick="return beforeSubmit()" class="btn btn-primary">가입</button>
+                                        <button type="button" class="btn btn-inverse">취소</button>
                                     </div>
                                 </div>
                             </div>

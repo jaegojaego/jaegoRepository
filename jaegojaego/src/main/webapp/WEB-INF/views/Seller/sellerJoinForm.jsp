@@ -261,7 +261,7 @@ $(function(){		//ready 함수
 		<%--<input type="text" name="sellerShopOimg" id="sellerShopOimg">--%>
 		<%--<input type="file" name="upload">--%>
 <%--	<a href="#" id="uploadA">파일 업로드</a>--%>	<%-- a 태그 클릭시 파일 버튼으로 연결--%>
-		<input type="file" name="upload" id="uploadB" <%--style="display:none"--%>/ placeholder='매장 사진'>   			
+		<input type="file" name="upload" id="uploadB" <%--style="display:none"--%> placeholder='매장 사진'>   			
 		</td>
 	</tr>
 </table>
