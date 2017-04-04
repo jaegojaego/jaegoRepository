@@ -1,15 +1,19 @@
-<%-- 20170322 박진우 : ID 중복체크 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<script type="text/javascript" src="./resources/js/jquery-3.1.1.js"></script>
+<title>ID 중복 확인</title>
+<link href="./resources/bootstrap/css/application.css" rel="stylesheet">    
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<script src='<c:url value="/resources/js/jquery-3.1.1.js"/>' ></script>
+<script src="./resources/bootstrap/vendor/jquery/dist/jquery.min.js"></script>	    
 <script>
-
 $(function(){
 
 	//.css는 .on처럼 자체적으로 포함된 기능
@@ -51,20 +55,22 @@ $(function(){
 	});
 
 });
-
 </script>
+
 </head>
 <body>
 
-<h1>[ 아이디 중복 확인인인 ]</h1>
-
-<input type="text" id="idcheck_tf" name="idcheck_tf">
-<input type="button" id="idcheckbtn" value="검색">
+<br>
+<h5 class="page-title">
+<table>
+	<tr>
+	<td>ID 입력</td><td><input type="text" id="idcheck_tf" name="idcheck_tf"></td><td><input type="button" id="idcheckbtn" value="검색"></td><td><div><input type="button" id="btn" value="적용하기"></div></td>
+	</tr>
+</table>
+</h5><br>
 
 <%-- 검색 결과에 따라 div 안에 설정된 btn을 보여줌/보여주지 않음 --%>
-<div>
-	<input type="button" id="btn" value="적용하기">
-</div>
+
 
 </body>
 </html>

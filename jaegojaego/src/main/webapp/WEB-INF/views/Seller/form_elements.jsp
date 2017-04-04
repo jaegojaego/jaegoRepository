@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>가입 F</title>
+    <title>회원 가입 : 판매자</title>
 <%--<link href="./resources/bootstrap/css/application.min.css" rel="stylesheet">--%>
 	<link href="./resources/bootstrap/css/application.css" rel="stylesheet">    
     <!-- as of IE9 cannot parse css files with more that 4K classes separating in two files -->
@@ -40,7 +40,7 @@
     
 		//회원가입 전 체크-------------------------------------------------------------- 
 		var sellerCRN = document.getElementById('sellerCRN').value;
-		var sellerId = document.getElementById('sellerId').value;
+		var sellerId_tf = document.getElementById('sellerId_tf').value;
 		var sellerPw = document.getElementById('sellerPw').value;
 		var sellerPw2 = document.getElementById('sellerPw2').value;
 		var sellerName = document.getElementById('sellerName').value;
@@ -53,10 +53,10 @@
 		if (sellerCRN == '') {
 			alert('사업자 번호를 입력하세요.');
 			return false;
-		} else if (sellerId == '') {
+		} else if (sellerId_tf == '') {
 			alert('ID를 입력하세요.');
 			return false;
-		} else if (sellerId.length < 6) {
+		} else if (sellerId_tf.length < 6) {
 			alert('ID는 영문 or 숫자 6자 이상이어야 합니다.');
 			return false;			
 		} else if (sellerPw == '') {
@@ -93,11 +93,11 @@
 		
 		var sellerBEA2 = document.getElementById('sellerBEA2').value;
 		if (sellerBEA2 != null) {
-			alert('상세주소 not null');
 			sellerBEA_tf = sellerBEA_tf + " " + sellerBEA2;
-			alert('전체 주소 : ' + sellerBEA_tf);
-			document.getElementById("sellerBEA").value = sellerBEA_tf;
+			document.getElementById('sellerBEA').value = sellerBEA_tf;
 		}
+		
+		document.getElementById('sellerId').value = document.getElementById('sellerId_tf').value;
 		
 		document.getElementById('sellerJoinForm').submit();		//form을 submit해줌
 		return true;
@@ -106,31 +106,31 @@
     
 </head>
 <body>
-<div class="content-wrap">
+<div class="content-wrap">		<%-- 좌 → 우로 이동하는 파란색 띠 --%>
     <!-- main page content. the place to put widgets in. usually consists of .row > .col-md-* > .widget.  -->
     <main id="content" class="content" role="main">
         <ol class="breadcrumb">
-            <li>YOU ARE HERE</li>
-            <li class="active">Form Elements</li>
+<%--        <li>YOU ARE HERE</li>
+            <li class="active">Form Elements</li>--%>
         </ol>
-        <h1 class="page-title">Form - <span class="fw-semi-bold">판매자 등록</span></h1>
+        <h1 class="page-title">회원 가입 : <span class="fw-semi-bold">판매자</span></h1>
         <div class="row">
             <div class="col-md-6">
                 <section class="widget">
                     <header>
                         <h5>
-                            Inputs
+<%--                            Inputs--%>
                         </h5>
-                        <div class="widget-controls">
+<%--                    <div class="widget-controls">
                             <a href="#"><i class="glyphicon glyphicon-cog"></i></a>
                             <a href="#"><i class="fa fa-refresh"></i></a>
                             <a href="#" data-widgster="close"><i class="glyphicon glyphicon-remove"></i></a>
-                        </div>
+                        </div>--%>
                     </header>
                     <div class="widget-body">
                         <form method="post" id="sellerJoinForm" enctype="multipart/form-data" class="form-horizontal" role="form" action="sellerJoin">
                             <fieldset>
-                                <legend><strong>Horizontal</strong> form</legend>
+                                <legend><strong><%--Horizontal--%></strong><%-- form--%></legend>
 
 
 
@@ -149,9 +149,10 @@
                                     <div class="col-sm-7">
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                            <input type="text" name="sellerId" id="sellerId" class="form-control" size="16" type="text" placeholder='ID'>
+                                            <input type="text" name="sellerId_tf" id="sellerId_tf" class="form-control" size="16" disabled="disabled" placeholder="'ID 중복 검사'를 클릭하세요">
+                                            <input type="hidden" name="sellerId" id="sellerId">
                                         </div>
-                                        <a href="#" onclick="sellerIDcheck()">ID 중복 체크(a태그)</a>
+                                        <a href="#" onclick="sellerIDcheck()">ID 중복 검사</a>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -214,9 +215,9 @@
                                     <label class="col-sm-4 control-label" for="disabled-input">매장 주소</label>
                                     <div class="col-sm-7">
                                         <input type="text" id="sellerBEA_tf<%--disabled-input--%>" name="sellerBEA_tf" class="form-control"
-                                               disabled="disabled" placeholder='매장 주소'>
+                                               disabled="disabled" placeholder="'주소 검색'을 클릭하세요">
 										<input type="hidden" id="sellerBEA" name="sellerBEA">                                               
-										<a href="#" onclick="sample5_execDaumPostcode()">주소 입력(a 태그)</a>
+										<a href="#" onclick="sample5_execDaumPostcode()">주소 검색</a>
 
 <%----------------------------------------------------------------------------------------------------------------------------------------------------------------------%>
 <%-- ↓ API 지도 표시부 --%>

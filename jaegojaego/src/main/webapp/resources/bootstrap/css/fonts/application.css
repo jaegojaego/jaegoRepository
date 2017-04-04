@@ -4507,7 +4507,10 @@ a.thumbnail.active {
   background-size: 40px 40px; }
 
 .progress.active .progress-bar,
-.progress-bar.active { }
+.progress-bar.active {
+  -webkit-animation: progress-bar-stripes 2s linear infinite;
+  -o-animation: progress-bar-stripes 2s linear infinite;
+  animation: progress-bar-stripes 2s linear infinite; }
 
 .progress-bar-success {
   background-color: #64bd63; }
@@ -5955,9 +5958,13 @@ button.close {
 .fa.pull-right {
   margin-left: .3em; }
 
-.fa-spin { }
+.fa-spin {
+  -webkit-animation: fa-spin 2s infinite linear;
+  animation: fa-spin 2s infinite linear; }
 
-.fa-pulse { }
+.fa-pulse {
+  -webkit-animation: fa-spin 1s infinite steps(8);
+  animation: fa-spin 1s infinite steps(8); }
 
 @-webkit-keyframes fa-spin {
   0% {
@@ -7887,23 +7894,49 @@ Licensed under the MIT license - http://opensource.org/licenses/MIT
 
 Copyright (c) 2015 Daniel Eden
 */
-.animated { }
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both; }
 
-.animated.infinite { }
+.animated.infinite {
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite; }
 
-.animated.hinge { }
+.animated.hinge {
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s; }
 
 .animated.bounceIn,
-.animated.bounceOut { }
+.animated.bounceOut {
+  -webkit-animation-duration: .75s;
+  animation-duration: .75s; }
 
 .animated.flipOutX,
-.animated.flipOutY { }
+.animated.flipOutY {
+  -webkit-animation-duration: .75s;
+  animation-duration: .75s; }
 
 @-webkit-keyframes bounce {
-  from, 20%, 53%, 80%, 100% { }
-  40%, 43% { }
-  70% { }
-  90% { } }
+  from, 20%, 53%, 80%, 100% {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); }
+  40%, 43% {
+    -webkit-animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    -webkit-transform: translate3d(0, -30px, 0);
+    transform: translate3d(0, -30px, 0); }
+  70% {
+    -webkit-animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    -webkit-transform: translate3d(0, -15px, 0);
+    transform: translate3d(0, -15px, 0); }
+  90% {
+    -webkit-transform: translate3d(0, -4px, 0);
+    transform: translate3d(0, -4px, 0); } }
 
 @keyframes bounce {
   from, 20%, 53%, 80%, 100% {
@@ -22637,7 +22670,7 @@ a {
     border-radius: 0 !important;
     background-color: #aaa !important; }
 
-/* .page-controls, .content-wrap, .loader-wrap {
+.page-controls, .content-wrap, .loader-wrap {
   left: 204px;
   -webkit-transition: left 0.3s ease-in-out;
   -o-transition: left 0.3s ease-in-out;
@@ -22654,7 +22687,7 @@ a {
       -o-transition: none;
       transition: none;
       left: 0;
-      margin-left: 204px; } } */
+      margin-left: 204px; } }
 
 .page-controls {
   -webkit-transition: left 0.3s ease-in-out, right 0.3s ease-in-out;
@@ -23023,11 +23056,11 @@ a {
 /* body tag is given this class */
 .chat-sidebar-container {
   position: relative; }
-  /* .chat-sidebar-container, .chat-sidebar-container .sidebar {
+  .chat-sidebar-container, .chat-sidebar-container .sidebar {
     left: 0;
     -webkit-transition: left 0.3s ease-in-out;
     -o-transition: left 0.3s ease-in-out;
-    transition: left 0.3s ease-in-out; } */
+    transition: left 0.3s ease-in-out; }
   .chat-sidebar-container.chat-sidebar-opened, .chat-sidebar-container.chat-sidebar-opened .sidebar {
     left: -254px; }
   .chat-sidebar-container.chat-sidebar-opened .chat-sidebar {

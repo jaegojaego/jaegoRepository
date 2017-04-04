@@ -47,6 +47,12 @@ public class SellerController {
 		return "./Seller/sellerIDcheck";
 	}
 	
+	//20170404 ID 체크 폼 불러오기(부트스트랩 버전)
+	@RequestMapping(value="form_elements_IDcheck",method=RequestMethod.GET)
+	public String form_elements_IDcheck() {
+		return "./Seller/form_elements_IDcheck";
+	}
+	
 	//실제 ID 체크(DB 조회)
 	@ResponseBody		//★ Ajax 통신에서는 이 @ResponseBody를 붙여줘야 함!
 	@RequestMapping(value="sellerIDcheck",method=RequestMethod.POST)
