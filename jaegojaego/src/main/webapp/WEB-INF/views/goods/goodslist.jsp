@@ -95,11 +95,7 @@
 		});
 	})
 	
-	$(function(){
-		$('.btnupdate').click(function(){
-			location.href = "goodsupdate";
-		});
-	})
+
 	
 </script>
 <style type="text/css">
@@ -157,7 +153,8 @@
 					<input type="checkbox" name="checkbox" class="checkbox">
 				</div>
 				<div>
-					<input type="button" value="수정" class="btnupdate">
+					<!-- <input type="button" value="수정" class="btnupdate"> -->
+					<a href ="goodsupdate?goodsCode=${map.GOODSCODE}">수정</a>
 				</div>
 			</div>
 		</c:forEach>

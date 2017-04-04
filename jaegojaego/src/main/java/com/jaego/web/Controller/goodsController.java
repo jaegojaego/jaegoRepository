@@ -88,10 +88,13 @@ public class goodsController {
 		model.addAttribute("list",result);
 		return "./goods/goodslist";
 	}
-
 	@RequestMapping(value = "goodsupdate", method = RequestMethod.GET)
-	public String goodsupdate() {
+	public String goodsupdate(String goodsCode,Model model) {
+		Goods goods=dao.select(goodsCode);
+		model.addAttribute("goods",goods);
+		System.out.println("야호여기야여기"+goods);
 		return "./goods/goodsupdate";
+		
 	}
 	//상품수정
 	@RequestMapping(value="rgoodsupdate",method=RequestMethod.POST)
@@ -99,13 +102,14 @@ public class goodsController {
 		// String sellerCRN=(String) session.getAttribute("0000");
 				String sellerCRN = "0";
 				goods.setSellerCRN(sellerCRN);
-				String codenum="RZQAFUqz";
-		//String codenum=goods.getGoodsCode();
-		goods.setGoodsCode(codenum);
-		
+				//String codenum="R3QncP8f";
+				//goods.setGoodsCode(codenum);
+		String codenum=goods.getGoodsCode();
+		System.out.println(codenum);
+		System.out.println("수정된 상품 : " + goods);
 		//기존에첨부파일있다면 기존에파일을지우는것
 		//새로파일을 작성
-		String savefile = dao.selectOne(codenum).getGoodsSimage();
+		String savefile = dao.select(codenum).getGoodsSimage();
 		if(!upload.isEmpty()){
 
 			//업로드된 파일삭제
@@ -143,7 +147,7 @@ public class goodsController {
 	
 	//사진
 	@RequestMapping(value="download",method=RequestMethod.GET)
-	public String download(String goodsCode,HttpServletResponse response){
+	public void download(String goodsCode,HttpServletResponse response){
 		Goods goods=dao.selectPic(goodsCode);
 		try {
 			response.setHeader("Content-Disposition", "attachment;filename="+URLEncoder.encode(goods.getGoodsOimage(),"UTF-8"));
@@ -167,7 +171,7 @@ public class goodsController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return "null";
+		
 	}
 
 	//삭제하기

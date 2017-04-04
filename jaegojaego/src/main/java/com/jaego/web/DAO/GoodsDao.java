@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+
 import com.jaego.web.VO.Goods;
 
 
@@ -36,7 +37,13 @@ public class GoodsDao {
 			Goods goods = mapper.selectOne(goodscode);
 			return goods;
 		}
-		
+		//수정시 모든목록
+		public Goods select(String codenum){
+			GoodsMapper mapper= sqlsession.getMapper(GoodsMapper.class);
+			Goods goods=mapper.select(codenum);
+			return goods;
+			
+		}
 	//수정기능
 		public int updateGoods(Goods goods){
 			GoodsMapper mapper=sqlsession.getMapper(GoodsMapper.class);
@@ -54,7 +61,7 @@ public class GoodsDao {
 			GoodsMapper mapper = sqlsession.getMapper(GoodsMapper.class);
 			return mapper.list();
 		}
-		
+	
 		//사진
 		public Goods selectPic(String goodsCode){
 			GoodsMapper mapper= sqlsession.getMapper(GoodsMapper.class);

@@ -82,7 +82,7 @@
 				<input type="hidden" id="goodsCode">
 				<input type="hidden" id="goodsDateOfUpload">
 				<input type="hidden" id="goodsDateOfUpdate">
-				<input type="hidden" id="goodsStatus">
+				<input type="hidden" id="goodsStatus" value="off">
 				<br> <input type="submit" value="등록">
 				<!-- <a HREF="javascript:sendIt()">[등록]</a> -->
 			
