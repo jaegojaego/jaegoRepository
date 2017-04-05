@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jaego.web.DAO.MapsMapper">
+	<select id="Shoplist" resultType="Seller">
+		select sellerCRN,
+				sellerId, 
+				sellerPw,
+				sellerName,
+				sellerShopName,
+				sellerPhone,
+				sellerEmail,
+				sellerBEA,
+				sellerTOB,
+				sellerShopOimg,
+				sellerShopSimg,
+				sellerLat,
+				sellerLong
+	
+		from seller
+	
+	</select>
+	
+	<select id="Goodslist" parameterType="String" resultType="Goods" >
+		select 
+			sellerCRN,
+			goodsName,
+			goodsPrice,
+			goodsQuantity,
+			goodsOimage,
+			goodsSimage,
+			goodsCode,
+			goodsDateOfUpload,
+			goodsDateOfUpdate,
+			goodsStatus
+		from goods
+		where sellerCRN=#{sellerCRN}
+	</select>
+	
+</mapper>

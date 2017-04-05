@@ -12,6 +12,7 @@
 	<mappers>
 		<mapper resource="mapper/sellerMapper.xml" />					<!-- 20170321 박진우 -->
 		<mapper resource="mapper/goodsMapper.xml" />					<!-- 20170322 권록헌 -->
+		<mapper resource="mapper/mapsMapper.xml" />						<!-- 20170405 박시원 -->
 	</mappers>
 
 </configuration>
