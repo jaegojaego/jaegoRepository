@@ -13,7 +13,7 @@
 			,buyerPhone
 			,buyerEmail
 			,buyerStatus
-			,buyerDateOfJoin
+			,to_char(buyerdateofjoin, 'yyyy-mm-dd hh24:mi:ss')
 			,buyerDateOfUpdate
 			,buyerDateOfDelete
 		from
@@ -31,19 +31,13 @@
 				,buyerPhone
 				,buyerEmail
 				,buyerStatus
-				,buyerDateOfJoin
-				,buyerDateOfUpdate
-				,buyerDateOfDelete
 			)values(
 				#{buyerId}
 				,#{buyerPw}
 				,#{buyerName}
 				,#{buyerPhone}
 				,#{buyerEmail}
-				,#{buyerStatus}
-				,#{buyerDateOfJoin}
-				,#{buyerDateOfUpdate}
-				,#{buyerDateOfDelete}			
+				,'NORMAL'			
 			)
 	</insert>
 	

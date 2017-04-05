@@ -24,6 +24,7 @@ $(function(){
 	$("#btn").on("click",function(){
 		var idcheck_ok = $("#idcheck_tf").val();
 		opener.document.getElementById("buyerId_tf").value = idcheck_ok;
+		opener.document.getElementById("buyerId").value = idcheck_ok;
 		window.close();
 	});
 

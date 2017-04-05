@@ -39,7 +39,6 @@
 		var buyerPw = document.getElementById('buyerPw').value;
 		var buyerPw2 = document.getElementById('buyerPw2').value;
 		var buyerName = document.getElementById('buyerName').value;
-		var buyerShopName = document.getElementById('buyerShopName').value;
 		var buyerPhone = document.getElementById('buyerPhone').value;
 		var buyerEmail = document.getElementById('buyerEmail').value;
 
@@ -72,33 +71,13 @@
 		
 		//이상 없으면 정상 진행
 		
-		document.getElementById('buyerId').value = document.getElementById('buyerId_tf').value;
+//		document.getElementById('buyerId').value = document.getElementById('buyerId_tf').value;
 		
 		document.getElementById('buyerJoinForm').submit();		//form을 submit해줌
 		return true;
 	}
 </script>
 
-<%--이미지 업로드 미리 보기--%>
-<script type="text/javascript">
-	$(function() {
-		$("#uploadB").on('change', function(){
-			readURL(this);
-			});
-		});
-
-        function readURL(input) {
-			if (input.files && input.files[0]) {
-				var reader = new FileReader();
-				reader.onload = function (e) {
-					alert(reader.value);
-					$('#blah').attr('src', e.target.result);
-				}
-				reader.readAsDataURL(input.files[0]);
-			}
-		}
-</script>
-    
 </head>
 <body>
 <%--<div class="content-wrap">--%>		<%-- 좌 → 우로 이동하는 파란색 띠 --%>
