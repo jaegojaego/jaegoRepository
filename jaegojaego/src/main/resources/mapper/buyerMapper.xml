@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jaego.web.DAO.BuyerMapper">
+
+	<select id="selectOne" parameterType="String" resultType="Buyer">	<!-- 20170405 박진우 -->
+		select
+			buyerId
+			,buyerPw
+			,buyerName
+			,buyerPhone
+			,buyerEmail
+			,buyerStatus
+			,buyerDateOfJoin
+			,buyerDateOfUpdate
+			,buyerDateOfDelete
+		from
+			buyer
+		where
+			buyerId = #{buyerId}		
+	</select>
+
+	<insert id="addBuyer" parameterType="Buyer">	<!-- 20170405 박진우 -->
+		insert into
+			Buyer(
+				buyerId
+				,buyerPw
+				,buyerName
+				,buyerPhone
+				,buyerEmail
+				,buyerStatus
+				,buyerDateOfJoin
+				,buyerDateOfUpdate
+				,buyerDateOfDelete
+			)values(
+				#{buyerId}
+				,#{buyerPw}
+				,#{buyerName}
+				,#{buyerPhone}
+				,#{buyerEmail}
+				,#{buyerStatus}
+				,#{buyerDateOfJoin}
+				,#{buyerDateOfUpdate}
+				,#{buyerDateOfDelete}			
+			)
+	</insert>
+	
+</mapper>

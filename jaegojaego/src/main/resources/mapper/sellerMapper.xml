@@ -7,19 +7,19 @@
 
 	<select id="selectOne" parameterType="String" resultType="Seller">
 		select
-				sellerCRN
-				,sellerId
-				,sellerPw
-				,sellerName
-				,sellerShopName
-				,sellerPhone
-				,sellerEmail
-				,sellerBEA
-				,sellerTOB
-				,sellerShopOimg
-				,sellerShopSimg
-				,sellerLat
-				,sellerLong
+			sellerCRN
+			,sellerId
+			,sellerPw
+			,sellerName
+			,sellerShopName
+			,sellerPhone
+			,sellerEmail
+			,sellerBEA
+			,sellerTOB
+			,sellerShopOimg
+			,sellerShopSimg
+			,sellerLat
+			,sellerLong
 		from
 			seller
 		where
