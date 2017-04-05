@@ -23,22 +23,10 @@ public class SellerController {
 
 
 
-	//20170329 부트스트랩 적용 테스트
-	@RequestMapping(value="form_elements", method = RequestMethod.GET)
-	public String tables_basic() {
-		return "./Seller/form_elements";
-	}
-
-
-
+	//20170329 회원가입 : 부트스트랩 적용
 	@RequestMapping(value="sellerJoinForm", method = RequestMethod.GET)
 	public String sellerJoinForm() {
 		return "./Seller/sellerJoinForm";
-	}
-
-	@RequestMapping(value="sellerMap", method = RequestMethod.GET)
-	public String sellerMap() {
-		return "./Seller/sellerMap";
 	}
 	
 	//ID 체크 폼 불러오기
@@ -47,20 +35,14 @@ public class SellerController {
 		return "./Seller/sellerIDcheck";
 	}
 	
-	//20170404 ID 체크 폼 불러오기(부트스트랩 버전)
-	@RequestMapping(value="form_elements_IDcheck",method=RequestMethod.GET)
-	public String form_elements_IDcheck() {
-		return "./Seller/form_elements_IDcheck";
-	}
-	
 	//실제 ID 체크(DB 조회)
 	@ResponseBody		//★ Ajax 통신에서는 이 @ResponseBody를 붙여줘야 함!
 	@RequestMapping(value="sellerIDcheck",method=RequestMethod.POST)
 	public Seller sellerIDcheck(String idcheck_to_ctr) {
 		Seller seller = dao.selectOne(idcheck_to_ctr);
 		return seller;
-	}
-
+	}	
+	
 	//20170320 : 판매자 가입
 	@RequestMapping(value="sellerJoin", method = RequestMethod.POST)
 	public String sellerJoin(Seller seller, MultipartFile upload) {
@@ -74,8 +56,14 @@ public class SellerController {
 			seller.setSellerShopSimg(savedfile);
 		}
 		dao.addSeller(seller);
-		return "./Seller/sellerJoin";		//Q) redirect로 바꿀까...
-
+		return "redirect:sellerJoin";		//Q) redirect로 바꿀까...
 	}
+
+	/*
+	@RequestMapping(value="sellerMap", method = RequestMethod.GET)
+	public String sellerMap() {
+		return "./Seller/sellerMap";
+	}
+	*/
 
 }

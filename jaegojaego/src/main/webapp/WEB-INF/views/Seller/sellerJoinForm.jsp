@@ -1,50 +1,62 @@
-<%-- 회원가입 : 박진우 / 20170324 업로드할 파일 이름이 한 박자 느리게 표시되는 상태 - 업로드만 버튼으로 하자! --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script src='<c:url value="/resources/js/jquery-3.1.1.js"/>' ></script>
-<title>Insert title here</title>
-<script type="text/javascript"></script>
+    <title>회원 가입 : 판매자</title>
+<%--<link href="./resources/bootstrap/css/application.min.css" rel="stylesheet">--%>
+	<link href="./resources/bootstrap/css/application.css" rel="stylesheet">    
+    <!-- as of IE9 cannot parse css files with more that 4K classes separating in two files -->
+    <!--[if IE 9]>
+        <link href="css/application-ie9-part2.css" rel="stylesheet">
+    <![endif]-->
+<%--<link rel="shortcut icon" href="./resources/bootstrap/img/favicon.png">--%>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<script src='<c:url value="/resources/js/jquery-3.1.1.js"/>' ></script>    
+    <script>
+        /* yeah we need this empty stylesheet here. It's cool chrome & chromium fix
+           chrome fix https://code.google.com/p/chromium/issues/detail?id=167083
+                      https://code.google.com/p/chromium/issues/detail?id=332189
+        */
+    </script>
+    <script>
+    function testt() {
+    	alert("clicked!");
+    }
+    function sellerIDcheck() {
+    	window.open("sellerIDcheck","width=400,height=300");
+    }
+    function add_sellerBEA2() {
+    	var html = "<div class='form-group'><label for='normal-field' class='col-sm-4 control-label'></label><div class='col-sm-7'><input type='text' id='sellerBEA2' class='form-control' placeholder='상세 주소'></div></div>";
+    	$("#div_sellerBEA2").html(html);
+    }
 
-<script>
-function sellerIDcheck() {
-	window.open("sellerIDcheck","width=400,height=300");
-}
-
-
-//innerHTML로 주소2 추가
-function add_sellerBEA2() {
-	var html = "<input type='text' id='sellerBEA2' placeholder='상세 주소'>";
-	$("#div_sellerBEA2").html(html);
-}
-
-//20170324 가입(a태그)
-$(function(){		//ready 함수
-	$("#submitA").on("click",function(){
-		
+    function beforeSubmit() {
+    
 		//회원가입 전 체크-------------------------------------------------------------- 
 		var sellerCRN = document.getElementById('sellerCRN').value;
-		var sellerId = document.getElementById('sellerId').value;
+		var sellerId_tf = document.getElementById('sellerId_tf').value;
 		var sellerPw = document.getElementById('sellerPw').value;
 		var sellerPw2 = document.getElementById('sellerPw2').value;
 		var sellerName = document.getElementById('sellerName').value;
 		var sellerShopName = document.getElementById('sellerShopName').value;
 		var sellerPhone = document.getElementById('sellerPhone').value;
 		var sellerEmail = document.getElementById('sellerEmail').value;
-		var sellerBEA = document.getElementById('sellerBEA').value;		
+		var sellerBEA_tf = document.getElementById('sellerBEA_tf').value;		
 		var sellerTOB = document.getElementById('sellerTOB').value;
-		
+
 		if (sellerCRN == '') {
-			alert('사업자번호를 입력하세요.');
+			alert('사업자 번호를 입력하세요.');
 			return false;
-		} else if (sellerId == '') {
+		} else if (sellerId_tf == '') {
 			alert('ID를 입력하세요.');
 			return false;
-		} else if (sellerId.length < 6) {
+		} else if (sellerId_tf.length < 6) {
 			alert('ID는 영문 or 숫자 6자 이상이어야 합니다.');
 			return false;			
 		} else if (sellerPw == '') {
@@ -68,7 +80,7 @@ $(function(){		//ready 함수
 		} else if (sellerEmail == '') {
 			alert('이메일을 입력하세요');
 			return false;
-		} else if (sellerBEA == '') {
+		} else if (sellerBEA_tf == '') {
 			alert('매장 주소를 입력하세요');
 			return false;
 		} else if (sellerTOB == '') {
@@ -77,89 +89,135 @@ $(function(){		//ready 함수
 		}
 		//------------------------------------------------------------------------------
 		
-		//이상 없으면 정상 진행		
+		//이상 없으면 정상 진행
+		
+		var sellerBEA2 = document.getElementById('sellerBEA2').value;
+		if (sellerBEA2 != null) {
+			sellerBEA_tf = sellerBEA_tf + " " + sellerBEA2;
+			document.getElementById('sellerBEA').value = sellerBEA_tf;
+		}
+		
+		document.getElementById('sellerId').value = document.getElementById('sellerId_tf').value;
+		
 		document.getElementById('sellerJoinForm').submit();		//form을 submit해줌
-
-	})
-})
+		return true;
+	}
 </script>
-
+    
 </head>
 <body>
-<h1>[ 회원 가입 ]</h1>
-
-<form action="sellerJoin" method="post" id="sellerJoinForm" enctype="multipart/form-data">		<%-- form에 id를 줌으로써 JavaScript에서 submit해줌 --%>
-<table>
-	<tr>
-		<td>사업자번호</td>
-		<td>
-			<input type="text" name="sellerCRN" id="sellerCRN" placeholder='사업자번호'>
-		</td>
-	</tr>
-	<tr>
-		<td>ID</td>
-		<td>
-			<input type="text" name="sellerId" id="sellerId" placeholder='영문 or 숫자 6자 이상'>
-<%--		<input type="button" onclick="sellerIDcheck()" value="ID 중복 체크">--%>
-			<a href="#" onclick="sellerIDcheck()">ID 중복 체크(a태그)</a>
-		</td>
-	</tr>	
-	<tr>
-		<td>비밀번호</td>
-		<td>
-			<input type="password" name="sellerPw" id="sellerPw" placeholder='영문 or 숫자 6자 이상'><br>
-			<input type="password" id="sellerPw2" placeholder='비밀번호 재입력'>
-		</td>
-	</tr>
-	<tr>
-		<td>대표자 성명</td>
-		<td>
-			<input type="text" name="sellerName" id="sellerName" placeholder='대표자 성명'>
-		</td>
-	</tr>
-	<tr>
-		<td>상호</td>
-		<td>
-			<input type="text" name="sellerShopName" id="sellerShopName" placeholder='상호'>
-		</td>
-	</tr>
-	<tr>
-		<td>매장 전화번호</td>
-		<td>
-			<input type="text" name="sellerPhone" id="sellerPhone" placeholder='매장 전화번호'>
-		</td>
-	</tr>
-	<tr>
-		<td>이메일</td>
-		<td>
-			<input type="text" name="sellerEmail" id="sellerEmail" placeholder='이메일'>
-		</td>
-	</tr>
-	<tr>
-		<td>매장 주소</td>
-		<td>
-			<input type="text" name="sellerBEA" id="sellerBEA" placeholder='매장 주소'>
-<%--		<input type="button" onclick="sample5_execDaumPostcode()" value="주소 입력">--%>
-			<a href="#" onclick="sample5_execDaumPostcode()">주소 입력(a 태그)</a>			
-			<input type="hidden" name="sellerLat" id="sellerLat">
-			<input type="hidden" name="sellerLong" id="sellerLong"><br>
-		</td>
-	</tr>
-	<tr>
-		<td></td>
-		<td>
-			<div id="div_sellerBEA2"></div>
-		</td>
-	</tr>
+<%--<div class="content-wrap">--%>		<%-- 좌 → 우로 이동하는 파란색 띠 --%>
+    <!-- main page content. the place to put widgets in. usually consists of .row > .col-md-* > .widget.  -->
+    <main id="content" class="content" role="main">
+        <ol class="breadcrumb">
+<%--        <li>YOU ARE HERE</li>
+            <li class="active">Form Elements</li>--%>
+        </ol>
+        <h1 class="page-title">회원 가입 : <span class="fw-semi-bold">판매자</span></h1>
+        <div class="row">
+            <div class="col-md-6">
+                <section class="widget">
+                    <header>
+                        <h5>
+<%--                            Inputs--%>
+                        </h5>
+<%--                    <div class="widget-controls">
+                            <a href="#"><i class="glyphicon glyphicon-cog"></i></a>
+                            <a href="#"><i class="fa fa-refresh"></i></a>
+                            <a href="#" data-widgster="close"><i class="glyphicon glyphicon-remove"></i></a>
+                        </div>--%>
+                    </header>
+                    <div class="widget-body">
+                        <form method="post" id="sellerJoinForm" enctype="multipart/form-data" class="form-horizontal" role="form" action="sellerJoin">
+                            <fieldset>
+                                <legend><strong><%--Horizontal--%></strong><%-- form--%></legend>
 
 
 
-	<tr>
-		<td>
-		</td>
-		<td>
+                                <div class="form-group">
+                                    <label for="normal-field" class="col-sm-4 control-label">사업자 번호</label>
+                                    <div class="col-sm-7">
+										<input type="text" name="sellerCRN" id="sellerCRN"
+											class="form-control" placeholder="사업자 번호를 입력하세요">
+									</div>
+                                </div>
 
 
+
+								<div class="form-group">
+                                    <label class="col-sm-4 control-label" for="prepended-input">ID</label>
+                                    <div class="col-sm-7">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                            <input type="text" name="sellerId_tf" id="sellerId_tf" class="form-control" size="16" disabled="disabled" placeholder="'ID 중복 검사'를 클릭하세요">
+                                            <input type="hidden" name="sellerId" id="sellerId">
+                                        </div>
+                                        <a href="#" onclick="sellerIDcheck()">ID 중복 검사</a>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label" for="password-field">비밀번호</label>
+                                    <div class="col-sm-7">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                            <input type="password" class="form-control" name="sellerPw" id="sellerPw" placeholder='영문 or 숫자 6자 이상'>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label" for="password-field">비밀번호 확인</label>
+                                    <div class="col-sm-7">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                            <input type="password" class="form-control" id="sellerPw2" placeholder="비밀번호 재입력">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="hint-field" class="col-sm-4 control-label">
+                                        대표자 성명
+                                        <%--<span class="help-block">Some help text</span>--%>
+                                    </label>
+                                    <div class="col-sm-7">
+                                        <input type="text" name="sellerName" id="sellerName" class="form-control" placeholder='대표자 성명'>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="hint-field" class="col-sm-4 control-label">
+                                        상호
+                                        <%--<span class="help-block">Some help text</span>--%>
+                                    </label>
+                                    <div class="col-sm-7">
+                                        <input type="text" name="sellerShopName" id="sellerShopName" class="form-control" placeholder='상호'>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="hint-field" class="col-sm-4 control-label">
+                                        전화번호
+                                        <%--<span class="help-block">-를 제외한 번호만 입력하세요</span>--%>
+                                    </label>
+                                    <div class="col-sm-7">
+                                        <input type="text" name="sellerPhone" id="sellerPhone" class="form-control" placeholder='-를 제외한 번호만 입력하세요'>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="normal-field" class="col-sm-4 control-label">E-mail</label>
+                                    <div class="col-sm-7">
+                                        <input type="text" name="sellerEmail" id="sellerEmail" class="form-control" placeholder='E-mail'>
+                                    </div>
+                                </div> 
+
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label" for="disabled-input">매장 주소</label>
+                                    <div class="col-sm-7">
+                                        <input type="text" id="sellerBEA_tf<%--disabled-input--%>" name="sellerBEA_tf" class="form-control"
+                                               disabled="disabled" placeholder="'주소 검색'을 클릭하세요">
+										<input type="hidden" id="sellerBEA" name="sellerBEA">                                               
+										<a href="#" onclick="sample5_execDaumPostcode()">주소 검색</a>
 
 <%----------------------------------------------------------------------------------------------------------------------------------------------------------------------%>
 <%-- ↓ API 지도 표시부 --%>
@@ -207,7 +265,7 @@ $(function(){		//ready 함수
                 }
 
                 // 주소 정보를 해당 필드에 넣는다.
-                document.getElementById("sellerBEA").value = fullAddr;
+                document.getElementById("sellerBEA_tf").value = fullAddr;
                 // 주소로 좌표를 검색
                 geocoder.addr2coord(data.address, function(status, result) {
                     // 정상적으로 검색이 완료됐으면
@@ -243,38 +301,100 @@ $(function(){		//ready 함수
     }    
 </script>
 <%----------------------------------------------------------------------------------------------------------------------------------------------------------------------%>
+										<input type="hidden" name="sellerLat" id="sellerLat">
+										<input type="hidden" name="sellerLong" id="sellerLong"><br>                                               
+                                    </div>
+                                </div>
 
 
 
-		</td>
-	</tr>		
-	<tr>
-		<td>업종</td>
-		<td>
-			<input type="text" name="sellerTOB" id="sellerTOB" placeholder='업종'>
-		</td>
-	</tr>
-
-	<tr>
-		<td>매장 사진</td>
-		<td>
-		<%--<input type="text" name="sellerShopOimg" id="sellerShopOimg">--%>
-		<%--<input type="file" name="upload">--%>
-<%--	<a href="#" id="uploadA">파일 업로드</a>--%>	<%-- a 태그 클릭시 파일 버튼으로 연결--%>
-		<input type="file" name="upload" id="uploadB" <%--style="display:none"--%> placeholder='매장 사진'>   			
-		</td>
-	</tr>
-</table>
+								<div id="div_sellerBEA2">
+									<%-- 상세주소 확장부 --%>								                                
+                                </div>                                
 
 
 
-<%-- 20170324 가입(a태그) --%>
-<%--<input type="submit" value="가입">--%>
-<a href="#" id="submitA">가입(a태그)</a>
+                                <div class="form-group">
+                                    <label for="normal-field" class="col-sm-4 control-label">업종</label>
+                                    <div class="col-sm-7">
+                                        <input type="text" name="sellerTOB" id="sellerTOB" class="form-control" placeholder='업종'>
+                                    </div>
+                                </div>
 
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label" for="transparent-input">
+                                        매장 사진
+                                    </label>
+                                    <div class="col-sm-7">
+                                        <div class="input-group input-group-transparent">
+                                        <%--<input name="upload" id="uploadB" class="form-control" type="text">--%>
+                                        <input type="file" name="upload" id="uploadB" <%--style="display:none"--%> placeholder='매장 사진'>
+                                            <%--<span class="input-group-addon">--%>
+                                            <%--<i class="fa fa-camera" onclick="testt()"></i>--%>
+                                            <%--</span>--%>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <div class="form-actions">
+                                <div class="row">
+                                    <div class="col-sm-offset-4 col-sm-7">
+                                        <button type="submit" onclick="return beforeSubmit()" class="btn btn-primary">가입</button>
+                                        <button type="button" class="btn btn-inverse">취소</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+<%--</div>--%>			<%-- 좌 → 우로 이동하는 파란색 띠 --%>
+<!-- The Loader. Is shown when pjax happens -->
+<div class="loader-wrap hiding hide">
+    <i class="fa fa-circle-o-notch fa-spin-fast"></i>
+</div>
 
+<!-- common libraries. required for every page-->
+<script src="./resources/bootstrap/vendor/jquery/dist/jquery.min.js"></script>
+<script src="./resources/bootstrap/vendor/jquery-pjax/jquery.pjax.js"></script>
+<script src="./resources/bootstrap/vendor/bootstrap-sass/assets/javascripts/bootstrap/transition.js"></script>
+<script src="./resources/bootstrap/vendor/bootstrap-sass/assets/javascripts/bootstrap/collapse.js"></script>
+<script src="./resources/bootstrap/vendor/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js"></script>
+<script src="./resources/bootstrap/vendor/bootstrap-sass/assets/javascripts/bootstrap/button.js"></script>
+<script src="./resources/bootstrap/vendor/bootstrap-sass/assets/javascripts/bootstrap/tooltip.js"></script>
+<script src="./resources/bootstrap/vendor/bootstrap-sass/assets/javascripts/bootstrap/alert.js"></script>
+<script src="./resources/bootstrap/vendor/slimScroll/jquery.slimscroll.min.js"></script>
+<script src="./resources/bootstrap/vendor/widgster/widgster.js"></script>
+<script src="./resources/bootstrap/vendor/pace.js/pace.js" data-pace-options='{ "target": ".content-wrap", "ghostTime": 1000 }'></script>
+<script src="./resources/bootstrap/vendor/jquery-touchswipe/jquery.touchSwipe.js"></script>
 
-</form>
+<!-- common app js -->
+<script src="./resources/bootstrap/js/settings.js"></script>
+<script src="./resources/bootstrap/js/app.js"></script>
 
+<!-- page specific libs -->
+<script src="./resources/bootstrap/vendor/bootstrap-sass/assets/javascripts/bootstrap/tooltip.js"></script>
+<script src="./resources/bootstrap/vendor/bootstrap-sass/assets/javascripts/bootstrap/modal.js"></script>
+<script src="./resources/bootstrap/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+<script src="./resources/bootstrap/vendor/jquery-autosize/jquery.autosize.min.js"></script>
+<script src="./resources/bootstrap/vendor/bootstrap3-wysihtml5/lib/js/wysihtml5-0.3.0.min.js"></script>
+<script src="./resources/bootstrap/vendor/bootstrap3-wysihtml5/src/bootstrap3-wysihtml5.js"></script>
+<script src="./resources/bootstrap/vendor/select2/select2.min.js"></script>
+<script src="./resources/bootstrap/vendor/switchery/dist/switchery.min.js"></script>
+<script src="./resources/bootstrap/vendor/moment/min/moment.min.js"></script>
+<script src="./resources/bootstrap/vendor/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+<script src="./resources/bootstrap/vendor/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+<script src="./resources/bootstrap/vendor/jasny-bootstrap/js/inputmask.js"></script>
+<script src="./resources/bootstrap/vendor/jasny-bootstrap/js/fileinput.js"></script>
+<script src="./resources/bootstrap/vendor/holderjs/holder.js"></script>
+<script src="./resources/bootstrap/vendor/dropzone/dist/min/dropzone.min.js"></script>
+<script src="./resources/bootstrap/vendor/markdown/lib/markdown.js"></script>
+<script src="./resources/bootstrap/vendor/bootstrap-markdown/js/bootstrap-markdown.js"></script>
+<script src="./resources/bootstrap/vendor/seiyria-bootstrap-slider/dist/bootstrap-slider.min.js"></script>
+
+<!-- page specific js -->
+<script src="./resources/bootstrap/js/form-elements.js"></script>
 </body>
 </html>
