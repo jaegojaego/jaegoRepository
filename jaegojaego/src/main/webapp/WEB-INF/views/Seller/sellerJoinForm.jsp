@@ -103,6 +103,26 @@
 		return true;
 	}
 </script>
+
+<%--이미지 업로드 미리 보기--%>
+<script type="text/javascript">
+	$(function() {
+		$("#uploadB").on('change', function(){
+			readURL(this);
+			});
+		});
+
+        function readURL(input) {
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+				reader.onload = function (e) {
+					alert(reader.value);
+					$('#blah').attr('src', e.target.result);
+				}
+				reader.readAsDataURL(input.files[0]);
+			}
+		}
+</script>
     
 </head>
 <body>
@@ -328,7 +348,17 @@
                                     <div class="col-sm-7">
                                         <div class="input-group input-group-transparent">
                                         <%--<input name="upload" id="uploadB" class="form-control" type="text">--%>
+
+
+
                                         <input type="file" name="upload" id="uploadB" <%--style="display:none"--%> placeholder='매장 사진'>
+                                        <br>
+                                        <img id="blah" src="#" alt="your image" width="350" />
+
+
+
+
+
                                             <%--<span class="input-group-addon">--%>
                                             <%--<i class="fa fa-camera" onclick="testt()"></i>--%>
                                             <%--</span>--%>

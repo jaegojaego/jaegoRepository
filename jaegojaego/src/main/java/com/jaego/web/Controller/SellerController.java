@@ -21,8 +21,6 @@ public class SellerController {
 
 	final String uploadPath = "/sellerShopOimg";		//업로드시 저장 폴더 설정 (C:\sellerShopOimg 이런 식으로 폴더 생성함)
 
-
-
 	//20170329 회원가입 : 부트스트랩 적용
 	@RequestMapping(value="sellerJoinForm", method = RequestMethod.GET)
 	public String sellerJoinForm() {
@@ -56,14 +54,7 @@ public class SellerController {
 			seller.setSellerShopSimg(savedfile);
 		}
 		dao.addSeller(seller);
-		return "redirect:sellerJoin";		//Q) redirect로 바꿀까...
+		return "./Seller/sellerJoin";		//Q) redirect로 바꿀까...
 	}
-
-	/*
-	@RequestMapping(value="sellerMap", method = RequestMethod.GET)
-	public String sellerMap() {
-		return "./Seller/sellerMap";
-	}
-	*/
 
 }
