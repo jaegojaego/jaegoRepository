@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.jaego.web.VO.Buyer;
 import com.jaego.web.VO.Seller;
+import com.jaego.web.DAO.BuyerDAO;
 import com.jaego.web.DAO.SellerDAO;
 import com.jaego.web.Util.FileService;
 
@@ -16,7 +18,10 @@ import com.jaego.web.Util.FileService;
 public class SellerController {
 	
 	@Autowired
-	private SellerDAO dao;	
+	private SellerDAO sdao;
+
+	@Autowired
+	private BuyerDAO bdao;
 
 	final String uploadPath = "/sellerShopOimg";		//업로드시 저장 폴더 설정 (C:\sellerShopOimg 이런 식으로 폴더 생성함)
 
@@ -36,7 +41,17 @@ public class SellerController {
 	@ResponseBody		//★ Ajax 통신에서는 이 @ResponseBody를 붙여줘야 함!
 	@RequestMapping(value="sellerIDcheck",method=RequestMethod.POST)
 	public Seller sellerIDcheck(String idcheck_to_ctr) {
-		Seller seller = dao.selectOne(idcheck_to_ctr);
+		Seller seller = sdao.selectOne(idcheck_to_ctr);
+		
+		//Seller도 체크하고, Buyer도 체크
+		if (seller == null) {
+			Buyer buyer = bdao.selectOne(idcheck_to_ctr);
+			if (buyer != null) {
+				Seller s = new Seller();
+				s.setSellerId(buyer.getBuyerId());
+				return s;
+			}
+		}
 		return seller;
 	}	
 	
@@ -52,7 +67,7 @@ public class SellerController {
 			seller.setSellerShopOimg(upload.getOriginalFilename());
 			seller.setSellerShopSimg(savedfile);
 		}
-		dao.addSeller(seller);
+		sdao.addSeller(seller);
 		return "./Seller/sellerJoin";		//Q) redirect로 바꿀까...
 	}
 

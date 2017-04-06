@@ -1,3 +1,4 @@
+//20170406 박진우 : 게시판 VO
 package com.jaego.web.VO;
 
 public class CSBoard {

@@ -9,14 +9,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.jaego.web.DAO.BuyerDAO;
+import com.jaego.web.DAO.SellerDAO;
 import com.jaego.web.VO.Buyer;
+import com.jaego.web.VO.Seller;
 
 @Controller
 public class BuyerController {
 	
 	@Autowired
-	private BuyerDAO dao;
+	private BuyerDAO bdao;
 
+	@Autowired
+	private SellerDAO sdao;
+	
 	//박진우 - 20170329 회원가입 : 부트스트랩 적용
 	@RequestMapping(value="buyerJoinForm", method = RequestMethod.GET)
 	public String BuyerJoinForm() {
@@ -33,8 +38,18 @@ public class BuyerController {
 	@ResponseBody		//★ Ajax 통신에서는 이 @ResponseBody를 붙여줘야 함!
 	@RequestMapping(value="buyerIDcheck",method=RequestMethod.POST)
 	public Buyer BuyerIDcheck(String idcheck_to_ctr) {
-		System.out.println(idcheck_to_ctr);
-		Buyer buyer = dao.selectOne(idcheck_to_ctr);
+		Buyer buyer = bdao.selectOne(idcheck_to_ctr);
+
+		//Buyer도 체크하고, Seller도 체크
+		if (buyer == null) {
+			Seller seller = sdao.selectOne(idcheck_to_ctr);
+			if (seller != null) {
+				Buyer b = new Buyer();
+				b.setBuyerId(seller.getSellerId());
+				return b;
+			}
+		}
+		
 		return buyer;
 	}	
 	
@@ -42,7 +57,7 @@ public class BuyerController {
 	@RequestMapping(value="buyerJoin", method = RequestMethod.POST)
 	public String sellerJoin(Buyer buyer, MultipartFile upload) {
 		System.out.println(buyer);
-		dao.addBuyer(buyer);
+		bdao.addBuyer(buyer);
 		return "./Buyer/buyerJoin";		//Q) redirect로 바꿀까...
 	}
 

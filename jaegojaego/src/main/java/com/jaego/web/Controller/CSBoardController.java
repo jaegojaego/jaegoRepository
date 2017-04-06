@@ -1,3 +1,4 @@
+//20170406 박진우 : 게시판 컨트롤러
 package com.jaego.web.Controller;
 
 import java.util.ArrayList;
@@ -33,9 +34,7 @@ public class CSBoardController {
 
 	@RequestMapping(value="write", method=RequestMethod.POST)
 	public String csboardWrite(CSBoard csboard, HttpSession session) {
-			System.out.println(csboard);
 		String custid = (String)session.getAttribute("custid");
-			custid = "testid";
 		csboard.setId(custid);
 		dao.write(csboard);
 		return "redirect:csboardlist";
