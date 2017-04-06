@@ -8,6 +8,7 @@
 		<typeAlias type="com.jaego.web.VO.Seller" alias="Seller" />		<!-- 20170321 박진우 -->
 		<typeAlias type="com.jaego.web.VO.Buyer" alias="Buyer" />		<!-- 20170405 박진우 -->		
 		<typeAlias type="com.jaego.web.VO.Goods" alias="Goods" /> 		<!-- 20170322 권록헌 -->
+		<typeAlias type="com.jaego.web.VO.CSBoard" alias="CSBoard" />	<!-- 20170406 박진우 -->
 	</typeAliases>
 
 	<mappers>
@@ -15,6 +16,7 @@
 		<mapper resource="mapper/sellerMapper.xml" />					<!-- 20170321 박진우 -->
 		<mapper resource="mapper/goodsMapper.xml" />					<!-- 20170322 권록헌 -->
 		<mapper resource="mapper/mapsMapper.xml" />						<!-- 20170405 박시원 -->
+		<mapper resource="mapper/csboardMapper.xml" />					<!-- 20170406 박진우 -->
 	</mappers>
 
 </configuration>

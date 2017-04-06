@@ -7,15 +7,17 @@ public class CSBoard {
 	private String title;
 	private String content;
 	private String inputdate;
+	private int hits;
 	private String originalfile;
 	private String savedfile;
 
-	public CSBoard(int boardnum, String id, String title, String content, String inputdate, String originalfile, String savedfile) {
+	public CSBoard(int boardnum, String id, String title, String content, String inputdate, int hits, String originalfile, String savedfile) {
 		this.boardnum = boardnum;
 		this.id = id;
 		this.title = title;
 		this.content = content;
 		this.inputdate = inputdate;
+		this.hits = hits;
 		this.originalfile = originalfile;
 		this.savedfile = savedfile;
 	}
@@ -64,6 +66,14 @@ public class CSBoard {
 		this.inputdate = inputdate;
 	}
 
+	public int getHits() {
+		return hits;
+	}
+
+	public void setHits(int hits) {
+		this.hits = hits;
+	}
+	
 	public String getOriginalfile() {
 		return originalfile;
 	}
@@ -80,8 +90,9 @@ public class CSBoard {
 		this.savedfile = savedfile;
 	}
 
+	@Override
 	public String toString() {
-		return "CSBoard [boardnum=" + boardnum + ", id=" + id + ", title=" + title + ", content=" + content + ", inputdate=" + inputdate + ", originalfile=" + originalfile + ", savedfile=" + savedfile + "]";
+		return "CSBoard [boardnum=" + boardnum + ", id=" + id + ", title=" + title + ", content=" + content + ", inputdate=" + inputdate + ", hits=" + hits + ", originalfile=" + originalfile + ", savedfile=" + savedfile + "]";
 	}
 
 }
