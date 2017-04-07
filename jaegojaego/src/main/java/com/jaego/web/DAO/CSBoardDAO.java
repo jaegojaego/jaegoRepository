@@ -3,6 +3,7 @@ package com.jaego.web.DAO;
 
 import java.util.ArrayList;
 
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -27,11 +28,22 @@ public class CSBoardDAO {
 		return result;
 	}
 	
-	public ArrayList<CSBoard> getAll() {
+	public ArrayList<CSBoard> getAll(int startRecord, int countPerPage) {
+
+		
+		
 		ArrayList<CSBoard> bList = new ArrayList<CSBoard>();
 		CSBoardMapper mapper = sqlsession.getMapper(CSBoardMapper.class);
-		bList = mapper.getAll();
+		RowBounds rb = new RowBounds(startRecord, countPerPage);		//offset은 시작위치, limit은 개수(제한) - ★ MyBatis에서 알아서 범위를 지정하도록 도와주는 명령어(쿼리로 해결할 수도 있지만, 이게 더 간단!)
+		bList = mapper.getAll(rb);
 		return bList;
+	}
+
+	public int getAllCount() {	
+		int result = 0; 
+		CSBoardMapper mapper = sqlsession.getMapper(CSBoardMapper.class);
+		result = mapper.getAllCount();
+		return result;
 	}
 
 }

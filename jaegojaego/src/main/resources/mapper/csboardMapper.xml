@@ -13,12 +13,14 @@
 				,title
 				,content
 				,hits
+				,type
 			)values(
 				csboard_seq.nextval
 				,#{id}
 				,#{title}
 				,#{content}
 				,0
+				,#{type}
 			)
 	</insert>
 	
@@ -32,10 +34,18 @@
 			,hits
 			,originalfile
 			,savedfile
+			,type
 		from
 			csboard
 		order by
 			boardnum desc
 	</select>
+	
+	<select id="getAllCount" resultType="int">
+		select
+			count(*)
+		from
+			csboard
+	</select>	
 
 </mapper>

@@ -68,13 +68,16 @@ create table CSBoard(
 	title varchar2(100) not null,
 	content	varchar2(2000),
 	inputdate date default sysdate not null,
+	hits number default 0,
 	originalfile varchar2(200),
-	savedfile varchar2(200)
+	savedfile varchar2(200),
+	type varchar2(20)
 );
 
 create table CSReply(
 	replynum number primary key,
-	boardnum number constraint fk_boardnum references CSBoard(boardnum) not null,
+	boardnum number constraint fk_boardnum references CSBoard(boardnum) not null
+	references board(boardnum) on delete cascade,
 	id varchar2(20) not null,
 	text varchar2(200) not null,
 	inputdate date default sysdate not null
@@ -84,6 +87,4 @@ create sequence CSBoard_seq start with 1 increment BY 1;
 
 create sequence CSReply_seq start with 1 increment BY 1;
 
-
-
-
+select * from buyer;

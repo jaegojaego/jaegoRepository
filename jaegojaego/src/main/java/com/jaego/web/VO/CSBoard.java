@@ -11,8 +11,9 @@ public class CSBoard {
 	private int hits;
 	private String originalfile;
 	private String savedfile;
+	private String type;
 
-	public CSBoard(int boardnum, String id, String title, String content, String inputdate, int hits, String originalfile, String savedfile) {
+	public CSBoard(int boardnum, String id, String title, String content, String inputdate, int hits, String originalfile, String savedfile, String type) {
 		this.boardnum = boardnum;
 		this.id = id;
 		this.title = title;
@@ -21,6 +22,7 @@ public class CSBoard {
 		this.hits = hits;
 		this.originalfile = originalfile;
 		this.savedfile = savedfile;
+		this.type = type;
 	}
 
 	public CSBoard() {
@@ -91,9 +93,17 @@ public class CSBoard {
 		this.savedfile = savedfile;
 	}
 
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
 	@Override
 	public String toString() {
-		return "CSBoard [boardnum=" + boardnum + ", id=" + id + ", title=" + title + ", content=" + content + ", inputdate=" + inputdate + ", hits=" + hits + ", originalfile=" + originalfile + ", savedfile=" + savedfile + "]";
+		return "CSBoard [boardnum=" + boardnum + ", id=" + id + ", title=" + title + ", content=" + content + ", inputdate=" + inputdate + ", hits=" + hits + ", originalfile=" + originalfile + ", savedfile=" + savedfile + ", type=" + type + "]";
 	}
 
 }

@@ -7,6 +7,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+
+<script type="text/javascript">
+function pagingFormSubmit(currentPage) {
+	var form = document.getElementById("pagingForm");
+	var page = document.getElementById("page");
+	page.value = currentPage;
+	form.submit();
+}
+</script>
+
 </head>
 <body>
 
@@ -21,6 +31,7 @@
 		<td>작성자</td>
 		<td>조회수</td>
 		<td>작성일</td>
+		<td>구분</td>
 	</tr>
 
 	<c:forEach var="i" items="${csbList}">
@@ -31,10 +42,27 @@
 			<td>${i.id}</td>
 			<td>${i.hits}</td>
 			<td>${i.inputdate}</td>
+			<td>${i.type}</td>
 		</tr>
 	</c:forEach>
 		
 </table>
+
+<br>
+
+<div>
+	<a href="javascript:pagingFormSubmit(${navi.currentPage - navi.pagePerGroup})">◁◁</a>
+	<a href="javascript:pagingFormSubmit(${navi.currentPage - 1})">◀</a>
+	<c:forEach var="counter" begin="${navi.startPageGroup}" end="${navi.endPageGroup}">
+		<a href="javascript:pagingFormSubmit(${counter})">${counter}</a>
+	</c:forEach>
+	<a href="javascript:pagingFormSubmit(${navi.currentPage + 1})">▶</a>
+	<a href="javascript:pagingFormSubmit(${navi.currentPage + navi.pagePerGroup})">▷▷</a>
+</div>
+
+<form action="csboardlist" method="get" id="pagingForm">
+	<input type="hidden" id="page" name="page">		<%-- name에 있는 page는 BoardController에 들어갈 RequestParam의 page와 연결됨 --%>
+</form>
 
 </body>
 </html>
