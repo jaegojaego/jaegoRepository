@@ -25,6 +25,7 @@
 	<c:otherwise>
 		<ul>
 			<li>${sessionScope.custid} (${sessionScope.name}) 님 환영합니다.</li>
+			<li><a href="csboardlist">게시판</a></li>			
 			<li><a href="logout">로그아웃</a></li>
 		</ul>	
 	</c:otherwise>

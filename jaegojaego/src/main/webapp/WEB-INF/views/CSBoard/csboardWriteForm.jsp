@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<form action="write" method="post">
+<form action="write" method="post" enctype="multipart/form-data">
 
 <table>
 	<tr>
@@ -25,6 +25,12 @@
 			<textarea rows="3" cols="3" name="content"></textarea>
 		</td>
 	</tr>
+	<tr>
+		<td>파일 첨부</td>
+		<td>
+			<input type="file" name="upload">
+		</td>
+	</tr>	
 	<tr>
 		<td>
 			<input type="submit" value="저장">

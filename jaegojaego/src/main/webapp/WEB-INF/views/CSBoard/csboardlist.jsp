@@ -38,7 +38,7 @@ function pagingFormSubmit(currentPage) {
 	<tr>
 		<tr>
 			<td>${i.boardnum}</td>
-			<td>${i.title}</td>
+			<td><a href="read?boardnum=${i.boardnum}">${i.title}</a></td>			
 			<td>${i.id}</td>
 			<td>${i.hits}</td>
 			<td>${i.inputdate}</td>

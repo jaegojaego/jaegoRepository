@@ -5,6 +5,23 @@
 
 <mapper namespace="com.jaego.web.DAO.CSBoardMapper">
 	
+	<select id="selectOne" parameterType="int" resultType="CSBoard">
+		select
+			boardnum
+			,id
+			,title
+			,content
+			,inputdate
+			,hits
+			,originalfile
+			,savedfile
+			,type			
+		from
+			csboard
+		where
+			boardnum = #{boardnum}
+	</select>
+	
 	<insert id="write" parameterType="CSBoard">
 		insert into
 			csboard(
@@ -13,6 +30,10 @@
 				,title
 				,content
 				,hits
+				<if test="originalfile != null and savedfile != null">
+				,originalfile
+				,savedfile
+				</if>				
 				,type
 			)values(
 				csboard_seq.nextval
@@ -20,6 +41,10 @@
 				,#{title}
 				,#{content}
 				,0
+				<if test="originalfile != null and savedfile != null">
+				,#{originalfile}
+				,#{savedfile}
+				</if>				
 				,#{type}
 			)
 	</insert>

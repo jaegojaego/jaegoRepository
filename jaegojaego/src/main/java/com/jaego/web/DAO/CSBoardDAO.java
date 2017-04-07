@@ -29,8 +29,6 @@ public class CSBoardDAO {
 	}
 	
 	public ArrayList<CSBoard> getAll(int startRecord, int countPerPage, String searchText) {
-
-		
 		
 		ArrayList<CSBoard> bList = new ArrayList<CSBoard>();
 		CSBoardMapper mapper = sqlsession.getMapper(CSBoardMapper.class);
@@ -44,6 +42,13 @@ public class CSBoardDAO {
 		CSBoardMapper mapper = sqlsession.getMapper(CSBoardMapper.class);
 		result = mapper.getAllCount(searchText);
 		return result;
+	}
+	
+	public CSBoard selectOne(int boardnum) {	
+		CSBoard csboard = null;
+		CSBoardMapper mapper = sqlsession.getMapper(CSBoardMapper.class);
+		csboard = mapper.selectOne(boardnum);
+		return csboard;
 	}
 
 }
