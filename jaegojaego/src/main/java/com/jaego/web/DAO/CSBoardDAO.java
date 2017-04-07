@@ -28,21 +28,21 @@ public class CSBoardDAO {
 		return result;
 	}
 	
-	public ArrayList<CSBoard> getAll(int startRecord, int countPerPage) {
+	public ArrayList<CSBoard> getAll(int startRecord, int countPerPage, String searchText) {
 
 		
 		
 		ArrayList<CSBoard> bList = new ArrayList<CSBoard>();
 		CSBoardMapper mapper = sqlsession.getMapper(CSBoardMapper.class);
 		RowBounds rb = new RowBounds(startRecord, countPerPage);		//offset은 시작위치, limit은 개수(제한) - ★ MyBatis에서 알아서 범위를 지정하도록 도와주는 명령어(쿼리로 해결할 수도 있지만, 이게 더 간단!)
-		bList = mapper.getAll(rb);
+		bList = mapper.getAll(rb,searchText);
 		return bList;
 	}
 
-	public int getAllCount() {	
+	public int getAllCount(String searchText) {	
 		int result = 0; 
 		CSBoardMapper mapper = sqlsession.getMapper(CSBoardMapper.class);
-		result = mapper.getAllCount();
+		result = mapper.getAllCount(searchText);
 		return result;
 	}
 

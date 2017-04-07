@@ -62,6 +62,8 @@ function pagingFormSubmit(currentPage) {
 
 <form action="csboardlist" method="get" id="pagingForm">
 	<input type="hidden" id="page" name="page">		<%-- name에 있는 page는 BoardController에 들어갈 RequestParam의 page와 연결됨 --%>
+	제목 : <input type="text" name="searchText" value="${searchText}">	<%-- ← 넘어갈 수도, 안 넘어갈 수도 있는 항목 (Controller의 @RequestParam defaultValue를 활용해서...) / value를 넣어준 건 검색 결과 화면에서 화살표를 눌러도 이동폭을 검색 결과 내로 제한하기 위함--%>
+	<input type="button" value="검색" onclick="pagingFormSubmit(1)">		<%-- 검색 결과의 1 페이지부터 보여준다는 뜻 --%>	
 </form>
 
 </body>

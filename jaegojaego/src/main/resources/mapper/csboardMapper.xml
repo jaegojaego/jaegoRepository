@@ -24,7 +24,7 @@
 			)
 	</insert>
 	
-	<select id="getAll" resultType="CSBoard">
+	<select id="getAll" parameterType="String" resultType="CSBoard">
 		select
 			boardnum
 			,id
@@ -37,6 +37,11 @@
 			,type
 		from
 			csboard
+		<!-- ★ ↓이게 동적 쿼리(동적 쿼리를 설정하는 if문 안에는 EL 사용 불가 / SQL문은 가능) : 이렇게 써주면 넘어온 파라메타에 따라 표현식을 변경하는 것이 가능-->
+		<if test="_parameter != null">
+		where
+			title like '%' || #{searchText} || '%'
+		</if>			
 		order by
 			boardnum desc
 	</select>
@@ -46,6 +51,10 @@
 			count(*)
 		from
 			csboard
+		<if test="_parameter != null">
+		where
+			title like '%' || #{searchText} || '%' 
+		</if>
 	</select>	
 
 </mapper>
