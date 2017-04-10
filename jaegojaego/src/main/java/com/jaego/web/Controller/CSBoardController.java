@@ -23,6 +23,7 @@ import com.jaego.web.DAO.CSBoardDAO;
 import com.jaego.web.Util.FileService;
 import com.jaego.web.Util.PageNavigator;
 import com.jaego.web.VO.CSBoard;
+import com.jaego.web.VO.CSReply;
 
 @Controller
 public class CSBoardController {
@@ -89,8 +90,43 @@ public class CSBoardController {
 		if (csboard == null) {
 			return "redirect:csboardlist";
 		}
+		
+		//리플 가져오는 부분 추가(리플 개수를 예측할 수 없으므로 ArrayList로 받음)
+		ArrayList<CSReply> csreplylist = dao.getCSReplylist(boardnum);	/*dao의 함수를 호출(매개변수는 boardnum)*/
+		
 		model.addAttribute("csboard", csboard);
+		model.addAttribute("csreplylist", csreplylist);		
 		return "CSBoard/read";
+	}
+	
+	@RequestMapping(value="csreplyWrite", method=RequestMethod.POST)
+	public String csreplyWrite(CSReply csreply, HttpSession session) {
+		String id = (String)session.getAttribute("custid");
+		csreply.setId(id);
+		dao.insertCSReply(csreply);
+		return "redirect:read?boardnum=" + csreply.getBoardnum();
+	}
+	
+	@RequestMapping(value="delete", method=RequestMethod.GET)
+	public String delete(int boardnum, HttpSession session) {
+		CSBoard csboard = new CSBoard();
+		csboard.setBoardnum(boardnum);
+		csboard.setId((String)session.getAttribute("custid"));
+		
+		//★ 첨부파일이 있는지/없는지도 확인
+		String savedfile = dao.selectOne(boardnum).getSavedfile();
+		
+
+		dao.deleteAllCSBoard(boardnum);		//몸글 삭제 전 댓글 삭제
+		int result = dao.deleteCSBoard(csboard);
+		
+		if (result == 1 && savedfile != null) {						//★ 첨부파일이 있을 경우 파일도 삭제
+			FileService.deleteFile(uploadPath + "/" + savedfile);	//파일 전체 경로를 매개변수로 사용하여 삭제(미리 만들어놓은 함수 사용)
+		}
+		
+		//★★★ 리플을 안 지운 이유 : on delete cascade (외래키의 장점! - SQL문을 더 만들 필요 ㅇ벗음)
+		
+		return "redirect:csboardlist";		//F5 오입력에 의한 삭제 재실행을 막기 위해 redirect
 	}
 	
 	@RequestMapping(value="csbdownload", method=RequestMethod.GET)
@@ -117,4 +153,53 @@ public class CSBoardController {
 		return null;		//다운로드만 하고 그 페이지를 유지함
 	}
 	
+	@RequestMapping(value="editForm", method=RequestMethod.GET)
+	public String editForm(int boardnum, Model model) {	
+		CSBoard csboard = dao.selectOne(boardnum);
+		model.addAttribute("csboard",csboard);
+		return "CSBoard/editForm";
+	}
+	
+	//수정 함수
+	@RequestMapping(value="edit", method=RequestMethod.POST)
+	public String edit(CSBoard csboard, Model model, MultipartFile upload, HttpSession session) {
+		
+		String id = (String)session.getAttribute("custid");
+		CSBoard oldCSBoard = dao.selectOne(csboard.getBoardnum());
+		
+		//수정할 글이 본인 글인지 확인
+		if (oldCSBoard == null || !oldCSBoard.getId().equals(id)) {
+			return "redirect:boardlist";
+		}
+		
+		//수정할 정보에 세션에서 아이디 받아 셋팅
+		csboard.setId(id);
+		
+		//수정시 새로 첨부한 파일이 있으면 파일 삭제 후 업로드 
+		if (!upload.isEmpty()) {
+			String savedfile = oldCSBoard.getSavedfile();
+			
+			if (savedfile != null) {
+				FileService.deleteFile(uploadPath + "/" + savedfile);
+			}
+			
+			savedfile = FileService.saveFile(upload, uploadPath);
+			
+			csboard.setOriginalfile(upload.getOriginalFilename());
+			csboard.setSavedfile(savedfile);
+			
+		}
+		
+		dao.updateCSBoard(csboard);
+
+		return "redirect:read?boardnum=" + csboard.getBoardnum();
+	}
+	
+	//댓글 삭제
+	@RequestMapping(value="deleteCSReply", method=RequestMethod.GET)
+	public String deleteCSReply(int replynum) {
+		CSReply csreply = dao.getCSReply(replynum);
+		dao.deleteCSReply(csreply.getReplynum());
+		return "redirect:read?boardnum=" + csreply.getBoardnum();
+	}
 }

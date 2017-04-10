@@ -6,6 +6,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+
+<script>
+function deleteCheck(boardnum) {
+	if (confirm("정말 삭제하시겠습니까?")) {
+		location.href = 'delete?boardnum='+boardnum;		
+	}	
+}
+</script>
+
 </head>
 <body>
 <table>
@@ -45,6 +54,40 @@
 		<td><img alt="" src="download?boardnum=${board.boardnum}"></td>
 	</tr>
  --%>	
+
 </table>
+
+<div>
+	<c:if test="${custid==csboard.id}">
+		<a href="javascript:deleteCheck(${csboard.boardnum})">삭제</a>
+		<a href="editForm?boardnum=${csboard.boardnum}">수정</a>
+	</c:if>
+	<a href="csboardlist">목록 보기</a>
+</div>
+
+<form action="csreplyWrite" method="post" id="csreplyform">
+리플내용
+	<input type="hidden" name="boardnum" value="${csboard.boardnum}"/>
+	<input type="text" name="text" id="retext"/>
+	<input type="submit" value="확인"/>
+</form>
+
+<table>
+<c:if test="${csreplylist != null}">
+	<c:forEach var="csreplylist" items="${csreplylist}">
+		<tr>
+			<td>${csreplylist.id}</td>
+			<td>${csreplylist.text}</td>
+			<td>${csreplylist.inputdate}</td>
+			<td>
+				<c:if test="${custid==csreplylist.id}">
+					<a href="deleteCSReply?replynum=${csreplylist.replynum}">${csreplylist.replynum}번 댓글 삭제</a>
+				</c:if>
+			</td>
+		</tr>
+	</c:forEach>
+</c:if>
+</table>
+
 </body>
 </html>

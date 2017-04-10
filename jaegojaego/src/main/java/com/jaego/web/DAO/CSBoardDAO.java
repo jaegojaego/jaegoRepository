@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.jaego.web.VO.CSBoard;
+import com.jaego.web.VO.CSReply;
 
 @Repository
 public class CSBoardDAO {
@@ -49,6 +50,48 @@ public class CSBoardDAO {
 		CSBoardMapper mapper = sqlsession.getMapper(CSBoardMapper.class);
 		csboard = mapper.selectOne(boardnum);
 		return csboard;
+	}
+	
+	public void insertCSReply (CSReply csreply) {
+		CSBoardMapper mapper = sqlsession.getMapper(CSBoardMapper.class);
+		mapper.insertCSReply(csreply);
+	}
+	
+	public ArrayList<CSReply> getCSReplylist (int boardnum) {
+		CSBoardMapper mapper = sqlsession.getMapper(CSBoardMapper.class);
+		ArrayList<CSReply> replylist = mapper.getCSReplylist(boardnum);
+		return replylist;
+	}
+	
+	//몸글 삭제
+	public int deleteCSBoard(CSBoard csboard) {
+		CSBoardMapper mapper = sqlsession.getMapper(CSBoardMapper.class);
+		int result = mapper.deleteCSBoard(csboard);
+		return result;
+	}
+	
+	//몸글 수정
+	public void updateCSBoard(CSBoard csboard) {
+		CSBoardMapper mapper = sqlsession.getMapper(CSBoardMapper.class);
+		mapper.updateCSBoard(csboard);
+	}
+	
+	//몸글 삭제 전 댓글 삭제
+	public void deleteAllCSBoard(int boardnum) {
+		CSBoardMapper mapper = sqlsession.getMapper(CSBoardMapper.class);
+		mapper.deleteAllCSBoard(boardnum);
+	}
+	
+	public CSReply getCSReply(int replynum) {
+		CSBoardMapper mapper = sqlsession.getMapper(CSBoardMapper.class);
+		CSReply csreply = mapper.getCSReply(replynum);
+		return csreply;
+	}
+	
+	//댓글 삭제
+	public void deleteCSReply(int replynum) {
+		CSBoardMapper mapper = sqlsession.getMapper(CSBoardMapper.class);
+		mapper.deleteCSReply(replynum);
 	}
 
 }

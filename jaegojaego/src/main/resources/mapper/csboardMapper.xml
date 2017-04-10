@@ -81,5 +81,93 @@
 			title like '%' || #{searchText} || '%' 
 		</if>
 	</select>	
+	
+	<!-- 댓글 목록 불러오기 -->
+	<select id="getCSReplylist" parameterType="int" resultType="CSReply">
+		select
+			replynum
+			,boardnum
+			,id
+			,text
+			,inputdate
+		from
+			csreply
+		where
+			boardnum = #{boardnum}
+		order by
+			replynum desc
+	</select>
+
+	<!-- 댓글 등록 -->
+	<insert id="insertCSReply" parameterType="CSReply">
+		insert into
+			csreply(
+				replynum
+				,boardnum
+				,id
+				,text
+			) values (
+				csreply_seq.nextval
+				,#{boardnum}
+				,#{id}
+				,#{text}
+			)			
+	</insert>
+	
+	<!-- 몸글 삭제 -->
+	<delete id="deleteCSBoard" parameterType="CSBoard">
+		delete from
+			csboard
+		where
+			boardnum = #{boardnum}
+		and
+			id = #{id}
+	</delete>
+	
+	<!-- 수정 쿼리 -->
+	<update id="updateCSBoard" parameterType="CSBoard">
+		update
+			csboard
+		set
+			title = #{title}
+			,content = #{content}
+			<if test="originalfile != null and savedfile != null">
+			,originalfile = #{originalfile}
+			,savedfile = #{savedfile}
+			</if>		<!-- ★ 첨부파일이 바뀔 수도 있음 : 그건 컨트롤러에서 처리해야... -->
+		where
+			boardnum = #{boardnum}
+		and
+			id = #{id}
+	</update>
+	
+	<!-- 몸글 삭제 전 댓글 삭제 -->
+	<delete id="deleteAllCSBoard" parameterType="int">
+		delete from
+			csreply
+		where
+			boardnum = #{boardnum}
+	</delete>
+	
+	<select id="getCSReply" parameterType="int" resultType="CSReply">
+		select
+			replynum,
+			boardnum,
+			id,
+			text,
+			to_char(inputdate, 'yyyy-mm-dd-hh24:mi:ss')
+		from
+			csreply
+		where
+			replynum = #{replynum}
+	</select>
+	
+	<!-- 댓글 삭제 -->
+	<delete id="deleteCSReply" parameterType="int">
+		delete from
+			csreply
+		where
+			replynum = #{replynum}
+	</delete>
 
 </mapper>

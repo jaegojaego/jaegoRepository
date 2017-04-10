@@ -19,7 +19,6 @@
 			<li><a href="buyerJoinForm">회원가입 (구매자)</a></li>
 			<li><a href="SellerLoginForm">로그인 (판매자)</a></li>
 			<li><a href="BuyerLoginForm">로그인 (구매자)</a></li>
-			<li><a href="csboardlist">게시판</a></li>
 		</ul>
 	</c:when>
 	<c:otherwise>
