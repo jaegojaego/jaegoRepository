@@ -755,7 +755,7 @@
 		}
 	
 		/* Check that the class assignment is correct for sorting */
-		var bAsc = $.inArray('asc', oCol.asSorting) !== -1;
+		var bAsc = $.inArray('asc', oCol.asSorting) !== -1;	//주석 by 박진우
 		var bDesc = $.inArray('desc', oCol.asSorting) !== -1;
 		if ( !oCol.bSortable || (!bAsc && !bDesc) )
 		{

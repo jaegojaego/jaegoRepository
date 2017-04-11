@@ -56,7 +56,7 @@ public class CSBoardController {
 		model.addAttribute("navi", navi);		//실제 페이징 처리를 위해 navi를 model에 attribute함
 		model.addAttribute("csbList", csbList);
 		model.addAttribute("searchText", searchText);
-		model.addAttribute("total", total);		
+		model.addAttribute("total", total);
 		return "/CSBoard/csboardlist";
 	}
 
