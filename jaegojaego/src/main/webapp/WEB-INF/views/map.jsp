@@ -1,26 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title>Sing - Tables Dynamic</title>
-    
-    <script type="text/javascript">
-	function pagingFormSubmit(currentPage) {
-		var form = document.getElementById("pagingForm");
-		var page = document.getElementById("page");
-		page.value = currentPage;
-		form.submit();
-	}
-	</script>
-    
-    <link href="./resources/bootstrap/css/application.min.css" rel="stylesheet">
+    <title>Sing - Google Maps</title>
+    <link href="css/application.min.css" rel="stylesheet">
     <!-- as of IE9 cannot parse css files with more that 4K classes separating in two files -->
     <!--[if IE 9]>
         <link href="css/application-ie9-part2.css" rel="stylesheet">
     <![endif]-->
-	<link rel="shortcut icon" href="img/favicon.png">
+    <link rel="shortcut icon" href="img/favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -51,7 +40,7 @@
         <div class="sidebar-status visible-xs">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <span class="thumb-sm avatar pull-right">
-                    <img class="img-circle" src="./resources/bootstrap/demo/img/people/a5.jpg" alt="...">
+                    <img class="img-circle" src="demo/img/people/a5.jpg" alt="...">
                 </span>
                 <!-- .circle is a pretty cool way to add a bit of beauty to raw data.
                      should be used with bg-* and text-* classes for colors -->
@@ -73,7 +62,6 @@
                         <i class="fa fa-desktop"></i>
                     </span>
                     Dashboard
-                    <i></i>
                     <i class="toggle fa fa-angle-down"></i>
                 </a>
                 <ul id="sidebar-dashboard" class="collapse">
@@ -155,33 +143,33 @@
                     Grid
                 </a>
             </li>
-            <li>
-                <a class="collapsed" href="#sidebar-maps" data-toggle="collapse" data-parent="#sidebar">
+            <li class="active">
+                <a href="#sidebar-maps" data-toggle="collapse" data-parent="#sidebar">
                     <span class="icon">
                         <i class="glyphicon glyphicon-map-marker"></i>
                     </span>
                     Maps
                     <i class="toggle fa fa-angle-down"></i>
                 </a>
-                <ul id="sidebar-maps" class="collapse">
+                <ul id="sidebar-maps" class="collapse in">
                     <!-- data-no-pjax turns off pjax loading for this link. Use in case of complicated js loading on the
                          target page -->
-                    <li><a href="maps_google.html" data-no-pjax>Google Maps</a></li>
+                    <li class="active"><a href="maps_google.html" data-no-pjax>Google Maps</a></li>
                     <li><a href="maps_vector.html">Vector Maps</a></li>
                 </ul>
             </li>
-            <li class="active">
+            <li>
                 <!-- an example of nested submenu. basic bootstrap collapse component -->
-                <a href="#sidebar-tables" data-toggle="collapse" data-parent="#sidebar">
+                <a class="collapsed" href="#sidebar-tables" data-toggle="collapse" data-parent="#sidebar">
                     <span class="icon">
                         <i class="fa fa-table"></i>
                     </span>
                     Tables
                     <i class="toggle fa fa-angle-down"></i>
                 </a>
-                <ul id="sidebar-tables" class="collapse in">
+                <ul id="sidebar-tables" class="collapse">
                     <li><a href="tables_basic.html">Tables Basic</a></li>
-                    <li class="active"><a href="tables_dynamic.html">Tables Dynamic</a></li>
+                    <li><a href="tables_dynamic.html">Tables Dynamic</a></li>
                 </ul>
             </li>
             <li>
@@ -327,7 +315,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle dropdown-toggle-notifications" id="notifications-dropdown-toggle" data-toggle="dropdown">
                         <span class="thumb-sm avatar pull-left">
-                            <img class="img-circle" src="./resources/bootstrap/demo/img/people/a5.jpg" alt="...">
+                            <img class="img-circle" src="demo/img/people/a5.jpg" alt="...">
                         </span>
                         &nbsp;
                         Philip <strong>Smith</strong>&nbsp;
@@ -372,7 +360,7 @@
                             <div id="notifications-list" class="list-group thin-scroll">
                                 <div class="list-group-item">
                                     <span class="thumb-sm pull-left mr clearfix">
-                                        <img class="img-circle" src="./resources/bootstrap/demo/img/people/a3.jpg" alt="...">
+                                        <img class="img-circle" src="demo/img/people/a3.jpg" alt="...">
                                     </span>
                                     <p class="no-margin overflow-hidden">
                                         1 new user just signed up! Check out
@@ -404,7 +392,7 @@
                                 </a>
                                 <div class="list-group-item">
                                     <span class="thumb-sm pull-left mr clearfix">
-                                        <img class="img-circle" src="./resources/bootstrap/demo/img/people/a5.jpg" alt="...">
+                                        <img class="img-circle" src="demo/img/people/a5.jpg" alt="...">
                                     </span>
                                     <p class="no-margin overflow-hidden">
                                         User <a href="#">Jeff</a> registered
@@ -489,7 +477,7 @@
                         <div class="chat-notification-inner">
                             <h6 class="title">
                                 <span class="thumb-xs">
-                                    <img src="./resources/bootstrap/demo/img/people/a6.jpg" class="img-circle mr-xs pull-left">
+                                    <img src="demo/img/people/a6.jpg" class="img-circle mr-xs pull-left">
                                 </span>
                                 Jess Smith
                             </h6>
@@ -521,7 +509,7 @@
                 <a class="list-group-item" href="#chat-sidebar-user-1">
                     <i class="fa fa-circle text-success pull-right"></i>
                     <span class="thumb-sm pull-left mr">
-                        <img class="img-circle" src="./resources/bootstrap/demo/img/people/a2.jpg" alt="...">
+                        <img class="img-circle" src="demo/img/people/a2.jpg" alt="...">
                     </span>
                     <h5 class="message-sender">Chris Gray</h5>
                     <p class="message-preview">Hey! What's up? So many times since we</p>
@@ -529,7 +517,7 @@
                 <a class="list-group-item" href="#chat-sidebar-user-2">
                     <i class="fa fa-circle text-gray-light pull-right"></i>
                 <span class="thumb-sm pull-left mr">
-                    <img class="img-circle" src="./resources/bootstrap/img/avatar.png" alt="...">
+                    <img class="img-circle" src="img/avatar.png" alt="...">
                 </span>
                     <h5 class="message-sender">Jamey Brownlow</h5>
                     <p class="message-preview">Good news coming tonight. Seems they agreed to proceed</p>
@@ -537,7 +525,7 @@
                 <a class="list-group-item" href="#chat-sidebar-user-3">
                     <i class="fa fa-circle text-danger pull-right"></i>
                 <span class="thumb-sm pull-left mr">
-                    <img class="img-circle" src="./resources/bootstrap/demo/img/people/a1.jpg" alt="...">
+                    <img class="img-circle" src="demo/img/people/a1.jpg" alt="...">
                 </span>
                     <h5 class="message-sender">Livia Walsh</h5>
                     <p class="message-preview">Check out my latest email plz!</p>
@@ -545,7 +533,7 @@
                 <a class="list-group-item" href="#chat-sidebar-user-4">
                     <i class="fa fa-circle text-gray-light pull-right"></i>
                 <span class="thumb-sm pull-left mr">
-                    <img class="img-circle" src="./resources/bootstrap/img/avatar.png" alt="...">
+                    <img class="img-circle" src="img/avatar.png" alt="...">
                 </span>
                     <h5 class="message-sender">Jaron Fitzroy</h5>
                     <p class="message-preview">What about summer break?</p>
@@ -553,7 +541,7 @@
                 <a class="list-group-item" href="#chat-sidebar-user-5">
                     <i class="fa fa-circle text-success pull-right"></i>
                 <span class="thumb-sm pull-left mr">
-                    <img class="img-circle" src="./resources/bootstrap/demo/img/people/a4.jpg" alt="...">
+                    <img class="img-circle" src="demo/img/people/a4.jpg" alt="...">
                 </span>
                     <h5 class="message-sender">Mike Lewis</h5>
                     <p class="message-preview">Just ain't sure about the weekend now. 90% I'll make it.</p>
@@ -564,7 +552,7 @@
                 <a class="list-group-item" href="#chat-sidebar-user-6">
                     <i class="fa fa-circle text-gray-light pull-right"></i>
                 <span class="thumb-sm pull-left mr">
-                    <img class="img-circle" src="./resources/bootstrap/demo/img/people/a6.jpg" alt="...">
+                    <img class="img-circle" src="demo/img/people/a6.jpg" alt="...">
                 </span>
                     <h5 class="message-sender">Freda Edison</h5>
                     <p class="message-preview">Hey what's up? Me and Monica going for a lunch somewhere. Wanna join?</p>
@@ -572,7 +560,7 @@
                 <a class="list-group-item" href="#chat-sidebar-user-7">
                     <i class="fa fa-circle text-success pull-right"></i>
                 <span class="thumb-sm pull-left mr">
-                    <img class="img-circle" src="./resources/bootstrap/demo/img/people/a5.jpg" alt="...">
+                    <img class="img-circle" src="demo/img/people/a5.jpg" alt="...">
                 </span>
                     <h5 class="message-sender">Livia Walsh</h5>
                     <p class="message-preview">Check out my latest email plz!</p>
@@ -580,7 +568,7 @@
                 <a class="list-group-item" href="#chat-sidebar-user-8">
                     <i class="fa fa-circle text-warning pull-right"></i>
                 <span class="thumb-sm pull-left mr">
-                    <img class="img-circle" src="./resources/bootstrap/demo/img/people/a3.jpg" alt="...">
+                    <img class="img-circle" src="demo/img/people/a3.jpg" alt="...">
                 </span>
                     <h5 class="message-sender">Jaron Fitzroy</h5>
                     <p class="message-preview">What about summer break?</p>
@@ -588,7 +576,7 @@
                 <a class="list-group-item" href="#chat-sidebar-user-9">
                     <i class="fa fa-circle text-gray-light pull-right"></i>
                 <span class="thumb-sm pull-left mr">
-                    <img class="img-circle" src="./resources/bootstrap/img/avatar.png" alt="...">
+                    <img class="img-circle" src="img/avatar.png" alt="...">
                 </span>
                     <h5 class="message-sender">Mike Lewis</h5>
                     <p class="message-preview">Just ain't sure about the weekend now. 90% I'll make it.</p>
@@ -605,7 +593,7 @@
             <ul class="message-list">
                 <li class="message">
                     <span class="thumb-sm">
-                        <img class="img-circle" src="./resources/bootstrap/demo/img/people/a2.jpg" alt="...">
+                        <img class="img-circle" src="demo/img/people/a2.jpg" alt="...">
                     </span>
                     <div class="message-body">
                         Hey! What's up?
@@ -613,7 +601,7 @@
                 </li>
                 <li class="message">
                     <span class="thumb-sm">
-                        <img class="img-circle" src="./resources/bootstrap/demo/img/people/a2.jpg" alt="...">
+                        <img class="img-circle" src="demo/img/people/a2.jpg" alt="...">
                     </span>
                     <div class="message-body">
                         Are you there?
@@ -621,7 +609,7 @@
                 </li>
                 <li class="message">
                     <span class="thumb-sm">
-                        <img class="img-circle" src="./resources/bootstrap/demo/img/people/a2.jpg" alt="...">
+                        <img class="img-circle" src="demo/img/people/a2.jpg" alt="...">
                     </span>
                     <div class="message-body">
                         Let me know when you come back.
@@ -629,7 +617,7 @@
                 </li>
                 <li class="message from-me">
                     <span class="thumb-sm">
-                        <img class="img-circle" src="./resources/bootstrap/img/avatar.png" alt="...">
+                        <img class="img-circle" src="img/avatar.png" alt="...">
                     </span>
                     <div class="message-body">
                         I am here!
@@ -723,127 +711,18 @@
     </div>
 </div>
 
-
-
 <div class="content-wrap">
     <!-- main page content. the place to put widgets in. usually consists of .row > .col-md-* > .widget.  -->
     <main id="content" class="content" role="main">
-        <ol class="breadcrumb">
-            <li>현재 위치</li>
-            <li class="active">고객 상담</li>
-        </ol>
-        <h1 class="page-title">게시판 - <span class="fw-semi-bold">고객 상담</span></h1>
-<%--        <section class="widget">
-            <header>
-                <h4>
-                    Table <span class="fw-semi-bold">Styles</span>
-                </h4>
-                <div class="widget-controls">
-                    <div class="width-200">
-                        <div class="input-group input-group-sm input-group-transparent input-group-rounded">
-                            <span class="input-group-addon">
-                                <i class="fa fa-search"></i>
-                            </span>
-                            <input class="form-control " id="search-countries" type="text" placeholder="Search Countries">
-                        </div>
-                    </div>
-                </div>
-            </header>
-            <div class="widget-body">
-                <p>
-                    Editable, validatable, filterable and sortable table made with
-                    <a href="http://backgridjs.com/" target="_blank">Backgrid.js</a>
-                </p>
-                <div id="table-dynamic"></div>
+        <div id="gmap" class="content-map">
+        </div>
+        <h1 class="page-title">Google <span class="fw-semi-bold">Maps</span></h1>
+        <div class="content-map-controls">
+            <div class="btn-group btn-group-sm">
+                <button class="btn btn-inverse" id="gmap-zoom-in"><i class="fa fa-plus"></i></button>
+                <button class="btn btn-inverse" id="gmap-zoom-out"><i class="fa fa-minus"></i></button>
             </div>
-        </section>--%>
-        <section class="widget">
-            <header>
-<%--                <h4>Table <span class="fw-semi-bold">Styles</span></h4>--%>
-<%--                <div class="widget-controls">
-                    <a data-widgster="expand" title="Expand" href="#"><i class="glyphicon glyphicon-chevron-up"></i></a>
-                    <a data-widgster="collapse" title="Collapse" href="#"><i class="glyphicon glyphicon-chevron-down"></i></a>
-                    <a data-widgster="close" title="Close" href="#"><i class="glyphicon glyphicon-remove"></i></a>
-                </div>--%>
-            </header>
-            <div class="widget-body">
-                <p>
-                    기타 문의사항은 080-123-4567로 전화해주세요<br>
-                    <a href="csboardWriteForm">글쓰기 폼 이동</a>
-                </p>
-                <div class="mt">
-                    <table id="datatable-table" class="table table-striped table-hover">
-                        <thead>
-                        <tr>
-                            <th class="no-sort hidden-xs">번호</th>
-                            <th class="no-sort hidden-xs">제목</th>
-                            <th class="no-sort hidden-xs">분류</th>
-                            <th class="no-sort hidden-xs">이름</th>
-                            <th class="no-sort hidden-xs">조회수</th>
-                            <th class="no-sort hidden-xs">작성일시</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-
-
-
-
-
-                        <c:forEach var="i" items="${csbList}">
-                        <tr>
-                            <td class="no-sort hidden-xs">${i.boardnum}</td>
-                            <td class="no-sort hidden-xs">
-                            
-                            	<a href="read?boardnum=${i.boardnum}">${i.title}</a>
-                                <%--
-                                <small>
-                                    <span class="fw-semi-bold">Type:</span>
-                                    &nbsp; JPEG
-                                </small>
-                                <br>
-                                <small>
-                                    <span class="fw-semi-bold">Dimensions:</span>
-                                    &nbsp; 200x150
-                                </small>
-                                --%>
-                                
-                            </td>
-                            <td class="no-sort width-150">
-                            	${i.type}
-<%--                            <div class="progress progress-sm mt-xs">
-                                    <div class="progress-bar progress-bar-success" style="width: 29%;"></div>
-                                </div>--%>
-                            </td>                            
-                            <td><span class="fw-semi-bold">${i.id}</span></td>                            
-                            <td class="no-sort hidden-xs">${i.hits}</a></td>
-                            <td class="no-sort hidden-xs">${i.inputdate}</td>
-                        </tr>
-                        </c:forEach>
-
-
-
-
-
-                        </tbody>
-                    </table>
-                    <div align="center">
-						<a href="javascript:pagingFormSubmit(${navi.currentPage - navi.pagePerGroup})">◁◁</a>
-						<a href="javascript:pagingFormSubmit(${navi.currentPage - 1})">◀</a>
-						<c:forEach var="counter" begin="${navi.startPageGroup}" end="${navi.endPageGroup}">
-							<a href="javascript:pagingFormSubmit(${counter})">${counter}</a>
-						</c:forEach>
-						<a href="javascript:pagingFormSubmit(${navi.currentPage + 1})">▶</a>
-						<a href="javascript:pagingFormSubmit(${navi.currentPage + navi.pagePerGroup})">▷▷</a>
-                    </div>
-                    
-                    <form action="csboardlist" method="get" id="pagingForm" align="center">
-						<input type="hidden" id="page" name="page">		<%-- name에 있는 page는 BoardController에 들어갈 RequestParam의 page와 연결됨 --%>
-						제목 : <input type="text" name="searchText" value="${searchText}">	<%-- ← 넘어갈 수도, 안 넘어갈 수도 있는 항목 (Controller의 @RequestParam defaultValue를 활용해서...) / value를 넣어준 건 검색 결과 화면에서 화살표를 눌러도 이동폭을 검색 결과 내로 제한하기 위함--%>
-						<input type="button" value="검색" onclick="pagingFormSubmit(1)">		<%-- 검색 결과의 1 페이지부터 보여준다는 뜻 --%>	
-					</form>
-                </div>
-            </div>
-        </section>
+        </div>
     </main>
 </div>
 <!-- The Loader. Is shown when pjax happens -->
@@ -852,33 +731,28 @@
 </div>
 
 <!-- common libraries. required for every page-->
-<script src="./resources/bootstrap/vendor/jquery/dist/jquery.min.js"></script>
-<script src="./resources/bootstrap/vendor/jquery-pjax/jquery.pjax.js"></script>
-<script src="./resources/bootstrap/vendor/bootstrap-sass/assets/javascripts/bootstrap/transition.js"></script>
-<script src="./resources/bootstrap/vendor/bootstrap-sass/assets/javascripts/bootstrap/collapse.js"></script>
-<script src="./resources/bootstrap/vendor/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js"></script>
-<script src="./resources/bootstrap/vendor/bootstrap-sass/assets/javascripts/bootstrap/button.js"></script>
-<script src="./resources/bootstrap/vendor/bootstrap-sass/assets/javascripts/bootstrap/tooltip.js"></script>
-<script src="./resources/bootstrap/vendor/bootstrap-sass/assets/javascripts/bootstrap/alert.js"></script>
-<script src="./resources/bootstrap/vendor/slimScroll/jquery.slimscroll.min.js"></script>
-<script src="./resources/bootstrap/vendor/widgster/widgster.js"></script>
-<script src="./resources/bootstrap/vendor/pace.js/pace.js" data-pace-options='{ "target": ".content-wrap", "ghostTime": 1000 }'></script>
-<script src="./resources/bootstrap/vendor/jquery-touchswipe/jquery.touchSwipe.js"></script>
+<script src="vendor/jquery/dist/jquery.min.js"></script>
+<script src="vendor/jquery-pjax/jquery.pjax.js"></script>
+<script src="vendor/bootstrap-sass/assets/javascripts/bootstrap/transition.js"></script>
+<script src="vendor/bootstrap-sass/assets/javascripts/bootstrap/collapse.js"></script>
+<script src="vendor/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js"></script>
+<script src="vendor/bootstrap-sass/assets/javascripts/bootstrap/button.js"></script>
+<script src="vendor/bootstrap-sass/assets/javascripts/bootstrap/tooltip.js"></script>
+<script src="vendor/bootstrap-sass/assets/javascripts/bootstrap/alert.js"></script>
+<script src="vendor/slimScroll/jquery.slimscroll.min.js"></script>
+<script src="vendor/widgster/widgster.js"></script>
+<script src="vendor/pace.js/pace.js" data-pace-options='{ "target": ".content-wrap", "ghostTime": 1000 }'></script>
+<script src="vendor/jquery-touchswipe/jquery.touchSwipe.js"></script>
 
 <!-- common app js -->
-<script src="./resources/bootstrap/js/settings.js"></script>
-<script src="./resources/bootstrap/js/app.js"></script>
+<script src="js/settings.js"></script>
+<script src="js/app.js"></script>
 
 <!-- page specific libs -->
-<script src="./resources/bootstrap/vendor/underscore/underscore-min.js"></script>
-<script src="./resources/bootstrap/vendor/backbone/backbone.js"></script>
-<script src="./resources/bootstrap/vendor/backbone.paginator/lib/backbone.paginator.min.js"></script>
-<script src="./resources/bootstrap/vendor/backgrid/lib/backgrid.js"></script>
-<script src="./resources/bootstrap/vendor/backgrid-paginator/backgrid-paginator.js"></script>
-<%--<script src="./resources/bootstrap/vendor/datatables/media/js/jquery.dataTables.js"></script>--%>
-<script src="./resources/bootstrap/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+<script src="vendor/gmaps/gmaps.js"></script>
 
 <!-- page specific js -->
-<%--<script src="./resources/bootstrap/js/tables-dynamic.js"></script>--%>
+<script src="js/gmap.js"></script>
 </body>
 </html>

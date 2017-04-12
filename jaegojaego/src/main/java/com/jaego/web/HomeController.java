@@ -26,9 +26,4 @@ public class HomeController {
 		return "home";
 	}
 	
-	@RequestMapping(value = "tables_dynamic", method = RequestMethod.GET)
-	public String tables_dynamic() {
-		return "/CSBoard/tables_dynamic";
-	}
-	
 }
