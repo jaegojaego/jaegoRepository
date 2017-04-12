@@ -19,6 +19,7 @@
 			<li><a href="buyerJoinForm">회원가입 (구매자)</a></li>
 			<li><a href="SellerLoginForm">로그인 (판매자)</a></li>
 			<li><a href="BuyerLoginForm">로그인 (구매자)</a></li>
+			
 		</ul>
 	</c:when>
 	<c:otherwise>
@@ -26,6 +27,7 @@
 			<li>${sessionScope.custid} (${sessionScope.name}) 님 환영합니다.</li>
 			<li><a href="csboardlist">게시판</a></li>			
 			<li><a href="logout">로그아웃</a></li>
+			<li><a href="map1">지도확인</a></li>
 		</ul>	
 	</c:otherwise>
 </c:choose>

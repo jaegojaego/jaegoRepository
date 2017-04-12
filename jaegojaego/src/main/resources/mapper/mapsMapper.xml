@@ -39,4 +39,81 @@
 		where sellerCRN=#{sellerCRN}
 	</select>
 	
+	<select id="shopimg" parameterType="String" resultType="Seller">
+		select 
+			sellerCRN,
+			sellerId,
+			sellerPw,
+			sellerName,
+			sellerShopName,
+			sellerPhone,
+			sellerEmail,
+			sellerBEA,
+			sellerTOB,
+			sellerShopOimg,
+			sellerShopSimg,
+			sellerLat,
+			sellerLong
+			from seller
+			where sellerCRN=#{sellerCRN}
+	</select>
+	
+	
+	<select id="goodsimg" resultType="Goods" >
+		select 
+			sellerCRN,
+			goodsName,
+			goodsPrice,
+			goodsQuantity,
+			goodsOimage,
+			goodsSimage,
+			goodsCode,
+			goodsDateOfUpload,
+			goodsDateOfUpdate,
+			goodsStatus
+		from goods
+		where sellerCRN=#{0} and goodsCode=#{1}
+	</select>
+	
+	<select id="markimg" parameterType="String" resultType="int">
+		select 
+			count(goodsQuantity)
+		from 
+			goods 
+		where 
+		<![CDATA[
+			sellerCRN=#{sellerCRN} and goodsQuantity<>0 and goodsStatus='sale'
+			]]>
+	</select>
+	
+	<select id="findfav" parameterType="Favorite" resultType="int"> <!-- 카운트로 -->
+		select 
+			count(buyerId) as buyerId
+		from
+			 favorite 
+		where 
+			 buyerId=#{buyerId} and sellerCRN=#{sellerCRN}
+
+	</select>
+	
+	<select id="findfavs" parameterType="Favorite" resultType="int">
+		select 
+		     count(sellerCRN) as sellerCRN
+		from
+			 favorite 
+		where 
+			 buyerId=#{buyerId}
+	</select>
+	
+	<insert id="addshop" parameterType="Favorite">
+		insert into favorite
+			( 
+				buyerId,
+				sellerCRN
+				)values(
+					#{buyerId},
+					#{sellerCRN}
+				)
+	</insert>
+	
 </mapper>

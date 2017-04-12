@@ -10,6 +10,7 @@
 		<typeAlias type="com.jaego.web.VO.Goods" alias="Goods" /> 		<!-- 20170322 권록헌 -->
 		<typeAlias type="com.jaego.web.VO.CSBoard" alias="CSBoard" />	<!-- 20170406 박진우 -->
 		<typeAlias type="com.jaego.web.VO.CSReply" alias="CSReply" />	<!-- 20170410 박진우 -->
+		<typeAlias type="com.jaego.web.VO.Favorite" alias="Favorite" />	<!-- 20170413 박시원 -->
 	</typeAliases>
 
 	<mappers>
