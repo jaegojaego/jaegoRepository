@@ -36,7 +36,8 @@
 			goodsDateOfUpdate,
 			goodsStatus
 		from goods
-		where sellerCRN=#{sellerCRN}
+		where sellerCRN=#{sellerCRN} and goodsStatus='on'
+			
 	</select>
 	
 	<select id="shopimg" parameterType="String" resultType="Seller">
@@ -82,7 +83,7 @@
 			goods 
 		where 
 		<![CDATA[
-			sellerCRN=#{sellerCRN} and goodsQuantity<>0 and goodsStatus='sale'
+			sellerCRN=#{sellerCRN} and goodsQuantity<>0 and goodsStatus='on'
 			]]>
 	</select>
 	

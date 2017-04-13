@@ -141,22 +141,17 @@
 	
 	<select id="sendinfo" parameterType="String" resultType="HashMap">
 		select 
-			f.buyerId as buyerId
-			, s.sellerCRN as sellerCRN
+			s.sellerCRN as sellerCRN
 			, s.sellerShopName as sellerShopName
  			, g.goodsName as goodsName
 			, g.goodsPrice as goodsPrice
 			, g.goodsQuantity as goodsQuantity
 		from 
-			SELLER s, GOODS g, FAVORITE f
+			SELLER s, GOODS g
 		where 
 			s.sellerCRN = g.sellerCRN 
 		and 
-			f.sellerCRN = g.sellerCRN
-		and 
-			s.sellerCRN = f.sellerCRN
-		and 
-			s.sellerCRN = 0
+			s.sellerCRN = #{sellerCRN}
 	</select>
 	
 	<select id="phone" parameterType="String" resultType="Buyer">

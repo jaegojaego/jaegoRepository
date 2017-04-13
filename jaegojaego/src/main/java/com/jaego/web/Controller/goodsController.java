@@ -29,6 +29,7 @@ import com.jaego.web.VO.Buyer;
 import com.jaego.web.VO.Goods;
 import com.jaego.web.VO.Sales;
 import com.jaego.web.DAO.GoodsDao;
+import com.jaego.web.Util.ExampleSend;
 import com.jaego.web.Util.FileService;
 
 @Controller
@@ -198,11 +199,12 @@ public class goodsController {
 		String sellerId = (String)session.getAttribute("custid");
 		String sellerCRN = dao.sellerCRN(sellerId);
 		ArrayList<HashMap<String,Object>> resultinfo = dao.sendinfo(sellerCRN);
-		//System.out.println("favorite상품이야!"+resultinfo);//
+		System.out.println("favorite상품이야!"+resultinfo);//
 		
 		String text = "";
-		for(int i=0; i<resultinfo.size(); i++){
-			text += "★"+resultinfo.get(i).get("SELLERSHOPNAME")+"의 재고소식★"+"\n";
+		int i;
+		text += "★"+resultinfo.get(0).get("SELLERSHOPNAME")+"의 재고소식★"+"\n";
+		for(i=0; i<resultinfo.size(); i++){
 			text += "상품 : " + resultinfo.get(i).get("GOODSNAME")+"\n";
 			text += "가격 : " + resultinfo.get(i).get("GOODSPRICE")+"\n";
 			text += "수량 : " + resultinfo.get(i).get("GOODSQUANTITY")+"\n";
@@ -212,19 +214,19 @@ public class goodsController {
 
 		ArrayList<Buyer>buyerphonelist = dao.phone(sellerCRN);
 		String phone = "";
-		for(int i=0; i<buyerphonelist.size(); i++){
-			if(i!=buyerphonelist.size()-1){
-			phone += buyerphonelist.get(i).getBuyerPhone()+",";
+		for(int j=0; j<buyerphonelist.size(); j++){
+			if(j!=buyerphonelist.size()-1){
+			phone += buyerphonelist.get(j).getBuyerPhone()+",";
 			}else{
-				phone += buyerphonelist.get(i).getBuyerPhone();
+				phone += buyerphonelist.get(j).getBuyerPhone();
 			}
 		}
-		//System.out.println("받아온 buyer정보들"+dao.phone(sellerCRN));
-		//System.out.println("phone번호들!"+phone);
+		System.out.println("받아온 buyer정보들"+dao.phone(sellerCRN));
+		System.out.println("phone번호들!"+phone);
 		
 		//문자보내기
-//		ExampleSend send = new ExampleSend();//
-//		send.main(text,phone);//
+		//ExampleSend send = new ExampleSend();//
+		//send.main(text,phone);//
 		return result;
 	}
 	
