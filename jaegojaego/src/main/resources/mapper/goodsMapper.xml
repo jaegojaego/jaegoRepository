@@ -70,10 +70,22 @@
 			sellerCRN=#{sellerCRN}
 	</update>
 	
-	<select id="list" resultType="HashMap">
+	<select id="sellerCRN" parameterType="String" resultType="String">
+		select
+			sellerCRN
+		from
+			seller
+		where
+			sellerId = #{sellerId}
+	</select>
+	
+	<select id="list" parameterType="String" resultType="Goods">
 		select 
 			*
-		from goods
+		from 
+			goods
+		where
+			sellerCRN=#{sellerCRN}
 	</select>
 	
 	<select id="selectPic" resultType="Goods">
@@ -101,4 +113,65 @@
 		where
 			goodsCode = #{1} 
 	</update>
+	
+	<insert id="insertsales" parameterType="Sales">
+		insert into Sales(
+			sellerCRN 
+			,salesName 
+			,salesCode 
+			,salesPrice
+			,salesQuantity
+		)values(
+			#{sellerCRN}
+			,#{salesName}
+			,#{salesCode}
+			,#{salesPrice}
+			,#{salesQuantity}		
+		)
+	</insert>
+	
+	<update id="updatestatus" parameterType="List">
+		update 
+			goods
+		set
+			goodsStatus = #{1}
+		where
+			goodsCode = #{0} 
+	</update>
+	
+	<select id="sendinfo" parameterType="String" resultType="HashMap">
+		select 
+			f.buyerId as buyerId
+			, s.sellerCRN as sellerCRN
+			, s.sellerShopName as sellerShopName
+ 			, g.goodsName as goodsName
+			, g.goodsPrice as goodsPrice
+			, g.goodsQuantity as goodsQuantity
+		from 
+			SELLER s, GOODS g, FAVORITE f
+		where 
+			s.sellerCRN = g.sellerCRN 
+		and 
+			f.sellerCRN = g.sellerCRN
+		and 
+			s.sellerCRN = f.sellerCRN
+		and 
+			s.sellerCRN = 0
+	</select>
+	
+	<select id="phone" parameterType="String" resultType="Buyer">
+		select
+			buyerPhone
+		from
+			Buyer b, FAVORITE f
+		where
+			b.buyerId = f.buyerId
+		and 
+			f.buyerId 
+		in 
+			(select buyerId from favorite where sellerCRN = #{sellerCRN})
+		group by 
+			b.buyerPhone
+	</select>
+	
 </mapper>

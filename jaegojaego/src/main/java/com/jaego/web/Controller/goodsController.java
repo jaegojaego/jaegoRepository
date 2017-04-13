@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -24,7 +25,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.jaego.web.VO.Buyer;
 import com.jaego.web.VO.Goods;
+import com.jaego.web.VO.Sales;
 import com.jaego.web.DAO.GoodsDao;
 import com.jaego.web.Util.FileService;
 
@@ -44,9 +47,9 @@ public class goodsController {
 	// 상품등록부컨트롤러
 	@RequestMapping(value = "rgoodsinsert", method = RequestMethod.POST)
 	public String rgoodsinsert(Goods goods, HttpSession session, MultipartFile upload,Model model) {
-		// String sellerCRN=(String) session.getAttribute("0000");
-		String sellerCRN = "0";
-		goods.setSellerCRN(sellerCRN);
+		String sellerId = (String)session.getAttribute("custid");
+		String sellerCRN = dao.sellerCRN(sellerId);
+		goods.setSellerCRN(sellerCRN);//goods에 등록!
 		// 상품코드함수
 		int codeSize = 1;
 		final char[] possiblecode = { '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'A', 'B', 'C', 'D', 'E', 'F',
@@ -84,9 +87,9 @@ public class goodsController {
 			goods.setGoodsSimage(savedfile);
 		}
 		dao.insertGoods(goods);
-		List<HashMap>result = dao.list();
+		ArrayList<Goods> result = dao.list(sellerCRN);
 		model.addAttribute("list",result);
-		return "./goods/goodslist";
+		return "redirect:goodslist";
 	}
 	@RequestMapping(value = "goodsupdate", method = RequestMethod.GET)
 	public String goodsupdate(String goodsCode,Model model) {
@@ -100,8 +103,8 @@ public class goodsController {
 	@RequestMapping(value="rgoodsupdate",method=RequestMethod.POST)
 	public String rgoodsupdate(Goods goods,HttpSession session,MultipartFile upload,Model model){
 		// String sellerCRN=(String) session.getAttribute("0000");
-				String sellerCRN = "0";
-				goods.setSellerCRN(sellerCRN);
+		String sellerId = (String)session.getAttribute("custid");
+		String sellerCRN = dao.sellerCRN(sellerId);
 				//String codenum="R3QncP8f";
 				//goods.setGoodsCode(codenum);
 		String codenum=goods.getGoodsCode();
@@ -125,22 +128,25 @@ public class goodsController {
 		}
 		
 		dao.updateGoods(goods);
-		List<HashMap>result = dao.list();
+		ArrayList<Goods> result = dao.list(sellerCRN);
 		model.addAttribute("list",result);
 		
-		return "./goods/goodslist";
+		return "redirect:goodslist";
 	}
 	
 	//목록 가져오기
 	@RequestMapping(value = "goodslist", method = RequestMethod.GET)
-	public String goodslist(Model model){
+	public String goodslist(Model model,HttpSession session){
 		//날짜 띄우기
 		SimpleDateFormat today = new SimpleDateFormat("yyyy년 MM월 dd일");
 		String todate = today.format(new Date());
 		model.addAttribute("todate",todate);
 		
-		List<HashMap>result = dao.list();
-		System.out.println(result);//
+		//목록 가져오기
+		String sellerId = (String)session.getAttribute("custid");
+		String sellerCRN = dao.sellerCRN(sellerId);
+		ArrayList<Goods> result = dao.list(sellerCRN);
+		System.out.println("목록가져왕:"+result);//
 		model.addAttribute("list",result);
 		return "./goods/goodslist";
 	}
@@ -171,7 +177,6 @@ public class goodsController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
 	}
 
 	//삭제하기
@@ -185,8 +190,63 @@ public class goodsController {
 	//수량 수정
 	@ResponseBody
 	@RequestMapping(value="update", method = RequestMethod.GET)
-	public int update(String goodsCode, int goodsQuantity){
+	public int update(String goodsCode, int goodsQuantity,HttpSession session){
+		//수량 수정
 		int result = dao.update(goodsQuantity, goodsCode);
+		
+		//favorite 상품 정보 가져오기
+		String sellerId = (String)session.getAttribute("custid");
+		String sellerCRN = dao.sellerCRN(sellerId);
+		ArrayList<HashMap<String,Object>> resultinfo = dao.sendinfo(sellerCRN);
+		//System.out.println("favorite상품이야!"+resultinfo);//
+		
+		String text = "";
+		for(int i=0; i<resultinfo.size(); i++){
+			text += "★"+resultinfo.get(i).get("SELLERSHOPNAME")+"의 재고소식★"+"\n";
+			text += "상품 : " + resultinfo.get(i).get("GOODSNAME")+"\n";
+			text += "가격 : " + resultinfo.get(i).get("GOODSPRICE")+"\n";
+			text += "수량 : " + resultinfo.get(i).get("GOODSQUANTITY")+"\n";
+			text += "----------------------------"+"\n";
+		}
+		//System.out.println(text);
+
+		ArrayList<Buyer>buyerphonelist = dao.phone(sellerCRN);
+		String phone = "";
+		for(int i=0; i<buyerphonelist.size(); i++){
+			if(i!=buyerphonelist.size()-1){
+			phone += buyerphonelist.get(i).getBuyerPhone()+",";
+			}else{
+				phone += buyerphonelist.get(i).getBuyerPhone();
+			}
+		}
+		//System.out.println("받아온 buyer정보들"+dao.phone(sellerCRN));
+		//System.out.println("phone번호들!"+phone);
+		
+		//문자보내기
+//		ExampleSend send = new ExampleSend();//
+//		send.main(text,phone);//
+		return result;
+	}
+	
+	//판매분석 테이블
+	@ResponseBody
+	@RequestMapping(value="insertsales", method=RequestMethod.GET)
+	public int insertsales(Sales sales,HttpSession session){
+		//System.out.println("넘어온sales값들:"+sales);
+		String sellerId = (String)session.getAttribute("custid");
+		String sellerCRN = dao.sellerCRN(sellerId);
+		sales.setSellerCRN(sellerCRN);
+		//System.out.println("판매기록setsellerCRN"+sales);
+		int result = dao.insertsales(sales);
+		return result;
+	}
+		
+	//상품상태수정
+	@ResponseBody
+	@RequestMapping(value="updatestatus", method=RequestMethod.GET)
+	public int updatestatus(String goodsCode, String goodsStatus){
+		//System.out.println(goodsCode+"와"+goodsStatus);
+		int result = dao.updatestatus(goodsCode, goodsStatus);
 		return result;
 	}
 }
