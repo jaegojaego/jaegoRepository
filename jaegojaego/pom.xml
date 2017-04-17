@@ -23,6 +23,14 @@
 	</repositories>
 	
 	<dependencies>
+
+		<!-- 웹소켓 테스트 dependency -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-websocket</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+
 		<!-- JSON -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
@@ -106,7 +114,7 @@
 			<version>1</version>
 		</dependency>
 		
-		<!-- api -->
+		<!-- 문자 api -->
 		<dependency>
 			<groupId>net.nurigo</groupId>
 			<artifactId>javaSDK</artifactId>
