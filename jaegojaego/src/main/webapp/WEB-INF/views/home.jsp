@@ -27,7 +27,7 @@
 			<li>${sessionScope.custid} (${sessionScope.name}) 님 환영합니다.</li>
 			<li><a href="csboardlist">게시판</a></li>			
 			<li><a href="logout">로그아웃</a></li>
-			<li><a href="map1">지도확인</a></li>
+			<li><a href="map2">지도확인</a></li>
 			<li><a href="goodslist">상품목록(판매자)</a></li>
 		</ul>	
 	</c:otherwise>

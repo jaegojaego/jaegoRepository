@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 5 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -13,42 +13,42 @@
    
    $(function(){
    
-	   var adrr;
-	   var flag = [];
-	   
-	   navigator.geolocation.getCurrentPosition( function(pos) {
-	         var latitude = pos.coords.latitude;
-	         var longitude = pos.coords.longitude;
-	         
-	         adrr = "부천시"; //무조건 검색이 되어야 받아오는거라서 부천시라고 임의로 지정해둠 
-	         flag = [latitude,longitude];
-	         a(adrr,flag);
+      var adrr;
+      var flag = [];
+      var sellertob;
+      
+      navigator.geolocation.getCurrentPosition( function(pos) {
+            var latitude = pos.coords.latitude;
+            var longitude = pos.coords.longitude;
+            
+            adrr = "부천시"; //무조건 검색이 되어야 받아오는거라서 부천시라고 임의로 지정해둠 
+            flag = [latitude,longitude];
+            a(adrr,flag,sellertob);
        
        });  
-      
+      $(".tob").on("click",function(){
+       alert(adrr);
+        sellertob = $(this).text();
+        a(adrr,flag,sellertob);
+      });
       
       
       $("li li").on("click",function(){
          adrr = $(this).text();
          flag = null;
-         a(adrr,flag);
+         a(adrr,flag,sellertob);
       
       });
    
       $("#btn1").on("click",function(){
          adrr = $("#adr").val(); //클래스를 찾자
          flag = null;
-         a(adrr,flag);
+         a(adrr,flag,sellertob);
 
       });
       
-   /*    $("#abcd").on("click",function(){
-         alert();
-         //$(".class").attr("abc");
-      }); */
-
            
-      function a(adrr,flag){
+      function a(adrr,flag,sellertob){
       var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
           mapOption = {
               center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
@@ -66,18 +66,21 @@
 
           // 정상적으로 검색이 완료됐으면 
            if (status === daum.maps.services.Status.OK) {
-        	   var coords;
-        	   if(flag==null){
-        		   coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
-        	   }else{
-        		 coords = new daum.maps.LatLng(flag[0],flag[1]);
-        	   }
+              var coords;
+              if(flag==null){
+                 coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
+              }else{
+               coords = new daum.maps.LatLng(flag[0],flag[1]);
+              }
               // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
               map.setCenter(coords);
               
               $.ajax({//type필수임
                   type : "get",   //RequestMethod Type
                   url: "Shoplist", //RequestMapping value
+                  data: {
+                     sellerTOB:sellertob
+                  },
                   success : function(data){
                      mdata(data);
                      
@@ -266,27 +269,27 @@
                                                                                     
                                          },
                                          
-                                 		success:function(data){
-                                 	
-                                 		
-                                 			var starsss;
-                            				 if(data<=1){
-                            					 starsss = "★☆☆☆☆";
-                            				 }else if(data<=2){
-                            					 starsss = "★★☆☆☆"
-                            				 }else if(data<=3){
-                            					 starsss = "★★★☆☆"
-                            				 }else if(data<=4){
-                            					 starsss = "★★★★☆"
-                            				 }else if(data<=5){
-                            					 starsss = "★★★★★"
-                            				 }
-                            				 
-                            				$(".star").html("별점:"+starsss);
-                                 		},                       		
-                                 		error:function(e){
-                                 			console.log(e);
-                                 		}
+                                       success:function(data){
+                                    
+                                       
+                                          var starsss;
+                                         if(data<=1){
+                                            starsss = "★☆☆☆☆";
+                                         }else if(data<=2){
+                                            starsss = "★★☆☆☆"
+                                         }else if(data<=3){
+                                            starsss = "★★★☆☆"
+                                         }else if(data<=4){
+                                            starsss = "★★★★☆"
+                                         }else if(data<=5){
+                                            starsss = "★★★★★"
+                                         }
+                                         
+                                        $(".star").html("별점:"+starsss);
+                                       },                             
+                                       error:function(e){
+                                          console.log(e);
+                                       }
                                  });
                                 
                                 $.ajax({//type필수임
@@ -297,22 +300,22 @@
                                                                                     
                                          },
                                          
-                                 		success:function(data){
-                                 			
-                                 			var htm = "";
-                                 				htm += '<div style="overflow-y:scroll; height: 100px;"><table><tr><th>작성자</th><th>댓글</th><th>별점</th></tr>';
-                                 		
-                                 			$.each(data,function(index,item){                                 				
-                                 					htm += '<tr><td>'+item.buyerId+'</td><td>'+item.ment+'</td><td>'+item.stars+'</td></tr>';
-
+                                       success:function(data){
+                                          
+                                          var htm = "";
+                                             htm += '<div style="overflow-y:scroll; height: 100px;"><table><tr><th>작성자</th><th>댓글</th></tr>';
+                                       
+                                          $.each(data,function(index,item){                                             
+                                                htm += '<tr><td>'+item.buyerId+'</td><td>'+item.ment+'</td></tr>';
+												alert(item.ment);
                                               }); 
-                                 			
-                                 				htm += '</table></div>';
-                                 				 $(".comments").html(htm);
-                                 		},                       		
-                                 		error:function(e){
-                                 			console.log(e);
-                                 		}
+                                          
+                                             htm += '</table></div>';
+                                              $(".comments").html(htm);
+                                       },                             
+                                       error:function(e){
+                                          console.log(e);
+                                       }
                                  });
                                 
                                 
@@ -326,34 +329,34 @@
                                 
                                 //////////////////////////////////////////////
                                 $(".bnt").on("click",function(){
-                                	
-                                	
-                                	var addcomment = $(".comment").val();
-                                	if(addcomment==""){
-                                		alert("내용을 입력해주세요");
-                                		return false;
-                                	}
-                                	///////////////////////////////////////
-                                	$.ajax({//type필수임
+                                   
+                                   
+                                   var addcomment = $(".comment").val();
+                                   if(addcomment==""){
+                                      alert("내용을 입력해주세요");
+                                      return false;
+                                   }
+                                   ///////////////////////////////////////
+                       /*             $.ajax({//type필수임
                                          type : "get",   //RequestMethod Type
                                          url: "nostar", //RequestMapping value
                                          data:{
                                             sellerCRN:position.CRN
                                          },
                                          
-                                 		success:function(data){
-                                 			if(data!=0){
-                                 				return false;
-                                 			}
-                                 		},                       		
-                                 		error:function(e){
-                                 			console.log(e);
-                                 		}
+                                       success:function(data){
+                                          if(data!=0){
+                                             return false;
+                                          }
+                                       },                             
+                                       error:function(e){
+                                          console.log(e);
+                                       }
                                  });
-                                	
-                                	
-                                	//////////////////////////////////////
-                                	var starss = $(".starcheck").val();
+                                    */
+                                   
+                                   //////////////////////////////////////
+                                   var starss = $(".starcheck").val();
                              
                                      $.ajax({//type필수임
                                          type : "get",   //RequestMethod Type
@@ -366,39 +369,39 @@
                                             
                                          },
                                          
-                                 		success:function(data){
-                                 			console.log(data.star);
-                                 			var htm = "";
-                                 				htm += '<div style="overflow-y:scroll; height: 100px;"><table><tr><th>작성자</th><th>댓글</th></tr>';
-                                 		
-                                 			$.each(data.gradelist,function(index,item){                                 				
-                                 					htm += '<tr><td>'+item.buyerId+'</td><td>'+item.ment+'</td></tr>';
+                                       success:function(data){
+                                          console.log(data.star);
+                                          var htm = "";
+                                             htm += '<div style="overflow-y:scroll; height: 100px;"><table><tr><th>작성자</th><th>댓글</th></tr>';
+                                       
+                                          $.each(data.gradelist,function(index,item){                                             
+                                                htm += '<tr><td>'+item.buyerId+'</td><td>'+item.ment+'</td></tr>';
 
                                               }); 
-                                 			
-                                 				htm += '</table></div>';
-                                 				 $(".comments").html(htm);
-                                 				 
-                                 				 var starsss;
-                                 				 if(data.star<=1){
-                                 					 starsss = "★☆☆☆☆";
-                                 				 }else if(data.star<=2){
-                                 					 starsss = "★★☆☆☆"
-                                 				 }else if(data.star<=3){
-                                 					 starsss = "★★★☆☆"
-                                 				 }else if(data.star<=4){
-                                 					 starsss = "★★★★☆"
-                                 				 }else if(data.star<=5){
-                                 					 starsss = "★★★★★"
-                                 				 }
-                                 				 
-                                 				$(".star").html("별점:"+starsss);
-                                 				alert("등록완료");
-                                 				$(".comment").val("");
-                                 		},                       		
-                                 		error:function(e){
-                                 			
-                                 		}
+                                          
+                                             htm += '</table></div>';
+                                              $(".comments").html(htm);
+                                              
+                                              var starsss;
+                                              if(data.star<=1){
+                                                 starsss = "★☆☆☆☆";
+                                              }else if(data.star<=2){
+                                                 starsss = "★★☆☆☆"
+                                              }else if(data.star<=3){
+                                                 starsss = "★★★☆☆"
+                                              }else if(data.star<=4){
+                                                 starsss = "★★★★☆"
+                                              }else if(data.star<=5){
+                                                 starsss = "★★★★★"
+                                              }
+                                              
+                                             $(".star").html("별점:"+starsss);
+                                             alert("등록완료");
+                                             //$(".comment").val("");
+                                       },                             
+                                       error:function(e){
+                                          
+                                       }
                                  });
                                   
                                 
@@ -407,7 +410,7 @@
                                 }); 
                                 
                                 $(".addshop").on("click",function(){
-                                	///
+                                   ///
                               
                                     $.ajax({//type필수임
                                         type : "get",   //RequestMethod Type
@@ -416,14 +419,14 @@
                                            sellerCRN:position.CRN
                                         },
                                         
-                                		success:function(data){
-                                				alert(JSON.stringify(data));
-                                			},                       		
-                                		error:function(e){
-                                			console.log(e);
-                                		}
+                                      success:function(data){
+                                            alert(JSON.stringify(data));
+                                         },                             
+                                      error:function(e){
+                                         console.log(e);
+                                      }
                                 });
-						  });
+                    });
                                 
                             });
                         },
@@ -450,8 +453,8 @@
           } 
       });    
       }
-
-   // 
+   /////////////////////////////////////////////////////////////////////////////////
+   
    });
 </script>
 
@@ -489,19 +492,17 @@
 
 <div id="wrap">
     <header>
-        <div class="inner relative">
-            <a class="logo" href="https://www.freshdesignweb.com"><img src="images/logo.png" alt="fresh design web"></a>
+        <div class="inner relative"><div style="top:10px; height:30px; background-color: black"><a class="tob">카페</a><br><a class="tob">베이커리</a><br><a class="tob">식당</a>
            <nav id="navigation">
                 <ul id="main-menu">
                     <li class="parent">
-
+            
                         <a href="home">지역선택</a>   
                   <지역검색>
 <input type="text" id="adr">
 <input type="button" name="" id="btn1" value="직접검색">
 
-                  
-                  
+                     
                   
                         <ul class="sub-menu">
 
@@ -526,6 +527,7 @@
             </nav>
 
     </header>
+    </div>
 </div>
 <div id="map" style="width:100%;height:700px;"></div>
 

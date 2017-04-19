@@ -12,6 +12,7 @@
 		<typeAlias type="com.jaego.web.VO.CSReply" alias="CSReply" />	<!-- 20170410 박진우 -->
 		<typeAlias type="com.jaego.web.VO.Favorite" alias="Favorite" />	<!-- 20170413 박시원 -->
 		<typeAlias type="com.jaego.web.VO.Sales" alias="Sales" />		<!-- 20170412 석지연 -->
+		<typeAlias type="com.jaego.web.VO.Grade" alias="Grade" />		<!-- 20170414 박시원 -->
 	</typeAliases>
 
 	<mappers>

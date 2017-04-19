@@ -34,8 +34,8 @@ create table Favorite(
 create table Grade(
 	stars number not null,
 	ment varchar2(200) not null,
-	buyerId	varchar2(20) constraint fk_buyerId_grade references Buyer(buyerId) not null,
-	sellerCRN varchar2(30) constraint fk_sellerCRN_grade references Seller(sellerCRN) not null unique,
+	buyerId varchar2(20) constraint fk_buyerId_grade references Buyer(buyerId) not null,
+	sellerCRN varchar2(30) constraint fk_sellerCRN_grade references Seller(sellerCRN) not null,
 	inputDate date default sysdate not null
 );
 
@@ -66,7 +66,7 @@ create table CSBoard(
 	boardnum number primary key,
 	id varchar2(20) not null,
 	title varchar2(100) not null,
-	content	varchar2(2000),
+	content varchar2(2000),
 	inputdate date default sysdate not null,
 	hits number default 0,
 	originalfile varchar2(200),
@@ -77,7 +77,7 @@ create table CSBoard(
 create table CSReply(
 	replynum number primary key,
 	boardnum number constraint fk_boardnum references CSBoard(boardnum) not null
-	references board(boardnum) on delete cascade,
+	references CSboard(boardnum) on delete cascade,
 	id varchar2(20) not null,
 	text varchar2(200) not null,
 	inputdate date default sysdate not null

@@ -2,8 +2,10 @@ package com.jaego.web.Controller;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jaego.web.DAO.MapsDao;
 import com.jaego.web.VO.Goods;
+import com.jaego.web.VO.Grade;
 import com.jaego.web.VO.Seller;
 import com.jaego.web.VO.Favorite;
 
@@ -32,28 +35,29 @@ public class mapsController {
 	
 	@ResponseBody
 	@RequestMapping(value="Shoplist", method=RequestMethod.GET)
-	public ArrayList<Seller> slist(){
-		ArrayList<Seller> Shoplist = dao.Shoplist();
+	public ArrayList<Seller> slist(String sellerTOB){
+		ArrayList<Seller> Shoplist = dao.Shoplist(sellerTOB);
 		return Shoplist;
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="Goodslist", method=RequestMethod.POST)
+	@RequestMapping(value="Goodslist", method=RequestMethod.GET)
 	public ArrayList<Goods> goodsinfo(String sellerCRN){
 		ArrayList<Goods> Goodslist = dao.Goodslist(sellerCRN);	
 		return Goodslist;
 	}
 	
-	@RequestMapping(value="zonemap", method=RequestMethod.GET)
-	public String zonemap(){
-		
-		return "map/zone";
-	}
-	
+
 	@RequestMapping(value="map1", method=RequestMethod.GET)
 	public String map1(){
 		
 		return "map/maps";
+	}
+	
+	@RequestMapping(value="map2", method=RequestMethod.GET)
+	public String map2(){
+		
+		return "map/maps2";
 	}
 	
 	@RequestMapping(value="shopimg", method=RequestMethod.GET)
@@ -157,6 +161,51 @@ public class mapsController {
 		
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="gradelist", method=RequestMethod.GET)
+	public ArrayList<Grade> gradelist(String sellerCRN,HttpSession session){
+		System.out.println(sellerCRN);
+		ArrayList<Grade> gradelist = dao.gradelist(sellerCRN);
+		System.out.println(gradelist);
+		return gradelist;
+	}
 	
 	
+	@ResponseBody
+	@RequestMapping(value="gradelist2", method=RequestMethod.GET)
+	public HashMap<String, Object> gradelist2(String sellerCRN,String ment,int star,HttpSession session){
+	
+			String buyerId = (String) session.getAttribute("custid");
+			Grade grade = new Grade();
+			System.out.println("ment"+ment+"sellercrn"+sellerCRN+"id"+buyerId);
+			grade.setBuyerId(buyerId);
+			grade.setMent(ment);
+			grade.setSellerCRN(sellerCRN);
+			grade.setStars(star);
+			dao.addcomment(grade);
+			ArrayList<Grade> gradelist = dao.gradelist(sellerCRN);
+			HashMap<String, Object> a = new HashMap<String, Object>();
+			double hmap = dao.starsac(sellerCRN);
+			a.put("gradelist", gradelist);
+			a.put("star", hmap);
+
+			return a;
+
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="starsac", method=RequestMethod.GET)
+	public double starsac(String sellerCRN){
+		double hmap = dao.starsac(sellerCRN);
+		return hmap;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="nostar", method=RequestMethod.POST)
+	public int nostar(String sellerCRN,HttpSession session){
+		String buyerId = (String) session.getAttribute("custid");
+		int ns = dao.nostar(sellerCRN, buyerId);
+		return ns;
+	}
+
 }

@@ -18,8 +18,11 @@
 				sellerShopSimg,
 				sellerLat,
 				sellerLong
-	
 		from seller
+		<if test="_parameter!=null"> <!-- el표현 불가능함 #{} -->
+			where 
+				sellerTOB=#{sellerTOB}
+		</if>
 	
 	</select>
 	
@@ -36,8 +39,25 @@
 			goodsDateOfUpdate,
 			goodsStatus
 		from goods
-		where sellerCRN=#{sellerCRN} and goodsStatus='on'
+		where sellerCRN=#{sellerCRN}<!--  and goodsStatus='on' -->
 			
+	</select>
+	
+	
+	<select id="glist" parameterType="String" resultType="Goods" >
+		select 
+			sellerCRN,
+			goodsName,
+			goodsPrice,
+			goodsQuantity,
+			goodsOimage,
+			goodsSimage,
+			goodsCode,
+			goodsDateOfUpload,
+			goodsDateOfUpdate,
+			goodsStatus
+		from goods<![CDATA[
+		where sellerCRN=#{sellerCRN} and goodsStatus='on']]>
 	</select>
 	
 	<select id="shopimg" parameterType="String" resultType="Seller">
@@ -117,4 +137,42 @@
 				)
 	</insert>
 	
+	<select id="gradelist" parameterType="String" resultType="Grade">
+		select
+			stars,
+	 		ment,
+	 		buyerId,
+	 		sellerCRN,
+	 		inputDate
+	 	from grade
+		where sellerCRN=#{sellerCRN}
+		order by inputDate
+	</select>
+
+	
+	<insert id="addcomment" parameterType="Grade">
+		insert into grade
+		  ( stars,
+	 		ment,
+	 		buyerId,
+	 		sellerCRN
+	 		)values(
+	 			#{stars},
+				#{ment},
+				#{buyerId},
+				#{sellerCRN}
+				)
+	</insert>
+
+	 <select id="starsac" parameterType="String" resultType="Double">
+		select 
+			sum(stars)/count(buyerId) as stars 
+			from grade
+			where sellerCRN=#{sellerCRN}
+	</select> 
+	
+	
+	<select id="nostar" resultType="int">
+		select count(*) from grade where sellerCRN=#{0} and buyerId=#{1} 
+	</select>
 </mapper>

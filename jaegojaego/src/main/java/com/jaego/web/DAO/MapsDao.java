@@ -1,12 +1,14 @@
 package com.jaego.web.DAO;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.jaego.web.VO.Goods;
+import com.jaego.web.VO.Grade;
 import com.jaego.web.VO.Seller;
 import com.jaego.web.DAO.MapsMapper;
 import com.jaego.web.VO.Favorite;
@@ -18,9 +20,9 @@ public class MapsDao {
 	@Autowired
 	private SqlSession sqlsession;
 	
-	public ArrayList<Seller> Shoplist(){
+	public ArrayList<Seller> Shoplist(String sellerTOB){
 		MapsMapper mapper = sqlsession.getMapper(MapsMapper.class);
-		ArrayList<Seller> Shoplist = mapper.Shoplist();
+		ArrayList<Seller> Shoplist = mapper.Shoplist(sellerTOB);
 		return Shoplist;
 		
 		
@@ -76,5 +78,37 @@ public class MapsDao {
 		int result = mapper.addshop(favorite);
 		return result;
 	}
+	
+	public ArrayList<Grade> gradelist(String sellerCRN){
+		MapsMapper mapper = sqlsession.getMapper(MapsMapper.class);
+		ArrayList<Grade> gradelist = mapper.gradelist(sellerCRN);
+		return gradelist;
+		
+		
+	}
+	
+	public void addcomment(Grade grade){
+		MapsMapper mapper = sqlsession.getMapper(MapsMapper.class);
+		mapper.addcomment(grade);
+	}
+	
+	public double starsac(String sellerCRN){
+		MapsMapper mapper = sqlsession.getMapper(MapsMapper.class);
+		System.out.println("1"+sellerCRN);
+		double starhash = mapper.starsac(sellerCRN);
+		System.out.println("2"+starhash);
+		return starhash;
+		
+		
+	}
+	
+	public int nostar(String sellerCRN,String buyerId){
+
+		MapsMapper mapper = sqlsession.getMapper(MapsMapper.class);
+		int nostar = mapper.nostar(sellerCRN, buyerId);
+
+		return nostar;
+	}	
+
 	
 }
