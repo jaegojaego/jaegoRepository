@@ -245,7 +245,7 @@
 <div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div>
 
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script src="//apis.daum.net/maps/maps3.js?apikey=1e403c6110d8f3b7f15a41476c1642be&libraries=services"></script>
+<script src="//apis.daum.net/maps/maps3.js?apikey=58be92da2825bdc2b27886ae673b8712&libraries=services"></script>
 <script>
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div
         mapOption = {

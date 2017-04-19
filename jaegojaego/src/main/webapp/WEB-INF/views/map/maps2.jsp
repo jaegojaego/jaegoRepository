@@ -20,14 +20,15 @@
       navigator.geolocation.getCurrentPosition( function(pos) {
             var latitude = pos.coords.latitude;
             var longitude = pos.coords.longitude;
-            
+          
             adrr = "부천시"; //무조건 검색이 되어야 받아오는거라서 부천시라고 임의로 지정해둠 
             flag = [latitude,longitude];
+            console.log(flag);
             a(adrr,flag,sellertob);
        
        });  
       $(".tob").on("click",function(){
-       alert(adrr);
+      
         sellertob = $(this).text();
         a(adrr,flag,sellertob);
       });
@@ -307,7 +308,7 @@
                                        
                                           $.each(data,function(index,item){                                             
                                                 htm += '<tr><td>'+item.buyerId+'</td><td>'+item.ment+'</td></tr>';
-												alert(item.ment);
+												
                                               }); 
                                           
                                              htm += '</table></div>';
