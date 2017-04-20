@@ -198,7 +198,7 @@
                             '      <div class="body">' + 
                             '      <div class="img"><div class="img2">' +
                             '      <img src="shopimg?sellerCRN='+position.CRN+'" width="120" height="130"></img>' +
-                            '      </div> <div class="shopinfo" width="180">가게설명:'+position.shopaddress+'<br><h3>관심매장추가</h3><img src="./resources/image/picture.png" width="20px" height="20px" class="addshop"><div class="star" style="width=20px;">별점</div></div></div>' + 
+                            '      </div> <div class="shopinfo" width="180">가게설명:'+position.shopaddress+'<br><h3 class="addshop"><관심매장추가></h3><div class="star" style="width=20px;">별점</div></div></div>' + 
                             '      <div class="desc">' + 
 
                             '<div class="goodsinfo" id="'+position.CRN+'"style="overflow-y:scroll">'+
@@ -214,8 +214,8 @@
                             
                             content += '</table></div></div>' + 
                             '           </div>' + 
-                            '        <div><댓글목록></div><div class="comments"></div><div><select class="starcheck"><option value="1">★</option><option value="2">★★</option>'+
-                            '<option value="3">★★★</option><option value="4">★★★★</option><option value="5">★★★★★</option></select><input type="text" class="comment"><input type="button" class="bnt" value="입력"></div></div>' + 
+                            '        <div class="comments" style="background-color: pink;overflow-y:scroll;margin:auto; border: 1px solid #ddd;width:289px; height:100px;"></div><div style="background-color: black;width:289px;margin:auto"><select class="starcheck"><option value="1">★</option><option value="2">★★</option>'+
+                            '<option value="3">★★★</option><option value="4">★★★★</option><option value="5">★★★★★</option></select><input type="text" class="comment" style="width:152px"><input type="button" class="bnt" value="입력"></div></div>' + 
                             
                             '    </div>' +    
                             '</div> <div class="goodsimg"></div>';
@@ -300,15 +300,15 @@
                                          
                                        success:function(data){
                                           
-                                          var htm = "";
-                                             htm += '<div style="overflow-y:scroll; height: 100px;"><table><tr><th>작성자</th><th>댓글</th></tr>';
+                                          var htm = "<댓글보기>";
+                                             htm += '<table><tr><th>작성자</th><th>댓글</th></tr>';
                                        
                                           $.each(data,function(index,item){                                             
                                                 htm += '<tr><td>'+item.buyerId+'</td><td>'+item.ment+'</td></tr>';
 											
                                               }); 
                                           
-                                             htm += '</table></div>';
+                                             htm += '</table>';
                                               $(".comments").html(htm);
                                        },                             
                                        error:function(e){
@@ -370,15 +370,15 @@
                                          
                                        success:function(data){
                                           console.log(data.star);
-                                          var htm = "";
-                                             htm += '<div style="overflow-y:scroll; height: 100px;"><table><tr><th>작성자</th><th>댓글</th></tr>';
+                                          var htm = "<댓글보기>";
+                                             htm += '<table><tr><th>작성자</th><th>댓글</th></tr>';
                                        
                                           $.each(data.gradelist,function(index,item){                                             
                                                 htm += '<tr><td>'+item.buyerId+'</td><td>'+item.ment+'</td></tr>';
 
                                               }); 
                                           
-                                             htm += '</table></div>';
+                                             htm += '</table>';
                                               $(".comments").html(htm);
                                               
                                               var starsss;
@@ -459,9 +459,9 @@
 </script>
 
 <style>
-    .wrap {position: absolute;left: 0;bottom: 40px;width: 303px;height: 500px;margin-left: -150px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
+    .wrap {position: absolute;left: 0;bottom: 40px;width: 303px;height: 450px;margin-left: -150px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
 
-    .wrap .info {width: 303px;height: 500px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: white;}
+    .wrap .info {width: 303px;height: 450px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: white;}
     .wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
     .info .title {padding: 5px 0 0 10px;height: 30px;background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
     .info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
