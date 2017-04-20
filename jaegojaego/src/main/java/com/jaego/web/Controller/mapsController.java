@@ -177,7 +177,7 @@ public class mapsController {
 	
 			String buyerId = (String) session.getAttribute("custid");
 			Grade grade = new Grade();
-			System.out.println("ment"+ment+"sellercrn"+sellerCRN+"id"+buyerId);
+			System.out.println("ment"+ment+"sellercrn"+sellerCRN+"id"+buyerId+"star"+star);
 			grade.setBuyerId(buyerId);
 			grade.setMent(ment);
 			grade.setSellerCRN(sellerCRN);

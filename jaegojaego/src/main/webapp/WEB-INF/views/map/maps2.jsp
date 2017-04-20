@@ -13,20 +13,22 @@
    
    $(function(){
    
-      var adrr;
+      var adrr = "삼성동";
+      console.log(adrr);
       var flag = [];
       var sellertob;
+      a(adrr,flag,sellertob);
       
-      navigator.geolocation.getCurrentPosition( function(pos) {
+/*       navigator.geolocation.getCurrentPosition( function(pos) {
             var latitude = pos.coords.latitude;
             var longitude = pos.coords.longitude;
-          
+            
             adrr = "부천시"; //무조건 검색이 되어야 받아오는거라서 부천시라고 임의로 지정해둠 
             flag = [latitude,longitude];
             console.log(flag);
             a(adrr,flag,sellertob);
        
-       });  
+       });   */
       $(".tob").on("click",function(){
       
         sellertob = $(this).text();
@@ -36,14 +38,12 @@
       
       $("li li").on("click",function(){
          adrr = $(this).text();
-         flag = null;
          a(adrr,flag,sellertob);
       
       });
    
       $("#btn1").on("click",function(){
          adrr = $("#adr").val(); //클래스를 찾자
-         flag = null;
          a(adrr,flag,sellertob);
 
       });
@@ -68,11 +68,8 @@
           // 정상적으로 검색이 완료됐으면 
            if (status === daum.maps.services.Status.OK) {
               var coords;
-              if(flag==null){
                  coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
-              }else{
-               coords = new daum.maps.LatLng(flag[0],flag[1]);
-              }
+
               // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
               map.setCenter(coords);
               
@@ -204,7 +201,7 @@
                             '      </div> <div class="shopinfo" width="180">가게설명:'+position.shopaddress+'<br><h3>관심매장추가</h3><img src="./resources/image/picture.png" width="20px" height="20px" class="addshop"><div class="star" style="width=20px;">별점</div></div></div>' + 
                             '      <div class="desc">' + 
 
-                            '<div class="goodsinfo" style="overflow-y:scroll">'+
+                            '<div class="goodsinfo" id="'+position.CRN+'"style="overflow-y:scroll">'+
                             '<table><tr><th>상품명</th><th>상품가격</th><th>상품개수</th><th>이미지보기</th></tr>';
                             
                             for (var i = 0, len = glist.length; i < len; i++) {
@@ -308,7 +305,7 @@
                                        
                                           $.each(data,function(index,item){                                             
                                                 htm += '<tr><td>'+item.buyerId+'</td><td>'+item.ment+'</td></tr>';
-												
+											
                                               }); 
                                           
                                              htm += '</table></div>';
@@ -325,14 +322,14 @@
                                 
                                 
                                 var nostar;
-                                
+                                var addcomment;
                                 
                                 
                                 //////////////////////////////////////////////
                                 $(".bnt").on("click",function(){
+                                 
                                    
-                                   
-                                   var addcomment = $(".comment").val();
+                                   addcomment = $(".comment").val();
                                    if(addcomment==""){
                                       alert("내용을 입력해주세요");
                                       return false;
@@ -358,6 +355,7 @@
                                    
                                    //////////////////////////////////////
                                    var starss = $(".starcheck").val();
+                                   
                              
                                      $.ajax({//type필수임
                                          type : "get",   //RequestMethod Type
@@ -398,7 +396,8 @@
                                               
                                              $(".star").html("별점:"+starsss);
                                              alert("등록완료");
-                                             //$(".comment").val("");
+                                             $(".comment").val("");
+                                             
                                        },                             
                                        error:function(e){
                                           
