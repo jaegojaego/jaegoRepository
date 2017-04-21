@@ -8,7 +8,7 @@
 
 <script type="text/javascript" src="./resources/js/jquery-3.1.1.js"> </script>
 <script type="text/javascript" src="./resources/js/function.js"> </script>
-<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=58be92da2825bdc2b27886ae673b8712&libraries=services"></script>
+<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=98b5ff77fd0570ce46f2ef84207626b0&libraries=services"></script>
 <script>
    
    $(function(){
@@ -520,7 +520,7 @@
 				dosend();	
 			}
            
-			var wsUri = "ws://203.233.196.93:8888/websocket/echo.do";
+			var wsUri = "ws://203.233.196.93:8888/web/echo.do";
            
 			function init() {				//yc>이게 시작이 되는가? 왜 이게 시작이 되지?  ->> 아마 socket 핸들러에서 보낸거가  여기로 들어오는듯..
 				output = document.getElementById("output");

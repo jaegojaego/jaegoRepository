@@ -86,11 +86,17 @@
 						}, 
 						success:function(){
 							location.href="goodslist";
+							
+							alert("!!!!!");
+							doSend();
 						}
 					});
 					
 					var goodsname = $('.goodsname').eq(index).text();
 					var goodsprice = $('.goodsprice').eq(index).text();
+
+					
+
 					
 					$.ajax({
 						type:"GET",
@@ -101,9 +107,10 @@
 							salesPrice:goodsprice,
 							salesName:goodsname
 						}, 
+
 						success:function(){
-							location.href="goodslist";
-							doSend();
+							location.href="goodslist3";
+//							doSend();
 						}
 					});
 				}
@@ -257,7 +264,7 @@
         		dosend();
         	}
            
-            var wsUri = "ws://203.233.196.93:8888/websocket/echo.do";
+            var wsUri = "ws://203.233.196.93:8888/web/echo.do";
            
             function init() {
 				output = document.getElementById("output");
@@ -302,7 +309,7 @@
 				
 				var glist= []; 
                   var content2="";
-                 
+
                     $.ajax({//type필수임
                         type : "get",   //RequestMethod Type
                         url: "Goodslist", //RequestMapping value
@@ -311,8 +318,7 @@
                         },
                         
                         success : function(data){
-                           
-                            $.each(data,function(index,item){
+                        	$.each(data,function(index,item){
                                
                                glist.push({
                                   GN: item.goodsName,
@@ -352,7 +358,7 @@
     //ajax //////////////////////////////////////////////////////////////////////////////////////
     },
                         error : function(e){
-                           //ajax통신 실패시   
+                           //ajax통신 실패시
                            console.log(e);
                         }
                      });
