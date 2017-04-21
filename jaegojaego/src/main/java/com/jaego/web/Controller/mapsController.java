@@ -60,6 +60,12 @@ public class mapsController {
 		return "map/maps2";
 	}
 	
+	@RequestMapping(value="map3", method=RequestMethod.GET)
+	public String map3(){
+		
+		return "map/maps3";
+	}
+	
 	@RequestMapping(value="shopimg", method=RequestMethod.GET)
 	public String download(String sellerCRN,HttpServletResponse response){
 		String uploadPath = "/sellerImg";
