@@ -47,6 +47,7 @@ public class LoginController {
 			if (seller.getSellerPw().equals(password)) {	//성공
 				session.setAttribute("custid", seller.getSellerId());
 				session.setAttribute("name", seller.getSellerName());
+				session.setAttribute("sellerCRN", seller.getSellerCRN());
 				session.setAttribute("type", "Seller");
 				return "redirect:/";
 			} else {										//실패

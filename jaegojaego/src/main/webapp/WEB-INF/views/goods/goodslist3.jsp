@@ -32,7 +32,12 @@
 <script src="./resources/bootstrap/js/tables-basic.js"></script>
 
 <script type="text/javascript" src="./resources/js/jquery-3.1.1.js"></script>
+
+
+
+
 <script type="text/javascript">
+
 	$(function() {
 		$('.bplus').click(function() {
 			var n = $('.bplus').index(this);
@@ -53,6 +58,15 @@
 
 				console.log($(this).val());
 				console.log($('.beforeQ').eq(index).text());
+				
+				///////////////////////////////////////////////////////
+				
+				
+ 				//alert(CRN);
+				//doSend();
+				
+				
+				//////////////////////////////////////////////////////////
 				
 				if($('.afterQ').eq(index).val() != $('.beforeQ').eq(index).text()){
 					
@@ -89,6 +103,7 @@
 						}, 
 						success:function(){
 							location.href="goodslist";
+							doSend();
 						}
 					});
 				}
@@ -210,6 +225,159 @@
 	})
 	
 </script>
+
+
+
+
+<%--20170422 박진우 박시원 웹소켓 테스트============================================= --%>
+ <script type="text/javascript">
+	/* 		
+ 			var CRN = $(".sellerCRN").val();
+ 			console.log(CRN); */
+ 			
+ 			
+ 			//내가 만든 function
+      
+        	function client(evt){
+        		/* alert(evt);
+        		alert(evt.data);
+        		
+        		var gaek = JSON.parse(evt.data);
+
+        		var storeid = gaek.storeid;
+        		var goodsid = gaek.goodsid;
+        		
+        		alert(storeid);
+        		alert(goodsid); */
+        	}
+        	
+        	
+        	function seller(){
+        		//뭐시기뭐시기뭐시기 dosend;        		
+        		dosend();
+        	}
+           
+            var wsUri = "ws://10.10.7.40:8889/websocket/echo.do";
+           
+            function init() {
+				output = document.getElementById("output");
+				websocket = new WebSocket(wsUri);									//yc>본인소켓주소인가..
+				websocket.onopen = function(evt) {										
+					onOpen(evt) 					//여기에는 뭐가들어오는거지..
+				};
+			}
+
+            function send_message() {						//q>중간에 evt가 사라진게..좀 send_message(없어졌는데);
+				websocket.onmessage = function(evt) {
+					onMessage(evt)						//여기지우면뭐보냈는지 안띄움  pf>받은 메세지는 여기 들어오는거다..
+				};
+				websocket.onerror = function(evt) {
+					onError(evt)
+				};
+			}
+
+			function onOpen(evt) { //WebSocket 연결						
+				//writeToScreen("Connected to Endpoint!");    //여기에 들어오면 evt에서 값뺄수있음...
+				send_message();
+			}
+            
+			function onMessage(evt) { //메시지 수신
+				// writeToScreen("Message Received: " + evt.data);
+				client(evt);
+            }
+			function onError(evt) {  // 전송 에러 발생
+				writeToScreen('ERROR: ' + evt.data);
+			} 
+			function doSend(str) {
+				//var message = document.getElementById("textID").value;
+				//writeToScreen("Message Sent: " + message);
+				//writeToScreen("뭐보내는지 표시하려고 ");
+				
+				
+				
+				
+				
+				var CRN = document.getElementById("sellerCRN").value;
+				/*//////////////////////////////////////////////////////////////  */
+				
+				var glist= []; 
+                  var content2="";
+                 
+                    $.ajax({//type필수임
+                        type : "get",   //RequestMethod Type
+                        url: "Goodslist", //RequestMapping value
+                        data:{
+                           sellerCRN:CRN
+                        },
+                        
+                        success : function(data){
+                           
+                            $.each(data,function(index,item){
+                               
+                               glist.push({
+                                  GN: item.goodsName,
+                                   GP: item.goodsPrice,
+                                   GQ: item.goodsQuantity,
+                                   GI: item.goodsOimage,
+                                   GC: item.goodsCode
+
+                               });
+                               
+                             });
+                            /////////////////////////////////////////////////////
+
+                       
+                           var content = '<div class="goodsinfo" id="'+CRN+'" style="overflow-y:scroll">'+
+                            '<table><tr><th>상품명</th><th>상품가격</th><th>상품개수</th><th>이미지보기</th></tr>';
+                            
+                            for (var i = 0, len = glist.length; i < len; i++) {
+                              //  total+= glist[i].GN;
+                            // 마커를 생성하고 지도위에 표시합니다
+                            content += '<tr><th>'+glist[i].GN+'</th><th>'+glist[i].GP+"</th><th>"+glist[i].GQ
+                            +'</th><th><div class="thth"><img src="./resources/image/picture.png" width="20px" height="20px" class="abcd" imgData="goodsimg?sellerCRN='+CRN+'&goodsCode='+glist[i].GC+'">'+
+                            '<span class="immm"><img src="goodsimg?sellerCRN='+CRN+'&goodsCode='+glist[i].GC+'" width="90px" height="70px" > </span></div></th></tr>';
+                            }
+                            
+                            content += '</table></div>';
+                            
+                            
+                        	
+            				var pk = {storeid : CRN, goodsid : content};
+            				var jsonstr = JSON.stringify(pk);
+                            websocket.send(jsonstr); // 스트링 배열만들어서 보내면 되겠네...
+                            //websocket.close();
+                            
+  
+                            
+    //ajax //////////////////////////////////////////////////////////////////////////////////////
+    },
+                        error : function(e){
+                           //ajax통신 실패시   
+                           console.log(e);
+                        }
+                     });
+				
+				
+				/*///////////////////////////////////////////////////////////////////  */
+
+            }
+			function writeToScreen(message) {						//메세지를 화면에 띄워줌...
+				var pre = document.createElement("p");
+				pre.style.wordWrap = "break-word";
+				pre.innerHTML = message;
+				                
+				output.appendChild(pre);
+			}
+			window.addEventListener("load", init, false);
+        </script>
+<%--=========================================================================== --%>
+
+
+
+
+
+
+
 
 </head>
 <body>
@@ -452,7 +620,7 @@
 		</ol>
 
 		<h1 class="page-title">
-			Tables - <span class="fw-semi-bold">상품 목록</span>
+			Tables - <span class="fw-semi-bold">상품 목록 </span>
 		</h1>
 
 		<div class="row">
@@ -526,5 +694,6 @@
 				</section>
 			</div>
 		</div>
+		<input type="hidden" id="sellerCRN" value="${sessionScope.sellerCRN}">
 </body>
 </html>

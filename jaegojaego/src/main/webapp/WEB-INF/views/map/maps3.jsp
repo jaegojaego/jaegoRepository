@@ -12,12 +12,15 @@
 <script>
    
    $(function(){
-   
+   	
+	  var CRN;
       var adrr = "삼성동";
       console.log(adrr);
       var flag = [];
       var sellertob;
       a(adrr,flag,sellertob);
+      
+      
       
 /*       navigator.geolocation.getCurrentPosition( function(pos) {
             var latitude = pos.coords.latitude;
@@ -198,7 +201,7 @@
                             '      <div class="body">' + 
                             '      <div class="img"><div class="img2">' +
                             '      <img src="shopimg?sellerCRN='+position.CRN+'" width="120" height="130"></img>' +
-                            '      </div> <div class="shopinfo" width="180">가게설명:'+position.shopaddress+'<br><h3 class="addshop"><관심매장추가></h3><div class="star" style="width=20px;">별점</div></div></div>' + 
+                            '      </div> <div class="shopinfo" width="180">가게설명:'+position.shopaddress+'<br><div class="messagestatus">123456789</div><h3 class="addshop"><관심매장추가></h3><div class="star" style="width=20px;">별점</div></div></div>' + 
                             '      <div class="desc">' + 
 
                             '<div class="goodsinfo" id="'+position.CRN+'" style="overflow-y:scroll">'+
@@ -325,8 +328,11 @@
                                 
                                 var id0 = $('.goodsinfo').attr('id');
                                 console.log(id0);
+                                if(CRN==id0){
+                                	alert("값이 들어왔음");
+                                }
                                 
-                                
+                  
                                 //////////////////////////////////////////////
                                 $(".bnt").on("click",function(){
                                  
@@ -459,6 +465,128 @@
    
    });
 </script>
+
+<!--//////////////////////////////////////////////////////////////////////////////////////  -->
+
+
+
+
+
+
+
+        <script type="text/javascript">
+        
+        	
+        	//내가 만든 function
+        	
+			function client(evt){
+//진우 주석				alert(evt);
+//진우 주석				alert(evt.data);
+				        		
+				var gaek = JSON.parse(evt.data);
+				
+				var storeid = gaek.storeid;
+				var goodsid = gaek.goodsid;
+				        		
+//진우 주석		alert("가게 : " + storeid);
+//진우 주석		alert("품목 : " + goodsid);
+				
+				
+				
+				
+				
+				
+//----------------------------------------------------------------------                
+//				alert("테스트 메소드1");
+//				var message2 = "<img sytle='width:20px;' src='resources/img/message.png'> ";
+				var message2 = "<h5>tttest<h5> ";
+				//var inner = $(".messagestatus").html();
+				
+				var crn2 = $(".goodsinfo").attr("id");
+				if(crn2==storeid) {
+					$(".desc").html(goodsid);
+				}
+//----------------------------------------------------------------------	
+				
+				
+				
+				
+				
+				
+			}
+        	
+			function seller(){
+				//뭐시기뭐시기뭐시기 dosend;        		
+				dosend();	
+			}
+           
+			var wsUri = "ws://10.10.7.40:8889/websocket/echo.do";
+           
+			function init() {				//yc>이게 시작이 되는가? 왜 이게 시작이 되지?  ->> 아마 socket 핸들러에서 보낸거가  여기로 들어오는듯..
+				output = document.getElementById("output");
+				websocket = new WebSocket(wsUri);									//yc>본인소켓주소인가..
+				websocket.onopen = function(evt) {										
+					onOpen(evt) 					//여기에는 뭐가들어오는거지..
+				};
+			}
+           function send_message() {						//q>중간에 evt가 사라진게..좀 send_message(없어졌는데);
+				websocket.onmessage = function(evt) {
+					onMessage(evt)						//여기지우면뭐보냈는지 안띄움  pf>받은 메세지는 여기 들어오는거다..
+				};
+				websocket.onerror = function(evt) {
+					onError(evt)
+				};
+			}
+           
+           
+            function onOpen(evt) { //WebSocket 연결						
+                //writeToScreen("Connected to Endpoint!");    //여기에 들어오면 evt에서 값뺄수있음...
+                send_message();
+                               
+              
+            }
+            function onMessage(evt) { //메시지 수신
+               // writeToScreen("Message Received: " + evt.data);
+                          	
+            	client(evt);
+            }
+            function onError(evt) {  // 전송 에러 발생
+                writeToScreen('ERROR: ' + evt.data);
+            } 
+  /*           function doSend(str) {
+				//var message = document.getElementById("textID").value;
+            	//writeToScreen("Message Sent: " + message);
+            	//writeToScreen("뭐보내는지 표시하려고 ");
+            	
+            	var pk = {storeid : "커피가게", goodsid : "2잔"};
+            	
+            	
+            	var jsonstr = JSON.stringify(pk);
+            	
+            	
+                websocket.send(jsonstr); // 스트링 배열만들어서 보내면 되겠네...
+                
+                
+                
+                //websocket.close();
+            } */
+            function writeToScreen(message) {						//메세지를 화면에 띄워줌...
+                var pre = document.createElement("p");
+                pre.style.wordWrap = "break-word";
+                pre.innerHTML = message;
+                
+                output.appendChild(pre);
+            }
+            window.addEventListener("load", init, false);
+        </script>
+
+
+
+
+
+
+
+<!--//////////////////////////////////////////////////////////////////////////////////////   -->
 
 <style>
     .wrap {position: absolute;left: 0;bottom: 40px;width: 303px;height: 450px;margin-left: -150px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
