@@ -257,7 +257,7 @@
         		dosend();
         	}
            
-            var wsUri = "ws://10.10.7.40:8889/websocket/echo.do";
+            var wsUri = "ws://203.233.196.93:8888/websocket/echo.do";
            
             function init() {
 				output = document.getElementById("output");
