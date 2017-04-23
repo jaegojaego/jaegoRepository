@@ -95,7 +95,7 @@
 
             <li>
                 <!-- an example of nested submenu. basic bootstrap collapse component -->
-                <a href="/web/goodslist3" <%--data-toggle="collapse" data-parent="#sidebar"--%>>
+                <a href="/web/goodslist" <%--data-toggle="collapse" data-parent="#sidebar"--%>>
                     <span class="icon">
                         <i class="fa fa-table"></i>
                     </span>
