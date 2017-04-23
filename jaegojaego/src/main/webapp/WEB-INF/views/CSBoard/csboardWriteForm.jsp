@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -24,6 +25,11 @@
     </script>
 </head>
 <body>
+<jsp:scriptlet>
+	pageContext.setAttribute("cr","\r");
+	pageContext.setAttribute("lf","\n");
+	pageContext.setAttribute("crlf","\r\n");
+</jsp:scriptlet>
 <!--
   Main sidebar seen on the left. may be static or collapsing depending on selected state.
 
@@ -749,7 +755,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label" for="default-textarea">본문</label>
                                     <div class="col-sm-8">
-                                        <textarea rows="12" class="form-control" id="default-textarea" name="content"></textarea>
+                                        <textarea style="width:100%;" rows="12" class="form-con	trol" id="default-textarea" name="content"></textarea>
                                     </div>
                                 </div>
 

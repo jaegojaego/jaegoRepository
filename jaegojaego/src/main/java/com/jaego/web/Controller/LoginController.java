@@ -48,7 +48,7 @@ public class LoginController {
 				session.setAttribute("custid", seller.getSellerId());
 				session.setAttribute("name", seller.getSellerName());
 				session.setAttribute("sellerCRN", seller.getSellerCRN());
-				session.setAttribute("type", "Seller");
+				session.setAttribute("type", "작성자");
 				return "redirect:/";
 			} else {										//실패
 				model.addAttribute("loginErr","로그인 정보가 틀렸습니다.");		//에러 메시지를 띄우고 싶다면 Model 사용
@@ -69,7 +69,7 @@ public class LoginController {
 			if (seller.getBuyerPw().equals(password)) {	//성공
 				session.setAttribute("custid", seller.getBuyerId());
 				session.setAttribute("name", seller.getBuyerName());
-				session.setAttribute("type", "Buyer");
+				session.setAttribute("type", "구매자");
 				return "redirect:/";
 			} else {										//실패
 				model.addAttribute("loginErr","로그인 정보가 틀렸습니다.");		//에러 메시지를 띄우고 싶다면 Model 사용

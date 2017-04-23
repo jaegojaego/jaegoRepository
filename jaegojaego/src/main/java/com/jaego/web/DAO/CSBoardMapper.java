@@ -20,6 +20,6 @@ public interface CSBoardMapper {
 	public void updateCSBoard(CSBoard csboard);	//몸글 수정
 	public void deleteAllCSBoard(int boardnum);	//몸글 삭제 전 댓글 삭제
 	public CSReply getCSReply(int replynum);
-	public void deleteCSReply(int replynum);
+	public void deleteCSReply(CSReply csreply);
 
 }

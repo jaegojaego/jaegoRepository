@@ -163,11 +163,13 @@
 	</select>
 	
 	<!-- 댓글 삭제 -->
-	<delete id="deleteCSReply" parameterType="int">
+	<delete id="deleteCSReply" parameterType="CSReply">
 		delete from
 			csreply
 		where
 			replynum = #{replynum}
+		and
+			boardnum = #{boardnum}
 	</delete>
 
 </mapper>

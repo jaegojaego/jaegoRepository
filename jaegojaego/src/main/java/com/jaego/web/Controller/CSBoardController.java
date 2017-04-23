@@ -17,6 +17,7 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.jaego.web.DAO.CSBoardDAO;
@@ -98,13 +99,18 @@ public class CSBoardController {
 		model.addAttribute("csreplylist", csreplylist);		
 		return "CSBoard/read";
 	}
-	
+
+	@ResponseBody
 	@RequestMapping(value="csreplyWrite", method=RequestMethod.POST)
-	public String csreplyWrite(CSReply csreply, HttpSession session) {
+	public ArrayList<CSReply> csreplyWrite(CSReply csreply, HttpSession session) {
 		String id = (String)session.getAttribute("custid");
 		csreply.setId(id);
+		System.out.println(csreply);
 		dao.insertCSReply(csreply);
-		return "redirect:read?boardnum=" + csreply.getBoardnum();
+		
+		ArrayList<CSReply> csreplylist = dao.getCSReplylist(csreply.getBoardnum());
+		
+		return csreplylist;
 	}
 	
 	@RequestMapping(value="delete", method=RequestMethod.GET)
@@ -196,10 +202,23 @@ public class CSBoardController {
 	}
 	
 	//댓글 삭제
+	@ResponseBody
 	@RequestMapping(value="deleteCSReply", method=RequestMethod.GET)
-	public String deleteCSReply(int replynum) {
-		CSReply csreply = dao.getCSReply(replynum);
-		dao.deleteCSReply(csreply.getReplynum());
-		return "redirect:read?boardnum=" + csreply.getBoardnum();
+	public ArrayList<CSReply> deleteCSReply(CSReply csreply) {
+		
+		dao.deleteCSReply(csreply);
+		
+		
+		
+		ArrayList<CSReply> csreplylist = dao.getCSReplylist(csreply.getBoardnum());
+		return csreplylist;
+		
+		
+		
+		
+		
+//		return "redirect:read?boardnum=" + csreply.getBoardnum();
 	}
+	
+	
 }

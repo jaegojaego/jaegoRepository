@@ -89,9 +89,9 @@ public class CSBoardDAO {
 	}
 	
 	//댓글 삭제
-	public void deleteCSReply(int replynum) {
+	public void deleteCSReply(CSReply csreply) {
 		CSBoardMapper mapper = sqlsession.getMapper(CSBoardMapper.class);
-		mapper.deleteCSReply(replynum);
+		mapper.deleteCSReply(csreply);
 	}
 
 }
