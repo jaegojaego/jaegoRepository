@@ -1,37 +1,70 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
 <head>
-	<title>Home</title>
+  <title>Animate.css</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1, minimal-ui" />
+
+  <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="//code.jquery.com" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Rubik+Mono+One" rel="stylesheet">
+  <link href='//fonts.googleapis.com/css?family=Roboto:400,100,400italic,700italic,700' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Rubik+Mono+One|Russo+One" rel="stylesheet">
+  <link rel="stylesheet" href="./resources/css/animate.css?ver=1"/>
+  <link rel="stylesheet" href="./resources/css/style.css" />
+  <link href="https://fonts.googleapis.com/earlyaccess/mplus1p.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/earlyaccess/nicomoji.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/earlyaccess/hannari.css" rel="stylesheet" />
+
+<style> 
+.wf-mplus1p { font-family: "Mplus 1p"; }
+.wf-nicomoji { font-family: "Nico Moji"; }
+.wf-hannari { font-family: "Hannari";}
+.rubik      {font-family: 'Rubik Mono One', sans-serif;}
+.russo      {font-family: 'Russo One', sans-serif;}
+
+
+html{
+   background-image: url("./resources/image/1234.png");
+   width: 100%;
+   background-repeat: no-repeat;
+   background-position: center;
+}
+
+</style>
+
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
+<header class="site__header island">
+  <div class="wrap">
+   <span id="animationSandbox" style="display: block;"><h1 class="site__title mega wf-nicomoji">さいごのザイコ</h1></span>
+  </div>
+</header><!-- /.site__header -->
 
-<P>  The time on the server is ${serverTime}. </P>
+<main class="site__content island" role="content">
+   <hr />
+  <div class="wrap">
+    <form>
+      <button class="butt js--triggerAnimation" style="background-color: white"><a href="SellerLoginForm" class="russo" style="text-decoration: none;">JOIN</a></button>
+      <button class="butt js--triggerAnimation" style="background-color: white"><a href="SellerLoginForm" class="russo" style="text-decoration: none;">LOGIN</a></button>
+    </form> 
 
-<c:choose>
-	<c:when test="${sessionScope.custid == null}">
-		<ul>
-			<li><a href="sellerJoinForm">회원가입 (판매자)</a></li>
-			<li><a href="buyerJoinForm">회원가입 (구매자)</a></li>
-			<li><a href="SellerLoginForm">로그인 (판매자)</a></li>
-			<li><a href="BuyerLoginForm">로그인 (구매자)</a></li>
-			
-		</ul>
-	</c:when>
-	<c:otherwise>
-		<ul>
-			<li>${sessionScope.custid} (${sessionScope.name}) 님 환영합니다.</li>
-			<li><a href="csboardlist">게시판</a></li>			
-			<li><a href="logout">로그아웃</a></li>
-			<li><a href="map3">지도확인</a></li>
-			<li><a href="goodslist3">상품목록(판매자)</a></li>
-		</ul>	
-	</c:otherwise>
-</c:choose>
+    <p class="meta">SC IT マスター 32期  <a>ゆくゆく</a> </p>
+    <p><small>coolpark93@gmail.com</small></p>
+  </div>
+</main><!-- /.site__content -->
+
+<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+<script>
+  function testAnim(x) {
+    $('#animationSandbox').removeClass().addClass(x + ' animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+      $(this).removeClass();
+    });
+  };
+
+</script>
 
 </body>
 </html>
