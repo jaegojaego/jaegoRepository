@@ -28,6 +28,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.jaego.web.VO.Buyer;
 import com.jaego.web.VO.Goods;
 import com.jaego.web.VO.Sales;
+import com.google.gson.Gson;
 import com.jaego.web.DAO.GoodsDao;
 import com.jaego.web.Util.ExampleSend;
 import com.jaego.web.Util.FileService;
@@ -207,8 +208,8 @@ public class goodsController {
 	
 	//수량 수정
 	@ResponseBody
-	@RequestMapping(value="update", method = RequestMethod.GET)
-	public int update(String goodsCode, int goodsQuantity,HttpSession session){
+	@RequestMapping(value="update", method = RequestMethod.GET, produces = "application/text; charset=utf8")
+	public String update(String goodsCode, int goodsQuantity,HttpSession session){
 		//수량 수정
 		int result = dao.update(goodsQuantity, goodsCode);
 		
@@ -217,7 +218,7 @@ public class goodsController {
 		String sellerCRN = dao.sellerCRN(sellerId);
 		ArrayList<HashMap<String,Object>> resultinfo = dao.sendinfo(sellerCRN);
 		System.out.println("favorite상품이야!"+resultinfo);//
-		
+			
 		String text = "";
 		int i;
 		text += "★"+resultinfo.get(0).get("SELLERSHOPNAME")+"의 재고소식★"+"\n";
@@ -233,19 +234,28 @@ public class goodsController {
 		String phone = "";
 		for(int j=0; j<buyerphonelist.size(); j++){
 			if(j!=buyerphonelist.size()-1){
-			phone += buyerphonelist.get(j).getBuyerPhone()+",";
+				phone += buyerphonelist.get(j).getBuyerPhone()+",";
 			}else{
 				phone += buyerphonelist.get(j).getBuyerPhone();
 			}
 		}
 		System.out.println("받아온 buyer정보들"+dao.phone(sellerCRN));
 		System.out.println("phone번호들!"+phone);
-		
+			
 		//문자보내기
 		//ExampleSend send = new ExampleSend();//
 		//send.main(text,phone);//
-		return result;
-	}
+		System.out.println("sellerCRN : "+sellerCRN);
+		ArrayList<Buyer> buyer_id = dao.buyer_id(sellerCRN);
+		System.out.println("구매자id들"+buyer_id);
+		HashMap<String, Object>content = new HashMap<String, Object>();
+		String shopname = resultinfo.get(0).get("SELLERSHOPNAME")+"의 상품목록이 변경되었습니다.";
+		content.put("shopname", shopname);
+		content.put("buyer_id", buyer_id);
+		Gson gson = new Gson();
+		System.out.println("보내는 값(shopname,buyer_id)"+content);
+		return gson.toJson(content);
+		}
 	
 	//판매분석 테이블
 	@ResponseBody

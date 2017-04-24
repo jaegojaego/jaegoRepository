@@ -33,7 +33,7 @@
 	</insert>
 	
 	<select id="selectOne" parameterType="String" resultType="Goods">
-		select goodscode from goods where goodscode=#{goodscode}
+		select goodsCode from goods where goodsCode=#{goodscode}
 	</select>
 	
 	<select id="select" parameterType="String" resultType="Goods">
@@ -48,7 +48,7 @@
 		,goodsInfo
 		,goodsDateOfUpload
 		from goods 
-		where goodscode=#{goodscode}
+		where goodsCode=#{goodsCode}
 	</select>
 	
 	<update id="updateGoods" parameterType="Goods">
@@ -167,6 +167,15 @@
 			(select buyerId from favorite where sellerCRN = #{sellerCRN})
 		group by 
 			b.buyerPhone
+	</select>
+	
+	<select id="buyer_id" parameterType="String" resultType="Buyer">
+		select 
+			buyerId 
+		from 
+			FAVORITE 
+		where 
+			sellerCRN = #{sellerCRN}
 	</select>
 	
 </mapper>

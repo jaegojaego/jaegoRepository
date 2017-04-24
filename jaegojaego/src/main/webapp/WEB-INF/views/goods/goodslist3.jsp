@@ -84,19 +84,20 @@
 							goodsCode:goodscode,
 							goodsQuantity:beforeQuantity
 						}, 
-						success:function(){
-							location.href="goodslist";
-							
-							alert("!!!!!");
+						success:function(content){
+							var jsonContent = JSON.parse(content);
+							dosendcontent(jsonContent);
+							//alert("!!!!!");
 							doSend();
+						},
+						error:function(e){
+							alert("왜??"+e);
+							console.log(e);
 						}
 					});
 					
 					var goodsname = $('.goodsname').eq(index).text();
 					var goodsprice = $('.goodsprice').eq(index).text();
-
-					
-
 					
 					$.ajax({
 						type:"GET",
@@ -106,12 +107,12 @@
 							salesQuantity:ninus,
 							salesPrice:goodsprice,
 							salesName:goodsname
-						}, 
-
+						}
+/* 
 						success:function(){
 							location.href="goodslist3";
 //							doSend();
-						}
+						} */
 					});
 				}
 			});
@@ -264,7 +265,7 @@
         		dosend();
         	}
            
-            var wsUri = "ws://203.233.196.93:8888/web/echo.do";
+            var wsUri = "ws://203.233.196.92:8889/web/echo.do";
            
             function init() {
 				output = document.getElementById("output");
@@ -367,6 +368,16 @@
 				/*///////////////////////////////////////////////////////////////////  */
 
             }
+			
+			function dosendcontent(content){
+				alert("dosendcontent(고객아이디들) : " + content.buyer_id);
+				var message={};
+				message.message = content.shopname;
+				message.to = content.buyer_id;
+				alert(JSON.stringify(message));
+				websocket.send(JSON.stringify(message));
+			}
+			
 			function writeToScreen(message) {						//메세지를 화면에 띄워줌...
 				var pre = document.createElement("p");
 				pre.style.wordWrap = "break-word";

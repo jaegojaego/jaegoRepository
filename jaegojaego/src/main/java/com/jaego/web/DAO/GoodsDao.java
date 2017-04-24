@@ -38,9 +38,9 @@ public class GoodsDao {
 			return goods;
 		}
 		//수정시 모든목록
-		public Goods select(String codenum){
+		public Goods select(String goodsCode){
 			GoodsMapper mapper= sqlsession.getMapper(GoodsMapper.class);
-			Goods goods=mapper.select(codenum);
+			Goods goods=mapper.select(goodsCode);
 			return goods;
 			
 		}
@@ -109,5 +109,11 @@ public class GoodsDao {
 		public ArrayList<Buyer>phone(String sellerCRN){
 			GoodsMapper mapper = sqlsession.getMapper(GoodsMapper.class);
 			return mapper.phone(sellerCRN);
+		}
+		
+		//관심매장 추가한 고객 ID 가져오기
+		public ArrayList<Buyer> buyer_id(String sellerCRN){
+			GoodsMapper mapper = sqlsession.getMapper(GoodsMapper.class);
+			return mapper.buyer_id(sellerCRN);
 		}
 }
