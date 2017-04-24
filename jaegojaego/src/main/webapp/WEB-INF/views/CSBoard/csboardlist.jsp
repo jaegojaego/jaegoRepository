@@ -797,8 +797,6 @@
     </div>
 </div>
 
-
-
 <div class="content-wrap">
     <!-- main page content. the place to put widgets in. usually consists of .row > .col-md-* > .widget.  -->
     <main id="content" class="content" role="main">

@@ -9,7 +9,7 @@
 	<script>
 	function tttest() {
 		alert('어찌하스까이이');
-		location.href='goodslist3';
+		location.href='goodslist4';
 	}
 	///web/goodslist3
 	</script>
@@ -801,39 +801,7 @@
 	<main id="content" class="content" role="main">
 <%--================================================================================================================================================--%>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <script type="text/javascript" src="./resources/js/jquery-3.1.1.js"></script>
-
-
-
-
-
-
-
-
-
 <script type="text/javascript">
 
 	$(function() {
@@ -1034,13 +1002,6 @@
 
 
 
-
-
-
-
-
-
-
 <%--20170422 박진우 박시원 웹소켓 테스트============================================= --%>
  <script type="text/javascript">
 	/* 		
@@ -1192,6 +1153,10 @@
 			window.addEventListener("load", init, false);
         </script>
 <%--=========================================================================== --%>
+        <ol class="breadcrumb">
+            <li>현재 위치</li>
+            <li class="active">고객 상담</li>
+        </ol>
 
 
 
@@ -1203,17 +1168,33 @@
 
 
 
-	<div class="content-wrap">
-		<main id="content" class="content" role="main">
 
-		<ol class="breadcrumb">
-			<li>YOU ARE HERE</li>
-			<li class="active">Goods List</li>
-		</ol>
 
-		<h1 class="page-title">
-			Tables - <span class="fw-semi-bold">상품 목록 </span>
-		</h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<h1 class="page-title">Tables - <span class="fw-semi-bold">상품 목록 </span></h1>
 
 		<div class="row">
 			<div class="col-md-12">
@@ -1287,6 +1268,14 @@
 			</div>
 		</div>
 		<input type="hidden" id="sellerCRN" value="${sessionScope.sellerCRN}">
+
+
+
+
+
+
+
+
 
 
 
