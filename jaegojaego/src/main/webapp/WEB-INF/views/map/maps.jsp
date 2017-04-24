@@ -1,54 +1,62 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 5 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
 <script type="text/javascript" src="./resources/js/jquery-3.1.1.js"> </script>
+<link rel="stylesheet" href="./resources/css/jquery.toast.min.css" />
+<script type="text/javascript" src="./resources/js/jquery.toast.js"></script>
+<script type="text/javascript" src="./resources/js/jquery.toast.min.js"></script>     
+
 <script type="text/javascript" src="./resources/js/function.js"> </script>
-<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=58be92da2825bdc2b27886ae673b8712&libraries=services"></script>
+<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=98b5ff77fd0570ce46f2ef84207626b0&libraries=services"></script>
 <script>
    
    $(function(){
-   
-	   var adrr;
-	   var flag = [];
-	   
-	   navigator.geolocation.getCurrentPosition( function(pos) {
-	         var latitude = pos.coords.latitude;
-	         var longitude = pos.coords.longitude;
-	         
-	         adrr = "부천시"; //무조건 검색이 되어야 받아오는거라서 부천시라고 임의로 지정해둠 
-	         flag = [latitude,longitude];
-	         a(adrr,flag);
-       
-       });  
+   	
+	  var CRN;
+      var adrr = "삼성동";
+      console.log(adrr);
+      var flag = [];
+      var sellertob;
+      a(adrr,flag,sellertob);
       
+      
+      
+/*       navigator.geolocation.getCurrentPosition( function(pos) {
+            var latitude = pos.coords.latitude;
+            var longitude = pos.coords.longitude;
+            
+            adrr = "부천시"; //무조건 검색이 되어야 받아오는거라서 부천시라고 임의로 지정해둠 
+            flag = [latitude,longitude];
+            console.log(flag);
+            a(adrr,flag,sellertob);
+       
+       });   */
+      $(".tob").on("click",function(){
+      
+        sellertob = $(this).text();
+        a(adrr,flag,sellertob);
+      });
       
       
       $("li li").on("click",function(){
          adrr = $(this).text();
-         flag = null;
-         a(adrr,flag);
+         a(adrr,flag,sellertob);
       
       });
    
       $("#btn1").on("click",function(){
          adrr = $("#adr").val(); //클래스를 찾자
-         flag = null;
-         a(adrr,flag);
+         a(adrr,flag,sellertob);
 
       });
       
-   /*    $("#abcd").on("click",function(){
-         alert();
-         //$(".class").attr("abc");
-      }); */
-
            
-      function a(adrr,flag){
+      function a(adrr,flag,sellertob){
       var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
           mapOption = {
               center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
@@ -66,18 +74,18 @@
 
           // 정상적으로 검색이 완료됐으면 
            if (status === daum.maps.services.Status.OK) {
-        	   var coords;
-        	   if(flag==null){
-        		   coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
-        	   }else{
-        		 coords = new daum.maps.LatLng(flag[0],flag[1]);
-        	   }
+              var coords;
+                 coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
+
               // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
               map.setCenter(coords);
               
               $.ajax({//type필수임
                   type : "get",   //RequestMethod Type
                   url: "Shoplist", //RequestMapping value
+                  data: {
+                     sellerTOB:sellertob
+                  },
                   success : function(data){
                      mdata(data);
                      
@@ -197,10 +205,10 @@
                             '      <div class="body">' + 
                             '      <div class="img"><div class="img2">' +
                             '      <img src="shopimg?sellerCRN='+position.CRN+'" width="120" height="130"></img>' +
-                            '      </div> <div class="shopinfo" width="180">가게설명:'+position.shopaddress+'<br><h3>관심매장추가</h3><img src="./resources/image/picture.png" width="20px" height="20px" class="addshop"><div class="star" style="width=20px;">별점</div></div></div>' + 
+                            '      </div> <div class="shopinfo" width="180">가게설명:'+position.shopaddress+'<br><div class="messagestatus">123456789</div><h3 class="addshop"><관심매장추가></h3><div class="star" style="width=20px;">별점</div></div></div>' + 
                             '      <div class="desc">' + 
 
-                            '<div class="goodsinfo" style="overflow-y:scroll">'+
+                            '<div class="goodsinfo" id="'+position.CRN+'" style="overflow-y:scroll">'+
                             '<table><tr><th>상품명</th><th>상품가격</th><th>상품개수</th><th>이미지보기</th></tr>';
                             
                             for (var i = 0, len = glist.length; i < len; i++) {
@@ -213,14 +221,13 @@
                             
                             content += '</table></div></div>' + 
                             '           </div>' + 
-                            '        <div><댓글목록></div><div class="comments"></div><div><select class="starcheck"><option value="1">★</option><option value="2">★★</option>'+
-                            '<option value="3">★★★</option><option value="4">★★★★</option><option value="5">★★★★★</option></select><input type="text" class="comment"><input type="button" class="bnt" value="입력"></div></div>' + 
+                            '        <div class="comments" style="background-color: pink;overflow-y:scroll;margin:auto; border: 1px solid #ddd;width:289px; height:100px;"></div><div align="center" style="background-color: black;width:289px;margin:auto;"><select class="starcheck" align="center"><option value="1">★</option><option value="2">★★</option>'+
+                            '<option value="3">★★★</option><option value="4">★★★★</option><option value="5">★★★★★</option></select><input type="text" class="comment" style="width:152px"><input type="button" class="bnt" value="입력"></div></div>' + 
                             
                             '    </div>' +    
                             '</div> <div class="goodsimg"></div>';
                             
-                           
-                            
+                   
                        
                             overlay = new daum.maps.CustomOverlay({
                                 clickable: true,
@@ -266,27 +273,27 @@
                                                                                     
                                          },
                                          
-                                 		success:function(data){
-                                 	
-                                 		
-                                 			var starsss;
-                            				 if(data<=1){
-                            					 starsss = "★☆☆☆☆";
-                            				 }else if(data<=2){
-                            					 starsss = "★★☆☆☆"
-                            				 }else if(data<=3){
-                            					 starsss = "★★★☆☆"
-                            				 }else if(data<=4){
-                            					 starsss = "★★★★☆"
-                            				 }else if(data<=5){
-                            					 starsss = "★★★★★"
-                            				 }
-                            				 
-                            				$(".star").html("별점:"+starsss);
-                                 		},                       		
-                                 		error:function(e){
-                                 			console.log(e);
-                                 		}
+                                       success:function(data){
+                                    
+                                       
+                                          var starsss;
+                                         if(data<=1){
+                                            starsss = "★☆☆☆☆";
+                                         }else if(data<=2){
+                                            starsss = "★★☆☆☆"
+                                         }else if(data<=3){
+                                            starsss = "★★★☆☆"
+                                         }else if(data<=4){
+                                            starsss = "★★★★☆"
+                                         }else if(data<=5){
+                                            starsss = "★★★★★"
+                                         }
+                                         
+                                        $(".star").html("별점:"+starsss);
+                                       },                             
+                                       error:function(e){
+                                          console.log(e);
+                                       }
                                  });
                                 
                                 $.ajax({//type필수임
@@ -297,22 +304,22 @@
                                                                                     
                                          },
                                          
-                                 		success:function(data){
-                                 			
-                                 			var htm = "";
-                                 				htm += '<div style="overflow-y:scroll; height: 100px;"><table><tr><th>작성자</th><th>댓글</th><th>별점</th></tr>';
-                                 		
-                                 			$.each(data,function(index,item){                                 				
-                                 					htm += '<tr><td>'+item.buyerId+'</td><td>'+item.ment+'</td><td>'+item.stars+'</td></tr>';
-
+                                       success:function(data){
+                                          
+                                          var htm = "<댓글보기>";
+                                             htm += '<table><tr><th>작성자</th><th>댓글</th></tr>';
+                                       
+                                          $.each(data,function(index,item){                                             
+                                                htm += '<tr><td>'+item.buyerId+'</td><td>'+item.ment+'</td></tr>';
+											
                                               }); 
-                                 			
-                                 				htm += '</table></div>';
-                                 				 $(".comments").html(htm);
-                                 		},                       		
-                                 		error:function(e){
-                                 			console.log(e);
-                                 		}
+                                          
+                                             htm += '</table>';
+                                              $(".comments").html(htm);
+                                       },                             
+                                       error:function(e){
+                                          console.log(e);
+                                       }
                                  });
                                 
                                 
@@ -321,39 +328,46 @@
                                 
                                 
                                 var nostar;
+                                var addcomment;
                                 
+                                var id0 = $('.goodsinfo').attr('id');
+                                console.log(id0);
+                                if(CRN==id0){
+                                	alert("값이 들어왔음");
+                                }
                                 
-                                
+                  
                                 //////////////////////////////////////////////
                                 $(".bnt").on("click",function(){
-                                	
-                                	
-                                	var addcomment = $(".comment").val();
-                                	if(addcomment==""){
-                                		alert("내용을 입력해주세요");
-                                		return false;
-                                	}
-                                	///////////////////////////////////////
-                                	$.ajax({//type필수임
+                                 
+                                   
+                                   addcomment = $(".comment").val();
+                                   if(addcomment==""){
+                                      alert("내용을 입력해주세요");
+                                      return false;
+                                   }
+                                   ///////////////////////////////////////
+                       /*             $.ajax({//type필수임
                                          type : "get",   //RequestMethod Type
                                          url: "nostar", //RequestMapping value
                                          data:{
                                             sellerCRN:position.CRN
                                          },
                                          
-                                 		success:function(data){
-                                 			if(data!=0){
-                                 				return false;
-                                 			}
-                                 		},                       		
-                                 		error:function(e){
-                                 			console.log(e);
-                                 		}
+                                       success:function(data){
+                                          if(data!=0){
+                                             return false;
+                                          }
+                                       },                             
+                                       error:function(e){
+                                          console.log(e);
+                                       }
                                  });
-                                	
-                                	
-                                	//////////////////////////////////////
-                                	var starss = $(".starcheck").val();
+                                    */
+                                   
+                                   //////////////////////////////////////
+                                   var starss = $(".starcheck").val();
+                                   
                              
                                      $.ajax({//type필수임
                                          type : "get",   //RequestMethod Type
@@ -366,39 +380,40 @@
                                             
                                          },
                                          
-                                 		success:function(data){
-                                 			console.log(data.star);
-                                 			var htm = "";
-                                 				htm += '<div style="overflow-y:scroll; height: 100px;"><table><tr><th>작성자</th><th>댓글</th></tr>';
-                                 		
-                                 			$.each(data.gradelist,function(index,item){                                 				
-                                 					htm += '<tr><td>'+item.buyerId+'</td><td>'+item.ment+'</td></tr>';
+                                       success:function(data){
+                                          console.log(data.star);
+                                          var htm = "<댓글보기>";
+                                             htm += '<table><tr><th>작성자</th><th>댓글</th></tr>';
+                                       
+                                          $.each(data.gradelist,function(index,item){                                             
+                                                htm += '<tr><td>'+item.buyerId+'</td><td>'+item.ment+'</td></tr>';
 
                                               }); 
-                                 			
-                                 				htm += '</table></div>';
-                                 				 $(".comments").html(htm);
-                                 				 
-                                 				 var starsss;
-                                 				 if(data.star<=1){
-                                 					 starsss = "★☆☆☆☆";
-                                 				 }else if(data.star<=2){
-                                 					 starsss = "★★☆☆☆"
-                                 				 }else if(data.star<=3){
-                                 					 starsss = "★★★☆☆"
-                                 				 }else if(data.star<=4){
-                                 					 starsss = "★★★★☆"
-                                 				 }else if(data.star<=5){
-                                 					 starsss = "★★★★★"
-                                 				 }
-                                 				 
-                                 				$(".star").html("별점:"+starsss);
-                                 				alert("등록완료");
-                                 				$(".comment").val("");
-                                 		},                       		
-                                 		error:function(e){
-                                 			
-                                 		}
+                                          
+                                             htm += '</table>';
+                                              $(".comments").html(htm);
+                                              
+                                              var starsss;
+                                              if(data.star<=1){
+                                                 starsss = "★☆☆☆☆";
+                                              }else if(data.star<=2){
+                                                 starsss = "★★☆☆☆"
+                                              }else if(data.star<=3){
+                                                 starsss = "★★★☆☆"
+                                              }else if(data.star<=4){
+                                                 starsss = "★★★★☆"
+                                              }else if(data.star<=5){
+                                                 starsss = "★★★★★"
+                                              }
+                                              
+                                             $(".star").html("별점:"+starsss);
+                                             alert("등록완료");
+                                             $(".comment").val("");
+                                             
+                                       },                             
+                                       error:function(e){
+                                          
+                                       }
                                  });
                                   
                                 
@@ -407,7 +422,7 @@
                                 }); 
                                 
                                 $(".addshop").on("click",function(){
-                                	///
+                                   ///
                               
                                     $.ajax({//type필수임
                                         type : "get",   //RequestMethod Type
@@ -416,14 +431,14 @@
                                            sellerCRN:position.CRN
                                         },
                                         
-                                		success:function(data){
-                                				alert(JSON.stringify(data));
-                                			},                       		
-                                		error:function(e){
-                                			console.log(e);
-                                		}
+                                      success:function(data){
+                                            alert(JSON.stringify(data));
+                                         },                             
+                                      error:function(e){
+                                         console.log(e);
+                                      }
                                 });
-						  });
+                    });
                                 
                             });
                         },
@@ -450,15 +465,156 @@
           } 
       });    
       }
-
-   // 
+   /////////////////////////////////////////////////////////////////////////////////
+   
    });
 </script>
 
-<style>
-    .wrap {position: absolute;left: 0;bottom: 40px;width: 303px;height: 500px;margin-left: -150px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
+<!--//////////////////////////////////////////////////////////////////////////////////////  -->
 
-    .wrap .info {width: 303px;height: 500px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: white;}
+
+
+
+
+
+
+        <script type="text/javascript">
+        
+        	
+        	//내가 만든 function
+        	
+			function client(evt){
+//진우 주석				alert(evt);
+//진우 주석				alert(evt.data);
+				        		
+				var gaek = JSON.parse(evt.data);
+				
+				var storeid = gaek.storeid;
+				var goodsid = gaek.goodsid;
+				        		
+//진우 주석		alert("가게 : " + storeid);
+//진우 주석		alert("품목 : " + goodsid);
+				
+				
+				
+				
+				
+				
+//----------------------------------------------------------------------                
+//				alert("테스트 메소드1");
+//				var message2 = "<img sytle='width:20px;' src='resources/img/message.png'> ";
+				var message2 = "<h5>tttest<h5> ";
+				//var inner = $(".messagestatus").html();
+				
+				var crn2 = $(".goodsinfo").attr("id");
+				if(crn2==storeid) {
+					$(".desc").html(goodsid);
+				}
+//----------------------------------------------------------------------	
+				
+				
+				
+				
+				
+				
+			}
+        	
+			function seller(){
+				//뭐시기뭐시기뭐시기 dosend;        		
+				dosend();	
+			}
+           
+			var wsUri = "ws://203.233.196.93:8888/web/echo.do";
+           
+			function init() {				//yc>이게 시작이 되는가? 왜 이게 시작이 되지?  ->> 아마 socket 핸들러에서 보낸거가  여기로 들어오는듯..
+				output = document.getElementById("output");
+				websocket = new WebSocket(wsUri);									//yc>본인소켓주소인가..
+				websocket.onopen = function(evt) {										
+					onOpen(evt) 					//여기에는 뭐가들어오는거지..
+				};
+			}
+           function send_message() {						//q>중간에 evt가 사라진게..좀 send_message(없어졌는데);
+				websocket.onmessage = function(evt) {
+					onMessage(evt)						//여기지우면뭐보냈는지 안띄움  pf>받은 메세지는 여기 들어오는거다..
+				};
+				websocket.onerror = function(evt) {
+					onError(evt)
+				};
+			}
+           
+           
+            function onOpen(evt) { //WebSocket 연결						
+                //writeToScreen("Connected to Endpoint!");    //여기에 들어오면 evt에서 값뺄수있음...
+                send_message();
+                               
+              
+            }
+            function onMessage(evt) { //메시지 수신
+               // writeToScreen("Message Received: " + evt.data);
+                          	
+            	client(evt);
+            	
+            	var message = JSON.parse(evt.data);
+            	var messagecontent = message.message;
+            	/* alert("message내용 : "+messagecontent); */
+            	var tomessage = message.to;
+            	/* alert("buyerid배열"+message.to); */
+            	
+            	var buyerid = document.getElementById("buyerid").value;
+            /* 	alert("hidden값 : "+buyerid); */
+            	for(var i = 0 ; i < tomessage.length ; i++){
+            		if (buyerid == tomessage[i].buyerId){
+            			console.log(tomessage[i].buyerId);
+            			/* alert(tomessage[i].buyerId); */
+            			 $.toast(messagecontent, {
+            			      duration: 50000
+            			 });
+            		}
+            	}
+            }
+            
+            function onError(evt) {  // 전송 에러 발생
+                writeToScreen('ERROR: ' + evt.data);
+            } 
+  /*           function doSend(str) {
+				//var message = document.getElementById("textID").value;
+            	//writeToScreen("Message Sent: " + message);
+            	//writeToScreen("뭐보내는지 표시하려고 ");
+            	
+            	var pk = {storeid : "커피가게", goodsid : "2잔"};
+            	
+            	
+            	var jsonstr = JSON.stringify(pk);
+            	
+            	
+                websocket.send(jsonstr); // 스트링 배열만들어서 보내면 되겠네...
+                
+                
+                
+                //websocket.close();
+            } */
+            function writeToScreen(message) {						//메세지를 화면에 띄워줌...
+                var pre = document.createElement("p");
+                pre.style.wordWrap = "break-word";
+                pre.innerHTML = message;
+                
+                output.appendChild(pre);
+            }
+            window.addEventListener("load", init, false);
+        </script>
+
+
+
+
+
+
+
+<!--//////////////////////////////////////////////////////////////////////////////////////   -->
+
+<style>
+    .wrap {position: absolute;left: 0;bottom: 40px;width: 303px;height: 450px;margin-left: -150px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
+
+    .wrap .info {width: 303px;height: 450px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: white;}
     .wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
     .info .title {padding: 5px 0 0 10px;height: 30px;background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
     .info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
@@ -468,7 +624,7 @@
     .shopinfo {position: absolute;left: 120px;text-overflow: shopinfo;background:white;}
     .desc .goodsinfo {top: 6px;left: 5px;text-overflow: goodsinfo;background:pink;width: 289px;height: 130px;border: 1px solid #ddd;color: #888;}
     .info .img2 {position: absolute;width: 120px;height: 130px;overflow: hidden;}
-    .info .img {position: absolute;top: 6px;left: 6px;width: 289px;height: 130px;border: 1px solid #ddd;color: #888;overflow: hidden;background:green;}
+    .info .img {position: absolute;top: 6px;left: 6px;width: 289px;height: 130px;border: 1px solid #ddd;color: #888;overflow: hidden;background:gray;}
    .prd_box {position:relative;} 
    .prd_over {position:absolute; width:100%; height:50px; top:95px; bottom:0; left:0; opacity:0; background:url('/shop/data/skin/apple_tree_C/img/djds/etc/prd_over.png') 0 0 no-repeat;}    
    .thth {position:relative; display:inline-block}
@@ -489,23 +645,21 @@
 
 <div id="wrap">
     <header>
-        <div class="inner relative">
-            <a class="logo" href="https://www.freshdesignweb.com"><img src="images/logo.png" alt="fresh design web"></a>
+        <div class="inner relative"><div style="top:10px; height:30px; background-color: black"><a class="tob">카페</a><br><a class="tob">베이커리</a><br><a class="tob">식당</a>
            <nav id="navigation">
                 <ul id="main-menu">
                     <li class="parent">
-
+            
                         <a href="home">지역선택</a>   
                   <지역검색>
 <input type="text" id="adr">
 <input type="button" name="" id="btn1" value="직접검색">
 
-                  
-                  
+                     
                   
                         <ul class="sub-menu">
 
-                            <li>서울특별시</li>
+                            <li>서울특별시${custid }</li>
                             <li>경기도</li>                           
                             <li>인천광역시</li>
                             <li>부산광역시</li>
@@ -526,9 +680,10 @@
             </nav>
 
     </header>
+    </div>
 </div>
 <div id="map" style="width:100%;height:700px;"></div>
-
+<input type="hidden" id = "buyerid" value="${custid }">
 
 <div id="sellergoods" style="width:100%;height:300px;"></div>
 
