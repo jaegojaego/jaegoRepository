@@ -488,6 +488,7 @@
 //진우 주석				alert(evt.data);
 				        		
 				var gaek = JSON.parse(evt.data);
+				console.log(gaek);
 				
 				var storeid = gaek.storeid;
 				var goodsid = gaek.goodsid;

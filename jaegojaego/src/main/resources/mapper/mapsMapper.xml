@@ -38,8 +38,8 @@
 			goodsDateOfUpload,
 			goodsDateOfUpdate,
 			goodsStatus
-		from goods
-		where sellerCRN=#{sellerCRN}<!--  and goodsStatus='on' -->
+		from goods<![CDATA[
+		where sellerCRN=#{sellerCRN} and goodsStatus='on']]>
 			
 	</select>
 	

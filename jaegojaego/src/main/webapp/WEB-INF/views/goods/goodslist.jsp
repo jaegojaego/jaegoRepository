@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -9,7 +9,7 @@
 	<script>
 	function tttest() {
 		alert('어찌하스까이이');
-		location.href='goodslist4';
+		location.href='goodslist';
 	}
 	///web/goodslist3
 	</script>
@@ -851,6 +851,7 @@
 							goodsQuantity:beforeQuantity
 						}, 
 						success:function(content){
+							
 							var jsonContent = JSON.parse(content);
 							dosendcontent(jsonContent);
 							//alert("!!!!!");
@@ -873,12 +874,17 @@
 							salesQuantity:ninus,
 							salesPrice:goodsprice,
 							salesName:goodsname
-						}
-/* 
+						},
+ 							
 						success:function(){
-							location.href="goodslist3";
-//							doSend();
-						} */
+							alert("aaa");
+							doSend();
+							location.href="goodslist";
+							
+						},
+						error:function(e){
+							alert("오류임");
+						}
 					});
 				}
 			});
@@ -951,7 +957,9 @@
 							goodsStatus:btnstatus
 						},
 						success: function(){
+							doSend();
 							location.href="goodslist";
+							
 						}
 					});
 			 }else{
@@ -968,6 +976,7 @@
 							goodsStatus:btnstatus
 						},
 						success: function(){
+							doSend();
 							location.href="goodslist";
 						}
 				});
@@ -1018,7 +1027,7 @@
         	
         	function seller(){
         		//뭐시기뭐시기뭐시기 dosend;        		
-        		dosend();
+        		doSend();
         	}
            
             var wsUri = "ws://203.233.196.93:8888/web/echo.do";

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script src="resources/jquery-3.1.1.min.js"></script>
+<script src="./resources/js/jquery-3.1.1.js"></script>
 <title>Insert title here</title>
 <script>
 /* function sendIt(){
