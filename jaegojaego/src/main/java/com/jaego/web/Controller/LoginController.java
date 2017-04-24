@@ -49,7 +49,7 @@ public class LoginController {
 				session.setAttribute("name", seller.getSellerName());
 				session.setAttribute("sellerCRN", seller.getSellerCRN());
 				session.setAttribute("type", "작성자");
-				return "redirect:/";
+				return "redirect:/home2";
 			} else {										//실패
 				model.addAttribute("loginErr","로그인 정보가 틀렸습니다.");		//에러 메시지를 띄우고 싶다면 Model 사용
 				return "SellerLoginForm";
@@ -70,7 +70,7 @@ public class LoginController {
 				session.setAttribute("custid", seller.getBuyerId());
 				session.setAttribute("name", seller.getBuyerName());
 				session.setAttribute("type", "구매자");
-				return "redirect:/";
+				return "redirect:/home2";
 			} else {										//실패
 				model.addAttribute("loginErr","로그인 정보가 틀렸습니다.");		//에러 메시지를 띄우고 싶다면 Model 사용
 				return "BuyerLoginForm";

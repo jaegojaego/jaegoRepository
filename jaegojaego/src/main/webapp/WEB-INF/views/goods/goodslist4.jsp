@@ -99,7 +99,7 @@
                 </ul>
             </li>
 
-            <li>
+            <li class="active">
                 <!-- an example of nested submenu. basic bootstrap collapse component -->
                 <a href="" <%--data-toggle="collapse" data-parent="#sidebar"--%> onclick="tttest()">
                     <span class="icon">
@@ -144,7 +144,7 @@
 
 
 
-            <li class="active">
+            <li>
                 <a href="/web/csboardlist">
                     <span class="icon">
                         <i class="glyphicon glyphicon-user"></i>
