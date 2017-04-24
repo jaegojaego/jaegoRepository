@@ -47,6 +47,12 @@ public class mapsController {
 		return Goodslist;
 	}
 	
+	@RequestMapping(value="map1", method=RequestMethod.GET)
+	public String map1(){
+		
+		return "map/maps";
+	}
+	
 	@RequestMapping(value="shopimg", method=RequestMethod.GET)
 	public String download(String sellerCRN,HttpServletResponse response){
 		String uploadPath = "/sellerImg";

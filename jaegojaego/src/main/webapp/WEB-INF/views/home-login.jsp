@@ -39,7 +39,7 @@ html{
 <body>
 <header class="site__header island">
   <div class="wrap">
-   <span id="animationSandbox" style="display: block;"><h1 class="site__title mega wf-nicomoji">さいごのザイコ</h1></span>
+   <span id="animationSandbox" style="display: block;"><h1 class="wf-nicomoji" style="color: #f35626">LOGIN</h1></span>
   </div>
 </header><!-- /.site__header -->
 
@@ -47,12 +47,12 @@ html{
    <hr />
   <div class="wrap">
     <form>
-      <button class="butt js--triggerAnimation" style="background-color: white"><a href="homejoin" class="russo" style="text-decoration: none;">JOIN</a></button>
-      <button class="butt js--triggerAnimation" style="background-color: white"><a href="homelogin" class="russo" style="text-decoration: none;">LOGIN</a></button>
+      <button class="butt js--triggerAnimation" style="background-color: white"><a href="SellerLoginForm" class="russo" style="text-decoration: none;">판매자</a></button>
+      <button class="butt js--triggerAnimation" style="background-color: white"><a href="BuyerLoginForm" class="russo" style="text-decoration: none;">구매자</a></button>
     </form> 
 
-    <p class="meta">SC IT マスター 32期  <a>ゆくゆく</a> </p>
-    <p><small>coolpark93@gmail.com</small></p>
+    <p class="meta"><a href="/">HOME</a> </p>
+
   </div>
 </main><!-- /.site__content -->
 

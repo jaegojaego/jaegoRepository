@@ -32,6 +32,9 @@ input, select, button, textarea {
   border-radius: 4px;
 }
 
+
+
+
   .butt:focus, .input:focus {
     outline: none;
   }
