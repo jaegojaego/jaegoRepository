@@ -107,32 +107,27 @@ public class goodsController {
 		// String sellerCRN=(String) session.getAttribute("0000");
 		String sellerId = (String)session.getAttribute("custid");
 		String sellerCRN = dao.sellerCRN(sellerId);
+		System.out.println("sellerCRN : "+sellerCRN);
 				//String codenum="R3QncP8f";
 				//goods.setGoodsCode(codenum);
 		String codenum=goods.getGoodsCode();
-		System.out.println(codenum);
+		System.out.println("goodscode :"+codenum);
 		System.out.println("수정된 상품 : " + goods);
 		//기존에첨부파일있다면 기존에파일을지우는것
 		//새로파일을 작성
 		String savefile = dao.select(codenum).getGoodsSimage();
 		if(!upload.isEmpty()){
-
 			//업로드된 파일삭제
-			
 			FileService.deleteFile(uploadPath+"/"+savefile);//upload 실제 저장된경로 savefile파일이름과 확장자
-		
-		
 			savefile = FileService.saveFile(upload, uploadPath);
-	
 			goods.setGoodsOimage(upload.getOriginalFilename());
 			goods.setGoodsSimage(savefile);
-
 		}
-		
+		goods.setSellerCRN(sellerCRN);
+		System.out.println("최종 수정"+goods);
 		dao.updateGoods(goods);
 		ArrayList<Goods> result = dao.list(sellerCRN);
 		model.addAttribute("list",result);
-		
 		return "redirect:goodslist";
 	}
 	
