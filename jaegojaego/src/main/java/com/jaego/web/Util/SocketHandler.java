@@ -36,9 +36,9 @@ public class SocketHandler extends TextWebSocketHandler{
              connectedUsers.remove(session);
              
              for(WebSocketSession webSocketSession : connectedUsers){
-                if(!session.getId().equals(webSocketSession.getId())){
-                   webSocketSession.sendMessage(new TextMessage(session.getRemoteAddress().getHostName() + "퇴장했습니다."));
-                }
+            	 if(!session.getId().equals(webSocketSession.getId())){
+            		 webSocketSession.sendMessage(new TextMessage(session.getRemoteAddress().getHostName() + "퇴장했습니다."));
+            	 }
              }
        }
        
