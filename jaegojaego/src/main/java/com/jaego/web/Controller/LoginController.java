@@ -85,5 +85,17 @@ public class LoginController {
 		session.removeAttribute("name");
 		return "redirect:/";	
 	}
-
+	
+	//JOIN선택창
+	@RequestMapping(value="homejoin", method=RequestMethod.GET)
+	public String homejoin(){	
+		return "home-join";
+	}
+	
+	//로그인선택창
+	@RequestMapping(value="homelogin", method=RequestMethod.GET)
+	public String homelogin(){	
+		return "home-login";
+	}
+	
 }
