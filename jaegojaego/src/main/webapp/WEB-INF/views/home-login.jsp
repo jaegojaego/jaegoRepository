@@ -39,7 +39,7 @@ html{
 <body>
 <header class="site__header island">
   <div class="wrap">
-   <span id="animationSandbox" style="display: block;"><h1 class="wf-nicomoji" style="color: #f35626">LOGIN</h1></span>
+   <span id="animationSandbox" style="display: block;"><h1 class="wf-nicomoji" style="color: #4641D9;">LOGIN</h1></span>
   </div>
 </header><!-- /.site__header -->
 
@@ -47,8 +47,8 @@ html{
    <hr />
   <div class="wrap">
     <form>
-      <button class="butt js--triggerAnimation" style="background-color: white"><a href="SellerLoginForm" class="russo" style="text-decoration: none;">판매자</a></button>
-      <button class="butt js--triggerAnimation" style="background-color: white"><a href="BuyerLoginForm" class="russo" style="text-decoration: none;">구매자</a></button>
+      <button class="butt2" style="background-color: white;"><a href="SellerLoginForm" class="russo" style="text-decoration: none;">판매자</a></button>
+      <button class="butt2" style="background-color: white;"><a href="BuyerLoginForm" class="russo" style="text-decoration: none;">구매자</a></button>
     </form> 
 
     <p class="meta"><a href="/">HOME</a> </p>

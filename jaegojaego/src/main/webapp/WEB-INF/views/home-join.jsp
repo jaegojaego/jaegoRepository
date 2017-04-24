@@ -47,8 +47,8 @@ html{
    <hr />
   <div class="wrap">
     <form>
-      <button class="butt js--triggerAnimation" style="background-color: white"><a href="sellerJoinForm" class="russo" style="text-decoration: none;">판매자</a></button>
-      <button class="butt js--triggerAnimation" style="background-color: white"><a href="buyerJoinForm" class="russo" style="text-decoration: none;">구매자</a></button>
+      <button class="butt3" style="background-color: white"><a href="sellerJoinForm" class="russo" style="text-decoration: none;">판매자</a></button>
+      <button class="butt3" style="background-color: white"><a href="buyerJoinForm" class="russo" style="text-decoration: none;">구매자</a></button>
     </form> 
 
     <p class="meta"><a href="/">HOME</a> </p>
