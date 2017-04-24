@@ -31,6 +31,7 @@
 <script src="./resources/bootstrap/js/tables-dynamic.js"></script>
 <script src="./resources/bootstrap/js/tables-basic.js"></script>
 
+<script type="text/javascript" src="./resources/js/goodlist_websocket.js"></script> <!-- chating -->
 <script type="text/javascript" src="./resources/js/jquery-3.1.1.js"></script>
 <script type="text/javascript">
 	$(function() {
@@ -70,8 +71,13 @@
 							goodsCode:goodscode,
 							goodsQuantity:beforeQuantity
 						}, 
-						success:function(){
-							location.href="goodslist";
+						success:function(content){
+							var jsonContent = JSON.parse(content);//string을 진짜?json형태로
+							dosendcontent(jsonContent);
+						},
+						error:function(e){
+							alert("왜??"+e);
+							console.log(e);
 						}
 					});
 					
@@ -86,9 +92,6 @@
 							salesQuantity:ninus,
 							salesPrice:goodsprice,
 							salesName:goodsname
-						}, 
-						success:function(){
-							location.href="goodslist";
 						}
 					});
 				}
@@ -196,16 +199,7 @@
 		$('.btnupdate').click(function(){
 			var index = $('.btnupdate').index(this);
 		    var goodscode = $(".goodscode:eq("+index+")").text();
-		    $.ajax({
-				type:"GET",
-				url:"goodsupdate",
-				data:{
-					goodsCode:goodscode,
-				},
-				success: function(){
-					location.href="goodsupdate";
-				}
-			});
+			location.href="goodsupdate?goodsCode="+goodscode;
 		});
 	})
 	

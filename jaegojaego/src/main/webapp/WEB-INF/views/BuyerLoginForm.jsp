@@ -66,7 +66,8 @@ function formCheck() {
                                 <input type="text" class="form-control" id="exampleInputEmail1" placeholder="구매자 ID" name="custid">
                             </div>
                             <div class="form-group">
-                                <input class="form-control" id="pswd" type="password" placeholder="구매자 비밀번호" name="password">
+                                <input class="form-control" id="pswd" type="password" placeholder="구매자 비밀번호" name="password"
+                                onkeypress="javascript:if(event.keyCode == 13){document.getElementById('form').submit();}">
                             </div>
                             <div class="clearfix">
                                 <div class="btn-toolbar pull-right">
