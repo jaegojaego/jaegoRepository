@@ -8,7 +8,7 @@
 
 	<script>
 	function tttest() {
-		alert('어찌하스까이');
+		alert('어찌하스까이이');
 		location.href='goodslist3';
 	}
 	///web/goodslist3
