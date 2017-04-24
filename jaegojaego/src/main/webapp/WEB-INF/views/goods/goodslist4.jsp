@@ -9,7 +9,7 @@
 	<script>
 	function tttest() {
 		alert('어찌하스까이');
-		location.href='goodslist4';
+		location.href='goodslist3';
 	}
 	///web/goodslist3
 	</script>
@@ -797,128 +797,513 @@
     </div>
 </div>
 
-
-
 <div class="content-wrap">
-    <!-- main page content. the place to put widgets in. usually consists of .row > .col-md-* > .widget.  -->
-    <main id="content" class="content" role="main">
-        <ol class="breadcrumb">
-            <li>현재 위치</li>
-            <li class="active">고객 상담</li>
-        </ol>
-        <h1 class="page-title">게시판 - <span class="fw-semi-bold">고객 상담</span></h1>
-<%--        <section class="widget">
-            <header>
-                <h4>
-                    Table <span class="fw-semi-bold">Styles</span>
-                </h4>
-                <div class="widget-controls">
-                    <div class="width-200">
-                        <div class="input-group input-group-sm input-group-transparent input-group-rounded">
-                            <span class="input-group-addon">
-                                <i class="fa fa-search"></i>
-                            </span>
-                            <input class="form-control " id="search-countries" type="text" placeholder="Search Countries">
-                        </div>
-                    </div>
-                </div>
-            </header>
-            <div class="widget-body">
-                <p>
-                    Editable, validatable, filterable and sortable table made with
-                    <a href="http://backgridjs.com/" target="_blank">Backgrid.js</a>
-                </p>
-                <div id="table-dynamic"></div>
-            </div>
-        </section>--%>
-        <section class="widget">
-            <header>
-<%--                <h4>Table <span class="fw-semi-bold">Styles</span></h4>--%>
-<%--                <div class="widget-controls">
-                    <a data-widgster="expand" title="Expand" href="#"><i class="glyphicon glyphicon-chevron-up"></i></a>
-                    <a data-widgster="collapse" title="Collapse" href="#"><i class="glyphicon glyphicon-chevron-down"></i></a>
-                    <a data-widgster="close" title="Close" href="#"><i class="glyphicon glyphicon-remove"></i></a>
-                </div>--%>
-            </header>
-            <div class="widget-body">
-                <p>
-                    기타 문의사항은 080-123-4567로 전화해주세요<br>
-                    <a href="csboardWriteForm">글쓰기 폼 이동</a>
-                </p>
-                <div class="mt">
-                    <table id="datatable-table" class="table table-striped table-hover">
-                        <thead>
-                        <tr>
-                            <th class="no-sort hidden-xs">번호</th>
-                            <th class="no-sort hidden-xs">제목</th>
-                            <th class="no-sort hidden-xs">분류</th>
-                            <th class="no-sort hidden-xs">이름</th>
-                            <th class="no-sort hidden-xs">조회수</th>
-                            <th class="no-sort hidden-xs">작성일시</th>
-                        </tr>
-                        </thead>
-                        <tbody>
+	<main id="content" class="content" role="main">
+<%--================================================================================================================================================--%>
 
 
 
 
 
-                        <c:forEach var="i" items="${csbList}">
-                        <tr>
-                            <td class="no-sort hidden-xs">${i.boardnum}</td>
-                            <td class="no-sort hidden-xs">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="./resources/js/jquery-3.1.1.js"></script>
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+	$(function() {
+		$('.bplus').click(function() {
+			var n = $('.bplus').index(this);
+			var num = $(".afterQ:eq(" + n + ")").val();
+			num = $(".afterQ:eq(" + n + ")").val(num * 1 + 1);
+		});
+		$('.bninus').click(function() {
+			var n = $('.bninus').index(this);
+			var num = $(".afterQ:eq(" + n + ")").val();
+			num = $(".afterQ:eq(" + n + ")").val(num * 1 - 1);
+		});
+	});
+
+	$(function() {
+		$('#check').click(function() {
+			
+			$.each($('.afterQ'), function(index,item) {
+
+				console.log($(this).val());
+				console.log($('.beforeQ').eq(index).text());
+				
+				///////////////////////////////////////////////////////
+				
+				
+ 				//alert(CRN);
+				//doSend();
+				
+				
+				//////////////////////////////////////////////////////////
+				
+				if($('.afterQ').eq(index).val() != $('.beforeQ').eq(index).text()){
+					
+					var ninus = $('.afterQ').eq(index).val()-$('.beforeQ').eq(index).text();
+					alert(ninus); 
+					
+					$('.beforeQ').eq(index).text($(this).val());
+					var goodscode = $('.goodscode').eq(index).text();
+					var beforeQuantity = $('.beforeQ').eq(index).text();
+					
+					$.ajax({
+						type:"GET",
+						url:"update",
+						data:{
+							goodsCode:goodscode,
+							goodsQuantity:beforeQuantity
+						}, 
+						success:function(content){
+							var jsonContent = JSON.parse(content);
+							dosendcontent(jsonContent);
+							//alert("!!!!!");
+							doSend();
+						},
+						error:function(e){
+							alert("왜??"+e);
+							console.log(e);
+						}
+					});
+					
+					var goodsname = $('.goodsname').eq(index).text();
+					var goodsprice = $('.goodsprice').eq(index).text();
+					
+					$.ajax({
+						type:"GET",
+						url:"insertsales",
+						data:{
+							salesCode:goodscode,
+							salesQuantity:ninus,
+							salesPrice:goodsprice,
+							salesName:goodsname
+						}
+/* 
+						success:function(){
+							location.href="goodslist3";
+//							doSend();
+						} */
+					});
+				}
+			});
+		});
+	});
+
+	$(function() {
+		$('#ninus').click(function() {
+			var checkbox = document.getElementsByName("checkbox");
+			var checkFlag = false;
+			for(var i = 0 ; i < checkbox.length ; i++){
+				if (checkbox[i].checked){
+					checkFlag = true;
+					break;
+				}
+			}
+			if(checkFlag == false){
+				alert("삭제할 항목을 선택해 주세요");
+				return false;
+			}
+			
+			var checkbox = $(".checkbox");
+			var goodscode = $(".goodscode");
+			$(".tr").each(function(index,item) {
+					var checked = checkbox.eq(index).prop("checked");
+					if(checked){
+						var delcode = goodscode.eq(index-1).text();
+						
+						$.ajax({
+							type:"GET",
+							url:"del",
+							data:{
+								goodsCode : delcode
+							},
+							success: function(){
+								console.log(delcode);
+								location.href="goodslist";
+							}
+						});
+					}
+			});
+		});
+	});
+	
+	$(function(){
+		$('#checkboxall').click(function(){
+			if($('#checkboxall').prop("checked")){
+				$('input[name=checkbox]').prop("checked",true);
+			}else{
+				$('input[name=checkbox]').prop("checked",false);
+			}
+		});
+	})
+	
+	$(function(){
+		$('.status').click(function(){
+			 if( $(this).val() == 'off' ) {
+			      $(this).val('on');
+			      
+			      var index = $('.status').index(this);
+			      
+			      var btnstatus = $(this).val();
+			      var goodscode = $(".goodscode:eq("+index+")").text();
+			      
+			      $.ajax({
+						type:"GET",
+						url:"updatestatus",
+						data:{
+							goodsCode:goodscode,
+							goodsStatus:btnstatus
+						},
+						success: function(){
+							location.href="goodslist";
+						}
+					});
+			 }else{
+			      $(this).val('off');
+				  var index = $('.status').index(this);
+			      var btnstatus = $(this).val();
+			      var goodscode = $(".goodscode:eq("+index+")").text();
+			      alert(index);
+			      $.ajax({
+						type:"GET",
+						url:"updatestatus",
+						data:{
+							goodsCode:goodscode,
+							goodsStatus:btnstatus
+						},
+						success: function(){
+							location.href="goodslist";
+						}
+				});
+			 }
+		});
+	})
+	
+	$(function() {
+		$('#plus').click(function() {
+			location.href = "goodsinsert";
+		});
+	})
+	
+	$(function(){
+		$('.btnupdate').click(function(){
+			var index = $('.btnupdate').index(this);
+		    var goodscode = $(".goodscode:eq("+index+")").text();
+		    $.ajax({
+				type:"GET",
+				url:"goodsupdate",
+				data:{
+					goodsCode:goodscode,
+				},
+				success: function(){
+					location.href="goodsupdate";
+				}
+			});
+		});
+	})
+	
+</script>
+
+
+
+
+
+
+
+
+
+
+<%--20170422 박진우 박시원 웹소켓 테스트============================================= --%>
+ <script type="text/javascript">
+	/* 		
+ 			var CRN = $(".sellerCRN").val();
+ 			console.log(CRN); */
+ 			
+ 			
+ 			//내가 만든 function
+      
+        	function client(evt){
+        		/* alert(evt);
+        		alert(evt.data);
+        		
+        		var gaek = JSON.parse(evt.data);
+
+        		var storeid = gaek.storeid;
+        		var goodsid = gaek.goodsid;
+        		
+        		alert(storeid);
+        		alert(goodsid); */
+        	}
+        	
+        	
+        	function seller(){
+        		//뭐시기뭐시기뭐시기 dosend;        		
+        		dosend();
+        	}
+           
+            var wsUri = "ws://203.233.196.93:8888/web/echo.do";
+           
+            function init() {
+				output = document.getElementById("output");
+				websocket = new WebSocket(wsUri);									//yc>본인소켓주소인가..
+				websocket.onopen = function(evt) {										
+					onOpen(evt) 					//여기에는 뭐가들어오는거지..
+				};
+			}
+
+            function send_message() {						//q>중간에 evt가 사라진게..좀 send_message(없어졌는데);
+				websocket.onmessage = function(evt) {
+					onMessage(evt)						//여기지우면뭐보냈는지 안띄움  pf>받은 메세지는 여기 들어오는거다..
+				};
+				websocket.onerror = function(evt) {
+					onError(evt)
+				};
+			}
+
+			function onOpen(evt) { //WebSocket 연결						
+				//writeToScreen("Connected to Endpoint!");    //여기에 들어오면 evt에서 값뺄수있음...
+				send_message();
+			}
+            
+			function onMessage(evt) { //메시지 수신
+				// writeToScreen("Message Received: " + evt.data);
+				client(evt);
+            }
+			function onError(evt) {  // 전송 에러 발생
+				writeToScreen('ERROR: ' + evt.data);
+			} 
+			function doSend(str) {
+				//var message = document.getElementById("textID").value;
+				//writeToScreen("Message Sent: " + message);
+				//writeToScreen("뭐보내는지 표시하려고 ");
+				
+				
+				
+				
+				
+				var CRN = document.getElementById("sellerCRN").value;
+				/*//////////////////////////////////////////////////////////////  */
+				
+				var glist= []; 
+                  var content2="";
+
+                    $.ajax({//type필수임
+                        type : "get",   //RequestMethod Type
+                        url: "Goodslist", //RequestMapping value
+                        data:{
+                           sellerCRN:CRN
+                        },
+                        
+                        success : function(data){
+                        	$.each(data,function(index,item){
+                               
+                               glist.push({
+                                  GN: item.goodsName,
+                                   GP: item.goodsPrice,
+                                   GQ: item.goodsQuantity,
+                                   GI: item.goodsOimage,
+                                   GC: item.goodsCode
+
+                               });
+                               
+                             });
+                            /////////////////////////////////////////////////////
+
+                       
+                           var content = '<div class="goodsinfo" id="'+CRN+'" style="overflow-y:scroll">'+
+                            '<table><tr><th>상품명</th><th>상품가격</th><th>상품개수</th><th>이미지보기</th></tr>';
                             
-                            	<a href="read?boardnum=${i.boardnum}">${i.title}</a>
-                                <%--
-                                <small>
-                                    <span class="fw-semi-bold">Type:</span>
-                                    &nbsp; JPEG
-                                </small>
-                                <br>
-                                <small>
-                                    <span class="fw-semi-bold">Dimensions:</span>
-                                    &nbsp; 200x150
-                                </small>
-                                --%>
-                                
-                            </td>
-                            <td class="no-sort width-150">
-                            	${i.type}
-<%--                            <div class="progress progress-sm mt-xs">
-                                    <div class="progress-bar progress-bar-success" style="width: 29%;"></div>
-                                </div>--%>
-                            </td>                            
-                            <td><span class="fw-semi-bold">${i.id}</span></td>                            
-                            <td class="no-sort hidden-xs">${i.hits}</a></td>
-                            <td class="no-sort hidden-xs">${i.inputdate}</td>
-                        </tr>
-                        </c:forEach>
+                            for (var i = 0, len = glist.length; i < len; i++) {
+                              //  total+= glist[i].GN;
+                            // 마커를 생성하고 지도위에 표시합니다
+                            content += '<tr><th>'+glist[i].GN+'</th><th>'+glist[i].GP+"</th><th>"+glist[i].GQ
+                            +'</th><th><div class="thth"><img src="./resources/image/picture.png" width="20px" height="20px" class="abcd" imgData="goodsimg?sellerCRN='+CRN+'&goodsCode='+glist[i].GC+'">'+
+                            '<span class="immm"><img src="goodsimg?sellerCRN='+CRN+'&goodsCode='+glist[i].GC+'" width="90px" height="70px" > </span></div></th></tr>';
+                            }
+                            
+                            content += '</table></div>';
+                            
+                            
+                        	
+            				var pk = {storeid : CRN, goodsid : content};
+            				var jsonstr = JSON.stringify(pk);
+                            websocket.send(jsonstr); // 스트링 배열만들어서 보내면 되겠네...
+                            //websocket.close();
+                            
+  
+                            
+    //ajax //////////////////////////////////////////////////////////////////////////////////////
+    },
+                        error : function(e){
+                           //ajax통신 실패시
+                           console.log(e);
+                        }
+                     });
+				
+				
+				/*///////////////////////////////////////////////////////////////////  */
+
+            }
+			
+			function dosendcontent(content){
+				alert("dosendcontent(고객아이디들) : " + content.buyer_id);
+				var message={};
+				message.message = content.shopname;
+				message.to = content.buyer_id;
+				alert(JSON.stringify(message));
+				websocket.send(JSON.stringify(message));
+			}
+			
+			function writeToScreen(message) {						//메세지를 화면에 띄워줌...
+				var pre = document.createElement("p");
+				pre.style.wordWrap = "break-word";
+				pre.innerHTML = message;
+				                
+				output.appendChild(pre);
+			}
+			window.addEventListener("load", init, false);
+        </script>
+<%--=========================================================================== --%>
 
 
 
 
 
-                        </tbody>
-                    </table>
-                    <div align="center">
-						<a href="javascript:pagingFormSubmit(${navi.currentPage - navi.pagePerGroup})">◁◁</a>
-						<a href="javascript:pagingFormSubmit(${navi.currentPage - 1})">◀</a>
-						<c:forEach var="counter" begin="${navi.startPageGroup}" end="${navi.endPageGroup}">
-							<a href="javascript:pagingFormSubmit(${counter})">${counter}</a>
+
+
+
+
+
+
+	<div class="content-wrap">
+		<main id="content" class="content" role="main">
+
+		<ol class="breadcrumb">
+			<li>YOU ARE HERE</li>
+			<li class="active">Goods List</li>
+		</ol>
+
+		<h1 class="page-title">
+			Tables - <span class="fw-semi-bold">상품 목록 </span>
+		</h1>
+
+		<div class="row">
+			<div class="col-md-12">
+				<section class="widget"> 
+				<header>
+				<h4>
+					Today <span class="fw-semi-bold">${todate }</span>
+				</h4>
+				</header>
+				
+				<div class="table-responsive">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>이미지</th>
+								<th>상품명</th>
+								<th>상품코드</th>
+								<th>판매가격</th>
+								<th>업로드 날짜</th>
+								<th>현재수량</th>
+								<th>변동수량</th>
+								<th>
+									<span>
+									삭제<input type="checkbox" id="checkboxall" class="checkbox" style="width:15px;height:15px">
+									</span>
+								</th>
+								<th>수정</th>
+								<th>상태</th>
+							</tr>
+						</thead>
+						<tbody>
+						<c:forEach var="map" items="${list }">
+							<tr class="tr">
+								<td>
+									<img src="download?goodsCode=${map.goodsCode }" width="50" height="30"> 
+								</td>
+								<td class="goodsname">${map.goodsName }</td><!--  -->
+								<td class="goodscode">${map.goodsCode }</td>
+								<td class="goodsprice">${map.goodsPrice  }</td><!--  -->
+								<td>${map.goodsDateOfUpload }</td>
+								<td class="beforeQ">${map.goodsQuantity  }</td>
+								<td>
+									<input type="text" size="3" value="${map.goodsQuantity }"class="afterQ"> 
+									<img src="./resources/image/ninus.png" class="bninus" width="10" height="10"> 
+									<img src="./resources/image/plus.png" class="bplus" width="10" height="10">
+								</td>
+								<td>
+									<input type="checkbox" name="checkbox" class="checkbox" style="width:15px;height:15px">
+								</td>
+								<td>
+									<input type="button" value="수정" class="btnupdate">
+								</td>
+								<td>
+									<input type="button" value="${map.goodsStatus }" class="status">
+								</td>
+							</tr>
 						</c:forEach>
-						<a href="javascript:pagingFormSubmit(${navi.currentPage + 1})">▶</a>
-						<a href="javascript:pagingFormSubmit(${navi.currentPage + navi.pagePerGroup})">▷▷</a>
-                    </div>
-                    
-                    <form action="csboardlist" method="get" id="pagingForm" align="center">
-						<input type="hidden" id="page" name="page">		<%-- name에 있는 page는 BoardController에 들어갈 RequestParam의 page와 연결됨 --%>
-						제목 : <input type="text" name="searchText" value="${searchText}">	<%-- ← 넘어갈 수도, 안 넘어갈 수도 있는 항목 (Controller의 @RequestParam defaultValue를 활용해서...) / value를 넣어준 건 검색 결과 화면에서 화살표를 눌러도 이동폭을 검색 결과 내로 제한하기 위함--%>
-						<input type="button" value="검색" onclick="pagingFormSubmit(1)">		<%-- 검색 결과의 1 페이지부터 보여준다는 뜻 --%>	
-					</form>
-                </div>
-            </div>
-        </section>
-    </main>
+						</tbody>
+					</table>
+					
+					<div class="clearfix">
+						<div style="position: fixed; bottom: 5px; right: 5px;">
+							<img src="./resources/image/plus2.png" id="plus" width="100" height="100">
+							<img src="./resources/image/ninus2.png" id="ninus" width="100"height="100"> 
+							<img src="./resources/image/update.png" id="check" width="100" height="100">
+	                     </div>
+					</div>
+					
+				</div>
+				</section>
+			</div>
+		</div>
+		<input type="hidden" id="sellerCRN" value="${sessionScope.sellerCRN}">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%--================================================================================================================================================--%>
+	</main>
 </div>
 <!-- The Loader. Is shown when pjax happens -->
 <div class="loader-wrap hiding hide">

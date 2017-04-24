@@ -168,6 +168,22 @@ public class goodsController {
 		model.addAttribute("list",result);
 		return "./goods/goodslist3";
 	}
+
+	@RequestMapping(value = "goodslist4", method = RequestMethod.GET)
+	public String goodslist4(Model model,HttpSession session){
+		//날짜 띄우기
+		SimpleDateFormat today = new SimpleDateFormat("yyyy년 MM월 dd일");
+		String todate = today.format(new Date());
+		model.addAttribute("todate",todate);
+		
+		//목록 가져오기
+		String sellerId = (String)session.getAttribute("custid");
+		String sellerCRN = dao.sellerCRN(sellerId);
+		ArrayList<Goods> result = dao.list(sellerCRN);
+		System.out.println("목록가져왕:"+result);//
+		model.addAttribute("list",result);
+		return "./goods/goodslist4";
+	}
 	
 	
 	//사진
