@@ -7,6 +7,10 @@
 <title>Insert title here</title>
 
 <script type="text/javascript" src="./resources/js/jquery-3.1.1.js"> </script>
+<link rel="stylesheet" href="./resources/css/jquery.toast.min.css" />
+<script type="text/javascript" src="./resources/js/jquery.toast.js"></script>
+<script type="text/javascript" src="./resources/js/jquery.toast.min.js"></script>     
+
 <script type="text/javascript" src="./resources/js/function.js"> </script>
 <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=98b5ff77fd0570ce46f2ef84207626b0&libraries=services"></script>
 <script>
@@ -520,7 +524,7 @@
 				dosend();	
 			}
            
-			var wsUri = "ws://203.233.196.93:8888/web/echo.do";
+			var wsUri = "ws://203.233.196.92:8889/web/echo.do";
            
 			function init() {				//yc>이게 시작이 되는가? 왜 이게 시작이 되지?  ->> 아마 socket 핸들러에서 보낸거가  여기로 들어오는듯..
 				output = document.getElementById("output");
@@ -549,7 +553,26 @@
                // writeToScreen("Message Received: " + evt.data);
                           	
             	client(evt);
+            	
+            	var message = JSON.parse(evt.data);
+            	var messagecontent = message.message;
+            	/* alert("message내용 : "+messagecontent); */
+            	var tomessage = message.to;
+            	/* alert("buyerid배열"+message.to); */
+            	
+            	var buyerid = document.getElementById("buyerid").value;
+            /* 	alert("hidden값 : "+buyerid); */
+            	for(var i = 0 ; i < tomessage.length ; i++){
+            		if (buyerid == tomessage[i].buyerId){
+            			console.log(tomessage[i].buyerId);
+            			/* alert(tomessage[i].buyerId); */
+            			 $.toast(messagecontent, {
+            			      duration: 50000
+            			 });
+            		}
+            	}
             }
+            
             function onError(evt) {  // 전송 에러 발생
                 writeToScreen('ERROR: ' + evt.data);
             } 
@@ -636,7 +659,7 @@
                   
                         <ul class="sub-menu">
 
-                            <li>서울특별시</li>
+                            <li>서울특별시${custid }</li>
                             <li>경기도</li>                           
                             <li>인천광역시</li>
                             <li>부산광역시</li>
@@ -660,7 +683,7 @@
     </div>
 </div>
 <div id="map" style="width:100%;height:700px;"></div>
-
+<input type="hidden" id = "buyerid" value="${custid }">
 
 <div id="sellergoods" style="width:100%;height:300px;"></div>
 

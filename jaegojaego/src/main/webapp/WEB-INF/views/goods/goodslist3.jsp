@@ -35,7 +35,6 @@
 
 
 
-
 <script type="text/javascript">
 
 	$(function() {
@@ -297,13 +296,10 @@
 				writeToScreen('ERROR: ' + evt.data);
 			} 
 			function doSend(str) {
+				
 				//var message = document.getElementById("textID").value;
 				//writeToScreen("Message Sent: " + message);
 				//writeToScreen("뭐보내는지 표시하려고 ");
-				
-				
-				
-				
 				
 				var CRN = document.getElementById("sellerCRN").value;
 				/*//////////////////////////////////////////////////////////////  */
@@ -354,8 +350,6 @@
                             websocket.send(jsonstr); // 스트링 배열만들어서 보내면 되겠네...
                             //websocket.close();
                             
-  
-                            
     //ajax //////////////////////////////////////////////////////////////////////////////////////
     },
                         error : function(e){
@@ -376,7 +370,7 @@
 				message.to = content.buyer_id;
 				alert(JSON.stringify(message));
 				websocket.send(JSON.stringify(message));
-			}
+			} 
 			
 			function writeToScreen(message) {						//메세지를 화면에 띄워줌...
 				var pre = document.createElement("p");
