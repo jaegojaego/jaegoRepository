@@ -53,6 +53,51 @@ input, select, button, textarea {
   -webkit-animation: hue 60s infinite linear;
 }
 
+
+.butt2 {
+  border: 2px solid #4641D9;
+  line-height: 1.375;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+
+  font-weight: 700;
+
+  color: #4641D9;
+
+  cursor: pointer;
+  padding: .75rem;
+  margin: .375rem;
+
+  background-color: transparent;
+  border-radius: 4px;
+  outline: none;
+   cursor: pointer;
+   -webkit-animation:none;
+}
+
+.butt3 {
+  border: 2px solid #FF0000;
+  line-height: 1.375;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+
+  font-weight: 700;
+
+  color: #FF0000;
+
+  cursor: pointer;
+  padding: .75rem;
+  margin: .375rem;
+
+  background-color: transparent;
+  border-radius: 4px;
+  outline: none;
+   cursor: pointer;
+   -webkit-animation:none;
+}
+
+
+
   .butt--primary {
     background-color: #f35626;
     color: #fff;
@@ -163,7 +208,7 @@ html {
   -webkit-font-smoothing: antialiased;
   width: 100%;
 
-  overflow: hidden-x;
+  overflow: hidden;
 
   /* Centering in The Unknown */
   text-align: center;
@@ -186,6 +231,7 @@ html {
     display: inline-block;
     vertical-align: middle;
     max-width: 70rem;
+    overflow: hidden;
   }
 }
 
