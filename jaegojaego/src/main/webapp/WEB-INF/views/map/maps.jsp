@@ -583,6 +583,10 @@ td {
             	
             	var buyerid = document.getElementById("buyerid").value;
            		 /* 	alert("hidden값 : "+buyerid); */
+           		 
+           		 
+           		 
+           		 alert("집에 가자ㅠ : " + tomessage.length);
             	for(var i = 0 ; i < tomessage.length ; i++){
             		if (buyerid == tomessage[i].buyerId){
             			console.log(tomessage[i].buyerId);
