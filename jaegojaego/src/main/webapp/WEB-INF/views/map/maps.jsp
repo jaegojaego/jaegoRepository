@@ -5,7 +5,25 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style>
 
+table {
+	text-align: center;
+}
+
+tr {
+	text-align: center;
+}
+
+th {
+	text-align: center;
+}
+
+td {
+	text-align: center;
+}
+
+</style>
 <script type="text/javascript" src="./resources/js/jquery-3.1.1.js"> </script>
 <link rel="stylesheet" href="./resources/css/jquery.toast.min.css" />
 <script type="text/javascript" src="./resources/js/jquery.toast.js"></script>
@@ -110,6 +128,8 @@
                         goods: item.sellerCRN, // 이부분수정
                         latlng: new daum.maps.LatLng(item.sellerLat,item.sellerLong),
                         sellername: item.sellerName,
+                        tob: item.sellerTOB,
+                        phone: item.sellerPhone,
                         shopaddress: item.sellerBEA
                         
                      // 여기에 추가할 오버레이 내용을 입력하면 됩니다 ~~~
@@ -205,7 +225,7 @@
                             '      <div class="body">' + 
                             '      <div class="img"><div class="img2">' +
                             '      <img src="shopimg?sellerCRN='+position.CRN+'" width="120" height="130"></img>' +
-                            '      </div> <div class="shopinfo" width="180">가게설명:'+position.shopaddress+'<br><div class="messagestatus">123456789</div><h3 class="addshop"><관심매장추가></h3><div class="star" style="width=20px;">별점</div></div></div>' + 
+                            '      </div> <div class="shopinfo" style="width:170px;height:132px;text-overflow: ellipsis;line-height:200%">업종:'+position.tob+'<br>주소:'+position.shopaddress+'<br>전화번호:'+position.phone+'<br><div class="star" style="width=20px;">별점</div><span class="addshop" style="font-weight:bolder;font-color:black"><관심매장추가></span></div></div>' + 
                             '      <div class="desc">' + 
 
                             '<div class="goodsinfo" id="'+position.CRN+'" style="overflow-y:scroll">'+
@@ -221,7 +241,7 @@
                             
                             content += '</table></div></div>' + 
                             '           </div>' + 
-                            '        <div class="comments" style="background-color: pink;overflow-y:scroll;margin:auto; border: 1px solid #ddd;width:289px; height:100px;"></div><div align="center" style="background-color: black;width:289px;margin:auto;"><select class="starcheck" align="center"><option value="1">★</option><option value="2">★★</option>'+
+                            '        <div class="comments" style="overflow-y:scroll;margin:auto; border: 1px solid #ddd;width:289px; height:100px;"></div><div align="center" style="background-color: black;width:289px;margin:auto;"><select class="starcheck" align="center"><option value="1">★</option><option value="2">★★</option>'+
                             '<option value="3">★★★</option><option value="4">★★★★</option><option value="5">★★★★★</option></select><input type="text" class="comment" style="width:152px"><input type="button" class="bnt" value="입력"></div></div>' + 
                             
                             '    </div>' +    
@@ -306,7 +326,7 @@
                                          
                                        success:function(data){
                                           
-                                          var htm = "<댓글보기>";
+                                          var htm = "<span style='font-weight:bold;text-align:center'><댓글보기></span>";
                                              htm += '<table><tr><th>작성자</th><th>댓글</th></tr>';
                                        
                                           $.each(data,function(index,item){                                             
@@ -615,15 +635,15 @@
 <style>
     .wrap {position: absolute;left: 0;bottom: 40px;width: 303px;height: 450px;margin-left: -150px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
 
-    .wrap .info {width: 303px;height: 450px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: white;}
+    .wrap .info {width: 303px;height: 450px;border-radius: 5px;border-bottom: 2px solid red;border-right: 1px solid red;overflow: hidden;background: white;}
     .wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
-    .info .title {padding: 5px 0 0 10px;height: 30px;background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
+    .info .title {padding: 5px 0 0 10px;height: 30px;background: #FAED7D;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
     .info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
     .info .close:hover {cursor: pointer;}
     .info .body {position: relative;overflow: hidden;background:white;}
     .info .desc {position: relative;margin: 140px 0 0 6px;height: 135px;}
-    .shopinfo {position: absolute;left: 120px;text-overflow: shopinfo;background:white;}
-    .desc .goodsinfo {top: 6px;left: 5px;text-overflow: goodsinfo;background:pink;width: 289px;height: 130px;border: 1px solid #ddd;color: #888;}
+    .shopinfo {position: absolute;left: 120px;background:white;overflow: hidden;}
+    .desc .goodsinfo {top: 6px;left: 5px;text-overflow: goodsinfo;width: 289px;height: 130px;border: 1px solid #ddd;color: #888;}
     .info .img2 {position: absolute;width: 120px;height: 130px;overflow: hidden;}
     .info .img {position: absolute;top: 6px;left: 6px;width: 289px;height: 130px;border: 1px solid #ddd;color: #888;overflow: hidden;background:gray;}
    .prd_box {position:relative;} 
