@@ -6,6 +6,13 @@
 <head>
     <title>Sing - Tables Dynamic</title>
 
+	<script type="text/javascript" src="./resources/js/jquery-3.1.1.js"></script>
+	<script>
+	$(function() {
+		doSend();
+	});
+	</script>
+
 	<script>
 	function tttest() {
 		alert('어찌하스까이이');
@@ -923,6 +930,7 @@
 							},
 							success:function(){
 								alert("상품이 삭제되었습니다.");
+								doSend();
 								location.href="goodslist";
 							}
 						});
