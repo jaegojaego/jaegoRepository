@@ -116,4 +116,10 @@ public class GoodsDao {
 			GoodsMapper mapper = sqlsession.getMapper(GoodsMapper.class);
 			return mapper.buyer_id(sellerCRN);
 		}
+		
+		//status변경시 상품등록 알림하기 위해 가게이름, 상품이름 가져오기
+		public HashMap<String, Object>insertpush(String goodsCode){
+			GoodsMapper mapper = sqlsession.getMapper(GoodsMapper.class);
+			return mapper.insertpush(goodsCode);
+		}
 }

@@ -223,11 +223,12 @@ public class goodsController {
 		//문자보내기
 		//ExampleSend send = new ExampleSend();//
 		//send.main(text,phone);//
+		
 		System.out.println("sellerCRN : "+sellerCRN);
 		ArrayList<Buyer> buyer_id = dao.buyer_id(sellerCRN);
 		System.out.println("구매자id들"+buyer_id);
-		HashMap<String, Object>content = new HashMap<String, Object>();
 		String shopname = resultinfo.get(0).get("SELLERSHOPNAME")+"의 상품목록이 변경되었습니다.";
+		HashMap<String, Object>content = new HashMap<String, Object>();
 		content.put("shopname", shopname);
 		content.put("buyer_id", buyer_id);
 		Gson gson = new Gson();
@@ -251,9 +252,25 @@ public class goodsController {
 	//상품상태수정
 	@ResponseBody
 	@RequestMapping(value="updatestatus", method=RequestMethod.GET)
-	public int updatestatus(String goodsCode, String goodsStatus){
+	public String updatestatus(String goodsCode, String goodsStatus,HttpSession session){
 		//System.out.println(goodsCode+"와"+goodsStatus);
-		int result = dao.updatestatus(goodsCode, goodsStatus);
-		return result;
+		dao.updatestatus(goodsCode, goodsStatus);
+		
+		String sellerId = (String)session.getAttribute("custid");
+		String sellerCRN = dao.sellerCRN(sellerId);
+		ArrayList<Buyer> buyer_id = dao.buyer_id(sellerCRN);
+		System.out.println("구매자id들"+buyer_id);
+
+		HashMap<String, Object>insertpush=dao.insertpush(goodsCode);
+		System.out.println(insertpush);
+		String shopName = (String)insertpush.get("GOODSNAME");
+		String goodsName = (String)insertpush.get("SELLERSHOPNAME");
+		String shopname = shopName+"의 "+goodsName+"상품이 추가되었습니다.";
+		HashMap<String, Object>content = new HashMap<String, Object>();
+		content.put("shopname", shopname);
+		content.put("buyer_id", buyer_id);
+		Gson gson = new Gson();
+		System.out.println("보내는 값(shopname,buyer_id)"+content);
+		return gson.toJson(content);
 	}
 }
