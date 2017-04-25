@@ -880,7 +880,6 @@
 							alert("aaa");
 							doSend();
 							location.href="goodslist";
-							
 						},
 						error:function(e){
 							alert("오류임");
@@ -910,17 +909,20 @@
 			var goodscode = $(".goodscode");
 			$(".tr").each(function(index,item) {
 					var checked = checkbox.eq(index).prop("checked");
+					alert(index);
+					alert(checked);
 					if(checked){
-						var delcode = goodscode.eq(index-1).text();
-						
+						var delcode = goodscode.eq(index).text();
+						alert("index야"+index);
+						alert(delcode);
 						$.ajax({
 							type:"GET",
 							url:"del",
 							data:{
 								goodsCode : delcode
 							},
-							success: function(){
-								console.log(delcode);
+							success:function(){
+								alert("상품이 삭제되었습니다.");
 								location.href="goodslist";
 							}
 						});
@@ -1218,7 +1220,7 @@
 								<th>변동수량</th>
 								<th>
 									<span>
-									삭제<input type="checkbox" id="checkboxall" class="checkbox" style="width:15px;height:15px">
+									삭제<input type="checkbox" id="checkboxall" style="width:15px;height:15px">
 									</span>
 								</th>
 								<th>수정</th>
