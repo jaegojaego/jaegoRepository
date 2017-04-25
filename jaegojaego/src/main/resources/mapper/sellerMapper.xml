@@ -5,58 +5,82 @@
 
 <mapper namespace="com.jaego.web.DAO.SellerMapper">
 
-	<select id="selectOne" parameterType="String" resultType="Seller">
-		select
-			sellerCRN
-			,sellerId
-			,sellerPw
-			,sellerName
-			,sellerShopName
-			,sellerPhone
-			,sellerEmail
-			,sellerBEA
-			,sellerTOB
-			,sellerShopOimg
-			,sellerShopSimg
-			,sellerLat
-			,sellerLong
-		from
-			seller
-		where
-			sellerId = #{sellerId}		
-	</select>
+   <select id="selectOne" parameterType="String" resultType="Seller">
+      select
+         sellerCRN
+         ,sellerId
+         ,sellerPw
+         ,sellerName
+         ,sellerShopName
+         ,sellerPhone
+         ,sellerEmail
+         ,sellerBEA
+         ,sellerTOB
+         ,sellerShopOimg
+         ,sellerShopSimg
+         ,sellerLat
+         ,sellerLong
+      from
+         seller
+      where
+         sellerId = #{sellerId}      
+   </select>
 
-	<insert id="addSeller" parameterType="Seller">	<!-- 20170321 박진우 -->
-		insert into
-			Seller(
-				sellerCRN
-				,sellerId
-				,sellerPw
-				,sellerName
-				,sellerShopName
-				,sellerPhone
-				,sellerEmail
-				,sellerBEA
-				,sellerTOB
-				,sellerShopOimg
-				,sellerShopSimg
-				,sellerLat
-				,sellerLong
-			)values(
-				#{sellerCRN}
-				,#{sellerId}
-				,#{sellerPw}
-				,#{sellerName}
-				,#{sellerShopName}
-				,#{sellerPhone}
-				,#{sellerEmail}
-				,#{sellerBEA}
-				,#{sellerTOB}
-				,#{sellerShopOimg}
-				,#{sellerShopSimg}
-				,#{sellerLat}
-				,#{sellerLong}			
-			)
-	</insert>
-	
+   <insert id="addSeller" parameterType="Seller">   <!-- 20170321 박진우 -->
+      insert into
+         Seller(
+            sellerCRN
+            ,sellerId
+            ,sellerPw
+            ,sellerName
+            ,sellerShopName
+            ,sellerPhone
+            ,sellerEmail
+            ,sellerBEA
+            ,sellerTOB
+            ,sellerShopOimg
+            ,sellerShopSimg
+            ,sellerLat
+            ,sellerLong
+         )values(
+            #{sellerCRN}
+            ,#{sellerId}
+            ,#{sellerPw}
+            ,#{sellerName}
+            ,#{sellerShopName}
+            ,#{sellerPhone}
+            ,#{sellerEmail}
+            ,#{sellerBEA}
+            ,#{sellerTOB}
+            ,#{sellerShopOimg}
+            ,#{sellerShopSimg}
+            ,#{sellerLat}
+            ,#{sellerLong}         
+         )
+   </insert>
+   <!-- 판매자정보수정 권록헌 -->
+   <update id="updateSeller" parameterType="Seller">
+      update
+      Seller
+      set
+      sellerPw = #{sellerPw}
+      ,sellerName = #{sellerName}
+      ,sellerPhone =#{sellerPhone}
+      ,sellerEmail =#{sellerEmail}
+      <if test='sellerShopOimg != null and sellerShopOimg !=null'>
+         ,sellerShopOimg =#{sellerShopOimg}
+         ,sellerShopSimg = #{sellerShopSimg}
+      </if>
+      where
+         sellerId =#{sellerId}
+      
+   </update>
+      <select id="selectPic1" resultType="Seller">
+      select 
+         *
+      from 
+         seller
+      where
+         sellerId=#{sellerId}
+   </select>
 </mapper>
