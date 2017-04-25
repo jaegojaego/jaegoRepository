@@ -167,7 +167,7 @@ hr {
 }
 
 a {
-  color: inherit;
+  color: black;
   text-decoration: underline;
   -webkit-animation: hue 60s infinite linear;
 }

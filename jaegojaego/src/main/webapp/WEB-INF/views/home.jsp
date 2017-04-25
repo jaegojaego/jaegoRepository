@@ -51,20 +51,13 @@ html{
       <button class="butt js--triggerAnimation" style="background-color: white"><a href="homelogin" class="russo" style="text-decoration: none;">LOGIN</a></button>
     </form> 
 
-    <p class="meta">SC IT マスター 32期  <a>ゆくゆく</a> </p>
-    <p><small>coolpark93@gmail.com</small></p>
+   
+    <p style="font-size: medium; font-weight:bolder; color: #5D5D5D" class="wf-mplus1p" >SC IT マスター 32期 ゆくゆく</p>
   </div>
 </main><!-- /.site__content -->
 
 <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-<script>
-  function testAnim(x) {
-    $('#animationSandbox').removeClass().addClass(x + ' animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-      $(this).removeClass();
-    });
-  };
 
-</script>
 
 </body>
 </html>

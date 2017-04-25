@@ -59,12 +59,13 @@ html{
 
 <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
 <script>
-  function testAnim(x) {
-    $('#animationSandbox').removeClass().addClass(x + ' animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-      $(this).removeClass();
-    });
-  };
 
+
+  $(function(){
+	  $('#animationSandbox').removeClass().addClass(' animated fadeInDown').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+	    });
+  });
+  
 </script>
 
 </body>
