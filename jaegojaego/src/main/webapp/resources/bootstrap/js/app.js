@@ -518,7 +518,7 @@ $(function(){
         var errors = JSON.parse(localStorage.getItem('lb-errors')) || {};
         errors[new Date().getTime()] = arguments;
         localStorage.setItem('sing-errors', JSON.stringify(errors));
-        this.debug && alert('check errors');
+        /*this.debug && alert('check errors') 20170425 박진우;*/
     };
 
     SingAppView.prototype.log = function(message){
