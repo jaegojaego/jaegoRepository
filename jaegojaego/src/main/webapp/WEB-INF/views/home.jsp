@@ -23,7 +23,7 @@
 .wf-nicomoji { font-family: "Nico Moji"; }
 .wf-hannari { font-family: "Hannari";}
 .rubik      {font-family: 'Rubik Mono One', sans-serif;}
-.russo      {font-family: 'Russo One', sans-serif;}
+.russo      {font-family: 'Russo One', sans-serif; font-size: x-large;}
 
 
 html{

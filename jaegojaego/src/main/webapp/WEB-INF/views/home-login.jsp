@@ -17,13 +17,16 @@
   <link href="https://fonts.googleapis.com/earlyaccess/mplus1p.css" rel="stylesheet" />
 <link href="https://fonts.googleapis.com/earlyaccess/nicomoji.css" rel="stylesheet" />
 <link href="https://fonts.googleapis.com/earlyaccess/hannari.css" rel="stylesheet" />
-
+<link href="https://fonts.googleapis.com/earlyaccess/hanna.css" rel="stylesheet" />
+<link href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" rel="stylesheet">
 <style> 
 .wf-mplus1p { font-family: "Mplus 1p"; }
 .wf-nicomoji { font-family: "Nico Moji"; }
 .wf-hannari { font-family: "Hannari";}
 .rubik      {font-family: 'Rubik Mono One', sans-serif;}
 .russo      {font-family: 'Russo One', sans-serif;}
+.hanna {font-family: 'Hanna', sans-serif;font-size: xx-large;}
+.jeju {font-family: 'Jeju Gothic', sans-serif;font-size: large;}
 
 
 html{
@@ -47,8 +50,8 @@ html{
    <hr />
   <div class="wrap">
     <form>
-      <button class="butt2" style="background-color: white;"><a href="SellerLoginForm" class="russo" style="text-decoration: none;">판매자</a></button>
-      <button class="butt2" style="background-color: white;"><a href="BuyerLoginForm" class="russo" style="text-decoration: none;">구매자</a></button>
+      <button class="butt2" style="background-color: white;"><a href="SellerLoginForm" class="jeju" style="text-decoration: none; font-weight: 600;">판매자</a></button>
+      <button class="butt2" style="background-color: white;"><a href="BuyerLoginForm" class="jeju" style="text-decoration: none;">구매자</a></button>
     </form> 
 
     <p class="meta"><a href="/">HOME</a> </p>
