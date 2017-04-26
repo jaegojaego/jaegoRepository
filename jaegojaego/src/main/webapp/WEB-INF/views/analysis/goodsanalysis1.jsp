@@ -1,3 +1,4 @@
+<%--메인--%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -29,10 +30,10 @@
 <body>
      
 
- 	<input id="btn1" type="button" onclick="javascript:location.href='goodsanalysis'" value="test1">
- 	<input id="btn2" type="button" onclick="javascript:location.href='goodsanalysis2'" value="test2">
- 	<input id="btn3" type="button" onclick="javascript:location.href='goodsanalysis3'" value="test3">
- 	<input id="btn4" type="button" onclick="javascript:location.href='goodsanalysis4'" value="test4">
+ 	<input id="btn1" type="button" onclick="javascript:location.href='goodsanalysis'" value="test1"><%--총 수량--%>
+ 	<input id="btn2" type="button" onclick="javascript:location.href='goodsanalysis2'" value="test2"><%--오늘 수량--%>
+ 	<input id="btn3" type="button" onclick="javascript:location.href='goodsanalysis3'" value="test3"><%--총 수입--%>
+ 	<input id="btn4" type="button" onclick="javascript:location.href='goodsanalysis4'" value="test4"><%--막대--%>
  
  
  	

@@ -41,7 +41,7 @@ public class analysisController {
 	}
 
 	@ResponseBody
-	@RequestMapping(value = "analysismoney", method = RequestMethod.GET)
+	@RequestMapping(value = "analysismoney", method = RequestMethod.GET)		//라인 차트
 	public List<HashMap> analysismoney(HttpSession session) {
 		String sellerId = (String)session.getAttribute("custid");
 		String sellerCRN=dao.select(sellerId);
@@ -71,7 +71,7 @@ public class analysisController {
 	
 	@ResponseBody
 	@RequestMapping(value = "circle", method = RequestMethod.GET)
-	public ArrayList<Object> circle(HttpSession session) {
+	public ArrayList<Object> circle(HttpSession session) {//총수량
 
 		String sellerId = (String)session.getAttribute("custid");
 		String sellerCRN=dao.select(sellerId);
@@ -104,7 +104,7 @@ public class analysisController {
 	}
 	@ResponseBody
 	@RequestMapping(value = "todaycircle", method = RequestMethod.GET)
-	public ArrayList<Object> todaycircle(HttpSession session) {
+	public ArrayList<Object> todaycircle(HttpSession session) {//오늘 수량
 
 		String sellerId = (String)session.getAttribute("custid");
 		String sellerCRN=dao.select(sellerId);
@@ -139,7 +139,7 @@ public class analysisController {
 	
 	@ResponseBody
 	@RequestMapping(value = "analysismonth", method = RequestMethod.GET)
-	public ArrayList<Object> analysismonth(HttpSession session) {
+	public ArrayList<Object> analysismonth(HttpSession session) {//오늘자 막대
 
 		String sellerId = (String)session.getAttribute("custid");
 		String sellerCRN=dao.select(sellerId);

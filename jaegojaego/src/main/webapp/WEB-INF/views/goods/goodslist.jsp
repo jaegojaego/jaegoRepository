@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -14,7 +14,8 @@
 	</script>
 
 	<script>
-	function goodslist() {
+	function tttest() {
+		alert('어찌하스까이이');
 		location.href='goodslist';
 	}
 	///web/goodslist3
@@ -58,7 +59,7 @@
     <!-- need this .js class to initiate slimscroll -->
     <div class="js-sidebar-content">
         <header class="logo hidden-xs">
-            <a href="/web/">saiko</a>
+            <a href="index.html">saiko</a>
             
 
             
@@ -107,7 +108,7 @@
 
             <li class="active">
                 <!-- an example of nested submenu. basic bootstrap collapse component -->
-                <a href="" <%--data-toggle="collapse" data-parent="#sidebar"--%> onclick="goodslist()">
+                <a href="" <%--data-toggle="collapse" data-parent="#sidebar"--%> onclick="tttest()">
                     <span class="icon">
                         <i class="fa fa-table"></i>
                     </span>
@@ -842,7 +843,7 @@
 				
 				if($('.afterQ').eq(index).val() != $('.beforeQ').eq(index).text()){
 					
-					var ninus = $('.afterQ').eq(index).val()-$('.beforeQ').eq(index).text();
+					var ninus = $('.beforeQ').eq(index).text()-$('.afterQ').eq(index).val();
 					alert(ninus); 
 					
 					$('.beforeQ').eq(index).text($(this).val());
@@ -857,8 +858,9 @@
 							goodsQuantity:beforeQuantity
 						}, 
 						success:function(content){
-							
+							/* alert("content: "+content); */
 							var jsonContent = JSON.parse(content);
+							/* alert("jsonContent : "+jsonContent); */
 							dosendcontent(jsonContent);
 							//alert("!!!!!");
 							doSend();
@@ -881,12 +883,12 @@
 							salesPrice:goodsprice,
 							salesName:goodsname
 						},
- 							
-						success:function(){
+						/*	석지연 (이거 없앴는데 왜 살아있닝??/2017.04.26)
+						 success:function(){
 							alert("aaa");
 							doSend();
 							location.href="goodslist";
-						},
+						}, */
 						error:function(e){
 							alert("오류임");
 						}
@@ -966,10 +968,12 @@
 							goodsStatus:btnstatus
 						},
 						success: function(content){
+							alert("content : "+content);
 							var jsonContent = JSON.parse(content);
+							/* alert("jsonContent : "+jsonContent); */
 							dosendcontent(jsonContent);
 							doSend();
-							location.href="goodslist";
+							//location.href="goodslist";
 						}
 					});
 			 }else{
@@ -987,7 +991,7 @@
 						},
 						success: function(){
 							doSend();
-							location.href="goodslist";
+							//location.href="goodslist";
 						}
 				});
 			 }
@@ -1040,7 +1044,7 @@
         		doSend();
         	}
            
-            var wsUri = "ws://203.233.196.93:8888/web/echo.do";
+            var wsUri = "ws://203.233.196.92:8889/web/echo.do";
            
             function init() {
 				output = document.getElementById("output");
@@ -1145,8 +1149,12 @@
             }
 			
 			function dosendcontent(content){
-				alert("dosendcontent(고객아이디들) : " + content.buyer_id);
+				/* alert("dosendcontent(고객아이디들) : " + content.buyer_id); */
 				var message={};
+				message.sellerCRN = content.sellerCRN;
+				alert("sellerCRN 잘왔네: "+content.sellerCRN);
+				message.from = content.color;
+				alert(content.color);
 				message.message = content.shopname;
 				message.to = content.buyer_id;
 				alert(JSON.stringify(message));
