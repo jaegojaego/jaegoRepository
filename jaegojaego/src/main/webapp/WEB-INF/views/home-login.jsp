@@ -50,7 +50,7 @@ html{
    <hr />
   <div class="wrap">
     <form>
-      <button class="butt2" style="background-color: white;"><a href="SellerLoginForm" class="jeju" style="text-decoration: none; font-weight: 600;">판매자</a></button>
+      <button class="butt2" style="background-color: white;"><a href="SellerLoginForm" class="jeju" style="text-decoration: none;">판매자</a></button>
       <button class="butt2" style="background-color: white;"><a href="BuyerLoginForm" class="jeju" style="text-decoration: none;">구매자</a></button>
     </form> 
 
