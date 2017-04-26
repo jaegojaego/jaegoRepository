@@ -178,4 +178,15 @@
 			sellerCRN = #{sellerCRN}
 	</select>
 	
+	
+	<select id="insertpush" parameterType="String" resultType="HashMap">
+		select 
+			g.goodsName, s.sellerShopName
+		from 
+			goods g, SELLER s
+		where 
+			g.sellerCRN = s.sellerCRN
+		and 
+			g.goodsCode = #{goodsCode}
+	</select>
 </mapper>

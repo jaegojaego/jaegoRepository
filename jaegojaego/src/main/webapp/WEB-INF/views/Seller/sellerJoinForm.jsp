@@ -324,8 +324,8 @@
 <%----------------------------------------------------------------------------------------------------------------------------------------------------------------------%>
 										<input type="hidden" name="sellerLat" id="sellerLat">
 										<input type="hidden" name="sellerLong" id="sellerLong"><br>                                               
-                                    </div>
-                                </div>
+									</div>
+								</div>
 
 
 
@@ -335,7 +335,7 @@
 
 
 
-                                <div class="form-group">
+								<div class="form-group">
                                     <label for="normal-field" class="col-sm-4 control-label">업종</label>
                                     <div class="col-sm-7">
                                         <input type="text" name="sellerTOB" id="sellerTOB" class="form-control" placeholder='업종'>
@@ -354,6 +354,12 @@
 
                                         <input type="file" name="upload" id="uploadB" <%--style="display:none"--%> placeholder='매장 사진'>
                                         <br>
+
+
+
+
+
+
                                         <img id="blah" src="#" alt="your image" width="350" />
 
 
@@ -363,7 +369,7 @@
                                             <%--<span class="input-group-addon">--%>
                                             <%--<i class="fa fa-camera" onclick="testt()"></i>--%>
                                             <%--</span>--%>
-                                        </div>
+										</div>
                                     </div>
                                 </div>
                             </fieldset>

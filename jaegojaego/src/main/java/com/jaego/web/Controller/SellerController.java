@@ -6,6 +6,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
@@ -21,9 +24,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.jaego.web.DAO.BuyerDAO;
+import com.jaego.web.DAO.GoodsDao;
 import com.jaego.web.DAO.SellerDAO;
 import com.jaego.web.Util.FileService;
 import com.jaego.web.VO.Buyer;
+import com.jaego.web.VO.Goods;
 import com.jaego.web.VO.Seller;
 
 @Controller
@@ -35,6 +40,9 @@ public class SellerController {
 
    @Autowired
    private BuyerDAO bdao;
+   
+   @Autowired
+   GoodsDao gdao;		//20170425 박진우
 
    final String uploadPath = "/sellerShopOimg";      //업로드시 저장 폴더 설정 (C:\sellerShopOimg 이런 식으로 폴더 생성함)
 
@@ -96,6 +104,27 @@ public class SellerController {
             return "./Seller/sellerupdateForm";
          }
          
+         @RequestMapping(value = "sellerupdatePJW", method = RequestMethod.GET)
+         public String sellerupdatePJW(HttpSession session,/*String sellerId,*/Model model) {
+            
+            String sellerId = (String)session.getAttribute("custid");
+            Seller seller=sdao.selectOne(sellerId);
+            model.addAttribute("seller",seller);
+            
+            System.out.println("들어갈때"+seller);
+            return "./Seller/sellerupdateFormPJW";
+         }
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
          @RequestMapping(value="sellerupdateForm",method=RequestMethod.POST)
          public String rgoodsupdate(Seller seller,HttpSession session,MultipartFile upload,Model model){
             // String sellerCRN=(String) session.getAttribute("0000");
@@ -124,8 +153,25 @@ public class SellerController {
             
             session.setAttribute("name", seller.getSellerName());
          
-         
-            return "home";
+
+
+
+            			//20170425 박진우
+		        		//날짜 띄우기
+		        		SimpleDateFormat today = new SimpleDateFormat("yyyy년 MM월 dd일");
+		        		String todate = today.format(new Date());
+		        		model.addAttribute("todate",todate);
+		        		
+		        		//목록 가져오기
+		        		String sellerId = (String)session.getAttribute("custid");
+		        		String sellerCRN = gdao.sellerCRN(sellerId);
+		        		ArrayList<Goods> result = gdao.list(sellerCRN);
+		        		System.out.println("목록가져왕:"+result);//
+		        		model.addAttribute("list",result);
+
+
+
+            return "./goods/goodslist";
          }
          //업소사진미리보기
          @RequestMapping(value="sellerdownload",method=RequestMethod.GET)
