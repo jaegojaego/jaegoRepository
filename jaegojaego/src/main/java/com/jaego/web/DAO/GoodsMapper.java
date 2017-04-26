@@ -28,4 +28,5 @@ public ArrayList<HashMap<String,Object>>sendinfo(String sellerCRN);//상품 정�
 public ArrayList<Buyer>phone(String sellerCRN);//관심매장등록한 유저 전화번호 가져오기
 public ArrayList<Buyer>buyer_id(String sellerCRN);//관심매장 추가한 고객 ID 가져오기
 public HashMap<String, Object>insertpush(String goodsCode);//status변경시 상품등록 알림하기 위해 가게이름, 상품이름 가져오기
+public String selectsellerBEA(String sellerCRN);//seller주소가져오기
 }
