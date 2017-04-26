@@ -7,9 +7,8 @@
     <title>Sing - Tables Dynamic</title>
 
 	<script>
-	function tttest() {
-		alert('어찌하스까이');
-		location.href='goodslist4';
+	function goodslist() {
+		location.href='goodslist';
 	}
 	///web/goodslist3
 	</script>
@@ -52,7 +51,7 @@
     <!-- need this .js class to initiate slimscroll -->
     <div class="js-sidebar-content">
         <header class="logo hidden-xs">
-            <a href="index.html">saiko</a>
+            <a href="/web/">saiko</a>
             
 
             
@@ -101,7 +100,7 @@
 
             <li>
                 <!-- an example of nested submenu. basic bootstrap collapse component -->
-                <a href="" <%--data-toggle="collapse" data-parent="#sidebar"--%> onclick="tttest()">
+                <a href="" <%--data-toggle="collapse" data-parent="#sidebar"--%> onclick="goodslist()">
                     <span class="icon">
                         <i class="fa fa-table"></i>
                     </span>

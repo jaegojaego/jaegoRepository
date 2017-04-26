@@ -20,6 +20,12 @@
 <%--============================================================= --%>
 <script src="./resources/js/jquery-3.1.1.js"></script>
 <script>
+function goodslist() {
+	location.href='goodslist';
+}
+///web/goodslist3
+</script>
+<script>
 $(function(){
 	
 	$("#CSReplyConfirm").on("click",function(){
@@ -112,17 +118,6 @@ function deleteReply(replynum, boardnum){
    })
       
 }
-
-
-
-
-
-
-
-
-
-
-
 </script>
 <%--============================================================= --%>    
     <script>
@@ -150,14 +145,23 @@ function deleteReply(replynum, boardnum){
     <!-- need this .js class to initiate slimscroll -->
     <div class="js-sidebar-content">
         <header class="logo hidden-xs">
-            <a href="index.html">sing</a>
+            <a href="/web/">saiko</a>
+            
+
+            
+				<a class="hidden-sm hidden-xs" id="nav-state-toggle" href="#" title="슬라이드 메뉴 고정 on/off" data-placement="bottom">
+					<i class="fa fa-bars fa-lg"></i>
+				</a>
+            
+
+            
         </header>
         <!-- seems like lots of recent admin template have this feature of user info in the sidebar.
              looks good, so adding it and enhancing with notifications -->
         <div class="sidebar-status visible-xs">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <span class="thumb-sm avatar pull-right">
-                <%--<img class="img-circle" src="demo/img/people/a5.jpg" alt="...">--%>
+                    <img class="img-circle" src="./resources/bootstrap/demo/img/people/a5.jpg" alt="...">
                 </span>
                 <!-- .circle is a pretty cool way to add a bit of beauty to raw data.
                      should be used with bg-* and text-* classes for colors -->
@@ -178,7 +182,8 @@ function deleteReply(replynum, boardnum){
                     <span class="icon">
                         <i class="fa fa-desktop"></i>
                     </span>
-                    Dashboard
+                    판매자 메인
+                    <i></i>
                     <i class="toggle fa fa-angle-down"></i>
                 </a>
                 <ul id="sidebar-dashboard" class="collapse">
@@ -186,6 +191,25 @@ function deleteReply(replynum, boardnum){
                     <li><a href="widgets.html">Widgets</a></li>
                 </ul>
             </li>
+
+            <li>
+                <!-- an example of nested submenu. basic bootstrap collapse component -->
+                <a href="" <%--data-toggle="collapse" data-parent="#sidebar"--%> onclick="goodslist()">
+                    <span class="icon">
+                        <i class="fa fa-table"></i>
+                    </span>
+                    상품 목록
+                    <%--<i class="toggle fa fa-angle-down"></i>--%>
+                </a>
+                <%--<ul id="sidebar-tables" class="collapse in">
+                    <li><a href="tables_basic.html">Tables Basic</a></li>
+                    <li class="active"><a href="tables_dynamic.html">Tables Dynamic</a></li>
+                </ul>--%>
+            </li>
+
+
+
+<%--
             <li>
                 <a href="inbox.html">
                     <span class="icon">
@@ -197,44 +221,66 @@ function deleteReply(replynum, boardnum){
                     </span>
                 </a>
             </li>
+--%>
+
+
+
             <li>
-                <a href="charts.html">
+                <a class="collapsed" href="charts.html">
                     <span class="icon">
                         <i class="glyphicon glyphicon-stats"></i>
                     </span>
-                    Charts
-                </a>
+                    매출 분석
+                </a>                
             </li>
-            <li>
-                <a href="profile.html">
+            
+
+
+
+            <li class="active">
+                <a href="/web/csboardlist">
                     <span class="icon">
                         <i class="glyphicon glyphicon-user"></i>
                     </span>
-                    Profile
-                    <sup class="text-warning fw-semi-bold">
+                    고객 상담
+<%--                    <sup class="text-warning fw-semi-bold">
                         new
-                    </sup>
+                    </sup>--%>	<%-- new 표시 주석 처리 --%>
                 </a>
             </li>
         </ul>
+
+
+
+
+
+        
         <!-- every .sidebar-nav may have a title -->
-        <h5 class="sidebar-nav-title">Template <a class="action-link" href="#"><i class="glyphicon glyphicon-refresh"></i></a></h5>
+        <h5 class="sidebar-nav-title">템플릿 <a class="action-link" href="#"><i class="glyphicon glyphicon-refresh"></i></a></h5>
         <ul class="sidebar-nav">
-            <li class="active">
+
+
+
+<%--
+            <li>
                 <!-- an example of nested submenu. basic bootstrap collapse component -->
-                <a href="#sidebar-forms" data-toggle="collapse" data-parent="#sidebar">
+                <a class="collapsed" href="#sidebar-forms" data-toggle="collapse" data-parent="#sidebar">
                     <span class="icon">
                         <i class="glyphicon glyphicon-align-right"></i>
                     </span>
                     Forms
                     <i class="toggle fa fa-angle-down"></i>
                 </a>
-                <ul id="sidebar-forms" class="collapse in">
-                    <li class="active"><a href="form_elements.html">Form Elements</a></li>
+                <ul id="sidebar-forms" class="collapse">
+                    <li><a href="form_elements.html">Form Elements</a></li>
                     <li><a href="form_validation.html">Form Validation</a></li>
                     <li><a href="form_wizard.html">Form Wizard</a></li>
                 </ul>
             </li>
+
+
+
+
             <li>
                 <a class="collapsed" href="#sidebar-ui" data-toggle="collapse" data-parent="#sidebar">
                     <span class="icon">
@@ -252,43 +298,44 @@ function deleteReply(replynum, boardnum){
                     <li><a href="ui_list_groups.html">List Groups</a></li>
                 </ul>
             </li>
+
+
+
             <li>
                 <a href="grid.html">
                     <span class="icon">
                         <i class="glyphicon glyphicon-th"></i>
                     </span>
-                    Grid
+                    그리이드
                 </a>
             </li>
+--%>
+
+
+
+
             <li>
-                <a class="collapsed" href="#sidebar-maps" data-toggle="collapse" data-parent="#sidebar">
+                <a <%--class="collapsed"--%> href="http://www.naver.com/<%--#sidebar-maps--%>" <%--data-toggle="collapse"--%> <%--data-parent="#sidebar"--%>>
                     <span class="icon">
                         <i class="glyphicon glyphicon-map-marker"></i>
                     </span>
-                    Maps
-                    <i class="toggle fa fa-angle-down"></i>
+                    지도호우
+                    <%--<i class="toggle fa fa-angle-down"></i>--%>	<%--하향 화살표 삭제--%>
                 </a>
-                <ul id="sidebar-maps" class="collapse">
+                <%--<ul id="sidebar-maps" class="collapse">
                     <!-- data-no-pjax turns off pjax loading for this link. Use in case of complicated js loading on the
                          target page -->
                     <li><a href="maps_google.html" data-no-pjax>Google Maps</a></li>
                     <li><a href="maps_vector.html">Vector Maps</a></li>
-                </ul>
+                </ul>--%>
             </li>
-            <li>
-                <!-- an example of nested submenu. basic bootstrap collapse component -->
-                <a class="collapsed" href="#sidebar-tables" data-toggle="collapse" data-parent="#sidebar">
-                    <span class="icon">
-                        <i class="fa fa-table"></i>
-                    </span>
-                    Tables
-                    <i class="toggle fa fa-angle-down"></i>
-                </a>
-                <ul id="sidebar-tables" class="collapse">
-                    <li><a href="tables_basic.html">Tables Basic</a></li>
-                    <li><a href="tables_dynamic.html">Tables Dynamic</a></li>
-                </ul>
-            </li>
+
+
+
+
+
+
+<%--
             <li>
                 <a class="collapsed" href="#sidebar-extra" data-toggle="collapse" data-parent="#sidebar">
                     <span class="icon">
@@ -307,6 +354,9 @@ function deleteReply(replynum, boardnum){
                     <li><a href="time_line.html" data-no-pjax>Time Line</a></li>
                 </ul>
             </li>
+
+
+--%>
             <li>
                 <a class="collapsed" href="#sidebar-levels" data-toggle="collapse" data-parent="#sidebar">
                     <span class="icon">
@@ -330,6 +380,12 @@ function deleteReply(replynum, boardnum){
                 </ul>
             </li>
         </ul>
+
+
+
+
+
+<%--
         <h5 class="sidebar-nav-title">Labels <a class="action-link" href="#"><i class="glyphicon glyphicon-plus"></i></a></h5>
         <!-- some styled links in sidebar. ready to use as links to email folders, projects, groups, etc -->
         <ul class="sidebar-labels">
@@ -373,8 +429,53 @@ function deleteReply(replynum, boardnum){
                 <small>Provide required notes</small>
             </div>
         </div>
+--%>
+
+
+
+
+        
     </div>
 </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- This is the white navigation bar seen on the top. A bit enhanced BS navbar. See .page-controls in _base.scss. -->
 <nav class="page-controls navbar navbar-default">
     <div class="container-fluid">
@@ -773,46 +874,6 @@ function deleteReply(replynum, boardnum){
             </ul>
         </div>
         <div class="chat-sidebar-chat chat-sidebar-panel" id="chat-sidebar-user-5">
-            <h5 class="title">
-                <a class="js-back" href="#">
-                    <i class="fa fa-angle-left mr-xs"></i>
-                    Mike Lewis
-                </a>
-            </h5>
-            <ul class="message-list">
-            </ul>
-        </div>
-        <div class="chat-sidebar-chat chat-sidebar-panel" id="chat-sidebar-user-6">
-            <h5 class="title">
-                <a class="js-back" href="#">
-                    <i class="fa fa-angle-left mr-xs"></i>
-                    Freda Edison
-                </a>
-            </h5>
-            <ul class="message-list">
-            </ul>
-        </div>
-        <div class="chat-sidebar-chat chat-sidebar-panel" id="chat-sidebar-user-7">
-            <h5 class="title">
-                <a class="js-back" href="#">
-                    <i class="fa fa-angle-left mr-xs"></i>
-                    Livia Walsh
-                </a>
-            </h5>
-            <ul class="message-list">
-            </ul>
-        </div>
-        <div class="chat-sidebar-chat chat-sidebar-panel" id="chat-sidebar-user-8">
-            <h5 class="title">
-                <a class="js-back" href="#">
-                    <i class="fa fa-angle-left mr-xs"></i>
-                    Jaron Fitzroy
-                </a>
-            </h5>
-            <ul class="message-list">
-            </ul>
-        </div>
-        <div class="chat-sidebar-chat chat-sidebar-panel" id="chat-sidebar-user-9">
             <h5 class="title">
                 <a class="js-back" href="#">
                     <i class="fa fa-angle-left mr-xs"></i>
