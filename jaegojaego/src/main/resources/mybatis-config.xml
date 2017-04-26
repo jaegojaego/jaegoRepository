@@ -19,6 +19,7 @@
 		<mapper resource="mapper/buyerMapper.xml" />					<!-- 20170321 박진우 -->	
 		<mapper resource="mapper/sellerMapper.xml" />					<!-- 20170321 박진우 -->
 		<mapper resource="mapper/goodsMapper.xml" />					<!-- 20170322 권록헌 -->
+		<mapper resource="mapper/analysisMapper.xml" />					<!-- 20170322 권록헌 -->
 		<mapper resource="mapper/mapsMapper.xml" />						<!-- 20170405 박시원 -->
 		<mapper resource="mapper/csboardMapper.xml" />					<!-- 20170406 박진우 -->
 	</mappers>
