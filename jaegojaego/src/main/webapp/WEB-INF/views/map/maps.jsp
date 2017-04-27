@@ -37,6 +37,7 @@ td {
    
 var flag = [];
 var sellertob;
+
    
    $(function(){
    	
@@ -547,7 +548,7 @@ var sellertob;
 				dosend();	
 			}
            
-			var wsUri = "ws://203.233.196.92:8889/web/echo.do";
+			var wsUri = "ws://203.233.196.93:8888/web/echo.do";
            
 			function init() {				//yc>이게 시작이 되는가? 왜 이게 시작이 되지?  ->> 아마 socket 핸들러에서 보낸거가  여기로 들어오는듯..
 				output = document.getElementById("output");
