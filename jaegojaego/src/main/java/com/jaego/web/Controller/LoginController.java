@@ -48,7 +48,7 @@ public class LoginController {
 				session.setAttribute("custid", seller.getSellerId());
 				session.setAttribute("name", seller.getSellerName());
 				session.setAttribute("sellerCRN", seller.getSellerCRN());
-				session.setAttribute("type", "작성자");
+				session.setAttribute("type", "판매자");
 				return "redirect:/goodslist";
 			} else {										//실패
 				model.addAttribute("loginErr","로그인 정보가 틀렸습니다.");		//에러 메시지를 띄우고 싶다면 Model 사용

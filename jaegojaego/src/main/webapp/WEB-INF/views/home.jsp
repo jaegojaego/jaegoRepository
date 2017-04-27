@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
@@ -34,9 +35,32 @@ html{
 }
 
 </style>
+<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
 
+$(function() {
+	var custid = document.getElementById("custid").value;
+	var type = document.getElementById("type").value;
+	
+	if (custid != null) {
+		if (type == '판매자') {
+			alert(custid + " " + type);
+			location.href='goodslist';
+		} else if (type == '구매자') {
+			alert(custid + " " + type);
+			location.href='map1';
+		}		
+	} else if (custid == null) {
+		location.href='home';
+	}
+});
+
+</script>
 </head>
 <body>
+<input type="hidden" id="custid" value="${sessionScope.custid}">
+<input type="hidden" id="type" value="${sessionScope.type}">
+
 <header class="site__header island">
   <div class="wrap">
    <span id="animationSandbox" style="display: block;"><h1 class="site__title mega wf-nicomoji">さいごのザイコ</h1></span>
@@ -56,7 +80,7 @@ html{
   </div>
 </main><!-- /.site__content -->
 
-<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+
 
 
 </body>
