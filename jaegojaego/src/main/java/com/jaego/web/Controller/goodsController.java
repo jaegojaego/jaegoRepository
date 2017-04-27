@@ -284,7 +284,7 @@ public class goodsController {
 	@ResponseBody
 	@RequestMapping(value="selectsellerBEA", method=RequestMethod.GET, produces = "application/text; charset=utf8")
 	public String selectsellerBEA(String sellerCRN){
-		String sellerBEA = dao.selectsellerBEA(sellerCRN);
+		String sellerBEA = dao.selectsellerBEA(sellerCRN);//adsfadsf
 		System.out.println("잘 변환??"+sellerBEA);
 		return sellerBEA;
 	}
