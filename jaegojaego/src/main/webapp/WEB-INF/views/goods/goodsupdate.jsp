@@ -847,21 +847,41 @@
 <%--					<input type="hidden" name="boardnum" value="${csboard.boardnum}">
 						<input type="hidden" name="id" value="${csboard.id}">
 						<input type="hidden" name="inputdate" value="${csboard.inputdate}">--%>
+<input type="hidden" name="goodsCode" value="${goods.goodsCode}">
+<input type="hidden" name="goodsDateOfUpload" value="${goods.goodsDateOfUpload}">
+<input type="hidden" id="goodsDateOfUpdate">
+<input type="hidden" name="goodsStatus" value="${goods.goodsStatus}">						
                             <fieldset>
                                 <legend>상담 내용 등록</legend>
 
                                 <div class="form-group">
-                                    <label class="col-sm-3 control-label" for="default-textarea">제목</label>
+                                    <label class="col-sm-3 control-label" for="default-textarea">상품이름</label>
                                     
                                     <div class="col-sm-8">
-                                        <input type="text" rows="4" class="form-control" id="default-textarea" name="title" value="${csboard.title}">
+                                        <input type="text" rows="4" class="form-control" <%--id="default-textarea"--%>id="goodsName" name="goodsName" value="${goods.goodsName}">
                                     </div>
 								</div>
 
                                 <div class="form-group">
-                                    <label class="col-sm-3 control-label" for="default-textarea">본문</label>
+                                    <label class="col-sm-3 control-label" for="default-textarea">상품가격</label>
+                                    
                                     <div class="col-sm-8">
-                                        <textarea style="width:100%;" rows="12" class="form-con	trol" id="default-textarea" name="content">${csboard.content}</textarea>
+                                        <input type="text" rows="4" class="form-control" <%--id="default-textarea"--%>id="goodsPrice" name="goodsPrice" value="${goods.goodsPrice}">
+                                    </div>
+								</div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="default-textarea">상품수량</label>
+                                    
+                                    <div class="col-sm-8">
+                                        <input type="text" rows="4" class="form-control" <%--id="default-textarea"--%>id="goodsQuantity" name="goodsQuantity" value="${goods.goodsQuantity}">
+                                    </div>
+								</div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="default-textarea">상품설명</label>
+                                    <div class="col-sm-8">
+                                        <textarea style="width:100%;" rows="12" class="form-con	trol" name="goodsInfo" id="goodsInfo">${goods.goodsInfo}</textarea>
                                     </div>
                                 </div>
 
@@ -872,11 +892,11 @@
                                     <div class="col-sm-8">
                                         <div class="fileinput fileinput-new" data-provides="fileinput">
                                             <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
-                                                <img data-src="holder.js/100%x100%" alt="..." src="csbdownload?boardnum=${csboard.boardnum}">
+                                                <img data-src="holder.js/100%x100%" alt="..." src="download?goodsCode=${goods.goodsCode}">
                                             </div>
                                             <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
                                             <div>
-                                                <span class="btn btn-default btn-file"><span class="fileinput-new">이미지 첨부</span><span class="fileinput-exists">변경</span><input type="file"  name="upload"></span>
+                                                <span class="btn btn-default btn-file"><span class="fileinput-new">이미지 첨부</span><span class="fileinput-exists">변경</span><input type="file" id="salesUpload" name="upload"></span>
                                                 <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">취소</a>
                                             </div>
                                         </div>
