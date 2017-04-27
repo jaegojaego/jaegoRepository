@@ -63,7 +63,7 @@ function formCheck() {
                         </p>
                         <form class="login-form mt-lg" action="BuyerLogin" method="post" onsubmit="return formCheck()" id="form">
                             <div class="form-group">
-                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="구매자 ID" name="custid">
+                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="구매자 ID" name="custid" autofocus>
                             </div>
                             <div class="form-group">
                                 <input class="form-control" id="pswd" type="password" placeholder="구매자 비밀번호" name="password"
