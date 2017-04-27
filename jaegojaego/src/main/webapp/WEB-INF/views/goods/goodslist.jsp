@@ -8,9 +8,9 @@
 
 	<script type="text/javascript" src="./resources/js/jquery-3.1.1.js"></script>
 	<script>
-	$(function() {
+/* 	$(function() {
 		doSend();
-	});
+	}); */
 	</script>
 
 	<script>
@@ -1044,7 +1044,7 @@
         		doSend();
         	}
            
-            var wsUri = "ws://203.233.196.93:8888/web/echo.do";
+            var wsUri = "ws://10.10.7.40:8889/web/echo.do";
            
             function init() {
 				output = document.getElementById("output");
@@ -1088,7 +1088,7 @@
 				/*//////////////////////////////////////////////////////////////  */
 				
 				var glist= []; 
-                  var content2="";
+                  
 
                     $.ajax({//type필수임
                         type : "get",   //RequestMethod Type
@@ -1128,10 +1128,27 @@
                             
                             
                         	
-            				var pk = {storeid : CRN, goodsid : content};
-            				var jsonstr = JSON.stringify(pk);
-                            websocket.send(jsonstr); // 스트링 배열만들어서 보내면 되겠네...
-                            //websocket.close();
+                            $.ajax({//type필수임
+                                type : "post",   //RequestMethod Type
+                                url: "markimg", //RequestMapping value
+                                data:{
+                                   sellerCRN:CRN
+                                },
+                                
+                                success : function(data){
+                                	alert(data);
+                    				var pk = {storeid : CRN, goodsid : content,flag:data};
+                    				var jsonstr = JSON.stringify(pk);
+                                    websocket.send(jsonstr); // 스트링 배열만들어서 보내면 되겠네...
+                                    //websocket.close();
+                                    
+               
+                                },
+                                error : function(e){
+                                   //ajax통신 실패시   
+                                   console.log(e);
+                                }
+                             });
                             
   
                             

@@ -34,7 +34,8 @@ td {
 
 
 <script>
-   
+
+var markers=[];
 var flag = [];
 var sellertob;
 
@@ -45,7 +46,7 @@ var sellertob;
       var adrr = "삼성동";
       console.log(adrr);
       a(adrr,flag,sellertob);
-      
+      var marker;
       
       
 /*       navigator.geolocation.getCurrentPosition( function(pos) {
@@ -150,12 +151,8 @@ var sellertob;
 
                   function addMarker(position) {
                   var overlay;
-           
-                  var marker;
+           	      var glist= []; 
                   
-                  
-                  var glist= []; 
-                  var content2="";
                  
                     $.ajax({//type필수임
                         type : "get",   //RequestMethod Type
@@ -211,13 +208,14 @@ var sellertob;
                             marker = new daum.maps.Marker({
                                 map: map, // 마커를 표시할 지도
                                 position: position.latlng, // 마커를 표시할 위치
-                                title : "재고 수 :"+position.goods, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+                                title : position.CRN, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
                                 image : markerImage,// 마커 이미지 
                                 clickable: true
                                 
                             });
                             //
                             
+                             markers.push(marker);
                        
                            var content = '<div class="wrap">' + 
                             '    <div class="info">' + 
@@ -251,12 +249,25 @@ var sellertob;
                             '</div> <div class="goodsimg"></div>';
                             
                    
+                            var markerstitle;
+                            var markersposition;
+                         
+                             for (var i = 0, len = markers.length; i < len; i++) {
+                            	 markerstitle = markers[i].getTitle();
+                      		    
+                      		     if(position.CRN==markerstitle){
+                      		    	markersposition = markers[i].getPosition();
+                            	
+                      		     }
+                            } 
+                            
+                            
                        
                             overlay = new daum.maps.CustomOverlay({
                                 clickable: true,
-                                content: content+content2,
+                                content: content,
                                 map: map,
-                                position: marker.getPosition()
+                                position: markersposition
                                 
                             });
                             
@@ -275,6 +286,7 @@ var sellertob;
                                    selectedMarker=marker;
                                 }else{
                                    alert("한가게씩 선택해주세요!");
+                                   return false;
                                    
                                 }
                         
@@ -287,7 +299,55 @@ var sellertob;
                                 });
                                 //////////////////////////////////////////
                                 
+                                 var glist = [];
                                 
+                                 $.ajax({//type필수임
+                                     type : "get",   //RequestMethod Type
+                                     url: "Goodslist", //RequestMapping value
+                                     data:{
+                                        sellerCRN:position.CRN
+                                     },
+                                     
+                                     success : function(data){
+                                        
+                                         $.each(data,function(index,item){
+                                            
+                                            glist.push({
+                                               GN: item.goodsName,
+                                                GP: item.goodsPrice,
+                                                GQ: item.goodsQuantity,
+                                                GI: item.goodsOimage,
+                                                GC: item.goodsCode
+
+                                            });
+                                            
+                                          });
+                                         
+                                   
+                                         var content0 = '<div class="goodsinfo" id="'+position.CRN+'" style="overflow-y:scroll">'+
+                                         '<table><tr><th>상품명</th><th>상품가격</th><th>상품개수</th><th>이미지보기</th></tr>';
+                                         
+                                         for (var i = 0, len = glist.length; i < len; i++) {
+                                           //  total+= glist[i].GN;
+                                         // 마커를 생성하고 지도위에 표시합니다
+                                         content0 += '<tr><th>'+glist[i].GN+'</th><th>'+glist[i].GP+"</th><th>"+glist[i].GQ
+                                         +'</th><th><div class="thth"><img src="./resources/image/picture.png" width="20px" height="20px" class="abcd" imgData="goodsimg?sellerCRN='+position.CRN+'&goodsCode='+glist[i].GC+'">'+
+                                         '<span class="immm"><img src="goodsimg?sellerCRN='+position.CRN+'&goodsCode='+glist[i].GC+'" width="90px" height="70px" > </span></div></th></tr>';
+                                         }
+                                         
+                                         content0 += '</table></div>';
+                                         
+                                         
+                                         $(".desc").html(content0); 
+                                         
+                                             	
+                                     },error:function(e){
+                                     	console.log(e);
+                                     
+                                     }
+                                     
+                                    });
+                                 
                                 $.ajax({//type필수임
                                          type : "get",   //RequestMethod Type
                                          url: "starsac", //RequestMapping value
@@ -354,10 +414,7 @@ var sellertob;
                                 var addcomment;
                                 
                                 var id0 = $('.goodsinfo').attr('id');
-                                console.log(id0);
-                                if(CRN==id0){
-                                	alert("값이 들어왔음");
-                                }
+                                
                                 
                   
                                 //////////////////////////////////////////////
@@ -515,6 +572,7 @@ var sellertob;
 				
 				var storeid = gaek.storeid;
 				var goodsid = gaek.goodsid;
+				var flag = gaek.flag;
 				        		
 //진우 주석		alert("가게 : " + storeid);
 //진우 주석		alert("품목 : " + goodsid);
@@ -534,6 +592,28 @@ var sellertob;
 				if(crn2==storeid) {
 					$(".desc").html(goodsid);
 				}
+				
+				
+				var markerscolor;
+				
+				
+                for (var i = 0, len = markers.length; i < len; i++) {
+                	markerscolor = markers[i].getTitle();
+         		    
+         		     if(storeid==markerscolor){
+         		    	 if(flag==0){
+         		    	
+    						var markerImage = new daum.maps.MarkerImage("./resources/image/mark.png",
+    		                        new daum.maps.Size(30, 35), new daum.maps.Point(13, 34));
+    		                        markers[i].setImage(markerImage);
+         		    	 }else{
+    							var markerImage = new daum.maps.MarkerImage("http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png",
+    		                        new daum.maps.Size(24, 35), new daum.maps.Point(13, 34));
+    		                        markers[i].setImage(markerImage);          		    		 
+         		    	 }
+
+         		     }
+               } 
 //----------------------------------------------------------------------	
 				
 				
@@ -548,7 +628,7 @@ var sellertob;
 				dosend();	
 			}
            
-			var wsUri = "ws://203.233.196.93:8888/web/echo.do";
+			var wsUri = "ws://10.10.7.40:8889/web/echo.do";
            
 			function init() {				//yc>이게 시작이 되는가? 왜 이게 시작이 되지?  ->> 아마 socket 핸들러에서 보낸거가  여기로 들어오는듯..
 				output = document.getElementById("output");
@@ -708,7 +788,7 @@ var sellertob;
                   
                         <ul class="sub-menu">
 
-                            <li>서울특별시${custid }</li>
+                            <li>서울특별시</li>
                             <li>경기도</li>                           
                             <li>인천광역시</li>
                             <li>부산광역시</li>

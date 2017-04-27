@@ -8,19 +8,19 @@
 <style>
 
 table {
-   text-align: center;
+	text-align: center;
 }
 
 tr {
-   text-align: center;
+	text-align: center;
 }
 
 th {
-   text-align: center;
+	text-align: center;
 }
 
 td {
-   text-align: center;
+	text-align: center;
 }
 
 </style>
@@ -32,19 +32,22 @@ td {
 <script type="text/javascript" src="./resources/js/function.js"> </script>
 <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=98b5ff77fd0570ce46f2ef84207626b0&libraries=services"></script>
 <script>
-
+  var markers=[];
+	
    $(function(){
-      
-     var CRN;
+   	
+	  var CRN;
       var adrr = "삼성동";
-      console.log(adrr);
+  
       var flag = [];
       var sellertob;
       a(adrr,flag,sellertob);
-      var marker;
-      var markers = [];
+     
       
-      
+       $("#aaa").on("click",function(){
+    	  
+    	 alert(markers); 
+      }); 
       
 /*       navigator.geolocation.getCurrentPosition( function(pos) {
             var latitude = pos.coords.latitude;
@@ -150,7 +153,8 @@ td {
                   function addMarker(position) {
                   var overlay;
            
-                 /*  var marker; */
+                  var marker;
+                  
                   
                   var glist= []; 
                   var content2="";
@@ -202,7 +206,6 @@ td {
                             
                             
                             
-                            
                             // 마커 이미지를 생성합니다    
                             var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize); 
                             
@@ -212,26 +215,13 @@ td {
                                 position: position.latlng, // 마커를 표시할 위치
                                 title : position.CRN, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
                                 image : markerImage,// 마커 이미지 
-                                clickable: true,
-                                
+                                clickable: true
                                 
                             });
                             //
-                            
                             markers.push(marker);
-
-                            
-/*                             var 78789 = marker.getTitle();
-                            if(789789!=)
-                            
-                            for (var i = 0, len = marker.length; i < len; i++) {
-                                
-                                // 마커를 생성하고 지도위에 표시합니다
-                                var mari = marker.getTitle();
-                                alert(mari);
-                            } */
-
-                             
+                           /*  alert(markers); */
+                       
                            var content = '<div class="wrap">' + 
                             '    <div class="info">' + 
                             '      <div class="title">' + 
@@ -262,52 +252,61 @@ td {
                             
                             '    </div>' +    
                             '</div> <div class="goodsimg"></div>';
-                            
-                            
-                             var pos;
-                            for (var i = 0, len = markers.length; i < len; i++) {
-                            	if(markers[i].getPosition()==marker.getPosition()){
-                            		pos = markers[i].getPosition();
-                            		alert(pos);
-                            	}
+                            var abca;
+                            var abcb;
+                         
+                             for (var i = 0, len = markers.length; i < len; i++) {
+                      		     abca = markers[i].getTitle();
+                      		    
+                      		     if(position.CRN==abca){
+                            	 abcb = markers[i].getPosition();
+                            	
+                      		     }
                             } 
                             
-                            alert(pos);
+                            
+                       
                             overlay = new daum.maps.CustomOverlay({
                                 clickable: true,
                                 content: content,
                                 map: map,
-                                position: pos
+                                position: abcb
+                                
                             });
-                            
                             
                             
                             overlay.setMap(null);
 
                             daum.maps.event.addListener(marker, 'click', function() {
-                               
-  
-                               
-                               /* 
-                               var a456 = marker.getTitle();
-                               alert(a456);
-                                */
+/* 								var titl = marker.getTitle();
+								var boo;
+								var boob;
+								
+	                             for (var i = 0, len = markers.length; i < len; i++) {
+	                      		     boo = markers[i].getTitle();
+	                      		    
+	                      		     if(titl==boo){
+	     								var markerImage = new daum.maps.MarkerImage("http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png",
+	 	                                    new daum.maps.Size(31, 35), new daum.maps.Point(13, 34));
+	 	                                   markers[i].setImage(markerImage);
+	                      		    	 alert("완료!")
+	                            	
+	                      		     }
+	                            } 
+								 */
+						
+
                                 // 클릭된 마커가 없고, click 마커가 클릭된 마커가 아니면
                                 // 마커의 이미지를 클릭 이미지로 변경합니다
                                 if (selectedMarker == null) {
                                     // 클릭된 마커 객체가 null이 아니면
-/*                                     // 클릭된 마커의 이미지를 기본 이미지로 변경하고
-                                       var markerImage = new daum.maps.MarkerImage(
-                                      "http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png",
-                                       new daum.maps.Size(31, 35), new daum.maps.Point(13, 34)); */
-                   /*                 marker.setImage(markerImage); */
+                                    // 클릭된 마커의 이미지를 기본 이미지로 변경하고
                                    overlay.setMap(map);
                                    marker.setClickable(false);
-
                                    selectedMarker=marker;
                                 }else{
                                    alert("한가게씩 선택해주세요!");
-                                   
+                                   return false;
                                 }
                         
                
@@ -366,7 +365,7 @@ td {
                                        
                                           $.each(data,function(index,item){                                             
                                                 htm += '<tr><td>'+item.buyerId+'</td><td>'+item.ment+'</td></tr>';
-                                 
+											
                                               }); 
                                           
                                              htm += '</table>';
@@ -388,7 +387,7 @@ td {
                                 var id0 = $('.goodsinfo').attr('id');
                                 console.log(id0);
                                 if(CRN==id0){
-                                   alert("값이 들어왔음");
+                                	alert("값이 들어왔음");
                                 }
                                 
                   
@@ -521,19 +520,10 @@ td {
       });    
       }
    /////////////////////////////////////////////////////////////////////////////////
-   
-   
-   $("#eb").on("click",function(){
-     
-   
-       for (var i = 0, len = markers.length; i < len; i++) {
-				alert(markers);
-				alert(markers[i].getPosition());	
-       }
-       
-       
-   });
-   
+      $("#aaa").on("click",function(){
+    	  
+     	 alert(markers); 
+       });
    });
 </script>
 
@@ -547,80 +537,93 @@ td {
 
         <script type="text/javascript">
         
-           
-           //내가 만든 function
-           
-         function client(evt){
-//진우 주석            alert(evt);
-//진우 주석            alert(evt.data);
-                          
-            var gaek = JSON.parse(evt.data);
-            console.log(gaek);
-            
-            var storeid = gaek.storeid;
-            var goodsid = gaek.goodsid;
-                          
-//진우 주석      alert("가게 : " + storeid);
-//진우 주석      alert("품목 : " + goodsid);
-            
-            
-            
-            
-            
-            
+        	
+        	//내가 만든 function
+        	
+			function client(evt){
+//진우 주석				alert(evt);
+//진우 주석				alert(evt.data);
+				        		
+				var gaek = JSON.parse(evt.data);
+				console.log(gaek);
+				
+				var storeid = gaek.storeid;
+				var goodsid = gaek.goodsid;
+				var flag = gaek.flag;
+				        		
+//진우 주석		alert("가게 : " + storeid);
+//진우 주석		alert("품목 : " + goodsid);
+				
+				
+				
+				
+				
+				
 //----------------------------------------------------------------------                
-//            alert("테스트 메소드1");
-//            var message2 = "<img sytle='width:20px;' src='resources/img/message.png'> ";
-            var message2 = "<h5>tttest<h5> ";
-            //var inner = $(".messagestatus").html();
-            
-            var crn2 = $(".goodsinfo").attr("id");
-            if(crn2==storeid) {
-               $(".desc").html(goodsid);
-            }
-//----------------------------------------------------------------------   
-             // 마크바꾸기
-            
-/*              for (var i = 0, len = marker.length; i < len; i++) {
-                       
-                       // 마커를 생성하고 지도위에 표시합니다
-                       var mari = marker[i].getTitle();
-                       alert(mari);
-                   } */
-            
-            
-            
-            
-            
-//----------------------------------------------------------------------               
-            
-         }
+//				alert("테스트 메소드1");
+//				var message2 = "<img sytle='width:20px;' src='resources/img/message.png'> ";
+				var message2 = "<h5>tttest<h5> ";
+				//var inner = $(".messagestatus").html();
+				
+				var crn2 = $(".goodsinfo").attr("id");
+				if(crn2==storeid) {
+					$(".desc").html(goodsid);
+				}
+				
+				
+			
+				var boo;
+	
+				
+                 for (var i = 0, len = markers.length; i < len; i++) {
+          		     boo = markers[i].getTitle();
+          		    
+          		     if(storeid==boo){
+						var markerImage = new daum.maps.MarkerImage("http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png",
+                        new daum.maps.Size(24, 35), new daum.maps.Point(13, 34));
+                        markers[i].setImage(markerImage);
+          		    	 alert("완료!")
+                	
+          		     }
+                } 
+				
+				
+				
+				
+//----------------------------------------------------------------------	
+				
+				
+				
+				
+				
+				
+			}
+        	
+			function seller(){
+				//뭐시기뭐시기뭐시기 dosend;        		
+				dosend();	
+			}
            
-         function seller(){
-            //뭐시기뭐시기뭐시기 dosend;              
-            dosend();   
-         }
+			var wsUri = "ws://10.10.7.40:8889/web/echo.do";
            
-         var wsUri = "ws://203.233.196.93:8888/web/echo.do";
-           
-         function init() {            //yc>이게 시작이 되는가? 왜 이게 시작이 되지?  ->> 아마 socket 핸들러에서 보낸거가  여기로 들어오는듯..
-            output = document.getElementById("output");
-            websocket = new WebSocket(wsUri);                           //yc>본인소켓주소인가..
-            websocket.onopen = function(evt) {                              
-               onOpen(evt)                //여기에는 뭐가들어오는거지..
-            };
-         }
-           function send_message() {                  //q>중간에 evt가 사라진게..좀 send_message(없어졌는데);
-            websocket.onmessage = function(evt) {
-               onMessage(evt)                  //여기지우면뭐보냈는지 안띄움  pf>받은 메세지는 여기 들어오는거다..
-            };
-            websocket.onerror = function(evt) {
-               onError(evt)
-            };
-         }
+			function init() {				//yc>이게 시작이 되는가? 왜 이게 시작이 되지?  ->> 아마 socket 핸들러에서 보낸거가  여기로 들어오는듯..
+				output = document.getElementById("output");
+				websocket = new WebSocket(wsUri);									//yc>본인소켓주소인가..
+				websocket.onopen = function(evt) {										
+					onOpen(evt) 					//여기에는 뭐가들어오는거지..
+				};
+			}
+           function send_message() {						//q>중간에 evt가 사라진게..좀 send_message(없어졌는데);
+				websocket.onmessage = function(evt) {
+					onMessage(evt)						//여기지우면뭐보냈는지 안띄움  pf>받은 메세지는 여기 들어오는거다..
+				};
+				websocket.onerror = function(evt) {
+					onError(evt)
+				};
+			}
            
            
-            function onOpen(evt) { //WebSocket 연결                  
+            function onOpen(evt) { //WebSocket 연결						
                 //writeToScreen("Connected to Endpoint!");    //여기에 들어오면 evt에서 값뺄수있음...
                 send_message();
                                
@@ -628,49 +631,53 @@ td {
             }
             function onMessage(evt) { //메시지 수신
                // writeToScreen("Message Received: " + evt.data);
-                             
-               client(evt);
-               
-               var message = JSON.parse(evt.data);
-               var messagecontent = message.message;
-               /* alert("message내용 : "+messagecontent); */
-               var tomessage = message.to;
-               /* alert("buyerid배열"+message.to); */
-               
-               var buyerid = document.getElementById("buyerid").value;
-            /*    alert("hidden값 : "+buyerid); */
-               for(var i = 0 ; i < tomessage.length ; i++){
-                  if (buyerid == tomessage[i].buyerId){
-                     console.log(tomessage[i].buyerId);
-                     /* alert(tomessage[i].buyerId); */
-                      $.toast(messagecontent, {
-                           duration: 50000
-                      });
-                  }
-               }
+                          	
+            	client(evt);
+            	
+            	var message = JSON.parse(evt.data);
+            	var messagecontent = message.message;
+            	/* alert("message내용 : "+messagecontent); */
+            	var tomessage = message.to;
+            	/* alert("buyerid배열"+message.to); */
+            	
+            	var buyerid = document.getElementById("buyerid").value;
+           		 /* 	alert("hidden값 : "+buyerid); */
+           		 
+           		 
+           		 
+           		 alert("집에 가자ㅠ : " + tomessage.length);
+            	for(var i = 0 ; i < tomessage.length ; i++){
+            		if (buyerid == tomessage[i].buyerId){
+            			console.log(tomessage[i].buyerId);
+            			/* alert(tomessage[i].buyerId); */
+            			 $.toast(messagecontent, {
+            			      duration: 3000
+            			 });
+            		}
+            	}
             }
             
             function onError(evt) {  // 전송 에러 발생
                 writeToScreen('ERROR: ' + evt.data);
             } 
   /*           function doSend(str) {
-            //var message = document.getElementById("textID").value;
-               //writeToScreen("Message Sent: " + message);
-               //writeToScreen("뭐보내는지 표시하려고 ");
-               
-               var pk = {storeid : "커피가게", goodsid : "2잔"};
-               
-               
-               var jsonstr = JSON.stringify(pk);
-               
-               
+				//var message = document.getElementById("textID").value;
+            	//writeToScreen("Message Sent: " + message);
+            	//writeToScreen("뭐보내는지 표시하려고 ");
+            	
+            	var pk = {storeid : "커피가게", goodsid : "2잔"};
+            	
+            	
+            	var jsonstr = JSON.stringify(pk);
+            	
+            	
                 websocket.send(jsonstr); // 스트링 배열만들어서 보내면 되겠네...
                 
                 
                 
                 //websocket.close();
             } */
-            function writeToScreen(message) {                  //메세지를 화면에 띄워줌...
+            function writeToScreen(message) {						//메세지를 화면에 띄워줌...
                 var pre = document.createElement("p");
                 pre.style.wordWrap = "break-word";
                 pre.innerHTML = message;
@@ -679,6 +686,13 @@ td {
             }
             window.addEventListener("load", init, false);
         </script>
+
+
+
+
+
+
+
 <!--//////////////////////////////////////////////////////////////////////////////////////   -->
 
 <style>
@@ -729,7 +743,7 @@ td {
                   
                         <ul class="sub-menu">
 
-                            <li>서울특별시</li>
+                            <li>서울특별시${custid }</li>
                             <li>경기도</li>                           
                             <li>인천광역시</li>
                             <li>부산광역시</li>
@@ -756,7 +770,6 @@ td {
 <input type="hidden" id = "buyerid" value="${custid }">
 
 <div id="sellergoods" style="width:100%;height:300px;"></div>
-<input type="button" value="push" id="eb">
-
+<input tyle="button" value="aaa" id="aaa">
 </body>
 </html>
