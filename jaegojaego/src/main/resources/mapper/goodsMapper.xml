@@ -5,29 +5,28 @@
 
 <mapper namespace="com.jaego.web.DAO.GoodsMapper">
 	<insert id="insertGoods" parameterType="Goods">
-		insert into
-		Goods(
-		sellerCRN
-		,goodsName
-		,goodsPrice
-		,goodsQuantity
+		insert into Goods(
+			sellerCRN
+			,goodsName
+			,goodsPrice
+			,goodsQuantity
 		<if test='goodsOimage != null and goodsSimage !=null'>
 			,goodsOimage
 			,goodsSimage
 		</if>
-		,goodsCode
-		,goodsInfo
+			,goodsCode
+			,goodsInfo
 		)values(
-		#{sellerCRN}
-		,#{goodsName}
-		,#{goodsPrice}
-		,#{goodsQuantity}
+			#{sellerCRN}
+			,#{goodsName}
+			,#{goodsPrice}
+			,#{goodsQuantity}
 		<if test='goodsOimage != null and goodsSimage !=null'>
 			,#{goodsOimage}
 			,#{goodsSimage}
 		</if>
-		,#{goodsCode}
-		,#{goodsInfo}
+			,#{goodsCode}
+			,#{goodsInfo}
 		)
 
 	</insert>

@@ -58,7 +58,7 @@ create table Goods(
 	goodsCode varchar2(30) primary key,
 	goodsDateOfUpload date default sysdate not null,
 	goodsDateOfUpdate date,
-	goodsStatus varchar2(200),
+	goodsStatus varchar2(200) default 'off',
 	goodsInfo varchar2(4000) not null
 );
 
@@ -84,8 +84,7 @@ create table CSReply(
 );
 
 create sequence CSBoard_seq start with 1 increment BY 1;
-
 create sequence CSReply_seq start with 1 increment BY 1;
 
-select * from buyer;
-select * from sales;
+
+

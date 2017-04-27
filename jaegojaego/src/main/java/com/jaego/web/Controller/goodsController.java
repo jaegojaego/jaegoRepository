@@ -230,11 +230,12 @@ public class goodsController {
 		System.out.println("구매자id들"+buyer_id);
 		String shopname = resultinfo.get(0).get("SELLERSHOPNAME")+"의 상품목록이 변경되었습니다.";
 		HashMap<String, Object>content = new HashMap<String, Object>();
+		content.put("sellerCRN", sellerCRN);
 		content.put("color", "list");
 		content.put("shopname", shopname);
 		content.put("buyer_id", buyer_id);
 		Gson gson = new Gson();
-		System.out.println("보내는 값(color,shopname,buyer_id)"+content);
+		System.out.println("보내는 값(sellerCRN,color,shopname,buyer_id)"+content);
 		return gson.toJson(content);
 		}
 	
