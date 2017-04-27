@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jaego.web.DAO.AnalysisMapper">
+
+ <select id="select" resultType="String"> <!-- 20170406 권록헌 -->
+      select 
+         sellercrn
+      from 
+         seller
+      where
+         sellerId=#{sellerId}
+   </select>
+   
+	
+ 	<select id="month" parameterType="Sales" resultType="HashMap">	<!-- 20170406 권록헌 -->
+		select 
+		salesname, 
+		sum(salesprice*salesquantity) price
+		
+			from sales
+			where sellerCRN=#{sellerCRN} and TO_CHAR(salestime,'yy/mm/dd') = TO_CHAR(SYSDATE,'yy/mm/dd')
+			group by salesname
+	</select> 
+	<select id="allmoney" parameterType="Sales" resultType="HashMap">	<!-- 20170406 권록헌 -->
+		select 
+		TO_CHAR(salestime,'yy/mm/dd')salestime, 
+		sum(salesprice*salesquantity) price
+		
+			from sales
+			where sellerCRN=#{sellerCRN}
+			group by TO_CHAR(salestime,'yy/mm/dd')
+			order by salestime
+	</select>
+	<!-- <select id="month" parameterType="Sales" resultType="HashMap">	20170406 권록헌
+		select TO_CHAR(salestime,'yy/mm/dd')salestime,
+			salesname
+			, sum(salesQuantity) as Quantity
+			from sales
+			where sellercrn=#{sellerCRN}
+			group by TO_CHAR(salestime,'yy/mm/dd'),salesname
+			order by salestime,salesname
+	</select> -->
+	 <select id="circle" parameterType="Sales" resultType="HashMap">	<!-- 20170406 권록헌 -->
+		select salesname,sum(salesQuantity) as Quantity
+			from sales
+			where sellercrn=#{sellerCRN}
+			group by salesname 
+			
+	</select>
+	 <select id="tcircle" parameterType="Sales" resultType="HashMap">	<!-- 20170406 권록헌 -->
+	select salesname,sum(salesQuantity) as Quantity
+			from sales
+			where sellercrn=#{sellerCRN} and TO_CHAR(salestime,'yy/mm/dd') = TO_CHAR(SYSDATE,'yy/mm/dd')
+				group by salesname 
+	</select>
+</mapper>

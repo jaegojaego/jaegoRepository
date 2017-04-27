@@ -189,4 +189,13 @@
 		and 
 			g.goodsCode = #{goodsCode}
 	</select>
+	
+	<select id="selectsellerBEA" parameterType="String" resultType="String">
+		select
+			sellerBEA
+		from 
+			seller
+		where
+			sellerCRN = #{sellerCRN}	
+	</select>
 </mapper>

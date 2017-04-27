@@ -7,8 +7,7 @@
     <title>Sing - Tables Dynamicc</title>
 
 	<script>
-	function tttest() {
-		alert('어찌하스까이');
+	function goodslist() {
 		location.href='goodslist';
 	}
 	///web/goodslist3
@@ -249,7 +248,7 @@ jQuery(document).ready(function() {
 
             <li>
                 <!-- an example of nested submenu. basic bootstrap collapse component -->
-                <a href="" <%--data-toggle="collapse" data-parent="#sidebar"--%> onclick="tttest()">
+                <a href="" <%--data-toggle="collapse" data-parent="#sidebar"--%> onclick="goodslist()">
                     <span class="icon">
                         <i class="fa fa-table"></i>
                     </span>

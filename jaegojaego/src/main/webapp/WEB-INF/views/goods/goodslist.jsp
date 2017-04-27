@@ -843,7 +843,7 @@
 				
 				if($('.afterQ').eq(index).val() != $('.beforeQ').eq(index).text()){
 					
-					var ninus = $('.afterQ').eq(index).val()-$('.beforeQ').eq(index).text();
+					var ninus = $('.beforeQ').eq(index).text()-$('.afterQ').eq(index).val();
 					alert(ninus); 
 					
 					$('.beforeQ').eq(index).text($(this).val());
@@ -858,8 +858,9 @@
 							goodsQuantity:beforeQuantity
 						}, 
 						success:function(content){
-							
+							/* alert("content: "+content); */
 							var jsonContent = JSON.parse(content);
+							/* alert("jsonContent : "+jsonContent); */
 							dosendcontent(jsonContent);
 							//alert("!!!!!");
 							doSend();
@@ -882,12 +883,12 @@
 							salesPrice:goodsprice,
 							salesName:goodsname
 						},
- 							
-						success:function(){
+						/*	석지연 (이거 없앴는데 왜 살아있닝??/2017.04.26)
+						 success:function(){
 							alert("aaa");
 							doSend();
 							location.href="goodslist";
-						},
+						}, */
 						error:function(e){
 							alert("오류임");
 						}
@@ -967,10 +968,12 @@
 							goodsStatus:btnstatus
 						},
 						success: function(content){
+							alert("content : "+content);
 							var jsonContent = JSON.parse(content);
+							/* alert("jsonContent : "+jsonContent); */
 							dosendcontent(jsonContent);
 							doSend();
-							location.href="goodslist";
+							//location.href="goodslist";
 						}
 					});
 			 }else{
@@ -988,7 +991,7 @@
 						},
 						success: function(){
 							doSend();
-							location.href="goodslist";
+							//location.href="goodslist";
 						}
 				});
 			 }
@@ -1146,8 +1149,12 @@
             }
 			
 			function dosendcontent(content){
-				alert("dosendcontent(고객아이디들) : " + content.buyer_id);
+				/* alert("dosendcontent(고객아이디들) : " + content.buyer_id); */
 				var message={};
+				message.sellerCRN = content.sellerCRN;
+				alert("sellerCRN 잘왔네: "+content.sellerCRN);
+				message.from = content.color;
+				alert(content.color);
 				message.message = content.shopname;
 				message.to = content.buyer_id;
 				alert(JSON.stringify(message));

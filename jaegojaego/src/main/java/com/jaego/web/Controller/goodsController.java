@@ -30,6 +30,7 @@ import com.jaego.web.VO.Goods;
 import com.jaego.web.VO.Sales;
 import com.google.gson.Gson;
 import com.jaego.web.DAO.GoodsDao;
+import com.jaego.web.DAO.GoodsMapper;
 import com.jaego.web.Util.ExampleSend;
 import com.jaego.web.Util.FileService;
 
@@ -229,10 +230,11 @@ public class goodsController {
 		System.out.println("구매자id들"+buyer_id);
 		String shopname = resultinfo.get(0).get("SELLERSHOPNAME")+"의 상품목록이 변경되었습니다.";
 		HashMap<String, Object>content = new HashMap<String, Object>();
+		content.put("color", "list");
 		content.put("shopname", shopname);
 		content.put("buyer_id", buyer_id);
 		Gson gson = new Gson();
-		System.out.println("보내는 값(shopname,buyer_id)"+content);
+		System.out.println("보내는 값(color,shopname,buyer_id)"+content);
 		return gson.toJson(content);
 		}
 	
@@ -251,7 +253,7 @@ public class goodsController {
 		
 	//상품상태수정
 	@ResponseBody
-	@RequestMapping(value="updatestatus", method=RequestMethod.GET)
+	@RequestMapping(value="updatestatus", method=RequestMethod.GET, produces = "application/text; charset=utf8")
 	public String updatestatus(String goodsCode, String goodsStatus,HttpSession session){
 		//System.out.println(goodsCode+"와"+goodsStatus);
 		dao.updatestatus(goodsCode, goodsStatus);
@@ -260,17 +262,30 @@ public class goodsController {
 		String sellerCRN = dao.sellerCRN(sellerId);
 		ArrayList<Buyer> buyer_id = dao.buyer_id(sellerCRN);
 		System.out.println("구매자id들"+buyer_id);
-
+		System.out.println("sellerCRN : "+sellerCRN);
+		
 		HashMap<String, Object>insertpush=dao.insertpush(goodsCode);
-		System.out.println(insertpush);
+		System.out.println("넣을 정보 뽑아야겐"+insertpush);
 		String shopName = (String)insertpush.get("GOODSNAME");
 		String goodsName = (String)insertpush.get("SELLERSHOPNAME");
-		String shopname = shopName+"의 "+goodsName+"상품이 추가되었습니다.";
+		String shopname = shopName+"에서 "+goodsName+"상품이 추가되었습니다.";
+		
 		HashMap<String, Object>content = new HashMap<String, Object>();
+		content.put("sellerCRN", sellerCRN);
+		content.put("color", "on");
 		content.put("shopname", shopname);
 		content.put("buyer_id", buyer_id);
 		Gson gson = new Gson();
-		System.out.println("보내는 값(shopname,buyer_id)"+content);
+		System.out.println("보내는 값(sellerCRN,color,shopname,buyer_id)"+content);
+		System.out.println("보내는 content: "+gson.toJson(content));
 		return gson.toJson(content);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="selectsellerBEA", method=RequestMethod.GET, produces = "application/text; charset=utf8")
+	public String selectsellerBEA(String sellerCRN){
+		String sellerBEA = dao.selectsellerBEA(sellerCRN);//adsfadsf
+		System.out.println("잘 변환??"+sellerBEA);
+		return sellerBEA;
 	}
 }

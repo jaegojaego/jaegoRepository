@@ -30,16 +30,20 @@ td {
 <script type="text/javascript" src="./resources/js/jquery.toast.min.js"></script>     
 
 <script type="text/javascript" src="./resources/js/function.js"> </script>
-<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=98b5ff77fd0570ce46f2ef84207626b0&libraries=services"></script>
+<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=a14aced40ff3bc7cb1d2485146b53b0a&libraries=services"></script>
+
+
 <script>
+   
+var flag = [];
+var sellertob;
+
    
    $(function(){
    	
 	  var CRN;
       var adrr = "삼성동";
       console.log(adrr);
-      var flag = [];
-      var sellertob;
       a(adrr,flag,sellertob);
       
       
@@ -72,8 +76,7 @@ td {
          a(adrr,flag,sellertob);
 
       });
-      
-           
+   });
       function a(adrr,flag,sellertob){
       var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
           mapOption = {
@@ -487,8 +490,8 @@ td {
       }
    /////////////////////////////////////////////////////////////////////////////////
    
-   });
-</script>
+  
+
 
 <!--//////////////////////////////////////////////////////////////////////////////////////  -->
 
@@ -498,7 +501,7 @@ td {
 
 
 
-        <script type="text/javascript">
+
         
         	
         	//내가 만든 function
@@ -567,35 +570,60 @@ td {
             function onOpen(evt) { //WebSocket 연결						
                 //writeToScreen("Connected to Endpoint!");    //여기에 들어오면 evt에서 값뺄수있음...
                 send_message();
-                               
-              
             }
+            
             function onMessage(evt) { //메시지 수신
                // writeToScreen("Message Received: " + evt.data);
                           	
             	client(evt);
             	
             	var message = JSON.parse(evt.data);
+            	alert("message떠야해: "+message);
+            	var messagesellerCRN = message.sellerCRN;
+            	alert("sellerCRN떠야해: "+messagesellerCRN);
+            	var messagefrom = message.from;
             	var messagecontent = message.message;
-            	/* alert("message내용 : "+messagecontent); */
+            	/* alert("message내용 : "+messagecontent); */ 
             	var tomessage = message.to;
-            	/* alert("buyerid배열"+message.to); */
+            	/* alert("buyerid배열"+message.to);  */
             	
             	var buyerid = document.getElementById("buyerid").value;
-           		 /* 	alert("hidden값 : "+buyerid); */
-           		 
-           		 
-           		 
-           		 alert("집에 가자ㅠ : " + tomessage.length);
-            	for(var i = 0 ; i < tomessage.length ; i++){
-            		if (buyerid == tomessage[i].buyerId){
-            			console.log(tomessage[i].buyerId);
+           		/* alert("hidden값 : "+buyerid);
+            	alert("buyerid배열 길이: "+tomessage.length); */
+            		for(var i = 0 ; i < tomessage.length ; i++){
+            			if (buyerid == tomessage[i].buyerId){
+            			/* console.log(tomessage[i].buyerId); */
             			/* alert(tomessage[i].buyerId); */
-            			 $.toast(messagecontent, {
-            			      duration: 3000
-            			 });
+            				if(messagefrom == "on"){//상품등록
+	            				$.toast(messagecontent+"<div id=\"aclick\">click</div>",{
+	            						duration: 3000,
+	        			          		type: 'info'
+	            				 });
+            				}else{
+            				 	alert("list");//수량변경
+	            				 $.toast(messagecontent+"<div id=\"aclick\">click</div>",{
+	            						 duration: 3000
+	            			     });
+            				}
+            			}
             		}
-            	}
+		            $('#aclick').click(function() {
+		        		$.ajax({
+		        			type:"GET",
+		        			url:"selectsellerBEA",
+		        			data:{
+		        				sellerCRN:messagesellerCRN
+		        			},
+		        			success: function(sellerBEA){
+		        				alert("잘왔엉"+sellerBEA);
+		        				var adrr = sellerBEA;
+		        				a(adrr,flag,sellertob);
+		        			},
+		        			error: function(e){
+		        				alert('머ㅜㄴ데');
+		        			}
+		        		});
+		        	}); 
             }
             
             function onError(evt) {  // 전송 에러 발생
@@ -629,12 +657,8 @@ td {
         </script>
 
 
-
-
-
-
-
 <!--//////////////////////////////////////////////////////////////////////////////////////   -->
+
 
 <style>
     .wrap {position: absolute;left: 0;bottom: 40px;width: 303px;height: 450px;margin-left: -150px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}

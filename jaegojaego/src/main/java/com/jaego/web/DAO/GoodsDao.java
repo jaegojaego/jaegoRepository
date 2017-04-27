@@ -122,4 +122,10 @@ public class GoodsDao {
 			GoodsMapper mapper = sqlsession.getMapper(GoodsMapper.class);
 			return mapper.insertpush(goodsCode);
 		}
+		
+		//seller주소가져오기
+		public String selectsellerBEA(String sellerCRN){
+			GoodsMapper mapper = sqlsession.getMapper(GoodsMapper.class);
+			return mapper.selectsellerBEA(sellerCRN);
+		}
 }
