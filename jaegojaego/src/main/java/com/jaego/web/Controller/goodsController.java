@@ -132,30 +132,6 @@ public class goodsController {
 		return "redirect:goodslist";
 	}
 	
-	//20170427 박진우
-	@RequestMapping(value = "BFgoodslist", method = RequestMethod.GET)
-	public String BFgoodslist() {
-		return "./goods/BFgoodslist";
-	}
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	//목록 가져오기
 	@RequestMapping(value = "goodslist", method = RequestMethod.GET)
 	public String goodslist(Model model,HttpSession session){

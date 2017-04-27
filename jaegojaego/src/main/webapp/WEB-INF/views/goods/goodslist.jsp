@@ -1,4 +1,4 @@
-	<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -8,9 +8,9 @@
 
 	<script type="text/javascript" src="./resources/js/jquery-3.1.1.js"></script>
 	<script>
-/* 	$(function() {
+ 	$(function() {
 		doSend();
-	}); */
+	}); 
 	</script>
 
 	<script>
@@ -811,16 +811,31 @@
 <script type="text/javascript" src="./resources/js/jquery-3.1.1.js"></script>
 <script type="text/javascript">
 
+
+
+
+
+
+	
 	$(function() {
 		$('.bplus').click(function() {
-			var n = $('.bplus').index(this);
-			var num = $(".afterQ:eq(" + n + ")").val();
-			num = $(".afterQ:eq(" + n + ")").val(num * 1 + 1);
+			var b = $('.bplus').index(this);
+			var bnum = $(".beforeQ:eq(" + b + ")").text();
+			var a = $('.bplus').index(this);
+			var anum = $(".afterQ:eq(" + a + ")").val();
+	    
+			if(bnum<=anum){
+				alert("변동수량이 초과하였습니다.");
+			} else{
+				var n = $('.bplus').index(this);			
+				var num = $(".afterQ:eq(" + n + ")").val();			
+				num = $(".afterQ:eq(" + n + ")").val(num * 1 + 1);			
+			}
 		});
 		$('.bninus').click(function() {
-			var n = $('.bninus').index(this);
-			var num = $(".afterQ:eq(" + n + ")").val();
-			num = $(".afterQ:eq(" + n + ")").val(num * 1 - 1);
+			var n = $('.bninus').index(this);		
+			var num = $(".afterQ:eq(" + n + ")").val();		
+			num = $(".afterQ:eq(" + n + ")").val(num * 1 - 1);		
 		});
 	});
 
@@ -1044,7 +1059,7 @@
         		doSend();
         	}
            
-            var wsUri = "ws://10.10.7.40:8889/web/echo.do";
+            var wsUri = "ws://203.233.196.93:8888/web/echo.do";
            
             function init() {
 				output = document.getElementById("output");
