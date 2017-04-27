@@ -741,6 +741,8 @@ var sellertob;
 
 
 <style>
+	.toast #aclick {display: inline-block;float: right;}
+	#aclick:HOVER {text-decoration: underline;pause: 60s;}
     .wrap {position: absolute;left: 0;bottom: 40px;width: 303px;height: 450px;margin-left: -150px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
 
     .wrap .info {width: 303px;height: 450px;border-radius: 5px;border-bottom: 2px solid red;border-right: 1px solid red;overflow: hidden;background: white;}
