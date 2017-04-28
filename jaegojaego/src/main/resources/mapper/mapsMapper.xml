@@ -37,7 +37,8 @@
 			goodsCode,
 			goodsDateOfUpload,
 			goodsDateOfUpdate,
-			goodsStatus
+			goodsStatus,
+			expiredDate
 		from goods<![CDATA[
 		where sellerCRN=#{sellerCRN} and goodsStatus='on']]>
 			

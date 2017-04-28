@@ -207,5 +207,12 @@ public class mapsController {
 		int ns = dao.nostar(sellerCRN, buyerId);
 		return ns;
 	}
+	
+	@RequestMapping(value="test", method=RequestMethod.GET)
+	public String test(){
+		
+		return "test";
+	}
+	
 
 }

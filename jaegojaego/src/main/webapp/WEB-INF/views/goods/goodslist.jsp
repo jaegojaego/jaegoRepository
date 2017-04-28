@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -811,12 +811,6 @@
 <script type="text/javascript" src="./resources/js/jquery-3.1.1.js"></script>
 <script type="text/javascript">
 
-
-
-
-
-
-	
 	$(function() {
 		$('.bplus').click(function() {
 			var n = $('.bplus').index(this);
@@ -843,6 +837,7 @@
 			num = $(".afterQ:eq(" + n + ")").val(num * 1 - 1);		
 		});
 	});
+
 
 	$(function() {
 		$('#check').click(function() {
@@ -1064,7 +1059,7 @@
         		doSend();
         	}
            
-            var wsUri = "ws://203.233.196.92:8889/web/echo.do";
+            var wsUri = "ws://10.10.7.40:8889/web/echo.do";
            
             function init() {
 				output = document.getElementById("output");
@@ -1108,6 +1103,7 @@
 				/*//////////////////////////////////////////////////////////////  */
 				
 				var glist= []; 
+				var goodstime = [];
                   
 
                     $.ajax({//type필수임
@@ -1125,26 +1121,40 @@
                                    GP: item.goodsPrice,
                                    GQ: item.goodsQuantity,
                                    GI: item.goodsOimage,
-                                   GC: item.goodsCode
+                                   GC: item.goodsCode,
+                                   DT: item.expiredDate
 
                                });
                                
                              });
                             /////////////////////////////////////////////////////
 
-                       
-                           var content = '<div class="goodsinfo" id="'+CRN+'" style="overflow-y:scroll">'+
-                            '<table><tr><th>상품명</th><th>상품가격</th><th>상품개수</th><th>이미지보기</th></tr>';
+                      
                             
-                            for (var i = 0, len = glist.length; i < len; i++) {
-                              //  total+= glist[i].GN;
-                            // 마커를 생성하고 지도위에 표시합니다
-                            content += '<tr><th>'+glist[i].GN+'</th><th>'+glist[i].GP+"</th><th>"+glist[i].GQ
-                            +'</th><th><div class="thth"><img src="./resources/image/picture.png" width="20px" height="20px" class="abcd" imgData="goodsimg?sellerCRN='+CRN+'&goodsCode='+glist[i].GC+'">'+
-                            '<span class="immm"><img src="goodsimg?sellerCRN='+CRN+'&goodsCode='+glist[i].GC+'" width="90px" height="70px" > </span></div></th></tr>';
-                            }
                             
-                            content += '</table></div>';
+                            var content0 = '<div class="goodsinfo" id="'+CRN+'" style="overflow-y:scroll">'+
+                                         			'<table><tr><th>품명</th><th>가격</th><th>개수</th><th>유통기한</th><th>이미지</th></tr>';
+                               
+                                   for (var i = 0, len = glist.length; i < len; i++) {
+                                   		
+                                         content0 += '<tr><th>'+glist[i].GN+'</th><th>'+glist[i].GP+"</th><th>"+glist[i].GQ
+                                         +'</th><th><p name="demo" id="'+glist[i].GC+'" class="demos" attr="'+glist[i].GC+'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></th><th><div class="thth"><img src="./resources/image/picture.png" width="20px" height="20px" class="abcd" imgData="goodsimg?sellerCRN='+CRN+'&goodsCode='+glist[i].GC+'">'+
+                                         '<span class="immm"><img src="goodsimg?sellerCRN='+CRN+'&goodsCode='+glist[i].GC+'" width="90px" height="70px" > </span></div></th></tr>';
+                                        
+                                         
+                                         goodstime.push({goodscodes:glist[i].GC,goodsDTs:glist[i].DT});
+                                         
+                                           }
+                              
+                         
+                            
+                            //
+                            
+                            
+                            
+                            content0 += '</table></div>';
+                            
+                            
                             
                             
                         	
@@ -1157,7 +1167,7 @@
                                 
                                 success : function(data){
                                 	alert(data);
-                    				var pk = {storeid : CRN, goodsid : content,flag:data};
+                    				var pk = {storeid : CRN, goodsid : content0,flag:data,fortimes:goodstime};
                     				var jsonstr = JSON.stringify(pk);
                                     websocket.send(jsonstr); // 스트링 배열만들어서 보내면 되겠네...
                                     //websocket.close();
@@ -1184,6 +1194,60 @@
 				/*///////////////////////////////////////////////////////////////////  */
 
             }
+			
+		/*  	function timetest(i,goodscode,goodsDT) {
+			
+		 		var timegaek=[];
+		 		
+				  
+				  
+				  var countDownDate = new Date(goodsDT).getTime();			
+				///////////////////////
+					
+						// Update the count down every 1 second
+						var x = setInterval(function() {
+						
+						  // Get todays date and time
+						  var now = new Date().getTime();
+						
+						 
+						  // Find the distance between now an the count down date
+						  var distance = countDownDate - now;
+						 
+						
+						  // Time calculations for days, hours, minutes and seconds
+						  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+						  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+						  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+						  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+					
+						 /* 
+						  document.getElementById(goodscode).innerHTML = days + " 일 " + hours + "시간 "
+						  + minutes + "분 " + seconds + "초 ";  
+						  
+						  
+						  
+						  var time = days + " 일 " + hours + "시간 "+ minutes + "분 " + seconds + "초 ";
+						  
+						  if(distance <0){
+								clearInterval(x);
+							    time = "기한만료(EXPIRED)"; // 유통기한이 다되면 시간자리에 기한만료가 뜸..
+							  }
+						  
+						  timegaek.push = {times:time,goodscodes:goodscode};
+						 console.log(timegaek);
+						  
+						  
+						}, 1000);
+
+				  
+				  
+				  //////////////////////////////////////////////////////
+				  
+				  
+				  
+				  
+				}  */
 			
 			function dosendcontent(content){
 				/* alert("dosendcontent(고객아이디들) : " + content.buyer_id); */
