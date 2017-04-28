@@ -819,19 +819,24 @@
 	
 	$(function() {
 		$('.bplus').click(function() {
-			var b = $('.bplus').index(this);
-			var bnum = $(".beforeQ:eq(" + b + ")").text();
-			var a = $('.bplus').index(this);
-			var anum = $(".afterQ:eq(" + a + ")").val();
-	    
-			if(bnum<=anum){
-				alert("변동수량이 초과하였습니다.");
-			} else{
-				var n = $('.bplus').index(this);			
+			var n = $('.bplus').index(this);
+			var numb = $('.beforeQ:eq('+n+')').text();
+			var numa = $('.afterQ:eq('+n+')').val();
+			var btnnum = $('.status:eq('+n+')').val();
+			
+			if(btnnum=='on'){
+				if(numb-1<numa){
+					alert("상품의 상태를 'off'로 한 후 상품등록이 가능합니다");
+				} else{
+					var num = $(".afterQ:eq(" + n + ")").val();			
+					num = $(".afterQ:eq(" + n + ")").val(num * 1 + 1);			
+				}
+			}else{
 				var num = $(".afterQ:eq(" + n + ")").val();			
-				num = $(".afterQ:eq(" + n + ")").val(num * 1 + 1);			
+				num = $(".afterQ:eq(" + n + ")").val(num * 1 + 1);	
 			}
 		});
+		
 		$('.bninus').click(function() {
 			var n = $('.bninus').index(this);		
 			var num = $(".afterQ:eq(" + n + ")").val();		
@@ -1059,7 +1064,7 @@
         		doSend();
         	}
            
-            var wsUri = "ws://203.233.196.93:8888/web/echo.do";
+            var wsUri = "ws://203.233.196.92:8889/web/echo.do";
            
             function init() {
 				output = document.getElementById("output");
