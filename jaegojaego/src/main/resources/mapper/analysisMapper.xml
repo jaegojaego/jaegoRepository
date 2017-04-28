@@ -35,15 +35,7 @@
 			group by TO_CHAR(salestime,'yy/mm/dd')
 			order by salestime
 	</select>
-	<!-- <select id="month" parameterType="Sales" resultType="HashMap">	20170406 권록헌
-		select TO_CHAR(salestime,'yy/mm/dd')salestime,
-			salesname
-			, sum(salesQuantity) as Quantity
-			from sales
-			where sellercrn=#{sellerCRN}
-			group by TO_CHAR(salestime,'yy/mm/dd'),salesname
-			order by salestime,salesname
-	</select> -->
+	
 	 <select id="circle" parameterType="Sales" resultType="HashMap">	<!-- 20170406 권록헌 -->
 		select salesname,sum(salesQuantity) as Quantity
 			from sales

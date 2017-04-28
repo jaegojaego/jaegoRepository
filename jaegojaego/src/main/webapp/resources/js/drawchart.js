@@ -31,23 +31,13 @@ $(function(){
         // Some raw data (not necessarily accurate)
   
     	 console.log(ala.length);
-    		/*  $.each(ala,function(index,item){
-    			  
-    			 $.each(item,function(index2,item2){
-    				 if(index2!=0){
-    					 item2=parseInt(item2); 
-    				 }
-    				 tichart.push(item2);
-    			 })
-    			 tichartList.push(tichart);
-    			 tichart = [];
-    		  })*/
+    	
     	  
     		  var data = google.visualization.arrayToDataTable(tichartList);  
 
         	  var options = {
         		      title : '일별매출',
-        		      vAxis: {title: "수량"},
+        		      vAxis: {title: "금액"},
         		      hAxis: {title: '일수'},
         		      seriesType: 'bars',
         		    };

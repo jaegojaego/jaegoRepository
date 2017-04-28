@@ -11,20 +11,7 @@
  <!-- 구글차트주석 -->
  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
- <!-- 그래프파일위치 -->
-<!--   <script src="./resources/js/send.js"></script> 
- <script src="./resources/js/drawchart.js"></script>
-  <script src="./resources/js/cricleChart.js"></script>
-   <script src="./resources/js/todaycricleChart.js"></script> -->
-    <script type="text/javascript">
-   
-    /*   google.charts.load("current", {packages:["corechart"]});
-    
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.load('current', {'packages':['line']});   */
-    /*   google.charts.load("current", {packages:["corechart"]});  */
-    
-    </script>
+ 
            
 </head>
 <body>

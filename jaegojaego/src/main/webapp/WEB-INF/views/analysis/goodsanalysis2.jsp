@@ -13,12 +13,7 @@
  <!-- 그래프파일위치 -->
 
    <script src="./resources/js/todaycricleChart.js"></script>
-    <script type="text/javascript">
-   
-   /*  google.charts.load("current", {packages:["corechart"]});
-    google.charts.setOnLoadCallback(todaycricleChart); */
-    
-    </script>
+  
            
 </head>
 <body>
