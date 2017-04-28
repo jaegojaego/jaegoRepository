@@ -59,7 +59,8 @@ create table Goods(
 	goodsDateOfUpload date default sysdate not null,
 	goodsDateOfUpdate date,
 	goodsStatus varchar2(200) default 'off',
-	goodsInfo varchar2(4000) not null
+	goodsInfo varchar2(4000) not null,
+	expiredDate date not null
 );
 
 create table CSBoard(

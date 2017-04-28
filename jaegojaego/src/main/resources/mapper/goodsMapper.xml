@@ -10,6 +10,7 @@
 			,goodsName
 			,goodsPrice
 			,goodsQuantity
+			,expiredDate
 		<if test='goodsOimage != null and goodsSimage !=null'>
 			,goodsOimage
 			,goodsSimage
@@ -21,6 +22,7 @@
 			,#{goodsName}
 			,#{goodsPrice}
 			,#{goodsQuantity}
+			,TO_DATE(#{expiredDate},'yyyy-mm-dd hh24:mi:ss')
 		<if test='goodsOimage != null and goodsSimage !=null'>
 			,#{goodsOimage}
 			,#{goodsSimage}

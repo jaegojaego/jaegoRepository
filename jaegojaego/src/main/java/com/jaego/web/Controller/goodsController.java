@@ -89,6 +89,7 @@ public class goodsController {
 			goods.setGoodsOimage(upload.getOriginalFilename());
 			goods.setGoodsSimage(savedfile);
 		}
+		System.out.println("상품정보 : " + goods);
 		dao.insertGoods(goods);
 		ArrayList<Goods> result = dao.list(sellerCRN);
 		model.addAttribute("list",result);
