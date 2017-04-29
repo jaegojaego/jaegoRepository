@@ -79,6 +79,13 @@ public class MapsDao {
 		return result;
 	}
 	
+	public int delshop(Favorite favorite){	//20170429 박진우 - 관심매장 삭제
+		MapsMapper mapper = sqlsession.getMapper(MapsMapper.class);
+		int result = mapper.delshop(favorite);
+		return result;
+		
+	}
+	
 	public ArrayList<Grade> gradelist(String sellerCRN){
 		MapsMapper mapper = sqlsession.getMapper(MapsMapper.class);
 		ArrayList<Grade> gradelist = mapper.gradelist(sellerCRN);

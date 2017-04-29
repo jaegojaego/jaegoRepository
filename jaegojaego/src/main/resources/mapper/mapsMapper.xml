@@ -137,6 +137,14 @@
 					#{sellerCRN}
 				)
 	</insert>
+
+	<insert id="delshop" parameterType="Favorite">
+		delete from favorite
+			where
+				buyerId=#{buyerId}
+			and
+				sellerCRN=#{sellerCRN}
+	</insert>	
 	
 	<select id="gradelist" parameterType="String" resultType="Grade">
 		select

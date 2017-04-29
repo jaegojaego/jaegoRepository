@@ -259,7 +259,7 @@ function timetest(i,goodscode,goodsDT) {
                             '      <div class="body">' + 
                             '      <div class="img"><div class="img2">' +
                             '      <img src="shopimg?sellerCRN='+position.CRN+'" width="120" height="130"></img>' +
-                            '      </div> <div class="shopinfo">업종:'+position.tob+'<br>주소:'+position.shopaddress+'<br>전화번호:'+position.phone+'<br><div class="star" style="width=20px;">별점</div><span class="addshop" style="font-weight:bolder;font-color:black"><관심매장추가></span></div></div>' + 
+                            '      </div> <div class="shopinfo">업종:'+position.tob+'<br>주소:'+position.shopaddress+'<br>전화번호:'+position.phone+'<br><div class="star" style="width=20px;">별점</div><span class="addshop" style="font-weight:bolder;font-color:black"><관심매장추가></span><span class="delshop" style="font-weight:bolder;font-color:black"><관심매장삭제></span></div></div>' + 
                             '      <div class="desc">' + 
 
                             '<div class="goodsinfo" id="'+position.CRN+'">'+
@@ -570,7 +570,27 @@ function timetest(i,goodscode,goodsDT) {
                                          console.log(e);
                                       }
                                 });
-                    });
+                              });                                   
+                                   
+                                //관심매장삭제(20170429 박진우)
+                                    $(".delshop").on("click",function(){
+                                        ///
+                                   
+                                         $.ajax({//type필수임
+                                             type : "get",   //RequestMethod Type
+                                             url: "delshop", //RequestMapping value
+                                             data:{
+                                                sellerCRN:position.CRN
+                                             },
+                                             
+                                           success:function(data){
+                                                 alert(JSON.stringify(data));
+                                              },                             
+                                           error:function(e){
+                                              console.log(e);
+                                           }
+                                     });
+                                    });
                                 
                             });
                         //}
