@@ -301,6 +301,9 @@ function timetest(i,goodscode,goodsDT) {
                             
                              markers.push(marker);
                        
+                            
+                             //레이아웃 css 설정
+                            
                            var content = '<div class="wrap">' + 
                             '    <div class="info">' + 
                             '      <div class="title">' + 
@@ -408,6 +411,9 @@ function timetest(i,goodscode,goodsDT) {
                                             });
                                             
                                           });
+                                         
+                                         //레이아웃 css 설정
+                                         
                                          var content0 = '<div class="goodsinfo" id="'+position.CRN+'" style="overflow-y:scroll">'+
                                          			'<table><tr><th>품명</th><th>가격</th><th>개수</th><th>유통기한</th><th>이미지</th></tr>';
                                          for (var i = 0, len = glist.length; i < len; i++) {
@@ -821,9 +827,12 @@ function timetest(i,goodscode,goodsDT) {
 <style>
 	.toast #aclick {display: inline-block;float: right;}
 	#aclick:HOVER {text-decoration: underline;pause: 60s;}
+	
+	
+	/*  여기서부터 */
     .wrap {position: absolute;left: 0;bottom: 40px;width: 303px;height: 450px;margin-left: -150px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
 
-    .wrap .info {width: 303px;height: 450px;border-radius: 5px;border-bottom: 2px solid red;border-right: 1px solid red;overflow: hidden;background: white;}
+    .wrap .info {width: 303px;height: 450px;border-radius: 5px;border-bottom: 2px solid red;border-right: 1px solid red;overflow: hidden;background: red;}
     .wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
     .info .title {padding: 5px 0 0 10px;height: 30px;background: #FAED7D;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
     .info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}

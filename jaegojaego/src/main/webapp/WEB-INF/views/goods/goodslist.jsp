@@ -14,8 +14,7 @@
 	</script>
 
 	<script>
-	function tttest() {
-		alert('어찌하스까이이');
+	function goodslist() {
 		location.href='goodslist';
 	}
 	///web/goodslist3
@@ -108,7 +107,7 @@
 
             <li class="active">
                 <!-- an example of nested submenu. basic bootstrap collapse component -->
-                <a href="" <%--data-toggle="collapse" data-parent="#sidebar"--%> onclick="tttest()">
+                <a href="" <%--data-toggle="collapse" data-parent="#sidebar"--%> onclick="goodslist()">
                     <span class="icon">
                         <i class="fa fa-table"></i>
                     </span>
