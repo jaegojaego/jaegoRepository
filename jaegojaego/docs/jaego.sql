@@ -87,5 +87,3 @@ create table CSReply(
 create sequence CSBoard_seq start with 1 increment BY 1;
 create sequence CSReply_seq start with 1 increment BY 1;
 
-select * from goods;
-

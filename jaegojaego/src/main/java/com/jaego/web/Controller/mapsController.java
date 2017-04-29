@@ -70,7 +70,7 @@ public class mapsController {
 			e.printStackTrace();
 		}
 		//����� ���� ���
-		String fullPath = uploadPath +"/"+seller.getSellerShopSimg()+".jpg";
+		String fullPath = uploadPath +"/"+seller.getSellerShopSimg();
 		
 		
 		//������ ������ ���� �Է� ��Ʈ��
@@ -103,7 +103,7 @@ public class mapsController {
 			e.printStackTrace();
 		}
 		//����� ���� ���
-		String fullPath = uploadPath +"/"+goods.getGoodsSimage()+".jpg";
+		String fullPath = uploadPath +"/"+goods.getGoodsSimage();
 		
 		
 		//������ ������ ���� �Է� ��Ʈ��

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%><%--íì—‰--%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 5 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
@@ -7,22 +7,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style>
-
-table {
-	text-align: center;
-}
-
-tr {
-	text-align: center;
-}
-
-th {
-	text-align: center;
-}
-
-td {
-	text-align: center;
-}
 
 </style>
 <script type="text/javascript" src="./resources/js/jquery-3.1.1.js"> </script>
@@ -64,13 +48,13 @@ function timetest(i,goodscode,goodsDT) {
 		  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 		  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 	
-		  document.getElementById(goodscode).innerHTML = days + " ì¼ " + hours + "ì‹œê°„ "
-		  + minutes + "ë¶„ " + seconds + "ì´ˆ ";  
+		  document.getElementById(goodscode).innerHTML = days + " ÀÏ " + hours + "½Ã°£ "
+		  + minutes + "ºĞ " + seconds + "ÃÊ ";  
 		  
 		
 		  if (distance < 0) {
 		    clearInterval(x);
-		    document.getElementById(goodscode).innerHTML = "ê¸°í•œë§Œë£Œ(EXPIRED)"; // ìœ í†µê¸°í•œì´ ë‹¤ë˜ë©´ ì‹œê°„ìë¦¬ì— ê¸°í•œë§Œë£Œê°€ ëœ¸..
+		    document.getElementById(goodscode).innerHTML = "±âÇÑ¸¸·á(EXPIRED)"; // À¯Åë±âÇÑÀÌ ´ÙµÇ¸é ½Ã°£ÀÚ¸®¿¡ ±âÇÑ¸¸·á°¡ ¶ä..
 		  }
 		  
 		}, 1000);
@@ -88,56 +72,21 @@ function timetest(i,goodscode,goodsDT) {
    
    
    $(function(){
+	   
+	  
    	
 	  var CRN;
-      var adrr = "ì‚¼ì„±ë™";
+      var adrr = "»ï¼ºµ¿";
       console.log(adrr);
       a(adrr,flag,sellertob);
-      var marker;
-      
-      /* $("#890").on("click",function(){
-      
-    	  var countDownDate = new Date("2017-04-28 00:00:00").getTime();				// íŒŒë€ê¸€ìì— DBì—ì„œ ë¶ˆëŸ¬ì˜¨ ìœ í†µê¸°í•œ ë„£ì–´ì£¼ë©´ ë¨..
-    	 
-    	  // Update the count down every 1 second
-    	  var x = setInterval(function() {
-
-    	    // Get todays date and time
-    	    var now = new Date().getTime();
-    	    
-
-    	    // Find the distance between now an the count down date
-    	    var distance = countDownDate - now;
-
-    	    // Time calculations for days, hours, minutes and seconds
-    	    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    	    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    	    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    	    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    	    
-    	    var all = days + " ì¼ " + hours + "ì‹œê°„ "+ minutes + "ë¶„ " + seconds + "ì´ˆ ";
-    	  
-    	    // Display the result in the element with id="demo"
-    	    document.getElementById("demo").innerHTML = days + " ì¼ " + hours + "ì‹œê°„ "
-    	    + minutes + "ë¶„ " + seconds + "ì´ˆ ";
-
-    	    // If the count down is finished, write some text 
-    	    if (distance < 0) {
-    	      clearInterval(x);
-    	      document.getElementById("demo").innerHTML = "ê¸°í•œë§Œë£Œ(EXPIRED)"; // ìœ í†µê¸°í•œì´ ë‹¤ë˜ë©´ ì‹œê°„ìë¦¬ì— ê¸°í•œë§Œë£Œê°€ ëœ¸..
-    	    }
-    	  }, 1000);
       
       
-      
-      }); */
       
 /*       navigator.geolocation.getCurrentPosition( function(pos) {
             var latitude = pos.coords.latitude;
             var longitude = pos.coords.longitude;
             
-            adrr = "ë¶€ì²œì‹œ"; //ë¬´ì¡°ê±´ ê²€ìƒ‰ì´ ë˜ì–´ì•¼ ë°›ì•„ì˜¤ëŠ”ê±°ë¼ì„œ ë¶€ì²œì‹œë¼ê³  ì„ì˜ë¡œ ì§€ì •í•´ë‘  
+            adrr = "ºÎÃµ½Ã"; //¹«Á¶°Ç °Ë»öÀÌ µÇ¾î¾ß ¹Ş¾Æ¿À´Â°Å¶ó¼­ ºÎÃµ½Ã¶ó°í ÀÓÀÇ·Î ÁöÁ¤ÇØµÒ 
             flag = [latitude,longitude];
             console.log(flag);
             a(adrr,flag,sellertob);
@@ -157,36 +106,36 @@ function timetest(i,goodscode,goodsDT) {
       });
    
       $("#btn1").on("click",function(){
-         adrr = $("#adr").val(); //í´ë˜ìŠ¤ë¥¼ ì°¾ì
+         adrr = $("#adr").val(); //Å¬·¡½º¸¦ Ã£ÀÚ
          a(adrr,flag,sellertob);
 
       });
    });
       function a(adrr,flag,sellertob){
-      var mapContainer = document.getElementById('map'), // ì§€ë„ë¥¼ í‘œì‹œí•  div 
+      var mapContainer = document.getElementById('map'), // Áöµµ¸¦ Ç¥½ÃÇÒ div 
           mapOption = {
-              center: new daum.maps.LatLng(33.450701, 126.570667), // ì§€ë„ì˜ ì¤‘ì‹¬ì¢Œí‘œ
-              level: 3 // ì§€ë„ì˜ í™•ëŒ€ ë ˆë²¨
+              center: new daum.maps.LatLng(33.450701, 126.570667), // ÁöµµÀÇ Áß½ÉÁÂÇ¥
+              level: 3 // ÁöµµÀÇ È®´ë ·¹º§
           };  
 
-      // ì§€ë„ë¥¼ ìƒì„±í•©ë‹ˆë‹¤    
+      // Áöµµ¸¦ »ı¼ºÇÕ´Ï´Ù    
       var map = new daum.maps.Map(mapContainer, mapOption); 
 
-      // ì£¼ì†Œ-ì¢Œí‘œ ë³€í™˜ ê°ì²´ë¥¼ ìƒì„±í•©ë‹ˆë‹¤
+      // ÁÖ¼Ò-ÁÂÇ¥ º¯È¯ °´Ã¼¸¦ »ı¼ºÇÕ´Ï´Ù
       var geocoder = new daum.maps.services.Geocoder();
 
-      // ì£¼ì†Œë¡œ ì¢Œí‘œë¥¼ ê²€ìƒ‰í•©ë‹ˆë‹¤
+      // ÁÖ¼Ò·Î ÁÂÇ¥¸¦ °Ë»öÇÕ´Ï´Ù
       geocoder.addr2coord(adrr, function(status, result) {
 
-          // ì •ìƒì ìœ¼ë¡œ ê²€ìƒ‰ì´ ì™„ë£Œëìœ¼ë©´ 
+          // Á¤»óÀûÀ¸·Î °Ë»öÀÌ ¿Ï·áµÆÀ¸¸é 
            if (status === daum.maps.services.Status.OK) {
               var coords;
                  coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
 
-              // ì§€ë„ì˜ ì¤‘ì‹¬ì„ ê²°ê³¼ê°’ìœ¼ë¡œ ë°›ì€ ìœ„ì¹˜ë¡œ ì´ë™ì‹œí‚µë‹ˆë‹¤
+              // ÁöµµÀÇ Áß½ÉÀ» °á°ú°ªÀ¸·Î ¹ŞÀº À§Ä¡·Î ÀÌµ¿½ÃÅµ´Ï´Ù
               map.setCenter(coords);
               
-              $.ajax({//typeí•„ìˆ˜ì„
+              $.ajax({//typeÇÊ¼öÀÓ
                   type : "get",   //RequestMethod Type
                   url: "Shoplist", //RequestMapping value
                   data: {
@@ -197,7 +146,7 @@ function timetest(i,goodscode,goodsDT) {
                      
                },
                   error : function(e){
-                     //ajaxí†µì‹  ì‹¤íŒ¨ì‹œ   
+                     //ajaxÅë½Å ½ÇÆĞ½Ã   
                      console.log(e);
                   }
                });
@@ -206,21 +155,21 @@ function timetest(i,goodscode,goodsDT) {
               function mdata(data){
                  
                    var positions = [],
-                   selectedMarker = null; // í´ë¦­í•œ ë§ˆì»¤ë¥¼ ë‹´ì„ ë³€ìˆ˜
+                   selectedMarker = null; // Å¬¸¯ÇÑ ¸¶Ä¿¸¦ ´ãÀ» º¯¼ö
                   
                   $.each(data,function(index,item){
                      
                      positions.push({
                         title: item.sellerShopName,
                         CRN: item.sellerCRN,
-                        goods: item.sellerCRN, // ì´ë¶€ë¶„ìˆ˜ì •
+                        goods: item.sellerCRN, // ÀÌºÎºĞ¼öÁ¤
                         latlng: new daum.maps.LatLng(item.sellerLat,item.sellerLong),
                         sellername: item.sellerName,
                         tob: item.sellerTOB,
                         phone: item.sellerPhone,
                         shopaddress: item.sellerBEA
                         
-                     // ì—¬ê¸°ì— ì¶”ê°€í•  ì˜¤ë²„ë ˆì´ ë‚´ìš©ì„ ì…ë ¥í•˜ë©´ ë©ë‹ˆë‹¤ ~~~
+                     // ¿©±â¿¡ Ãß°¡ÇÒ ¿À¹ö·¹ÀÌ ³»¿ëÀ» ÀÔ·ÂÇÏ¸é µË´Ï´Ù ~~~
                      ///////////////////////////////////////////////////////////////////////////
                      });
    
@@ -229,7 +178,7 @@ function timetest(i,goodscode,goodsDT) {
                    
                   for (var i = 0, len = positions.length; i < len; i++) {
                        
-                       // ë§ˆì»¤ë¥¼ ìƒì„±í•˜ê³  ì§€ë„ìœ„ì— í‘œì‹œí•©ë‹ˆë‹¤
+                       // ¸¶Ä¿¸¦ »ı¼ºÇÏ°í ÁöµµÀ§¿¡ Ç¥½ÃÇÕ´Ï´Ù
                        addMarker(positions[i]);
                    }
 
@@ -238,7 +187,7 @@ function timetest(i,goodscode,goodsDT) {
            	      var glist= []; 
                   
                  
-                    $.ajax({//typeí•„ìˆ˜ì„
+                    $.ajax({//typeÇÊ¼öÀÓ
                         type : "get",   //RequestMethod Type
                         url: "Goodslist", //RequestMapping value
                         data:{
@@ -261,7 +210,7 @@ function timetest(i,goodscode,goodsDT) {
                              });
                             /////////////////////////////////////////////////////
                             var imageSrc;
-                    $.ajax({//typeí•„ìˆ˜ì„
+                    $.ajax({//typeÇÊ¼öÀÓ
                         type : "post",   //RequestMethod Type
                         url: "markimg", //RequestMapping value
                         data:{
@@ -280,20 +229,20 @@ function timetest(i,goodscode,goodsDT) {
                            }
                             /////////////////////////////////////////////////
                            // var imageSrc = "http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
-                            // ë§ˆì»¤ ì´ë¯¸ì§€ì˜ ì´ë¯¸ì§€ í¬ê¸° ì…ë‹ˆë‹¤
+                            // ¸¶Ä¿ ÀÌ¹ÌÁöÀÇ ÀÌ¹ÌÁö Å©±â ÀÔ´Ï´Ù
                             
                             
                             
                             
-                            // ë§ˆì»¤ ì´ë¯¸ì§€ë¥¼ ìƒì„±í•©ë‹ˆë‹¤    
+                            // ¸¶Ä¿ ÀÌ¹ÌÁö¸¦ »ı¼ºÇÕ´Ï´Ù    
                             var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize); 
                             
-                            // ë§ˆì»¤ë¥¼ ìƒì„±í•©ë‹ˆë‹¤
+                            // ¸¶Ä¿¸¦ »ı¼ºÇÕ´Ï´Ù
                             marker = new daum.maps.Marker({
-                                map: map, // ë§ˆì»¤ë¥¼ í‘œì‹œí•  ì§€ë„
-                                position: position.latlng, // ë§ˆì»¤ë¥¼ í‘œì‹œí•  ìœ„ì¹˜
-                                title : position.CRN, // ë§ˆì»¤ì˜ íƒ€ì´í‹€, ë§ˆì»¤ì— ë§ˆìš°ìŠ¤ë¥¼ ì˜¬ë¦¬ë©´ íƒ€ì´í‹€ì´ í‘œì‹œë©ë‹ˆë‹¤
-                                image : markerImage,// ë§ˆì»¤ ì´ë¯¸ì§€ 
+                                map: map, // ¸¶Ä¿¸¦ Ç¥½ÃÇÒ Áöµµ
+                                position: position.latlng, // ¸¶Ä¿¸¦ Ç¥½ÃÇÒ À§Ä¡
+                                title : position.CRN, // ¸¶Ä¿ÀÇ Å¸ÀÌÆ², ¸¶Ä¿¿¡ ¸¶¿ì½º¸¦ ¿Ã¸®¸é Å¸ÀÌÆ²ÀÌ Ç¥½ÃµË´Ï´Ù
+                                image : markerImage,// ¸¶Ä¿ ÀÌ¹ÌÁö 
                                 clickable: true
                                 
                             });
@@ -301,27 +250,24 @@ function timetest(i,goodscode,goodsDT) {
                             
                              markers.push(marker);
                        
-                            
-                             //ë ˆì´ì•„ì›ƒ css ì„¤ì •
-                            
                            var content = '<div class="wrap">' + 
                             '    <div class="info">' + 
                             '      <div class="title">' + 
                             position.title + 
-                            '      <div class="close" title="ë‹«ê¸°"></div>' + 
+                            '      <div class="close" title="´İ±â"></div>' + 
                             '      </div>' + 
                             '      <div class="body">' + 
                             '      <div class="img"><div class="img2">' +
                             '      <img src="shopimg?sellerCRN='+position.CRN+'" width="120" height="130"></img>' +
-                            '      </div> <div class="shopinfo" style="width:170px;height:132px;text-overflow: ellipsis;line-height:200%">ì—…ì¢…:'+position.tob+'<br>ì£¼ì†Œ:'+position.shopaddress+'<br>ì „í™”ë²ˆí˜¸:'+position.phone+'<br><div class="star" style="width=20px;">ë³„ì </div><span class="addshop" style="font-weight:bolder;font-color:black"><ê´€ì‹¬ë§¤ì¥ì¶”ê°€></span></div></div>' + 
+                            '      </div> <div class="shopinfo">¾÷Á¾:'+position.tob+'<br>ÁÖ¼Ò:'+position.shopaddress+'<br>ÀüÈ­¹øÈ£:'+position.phone+'<br><div class="star" style="width=20px;">º°Á¡</div><span class="addshop" style="font-weight:bolder;font-color:black"><°ü½É¸ÅÀåÃß°¡></span></div></div>' + 
                             '      <div class="desc">' + 
 
-                            '<div class="goodsinfo" id="'+position.CRN+'" style="overflow-y:scroll">'+
-                            '<table><tr><th>í’ˆëª…</th><th>ê°€ê²©</th><th>ê°œìˆ˜</th><th>ì´ë¯¸ì§€</th><th>ìœ í†µê¸°í•œ</th></tr>';
+                            '<div class="goodsinfo" id="'+position.CRN+'">'+
+                            '<table><tr><th>Ç°¸í</th><th>°¡°İ</th><th>°³¼ö</th><th>ÀÌ¹ÌÁö</th><th>À¯Åë±âÇÑ</th></tr>';
                             
                             for (var i = 0, len = glist.length; i < len; i++) {
                               //  total+= glist[i].GN;
-                            // ë§ˆì»¤ë¥¼ ìƒì„±í•˜ê³  ì§€ë„ìœ„ì— í‘œì‹œí•©ë‹ˆë‹¤
+                            // ¸¶Ä¿¸¦ »ı¼ºÇÏ°í ÁöµµÀ§¿¡ Ç¥½ÃÇÕ´Ï´Ù
                             content += '<tr><th>'+glist[i].GN+'</th><th>'+glist[i].GP+"</th><th>"+glist[i].GQ
                             +'</th><th><div class="thth"><img src="./resources/image/picture.png" width="20px" height="20px" class="abcd" imgData="goodsimg?sellerCRN='+position.CRN+'&goodsCode='+glist[i].GC+'">'+
                             '<span class="immm"><img src="goodsimg?sellerCRN='+position.CRN+'&goodsCode='+glist[i].GC+'" width="90px" height="70px" > </span></div></th></tr>';
@@ -329,8 +275,8 @@ function timetest(i,goodscode,goodsDT) {
                             
                             content += '</table></div></div>' + 
                             '           </div>' + 
-                            '        <div class="comments" style="overflow-y:scroll;margin:auto; border: 1px solid #ddd;width:289px; height:100px;"></div><div align="center" style="background-color: black;width:289px;margin:auto;"><select class="starcheck" align="center"><option value="1">â˜…</option><option value="2">â˜…â˜…</option>'+
-                            '<option value="3">â˜…â˜…â˜…</option><option value="4">â˜…â˜…â˜…â˜…</option><option value="5">â˜…â˜…â˜…â˜…â˜…</option></select><input type="text" class="comment" style="width:152px"><input type="button" class="bnt" value="ì…ë ¥"></div></div>' + 
+                            '        <div class="comments" style="overflow-y:scroll;margin:auto; border: 1px solid #ddd;"></div><div align="center" style="background-color:white; width:440px;vertical-align:top;" class="starsac"><select class="starcheck" align="center" style="width:105px;height:24px"><option value="1">¡Ú</option><option value="2">¡Ú¡Ú</option>'+
+                            '<option value="3">¡Ú¡Ú¡Ú</option><option value="4">¡Ú¡Ú¡Ú¡Ú</option><option value="5">¡Ú¡Ú¡Ú¡Ú¡Ú</option></select><input type="text" class="comment" style="width:250px;height:18px;"><input type="button" class="bnt" value="´ñ±ÛÀÔ·Â" style="width:80px;height:24px;background-color:yellow;border:0px"></div></div>' + 
                             
                             '    </div>' +    
                             '</div> <div class="goodsimg"></div>';
@@ -360,19 +306,53 @@ function timetest(i,goodscode,goodsDT) {
                             
                             
                             overlay.setMap(null);
+                            console.log(markers);
+                            
+                            /* for (var i = 0, len = markers.length; i < len; i++) {
+                           	 
+                            var abc = markers[i]; */
 
                             daum.maps.event.addListener(marker, 'click', function() {
-
-                                // í´ë¦­ëœ ë§ˆì»¤ê°€ ì—†ê³ , click ë§ˆì»¤ê°€ í´ë¦­ëœ ë§ˆì»¤ê°€ ì•„ë‹ˆë©´
-                                // ë§ˆì»¤ì˜ ì´ë¯¸ì§€ë¥¼ í´ë¦­ ì´ë¯¸ì§€ë¡œ ë³€ê²½í•©ë‹ˆë‹¤
+                            	
+                            	
+                            	 $("area").on("click",function(){
+                          		   
+                            		var areatitle = $(this).attr("title");
+                          		  
+                            		
+                                    for (var i = 0, len = markers.length; i < len; i++) {
+                                   	 markerstitle2 = markers[i].getTitle();
+                             		    
+                             		     if(areatitle==markerstitle2){
+                             		    	 
+                             		    	markersposition2 = markers[i].getPosition();
+                             		    	map.setCenter(markersposition2);
+                                   	
+                             		     }
+                                   } 
+                                   
+                            		
+                            		
+                          	   });
+                            	
+                            	
+                            	/* var aaa = selectedMarker.getPosition(); */
+                            	
+                            	/* var moveposition = abc.getPosition();
+                            	alert(moveposition);
+                            	map.setCenter(moveposition); 
+ */
+                                // Å¬¸¯µÈ ¸¶Ä¿°¡ ¾ø°í, click ¸¶Ä¿°¡ Å¬¸¯µÈ ¸¶Ä¿°¡ ¾Æ´Ï¸é
+                                // ¸¶Ä¿ÀÇ ÀÌ¹ÌÁö¸¦ Å¬¸¯ ÀÌ¹ÌÁö·Î º¯°æÇÕ´Ï´Ù
                                 if (selectedMarker == null) {
-                                    // í´ë¦­ëœ ë§ˆì»¤ ê°ì²´ê°€ nullì´ ì•„ë‹ˆë©´
-                                    // í´ë¦­ëœ ë§ˆì»¤ì˜ ì´ë¯¸ì§€ë¥¼ ê¸°ë³¸ ì´ë¯¸ì§€ë¡œ ë³€ê²½í•˜ê³ 
+                                    // Å¬¸¯µÈ ¸¶Ä¿ °´Ã¼°¡ nullÀÌ ¾Æ´Ï¸é
+                                    // Å¬¸¯µÈ ¸¶Ä¿ÀÇ ÀÌ¹ÌÁö¸¦ ±âº» ÀÌ¹ÌÁö·Î º¯°æÇÏ°í
                                    overlay.setMap(map);
                                    marker.setClickable(false);
                                    selectedMarker=marker;
+                                   console.log(selectedMarker);
                                 }else{
-                                   alert("í•œê°€ê²Œì”© ì„ íƒí•´ì£¼ì„¸ìš”!");
+                                   
                                    return false;
                                    
                                 }
@@ -381,6 +361,7 @@ function timetest(i,goodscode,goodsDT) {
                                 $(".close").on("click",function(){
                                    overlay.setMap(null);
                                    marker.setClickable(true);
+                                   
                                    selectedMarker = null;
                               
                                 });
@@ -388,7 +369,7 @@ function timetest(i,goodscode,goodsDT) {
                                 
                                  var glist = [];
                                 
-                                 $.ajax({//typeí•„ìˆ˜ì„
+                                 $.ajax({//typeÇÊ¼öÀÓ
                                      type : "get",   //RequestMethod Type
                                      url: "Goodslist", //RequestMapping value
                                      data:{
@@ -411,11 +392,8 @@ function timetest(i,goodscode,goodsDT) {
                                             });
                                             
                                           });
-                                         
-                                         //ë ˆì´ì•„ì›ƒ css ì„¤ì •
-                                         
                                          var content0 = '<div class="goodsinfo" id="'+position.CRN+'" style="overflow-y:scroll">'+
-                                         			'<table><tr><th>í’ˆëª…</th><th>ê°€ê²©</th><th>ê°œìˆ˜</th><th>ìœ í†µê¸°í•œ</th><th>ì´ë¯¸ì§€</th></tr>';
+                                         			'<table><tr><th>Ç°¸í</th><th>°¡°İ</th><th>°³¼ö</th><th>À¯Åë±âÇÑ</th><th>ÀÌ¹ÌÁö</th></tr>';
                                          for (var i = 0, len = glist.length; i < len; i++) {
                                    		
                                          content0 += '<tr><th>'+glist[i].GN+'</th><th>'+glist[i].GP+"</th><th>"+glist[i].GQ
@@ -439,7 +417,7 @@ function timetest(i,goodscode,goodsDT) {
                                      
                                     });
                                  
-                                $.ajax({//typeí•„ìˆ˜ì„
+                                $.ajax({//typeÇÊ¼öÀÓ
                                          type : "get",   //RequestMethod Type
                                          url: "starsac", //RequestMapping value
                                          data:{
@@ -452,25 +430,25 @@ function timetest(i,goodscode,goodsDT) {
                                        
                                           var starsss;
                                          if(data<=1){
-                                            starsss = "â˜…â˜†â˜†â˜†â˜†";
+                                            starsss = "¡Ú¡Ù¡Ù¡Ù¡Ù";
                                          }else if(data<=2){
-                                            starsss = "â˜…â˜…â˜†â˜†â˜†"
+                                            starsss = "¡Ú¡Ú¡Ù¡Ù¡Ù"
                                          }else if(data<=3){
-                                            starsss = "â˜…â˜…â˜…â˜†â˜†"
+                                            starsss = "¡Ú¡Ú¡Ú¡Ù¡Ù"
                                          }else if(data<=4){
-                                            starsss = "â˜…â˜…â˜…â˜…â˜†"
+                                            starsss = "¡Ú¡Ú¡Ú¡Ú¡Ù"
                                          }else if(data<=5){
-                                            starsss = "â˜…â˜…â˜…â˜…â˜…"
+                                            starsss = "¡Ú¡Ú¡Ú¡Ú¡Ú"
                                          }
                                          
-                                        $(".star").html("ë³„ì :"+starsss);
+                                        $(".star").html("º°Á¡:"+starsss);
                                        },                             
                                        error:function(e){
                                           console.log(e);
                                        }
                                  });
                                 
-                                $.ajax({//typeí•„ìˆ˜ì„
+                                $.ajax({//typeÇÊ¼öÀÓ
                                          type : "get",   //RequestMethod Type
                                          url: "gradelist", //RequestMapping value
                                          data:{
@@ -480,8 +458,8 @@ function timetest(i,goodscode,goodsDT) {
                                          
                                        success:function(data){
                                           
-                                          var htm = "<span style='font-weight:bold;text-align:center'><ëŒ“ê¸€ë³´ê¸°></span>";
-                                             htm += '<table><tr><th>ì‘ì„±ì</th><th>ëŒ“ê¸€</th></tr>';
+                                          var htm = "<span style='font-weight:bold;text-align:center'><´ñ±Ûº¸±â></span>";
+                                             htm += '<table><tr><th>ÀÛ¼ºÀÚ</th><th>´ñ±Û</th></tr>';
                                        
                                           $.each(data,function(index,item){                                             
                                                 htm += '<tr><td>'+item.buyerId+'</td><td>'+item.ment+'</td></tr>';
@@ -514,7 +492,7 @@ function timetest(i,goodscode,goodsDT) {
                                    
                                    addcomment = $(".comment").val();
                                    if(addcomment==""){
-                                      alert("ë‚´ìš©ì„ ì…ë ¥í•´ì£¼ì„¸ìš”");
+                                      alert("³»¿ëÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä");
                                       return false;
                                    }
          
@@ -523,7 +501,7 @@ function timetest(i,goodscode,goodsDT) {
                                    var starss = $(".starcheck").val();
                                    
                              
-                                     $.ajax({//typeí•„ìˆ˜ì„
+                                     $.ajax({//typeÇÊ¼öÀÓ
                                          type : "get",   //RequestMethod Type
                                          dataType : "json",
                                          url: "gradelist2", //RequestMapping value
@@ -536,8 +514,8 @@ function timetest(i,goodscode,goodsDT) {
                                          
                                        success:function(data){
                                           console.log(data.star);
-                                          var htm = "<ëŒ“ê¸€ë³´ê¸°>";
-                                             htm += '<table><tr><th>ì‘ì„±ì</th><th>ëŒ“ê¸€</th></tr>';
+                                          var htm = "<´ñ±Ûº¸±â>";
+                                             htm += '<table><tr><th>ÀÛ¼ºÀÚ</th><th>´ñ±Û</th></tr>';
                                        
                                           $.each(data.gradelist,function(index,item){                                             
                                                 htm += '<tr><td>'+item.buyerId+'</td><td>'+item.ment+'</td></tr>';
@@ -549,19 +527,19 @@ function timetest(i,goodscode,goodsDT) {
                                               
                                               var starsss;
                                               if(data.star<=1){
-                                                 starsss = "â˜…â˜†â˜†â˜†â˜†";
+                                                 starsss = "¡Ú¡Ù¡Ù¡Ù¡Ù";
                                               }else if(data.star<=2){
-                                                 starsss = "â˜…â˜…â˜†â˜†â˜†"
+                                                 starsss = "¡Ú¡Ú¡Ù¡Ù¡Ù"
                                               }else if(data.star<=3){
-                                                 starsss = "â˜…â˜…â˜…â˜†â˜†"
+                                                 starsss = "¡Ú¡Ú¡Ú¡Ù¡Ù"
                                               }else if(data.star<=4){
-                                                 starsss = "â˜…â˜…â˜…â˜…â˜†"
+                                                 starsss = "¡Ú¡Ú¡Ú¡Ú¡Ù"
                                               }else if(data.star<=5){
-                                                 starsss = "â˜…â˜…â˜…â˜…â˜…"
+                                                 starsss = "¡Ú¡Ú¡Ú¡Ú¡Ú"
                                               }
                                               
-                                             $(".star").html("ë³„ì :"+starsss);
-                                             alert("ë“±ë¡ì™„ë£Œ");
+                                             $(".star").html("º°Á¡:"+starsss);
+                                             alert("µî·Ï¿Ï·á");
                                              $(".comment").val("");
                                              
                                        },                             
@@ -571,14 +549,14 @@ function timetest(i,goodscode,goodsDT) {
                                  });
                                   
                                 
-                                ////////////// ì—¬ê¸° ë³„ì  ìƒˆë¡œ ê°€ì ¸ì˜¤ëŠ”ê²ƒë„ í•´ì•¼í•¨
+                                ////////////// ¿©±â º°Á¡ »õ·Î °¡Á®¿À´Â°Íµµ ÇØ¾ßÇÔ
                                 
                                 }); 
                                 
                                 $(".addshop").on("click",function(){
                                    ///
                               
-                                    $.ajax({//typeí•„ìˆ˜ì„
+                                    $.ajax({//typeÇÊ¼öÀÓ
                                         type : "get",   //RequestMethod Type
                                         url: "addshop", //RequestMapping value
                                         data:{
@@ -595,9 +573,11 @@ function timetest(i,goodscode,goodsDT) {
                     });
                                 
                             });
+                        //}
+                            /////////////////////////////////
                         },
                         error : function(e){
-                           //ajaxí†µì‹  ì‹¤íŒ¨ì‹œ   
+                           //ajaxÅë½Å ½ÇÆĞ½Ã   
                            console.log(e);
                         }
                      });
@@ -606,7 +586,7 @@ function timetest(i,goodscode,goodsDT) {
     //ajax //////////////////////////////////////////////////////////////////////////////////////
     },
                         error : function(e){
-                           //ajaxí†µì‹  ì‹¤íŒ¨ì‹œ   
+                           //ajaxÅë½Å ½ÇÆĞ½Ã   
                            console.log(e);
                         }
                      });
@@ -614,7 +594,7 @@ function timetest(i,goodscode,goodsDT) {
                      }          
                   }         
           }else{
-             alert("ë‹¤ì‹œê²€ìƒ‰í•´ì£¼ì„¸ìš”");
+             alert("´Ù½Ã°Ë»öÇØÁÖ¼¼¿ä");
 
           } 
       });    
@@ -635,11 +615,11 @@ function timetest(i,goodscode,goodsDT) {
 
         
         	
-        	//ë‚´ê°€ ë§Œë“  function
+        	//³»°¡ ¸¸µç function
         	
 			function client(evt){
-//ì§„ìš° ì£¼ì„				alert(evt);
-//ì§„ìš° ì£¼ì„				alert(evt.data);
+//Áø¿ì ÁÖ¼®				alert(evt);
+//Áø¿ì ÁÖ¼®				alert(evt.data);
 				        		
 				var gaek = JSON.parse(evt.data);
 				console.log(gaek);
@@ -651,8 +631,8 @@ function timetest(i,goodscode,goodsDT) {
 				var times = gaek.fortimes;
 				
 				        		
-//ì§„ìš° ì£¼ì„		alert("ê°€ê²Œ : " + storeid);
-//ì§„ìš° ì£¼ì„		alert("í’ˆëª© : " + goodsid);
+//Áø¿ì ÁÖ¼®		alert("°¡°Ô : " + storeid);
+//Áø¿ì ÁÖ¼®		alert("Ç°¸ñ : " + goodsid);
 				
 				
 				
@@ -660,7 +640,7 @@ function timetest(i,goodscode,goodsDT) {
 				
 				
 //----------------------------------------------------------------------                
-//				alert("í…ŒìŠ¤íŠ¸ ë©”ì†Œë“œ1");
+//				alert("Å×½ºÆ® ¸Ş¼Òµå1");
 //				var message2 = "<img sytle='width:20px;' src='resources/img/message.png'> ";
 				var message2 = "<h5>tttest<h5> ";
 				//var inner = $(".messagestatus").html();
@@ -708,22 +688,22 @@ function timetest(i,goodscode,goodsDT) {
 			}
         	
 			function seller(){
-				//ë­ì‹œê¸°ë­ì‹œê¸°ë­ì‹œê¸° dosend;        		
+				//¹¹½Ã±â¹¹½Ã±â¹¹½Ã±â dosend;        		
 				dosend();	
 			}
            
-			var wsUri = "ws://203.233.196.93:8888/web/echo.do";
+			var wsUri = "ws://10.10.12.177:8889/web/echo.do";
            
-			function init() {				//yc>ì´ê²Œ ì‹œì‘ì´ ë˜ëŠ”ê°€? ì™œ ì´ê²Œ ì‹œì‘ì´ ë˜ì§€?  ->> ì•„ë§ˆ socket í•¸ë“¤ëŸ¬ì—ì„œ ë³´ë‚¸ê±°ê°€  ì—¬ê¸°ë¡œ ë“¤ì–´ì˜¤ëŠ”ë“¯..
+			function init() {				//yc>ÀÌ°Ô ½ÃÀÛÀÌ µÇ´Â°¡? ¿Ö ÀÌ°Ô ½ÃÀÛÀÌ µÇÁö?  ->> ¾Æ¸¶ socket ÇÚµé·¯¿¡¼­ º¸³½°Å°¡  ¿©±â·Î µé¾î¿À´Âµí..
 				output = document.getElementById("output");
-				websocket = new WebSocket(wsUri);									//yc>ë³¸ì¸ì†Œì¼“ì£¼ì†Œì¸ê°€..
+				websocket = new WebSocket(wsUri);									//yc>º»ÀÎ¼ÒÄÏÁÖ¼ÒÀÎ°¡..
 				websocket.onopen = function(evt) {										
-					onOpen(evt) 					//ì—¬ê¸°ì—ëŠ” ë­ê°€ë“¤ì–´ì˜¤ëŠ”ê±°ì§€..
+					onOpen(evt) 					//¿©±â¿¡´Â ¹¹°¡µé¾î¿À´Â°ÅÁö..
 				};
 			}
-           function send_message() {						//q>ì¤‘ê°„ì— evtê°€ ì‚¬ë¼ì§„ê²Œ..ì¢€ send_message(ì—†ì–´ì¡ŒëŠ”ë°);
+           function send_message() {						//q>Áß°£¿¡ evt°¡ »ç¶óÁø°Ô..Á» send_message(¾ø¾îÁ³´Âµ¥);
 				websocket.onmessage = function(evt) {
-					onMessage(evt)						//ì—¬ê¸°ì§€ìš°ë©´ë­ë³´ëƒˆëŠ”ì§€ ì•ˆë„ì›€  pf>ë°›ì€ ë©”ì„¸ì§€ëŠ” ì—¬ê¸° ë“¤ì–´ì˜¤ëŠ”ê±°ë‹¤..
+					onMessage(evt)						//¿©±âÁö¿ì¸é¹¹º¸³Â´ÂÁö ¾È¶ç¿ò  pf>¹ŞÀº ¸Ş¼¼Áö´Â ¿©±â µé¾î¿À´Â°Å´Ù..
 				};
 				websocket.onerror = function(evt) {
 					onError(evt)
@@ -731,40 +711,40 @@ function timetest(i,goodscode,goodsDT) {
 			}
            
            
-            function onOpen(evt) { //WebSocket ì—°ê²°						
-                //writeToScreen("Connected to Endpoint!");    //ì—¬ê¸°ì— ë“¤ì–´ì˜¤ë©´ evtì—ì„œ ê°’ëº„ìˆ˜ìˆìŒ...
+            function onOpen(evt) { //WebSocket ¿¬°á						
+                //writeToScreen("Connected to Endpoint!");    //¿©±â¿¡ µé¾î¿À¸é evt¿¡¼­ °ª»¬¼öÀÖÀ½...
                 send_message();
             }
             
-            function onMessage(evt) { //ë©”ì‹œì§€ ìˆ˜ì‹ 
+            function onMessage(evt) { //¸Ş½ÃÁö ¼ö½Å
                // writeToScreen("Message Received: " + evt.data);
                           	
             	client(evt);
             	
             	var message = JSON.parse(evt.data);
-            	alert("messageë– ì•¼í•´: "+message);
+            	alert("message¶°¾ßÇØ: "+message);
             	var messagesellerCRN = message.sellerCRN;
-            	alert("sellerCRNë– ì•¼í•´: "+messagesellerCRN);
+            	alert("sellerCRN¶°¾ßÇØ: "+messagesellerCRN);
             	var messagefrom = message.from;
             	var messagecontent = message.message;
-            	/* alert("messageë‚´ìš© : "+messagecontent); */ 
+            	/* alert("message³»¿ë : "+messagecontent); */ 
             	var tomessage = message.to;
-            	/* alert("buyeridë°°ì—´"+message.to);  */
+            	/* alert("buyerid¹è¿­"+message.to);  */
             	
             	var buyerid = document.getElementById("buyerid").value;
-           		/* alert("hiddenê°’ : "+buyerid);
-            	alert("buyeridë°°ì—´ ê¸¸ì´: "+tomessage.length); */
+           		/* alert("hidden°ª : "+buyerid);
+            	alert("buyerid¹è¿­ ±æÀÌ: "+tomessage.length); */
             		for(var i = 0 ; i < tomessage.length ; i++){
             			if (buyerid == tomessage[i].buyerId){
             			/* console.log(tomessage[i].buyerId); */
             			/* alert(tomessage[i].buyerId); */
-            				if(messagefrom == "on"){//ìƒí’ˆë“±ë¡
+            				if(messagefrom == "on"){//»óÇ°µî·Ï
 	            				$.toast(messagecontent+"<div id=\"aclick\">click</div>",{
 	            						duration: 3000,
 	        			          		type: 'info'
 	            				 });
             				}else{
-            				 	alert("list");//ìˆ˜ëŸ‰ë³€ê²½
+            				 	alert("list");//¼ö·®º¯°æ
 	            				 $.toast(messagecontent+"<div id=\"aclick\">click</div>",{
 	            						 duration: 3000
 	            			     });
@@ -779,38 +759,38 @@ function timetest(i,goodscode,goodsDT) {
 		        				sellerCRN:messagesellerCRN
 		        			},
 		        			success: function(sellerBEA){
-		        				alert("ì˜ì™”ì—‰"+sellerBEA);
+		        				alert("Àß¿Ô¾û"+sellerBEA);
 		        				var adrr = sellerBEA;
 		        				a(adrr,flag,sellertob);
 		        			},
 		        			error: function(e){
-		        				alert('ë¨¸ã…œã„´ë°');
+		        				alert('¸Ó¤Ì¤¤µ¥');
 		        			}
 		        		});
 		        	}); 
             }
             
-            function onError(evt) {  // ì „ì†¡ ì—ëŸ¬ ë°œìƒ
+            function onError(evt) {  // Àü¼Û ¿¡·¯ ¹ß»ı
                 writeToScreen('ERROR: ' + evt.data);
             } 
   /*           function doSend(str) {
 				//var message = document.getElementById("textID").value;
             	//writeToScreen("Message Sent: " + message);
-            	//writeToScreen("ë­ë³´ë‚´ëŠ”ì§€ í‘œì‹œí•˜ë ¤ê³  ");
+            	//writeToScreen("¹¹º¸³»´ÂÁö Ç¥½ÃÇÏ·Á°í ");
             	
-            	var pk = {storeid : "ì»¤í”¼ê°€ê²Œ", goodsid : "2ì”"};
+            	var pk = {storeid : "Ä¿ÇÇ°¡°Ô", goodsid : "2ÀÜ"};
             	
             	
             	var jsonstr = JSON.stringify(pk);
             	
             	
-                websocket.send(jsonstr); // ìŠ¤íŠ¸ë§ ë°°ì—´ë§Œë“¤ì–´ì„œ ë³´ë‚´ë©´ ë˜ê² ë„¤...
+                websocket.send(jsonstr); // ½ºÆ®¸µ ¹è¿­¸¸µé¾î¼­ º¸³»¸é µÇ°Ú³×...
                 
                 
                 
                 //websocket.close();
             } */
-            function writeToScreen(message) {						//ë©”ì„¸ì§€ë¥¼ í™”ë©´ì— ë„ì›Œì¤Œ...
+            function writeToScreen(message) {						//¸Ş¼¼Áö¸¦ È­¸é¿¡ ¶ç¿öÁÜ...
                 var pre = document.createElement("p");
                 pre.style.wordWrap = "break-word";
                 pre.innerHTML = message;
@@ -827,27 +807,25 @@ function timetest(i,goodscode,goodsDT) {
 <style>
 	.toast #aclick {display: inline-block;float: right;}
 	#aclick:HOVER {text-decoration: underline;pause: 60s;}
-	
-	
-	/*  ì—¬ê¸°ì„œë¶€í„° */
-    .wrap {position: absolute;left: 0;bottom: 40px;width: 303px;height: 450px;margin-left: -150px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, 'ë‹ì›€', sans-serif;line-height: 1.5;}
-
-    .wrap .info {width: 303px;height: 450px;border-radius: 5px;border-bottom: 2px solid red;border-right: 1px solid red;overflow: hidden;background: red;}
+    .wrap {position: absolute;left: 0;bottom: 40px;width: 450px;height: 450px;margin-left: -150px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, 'µ¸¿ò', sans-serif;line-height: 1.5;}
+    .wrap .info {width: 450px;height: 450px;border-radius: 5px;border-bottom: 2px solid red;border-right: 1px solid red;overflow: hidden;background: white;}
     .wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
-    .info .title {padding: 5px 0 0 10px;height: 30px;background: #FAED7D;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
+    .info .title {padding: 5px 0 0 10px;height: 30px;background: #FAED7D;border-bottom: 1px solid #ddd;font-size: 20px;font-weight: bold;}
     .info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
     .info .close:hover {cursor: pointer;}
     .info .body {position: relative;overflow: hidden;background:white;}
     .info .desc {position: relative;margin: 140px 0 0 6px;height: 135px;}
-    .shopinfo {position: absolute;left: 120px;background:white;overflow: hidden;}
-    .desc .goodsinfo {top: 6px;left: 5px;text-overflow: goodsinfo;width: 289px;height: 130px;border: 1px solid #ddd;color: #888;}
+    .shopinfo {position: absolute;left: 120px;background:white;overflow: hidden;font-size: 16px;width:320px;height:132px;text-overflow: ellipsis;line-height:150%}
+    .desc .goodsinfo {top: 6px;left: 5px;text-overflow: goodsinfo;width: 440px;height: 130px;border: 1px solid #ddd;color: #888;font-size: 15px;overflow-y:scroll}
     .info .img2 {position: absolute;width: 120px;height: 130px;overflow: hidden;}
-    .info .img {position: absolute;top: 6px;left: 6px;width: 289px;height: 130px;border: 1px solid #ddd;color: #888;overflow: hidden;background:gray;}
+    .info .img {position: absolute;top: 6px;left: 6px;width: 440px;height: 130px;border: 1px solid #ddd;color: #888;overflow: hidden;background:yellow;}
    .prd_box {position:relative;} 
    .prd_over {position:absolute; width:100%; height:50px; top:95px; bottom:0; left:0; opacity:0; background:url('/shop/data/skin/apple_tree_C/img/djds/etc/prd_over.png') 0 0 no-repeat;}    
    .thth {position:relative; display:inline-block}
    .thth span {visibility:hidden; position:absolute; margin-top:0; margin-left:-20px;}
    .thth:hover span {visibility:visible}
+   .comments{width:440px; height:100px;}
+
 
 </style>
 
@@ -863,34 +841,34 @@ function timetest(i,goodscode,goodsDT) {
 
 <div id="wrap">
     <header>
-        <div class="inner relative"><div style="top:10px; height:30px; background-color: black"><a class="tob">ì¹´í˜</a><br><a class="tob">ë² ì´ì»¤ë¦¬</a><br><a class="tob">ì‹ë‹¹</a>
+        <div class="inner relative"><div style="top:10px; height:30px; background-color: black"><a class="tob">Ä«Æä</a><br><a class="tob">º£ÀÌÄ¿¸®</a><br><a class="tob">½Ä´ç</a>
            <nav id="navigation">
                 <ul id="main-menu">
                     <li class="parent">
             
-                        <a href="home">ì§€ì—­ì„ íƒ</a>   
-                  <ì§€ì—­ê²€ìƒ‰>
+                        <a href="home">Áö¿ª¼±ÅÃ</a>   
+                  <Áö¿ª°Ë»ö>
 <input type="text" id="adr">
-<input type="button" name="" id="btn1" value="ì§ì ‘ê²€ìƒ‰">
+<input type="button" name="" id="btn1" value="Á÷Á¢°Ë»ö">
 
                      
                   
                         <ul class="sub-menu">
 
-                            <li>ì„œìš¸íŠ¹ë³„ì‹œ</li>
-                            <li>ê²½ê¸°ë„</li>                           
-                            <li>ì¸ì²œê´‘ì—­ì‹œ</li>
-                            <li>ë¶€ì‚°ê´‘ì—­ì‹œ</li>
-                            <li>ìš¸ì‚°ê´‘ì—­ì‹œ</li>                           
-                            <li>ëŒ€êµ¬ê´‘ì—­ì‹œ</li>
-                            <li>ëŒ€ì „ê´‘ì—­ì‹œ</li>
-                            <li>ê´‘ì£¼ê´‘ì—­ì‹œ</li>                            
+                            <li>¼­¿ïÆ¯º°½Ã</li>
+                            <li>°æ±âµµ</li>                           
+                            <li>ÀÎÃµ±¤¿ª½Ã</li>
+                            <li>ºÎ»ê±¤¿ª½Ã</li>
+                            <li>¿ï»ê±¤¿ª½Ã</li>                           
+                            <li>´ë±¸±¤¿ª½Ã</li>
+                            <li>´ëÀü±¤¿ª½Ã</li>
+                            <li>±¤ÁÖ±¤¿ª½Ã</li>                            
                      <li>
-                                <div class="parent"> ì œì£¼ë„</div>
+                                <div class="parent"> Á¦ÁÖµµ</div>
                                 <div >
                                 <ul class="sub-menu">
-                                    <li>ì„œê·€í¬</li>
-                                    <li>ì œì£¼ì‹œ</li>
+                                    <li>¼­±ÍÆ÷</li>
+                                    <li>Á¦ÁÖ½Ã</li>
                                    </ul>
                             </li>
                         </ul>
@@ -904,6 +882,6 @@ function timetest(i,goodscode,goodsDT) {
 <input type="hidden" id = "buyerid" value="${custid }">
 
 <div id="sellergoods" style="width:100%;height:300px;"></div>
-<input type="button" value="123" id="890">
+<input type="button" value="¾å" id="sibal">
 </body>
 </html>

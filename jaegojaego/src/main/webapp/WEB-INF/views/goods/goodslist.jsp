@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%><%--ìœ¼ì•™--%>
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -14,7 +14,8 @@
 	</script>
 
 	<script>
-	function goodslist() {
+	function tttest() {
+		alert('¾îÂîÇÏ½º±îÀÌÀÌ');
 		location.href='goodslist';
 	}
 	///web/goodslist3
@@ -62,7 +63,7 @@
             
 
             
-				<a class="hidden-sm hidden-xs" id="nav-state-toggle" href="#" title="ìŠ¬ë¼ì´ë“œ ë©”ë‰´ ê³ ì • on/off" data-placement="bottom">
+				<a class="hidden-sm hidden-xs" id="nav-state-toggle" href="#" title="½½¶óÀÌµå ¸Ş´º °íÁ¤ on/off" data-placement="bottom">
 					<i class="fa fa-bars fa-lg"></i>
 				</a>
             
@@ -95,7 +96,7 @@
                     <span class="icon">
                         <i class="fa fa-desktop"></i>
                     </span>
-                    íŒë§¤ì ë©”ì¸
+                    ÆÇ¸ÅÀÚ ¸ŞÀÎ
                     <i></i>
                     <i class="toggle fa fa-angle-down"></i>
                 </a>
@@ -107,11 +108,11 @@
 
             <li class="active">
                 <!-- an example of nested submenu. basic bootstrap collapse component -->
-                <a href="" <%--data-toggle="collapse" data-parent="#sidebar"--%> onclick="goodslist()">
+                <a href="" <%--data-toggle="collapse" data-parent="#sidebar"--%> onclick="tttest()">
                     <span class="icon">
                         <i class="fa fa-table"></i>
                     </span>
-                    ìƒí’ˆ ëª©ë¡
+                    »óÇ° ¸ñ·Ï
                     <%--<i class="toggle fa fa-angle-down"></i>--%>
                 </a>
                 <%--<ul id="sidebar-tables" class="collapse in">
@@ -143,7 +144,7 @@
                     <span class="icon">
                         <i class="glyphicon glyphicon-stats"></i>
                     </span>
-                    ë§¤ì¶œ ë¶„ì„
+                    ¸ÅÃâ ºĞ¼®
                 </a>                
             </li>
             
@@ -155,10 +156,10 @@
                     <span class="icon">
                         <i class="glyphicon glyphicon-user"></i>
                     </span>
-                    ê³ ê° ìƒë‹´
+                    °í°´ »ó´ã
 <%--                    <sup class="text-warning fw-semi-bold">
                         new
-                    </sup>--%>	<%-- new í‘œì‹œ ì£¼ì„ ì²˜ë¦¬ --%>
+                    </sup>--%>	<%-- new Ç¥½Ã ÁÖ¼® Ã³¸® --%>
                 </a>
             </li>
         </ul>
@@ -169,7 +170,7 @@
 
         
         <!-- every .sidebar-nav may have a title -->
-        <h5 class="sidebar-nav-title">í…œí”Œë¦¿ <a class="action-link" href="#"><i class="glyphicon glyphicon-refresh"></i></a></h5>
+        <h5 class="sidebar-nav-title">ÅÛÇÃ¸´ <a class="action-link" href="#"><i class="glyphicon glyphicon-refresh"></i></a></h5>
         <ul class="sidebar-nav">
 
 
@@ -219,7 +220,7 @@
                     <span class="icon">
                         <i class="glyphicon glyphicon-th"></i>
                     </span>
-                    ê·¸ë¦¬ì´ë“œ
+                    ±×¸®ÀÌµå
                 </a>
             </li>
 --%>
@@ -232,8 +233,8 @@
                     <span class="icon">
                         <i class="glyphicon glyphicon-map-marker"></i>
                     </span>
-                    ì§€ë„í˜¸ìš°
-                    <%--<i class="toggle fa fa-angle-down"></i>--%>	<%--í•˜í–¥ í™”ì‚´í‘œ ì‚­ì œ--%>
+                    ÁöµµÈ£¿ì
+                    <%--<i class="toggle fa fa-angle-down"></i>--%>	<%--ÇÏÇâ È­»ìÇ¥ »èÁ¦--%>
                 </a>
                 <%--<ul id="sidebar-maps" class="collapse">
                     <!-- data-no-pjax turns off pjax loading for this link. Use in case of complicated js loading on the
@@ -819,7 +820,7 @@
 			
 			if(btnnum=='on'){
 				if(numb-1<numa){
-					alert("ìƒí’ˆì˜ ìƒíƒœë¥¼ 'off'ë¡œ í•œ í›„ ìƒí’ˆë“±ë¡ì´ ê°€ëŠ¥í•©ë‹ˆë‹¤");
+					alert("»óÇ°ÀÇ »óÅÂ¸¦ 'off'·Î ÇÑ ÈÄ »óÇ°µî·ÏÀÌ °¡´ÉÇÕ´Ï´Ù");
 				} else{
 					var num = $(".afterQ:eq(" + n + ")").val();			
 					num = $(".afterQ:eq(" + n + ")").val(num * 1 + 1);			
@@ -880,7 +881,7 @@
 							doSend();
 						},
 						error:function(e){
-							alert("ì™œ??"+e);
+							alert("¿Ö??"+e);
 							console.log(e);
 						}
 					});
@@ -897,14 +898,14 @@
 							salesPrice:goodsprice,
 							salesName:goodsname
 						},
-						/*	ì„ì§€ì—° (ì´ê±° ì—†ì•´ëŠ”ë° ì™œ ì‚´ì•„ìˆë‹??/2017.04.26)
+						/*	¼®Áö¿¬ (ÀÌ°Å ¾ø¾İ´Âµ¥ ¿Ö »ì¾ÆÀÖ´×??/2017.04.26)
 						 success:function(){
 							alert("aaa");
 							doSend();
 							location.href="goodslist";
 						}, */
 						error:function(e){
-							alert("ì˜¤ë¥˜ì„");
+							alert("¿À·ùÀÓ");
 						}
 					});
 				}
@@ -923,7 +924,7 @@
 				}
 			}
 			if(checkFlag == false){
-				alert("ì‚­ì œí•  í•­ëª©ì„ ì„ íƒí•´ ì£¼ì„¸ìš”");
+				alert("»èÁ¦ÇÒ Ç×¸ñÀ» ¼±ÅÃÇØ ÁÖ¼¼¿ä");
 				return false;
 			}
 			
@@ -935,7 +936,7 @@
 					alert(checked);
 					if(checked){
 						var delcode = goodscode.eq(index).text();
-						alert("indexì•¼"+index);
+						alert("index¾ß"+index);
 						alert(delcode);
 						$.ajax({
 							type:"GET",
@@ -944,7 +945,7 @@
 								goodsCode : delcode
 							},
 							success:function(){
-								alert("ìƒí’ˆì´ ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤.");
+								alert("»óÇ°ÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.");
 								doSend();
 								location.href="goodslist";
 							}
@@ -1030,14 +1031,14 @@
 
 
 
-<%--20170422 ë°•ì§„ìš° ë°•ì‹œì› ì›¹ì†Œì¼“ í…ŒìŠ¤íŠ¸============================================= --%>
+<%--20170422 ¹ÚÁø¿ì ¹Ú½Ã¿ø À¥¼ÒÄÏ Å×½ºÆ®============================================= --%>
  <script type="text/javascript">
 	/* 		
  			var CRN = $(".sellerCRN").val();
  			console.log(CRN); */
  			
  			
- 			//ë‚´ê°€ ë§Œë“  function
+ 			//³»°¡ ¸¸µç function
       
         	function client(evt){
         		/* alert(evt);
@@ -1054,45 +1055,45 @@
         	
         	
         	function seller(){
-        		//ë­ì‹œê¸°ë­ì‹œê¸°ë­ì‹œê¸° dosend;        		
+        		//¹¹½Ã±â¹¹½Ã±â¹¹½Ã±â dosend;        		
         		doSend();
         	}
            
-            var wsUri = "ws://203.233.196.93:8888/web/echo.do";
+            var wsUri = "ws://10.10.12.177:8889/web/echo.do";
            
             function init() {
 				output = document.getElementById("output");
-				websocket = new WebSocket(wsUri);									//yc>ë³¸ì¸ì†Œì¼“ì£¼ì†Œì¸ê°€..
+				websocket = new WebSocket(wsUri);									//yc>º»ÀÎ¼ÒÄÏÁÖ¼ÒÀÎ°¡..
 				websocket.onopen = function(evt) {										
-					onOpen(evt) 					//ì—¬ê¸°ì—ëŠ” ë­ê°€ë“¤ì–´ì˜¤ëŠ”ê±°ì§€..
+					onOpen(evt) 					//¿©±â¿¡´Â ¹¹°¡µé¾î¿À´Â°ÅÁö..
 				};
 			}
 
-            function send_message() {						//q>ì¤‘ê°„ì— evtê°€ ì‚¬ë¼ì§„ê²Œ..ì¢€ send_message(ì—†ì–´ì¡ŒëŠ”ë°);
+            function send_message() {						//q>Áß°£¿¡ evt°¡ »ç¶óÁø°Ô..Á» send_message(¾ø¾îÁ³´Âµ¥);
 				websocket.onmessage = function(evt) {
-					onMessage(evt)						//ì—¬ê¸°ì§€ìš°ë©´ë­ë³´ëƒˆëŠ”ì§€ ì•ˆë„ì›€  pf>ë°›ì€ ë©”ì„¸ì§€ëŠ” ì—¬ê¸° ë“¤ì–´ì˜¤ëŠ”ê±°ë‹¤..
+					onMessage(evt)						//¿©±âÁö¿ì¸é¹¹º¸³Â´ÂÁö ¾È¶ç¿ò  pf>¹ŞÀº ¸Ş¼¼Áö´Â ¿©±â µé¾î¿À´Â°Å´Ù..
 				};
 				websocket.onerror = function(evt) {
 					onError(evt)
 				};
 			}
 
-			function onOpen(evt) { //WebSocket ì—°ê²°						
-				//writeToScreen("Connected to Endpoint!");    //ì—¬ê¸°ì— ë“¤ì–´ì˜¤ë©´ evtì—ì„œ ê°’ëº„ìˆ˜ìˆìŒ...
+			function onOpen(evt) { //WebSocket ¿¬°á						
+				//writeToScreen("Connected to Endpoint!");    //¿©±â¿¡ µé¾î¿À¸é evt¿¡¼­ °ª»¬¼öÀÖÀ½...
 				send_message();
 			}
             
-			function onMessage(evt) { //ë©”ì‹œì§€ ìˆ˜ì‹ 
+			function onMessage(evt) { //¸Ş½ÃÁö ¼ö½Å
 				// writeToScreen("Message Received: " + evt.data);
 				client(evt);
             }
-			function onError(evt) {  // ì „ì†¡ ì—ëŸ¬ ë°œìƒ
+			function onError(evt) {  // Àü¼Û ¿¡·¯ ¹ß»ı
 				writeToScreen('ERROR: ' + evt.data);
 			} 
 			function doSend(str) {
 				//var message = document.getElementById("textID").value;
 				//writeToScreen("Message Sent: " + message);
-				//writeToScreen("ë­ë³´ë‚´ëŠ”ì§€ í‘œì‹œí•˜ë ¤ê³  ");
+				//writeToScreen("¹¹º¸³»´ÂÁö Ç¥½ÃÇÏ·Á°í ");
 				
 				
 				
@@ -1105,7 +1106,7 @@
 				var goodstime = [];
                   
 
-                    $.ajax({//typeí•„ìˆ˜ì„
+                    $.ajax({//typeÇÊ¼öÀÓ
                         type : "get",   //RequestMethod Type
                         url: "Goodslist", //RequestMapping value
                         data:{
@@ -1132,7 +1133,7 @@
                             
                             
                             var content0 = '<div class="goodsinfo" id="'+CRN+'" style="overflow-y:scroll">'+
-                                         			'<table><tr><th>í’ˆëª…</th><th>ê°€ê²©</th><th>ê°œìˆ˜</th><th>ìœ í†µê¸°í•œ</th><th>ì´ë¯¸ì§€</th></tr>';
+                                         			'<table><tr><th>Ç°¸í</th><th>°¡°İ</th><th>°³¼ö</th><th>À¯Åë±âÇÑ</th><th>ÀÌ¹ÌÁö</th></tr>';
                                
                                    for (var i = 0, len = glist.length; i < len; i++) {
                                    		
@@ -1157,7 +1158,7 @@
                             
                             
                         	
-                            $.ajax({//typeí•„ìˆ˜ì„
+                            $.ajax({//typeÇÊ¼öÀÓ
                                 type : "post",   //RequestMethod Type
                                 url: "markimg", //RequestMapping value
                                 data:{
@@ -1168,13 +1169,13 @@
                                 	alert(data);
                     				var pk = {storeid : CRN, goodsid : content0,flag:data,fortimes:goodstime};
                     				var jsonstr = JSON.stringify(pk);
-                                    websocket.send(jsonstr); // ìŠ¤íŠ¸ë§ ë°°ì—´ë§Œë“¤ì–´ì„œ ë³´ë‚´ë©´ ë˜ê² ë„¤...
+                                    websocket.send(jsonstr); // ½ºÆ®¸µ ¹è¿­¸¸µé¾î¼­ º¸³»¸é µÇ°Ú³×...
                                     //websocket.close();
                                     
                
                                 },
                                 error : function(e){
-                                   //ajaxí†µì‹  ì‹¤íŒ¨ì‹œ   
+                                   //ajaxÅë½Å ½ÇÆĞ½Ã   
                                    console.log(e);
                                 }
                              });
@@ -1184,7 +1185,7 @@
     //ajax //////////////////////////////////////////////////////////////////////////////////////
     },
                         error : function(e){
-                           //ajaxí†µì‹  ì‹¤íŒ¨ì‹œ
+                           //ajaxÅë½Å ½ÇÆĞ½Ã
                            console.log(e);
                         }
                      });
@@ -1221,16 +1222,16 @@
 						  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 					
 						 /* 
-						  document.getElementById(goodscode).innerHTML = days + " ì¼ " + hours + "ì‹œê°„ "
-						  + minutes + "ë¶„ " + seconds + "ì´ˆ ";  
+						  document.getElementById(goodscode).innerHTML = days + " ÀÏ " + hours + "½Ã°£ "
+						  + minutes + "ºĞ " + seconds + "ÃÊ ";  
 						  
 						  
 						  
-						  var time = days + " ì¼ " + hours + "ì‹œê°„ "+ minutes + "ë¶„ " + seconds + "ì´ˆ ";
+						  var time = days + " ÀÏ " + hours + "½Ã°£ "+ minutes + "ºĞ " + seconds + "ÃÊ ";
 						  
 						  if(distance <0){
 								clearInterval(x);
-							    time = "ê¸°í•œë§Œë£Œ(EXPIRED)"; // ìœ í†µê¸°í•œì´ ë‹¤ë˜ë©´ ì‹œê°„ìë¦¬ì— ê¸°í•œë§Œë£Œê°€ ëœ¸..
+							    time = "±âÇÑ¸¸·á(EXPIRED)"; // À¯Åë±âÇÑÀÌ ´ÙµÇ¸é ½Ã°£ÀÚ¸®¿¡ ±âÇÑ¸¸·á°¡ ¶ä..
 							  }
 						  
 						  timegaek.push = {times:time,goodscodes:goodscode};
@@ -1249,10 +1250,10 @@
 				}  */
 			
 			function dosendcontent(content){
-				/* alert("dosendcontent(ê³ ê°ì•„ì´ë””ë“¤) : " + content.buyer_id); */
+				/* alert("dosendcontent(°í°´¾ÆÀÌµğµé) : " + content.buyer_id); */
 				var message={};
 				message.sellerCRN = content.sellerCRN;
-				alert("sellerCRN ì˜ì™”ë„¤: "+content.sellerCRN);
+				alert("sellerCRN Àß¿Ô³×: "+content.sellerCRN);
 				message.from = content.color;
 				alert(content.color);
 				message.message = content.shopname;
@@ -1261,7 +1262,7 @@
 				websocket.send(JSON.stringify(message));
 			}
 			
-			function writeToScreen(message) {						//ë©”ì„¸ì§€ë¥¼ í™”ë©´ì— ë„ì›Œì¤Œ...
+			function writeToScreen(message) {						//¸Ş¼¼Áö¸¦ È­¸é¿¡ ¶ç¿öÁÜ...
 				var pre = document.createElement("p");
 				pre.style.wordWrap = "break-word";
 				pre.innerHTML = message;
@@ -1272,8 +1273,8 @@
         </script>
 <%--=========================================================================== --%>
         <ol class="breadcrumb">
-            <li>í˜„ì¬ ìœ„ì¹˜</li>
-            <li class="active">ê³ ê° ìƒë‹´</li>
+            <li>ÇöÀç À§Ä¡</li>
+            <li class="active">°í°´ »ó´ã</li>
         </ol>
 
 
@@ -1312,7 +1313,7 @@
 
 
 
-		<h1 class="page-title">Tables - <span class="fw-semi-bold">ìƒí’ˆ ëª©ë¡ </span></h1>
+		<h1 class="page-title">Tables - <span class="fw-semi-bold">»óÇ° ¸ñ·Ï </span></h1>
 
 		<div class="row">
 			<div class="col-md-12">
@@ -1327,20 +1328,20 @@
 					<table class="table table-hover">
 						<thead>
 							<tr>
-								<th>ì´ë¯¸ì§€</th>
-								<th>ìƒí’ˆëª…</th>
-								<th>ìƒí’ˆì½”ë“œ</th>
-								<th>íŒë§¤ê°€ê²©</th>
-								<th>ì—…ë¡œë“œ ë‚ ì§œ</th>
-								<th>í˜„ì¬ìˆ˜ëŸ‰</th>
-								<th>ë³€ë™ìˆ˜ëŸ‰</th>
+								<th>ÀÌ¹ÌÁö</th>
+								<th>»óÇ°¸í</th>
+								<th>»óÇ°ÄÚµå</th>
+								<th>ÆÇ¸Å°¡°İ</th>
+								<th>¾÷·Îµå ³¯Â¥</th>
+								<th>ÇöÀç¼ö·®</th>
+								<th>º¯µ¿¼ö·®</th>
 								<th>
 									<span>
-									ì‚­ì œ<input type="checkbox" id="checkboxall" style="width:15px;height:15px">
+									»èÁ¦<input type="checkbox" id="checkboxall" style="width:15px;height:15px">
 									</span>
 								</th>
-								<th>ìˆ˜ì •</th>
-								<th>ìƒíƒœ</th>
+								<th>¼öÁ¤</th>
+								<th>»óÅÂ</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -1363,7 +1364,7 @@
 									<input type="checkbox" name="checkbox" class="checkbox" style="width:15px;height:15px">
 								</td>
 								<td>
-									<input type="button" value="ìˆ˜ì •" class="btnupdate">
+									<input type="button" value="¼öÁ¤" class="btnupdate">
 								</td>
 								<td>
 									<input type="button" value="${map.goodsStatus }" class="status">
