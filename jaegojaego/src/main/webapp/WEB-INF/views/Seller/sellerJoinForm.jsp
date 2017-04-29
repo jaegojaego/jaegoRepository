@@ -4,9 +4,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>회원 가입 : 판매자</title>
+    <title>회원 가입 : 판매자ㅏㅏ</title>
 <%--<link href="./resources/bootstrap/css/application.min.css" rel="stylesheet">--%>
-	<link href="./resources/bootstrap/css/application.css" rel="stylesheet">    
+	<link href="./resources/bootstrap/css/application_for_JoinForm.css" rel="stylesheet">    
     <!-- as of IE9 cannot parse css files with more that 4K classes separating in two files -->
     <!--[if IE 9]>
         <link href="css/application-ie9-part2.css" rel="stylesheet">
@@ -129,7 +129,7 @@
 
 <%--<div class="content-wrap">--%>		<%-- 좌 → 우로 이동하는 파란색 띠 --%>
     <!-- main page content. the place to put widgets in. usually consists of .row > .col-md-* > .widget.  -->
-    <main id="content" class="content" role="main">
+    <main id="content" class="content" role="main" >
         <ol class="breadcrumb">
 <%--        <li>YOU ARE HERE</li>
             <li class="active">Form Elements</li>--%>
@@ -245,7 +245,7 @@
 <div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div>
 
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script src="//apis.daum.net/maps/maps3.js?apikey=58be92da2825bdc2b27886ae673b8712&libraries=services"></script>
+<script src="//apis.daum.net/maps/maps3.js?apikey=98b5ff77fd0570ce46f2ef84207626b0&libraries=services"></script>
 <script>
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div
         mapOption = {

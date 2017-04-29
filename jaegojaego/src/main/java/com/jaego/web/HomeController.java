@@ -25,5 +25,10 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate );
 		return "home";
 	}
+
+	@RequestMapping(value = "/widgets", method = RequestMethod.GET)
+	public String widgets() {
+		return "widgets";
+	}
 	
 }
