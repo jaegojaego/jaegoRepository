@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%><%--흐엉--%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 5 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
@@ -7,6 +7,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style>
+
+table {
+	text-align: center;
+}
+
+tr {
+	text-align: center;
+}
+
+th {
+	text-align: center;
+}
+
+td {
+	text-align: center;
+}
 
 </style>
 <script type="text/javascript" src="./resources/js/jquery-3.1.1.js"> </script>
@@ -72,15 +88,50 @@ function timetest(i,goodscode,goodsDT) {
    
    
    $(function(){
-	   
-	  
    	
 	  var CRN;
       var adrr = "삼성동";
       console.log(adrr);
       a(adrr,flag,sellertob);
+      var marker;
+      
+      /* $("#890").on("click",function(){
+      
+    	  var countDownDate = new Date("2017-04-28 00:00:00").getTime();				// 파란글자에 DB에서 불러온 유통기한 넣어주면 됨..
+    	 
+    	  // Update the count down every 1 second
+    	  var x = setInterval(function() {
+
+    	    // Get todays date and time
+    	    var now = new Date().getTime();
+    	    
+
+    	    // Find the distance between now an the count down date
+    	    var distance = countDownDate - now;
+
+    	    // Time calculations for days, hours, minutes and seconds
+    	    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    	    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    	    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    	    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    	    
+    	    var all = days + " 일 " + hours + "시간 "+ minutes + "분 " + seconds + "초 ";
+    	  
+    	    // Display the result in the element with id="demo"
+    	    document.getElementById("demo").innerHTML = days + " 일 " + hours + "시간 "
+    	    + minutes + "분 " + seconds + "초 ";
+
+    	    // If the count down is finished, write some text 
+    	    if (distance < 0) {
+    	      clearInterval(x);
+    	      document.getElementById("demo").innerHTML = "기한만료(EXPIRED)"; // 유통기한이 다되면 시간자리에 기한만료가 뜸..
+    	    }
+    	  }, 1000);
       
       
+      
+      }); */
       
 /*       navigator.geolocation.getCurrentPosition( function(pos) {
             var latitude = pos.coords.latitude;
@@ -250,6 +301,9 @@ function timetest(i,goodscode,goodsDT) {
                             
                              markers.push(marker);
                        
+                            
+                             //레이아웃 css 설정
+                            
                            var content = '<div class="wrap">' + 
                             '    <div class="info">' + 
                             '      <div class="title">' + 
@@ -259,10 +313,10 @@ function timetest(i,goodscode,goodsDT) {
                             '      <div class="body">' + 
                             '      <div class="img"><div class="img2">' +
                             '      <img src="shopimg?sellerCRN='+position.CRN+'" width="120" height="130"></img>' +
-                            '      </div> <div class="shopinfo">업종:'+position.tob+'<br>주소:'+position.shopaddress+'<br>전화번호:'+position.phone+'<br><div class="star" style="width=20px;">별점</div><span class="addshop" style="font-weight:bolder;font-color:black"><관심매장추가></span><span class="delshop" style="font-weight:bolder;font-color:black"><관심매장삭제></span></div></div>' + 
+                            '      </div> <div class="shopinfo" style="width:170px;height:132px;text-overflow: ellipsis;line-height:200%">업종:'+position.tob+'<br>주소:'+position.shopaddress+'<br>전화번호:'+position.phone+'<br><div class="star" style="width=20px;">별점</div><span class="addshop" style="font-weight:bolder;font-color:black"><관심매장추가></span><span class="delshop" style="font-weight:bolder;font-color:black"><관심매장삭제></span></div></div>' + 
                             '      <div class="desc">' + 
 
-                            '<div class="goodsinfo" id="'+position.CRN+'">'+
+                            '<div class="goodsinfo" id="'+position.CRN+'" style="overflow-y:scroll">'+
                             '<table><tr><th>품명</th><th>가격</th><th>개수</th><th>이미지</th><th>유통기한</th></tr>';
                             
                             for (var i = 0, len = glist.length; i < len; i++) {
@@ -275,8 +329,8 @@ function timetest(i,goodscode,goodsDT) {
                             
                             content += '</table></div></div>' + 
                             '           </div>' + 
-                            '        <div class="comments" style="overflow-y:scroll;margin:auto; border: 1px solid #ddd;"></div><div align="center" style="background-color:white; width:440px;vertical-align:top;" class="starsac"><select class="starcheck" align="center" style="width:105px;height:24px"><option value="1">★</option><option value="2">★★</option>'+
-                            '<option value="3">★★★</option><option value="4">★★★★</option><option value="5">★★★★★</option></select><input type="text" class="comment" style="width:250px;height:18px;"><input type="button" class="bnt" value="댓글입력" style="width:80px;height:24px;background-color:yellow;border:0px"></div></div>' + 
+                            '        <div class="comments" style="overflow-y:scroll;margin:auto; border: 1px solid #ddd;width:289px; height:100px;"></div><div align="center" style="background-color: black;width:289px;margin:auto;"><select class="starcheck" align="center"><option value="1">★</option><option value="2">★★</option>'+
+                            '<option value="3">★★★</option><option value="4">★★★★</option><option value="5">★★★★★</option></select><input type="text" class="comment" style="width:152px"><input type="button" class="bnt" value="입력"></div></div>' + 
                             
                             '    </div>' +    
                             '</div> <div class="goodsimg"></div>';
@@ -306,42 +360,9 @@ function timetest(i,goodscode,goodsDT) {
                             
                             
                             overlay.setMap(null);
-                            console.log(markers);
-                            
-                            /* for (var i = 0, len = markers.length; i < len; i++) {
-                           	 
-                            var abc = markers[i]; */
 
                             daum.maps.event.addListener(marker, 'click', function() {
-                            	
-                            	
-                            	 $("area").on("click",function(){
-                          		   
-                            		var areatitle = $(this).attr("title");
-                          		  
-                            		
-                                    for (var i = 0, len = markers.length; i < len; i++) {
-                                   	 markerstitle2 = markers[i].getTitle();
-                             		    
-                             		     if(areatitle==markerstitle2){
-                             		    	 
-                             		    	markersposition2 = markers[i].getPosition();
-                             		    	map.setCenter(markersposition2);
-                                   	
-                             		     }
-                                   } 
-                                   
-                            		
-                            		
-                          	   });
-                            	
-                            	
-                            	/* var aaa = selectedMarker.getPosition(); */
-                            	
-                            	/* var moveposition = abc.getPosition();
-                            	alert(moveposition);
-                            	map.setCenter(moveposition); 
- */
+
                                 // 클릭된 마커가 없고, click 마커가 클릭된 마커가 아니면
                                 // 마커의 이미지를 클릭 이미지로 변경합니다
                                 if (selectedMarker == null) {
@@ -350,9 +371,8 @@ function timetest(i,goodscode,goodsDT) {
                                    overlay.setMap(map);
                                    marker.setClickable(false);
                                    selectedMarker=marker;
-                                   console.log(selectedMarker);
                                 }else{
-                                   
+                                   alert("한가게씩 선택해주세요!");
                                    return false;
                                    
                                 }
@@ -361,7 +381,6 @@ function timetest(i,goodscode,goodsDT) {
                                 $(".close").on("click",function(){
                                    overlay.setMap(null);
                                    marker.setClickable(true);
-                                   
                                    selectedMarker = null;
                               
                                 });
@@ -392,6 +411,9 @@ function timetest(i,goodscode,goodsDT) {
                                             });
                                             
                                           });
+                                         
+                                         //레이아웃 css 설정
+                                         
                                          var content0 = '<div class="goodsinfo" id="'+position.CRN+'" style="overflow-y:scroll">'+
                                          			'<table><tr><th>품명</th><th>가격</th><th>개수</th><th>유통기한</th><th>이미지</th></tr>';
                                          for (var i = 0, len = glist.length; i < len; i++) {
@@ -570,31 +592,39 @@ function timetest(i,goodscode,goodsDT) {
                                          console.log(e);
                                       }
                                 });
-                              });                                   
-                                   
-                                //관심매장삭제(20170429 박진우)
-                                    $(".delshop").on("click",function(){
-                                        ///
-                                   
-                                         $.ajax({//type필수임
-                                             type : "get",   //RequestMethod Type
-                                             url: "delshop", //RequestMapping value
-                                             data:{
-                                                sellerCRN:position.CRN
-                                             },
-                                             
-                                           success:function(data){
-                                                 alert(JSON.stringify(data));
-                                              },                             
-                                           error:function(e){
-                                              console.log(e);
-                                           }
-                                     });
-                                    });
+                    });
+                                
+                                
+                                
+                                
+                                
+                                $(".delshop").on("click",function(){
+                                    ///
+                               
+                                     $.ajax({//type필수임
+                                         type : "get",   //RequestMethod Type
+                                         url: "delshop", //RequestMapping value
+                                         data:{
+                                            sellerCRN:position.CRN
+                                         },
+                                         
+                                       success:function(data){
+                                             alert(JSON.stringify(data));
+                                          },                             
+                                       error:function(e){
+                                          console.log(e);
+                                       }
+                                 });
+                     });
+
+                                
+                                
+                                
+                                
+                                
+                                
                                 
                             });
-                        //}
-                            /////////////////////////////////
                         },
                         error : function(e){
                            //ajax통신 실패시   
@@ -712,7 +742,7 @@ function timetest(i,goodscode,goodsDT) {
 				dosend();	
 			}
            
-			var wsUri = "ws://10.10.12.177:8889/web/echo.do";
+			var wsUri = "ws://203.233.196.93:8888/web/echo.do";
            
 			function init() {				//yc>이게 시작이 되는가? 왜 이게 시작이 되지?  ->> 아마 socket 핸들러에서 보낸거가  여기로 들어오는듯..
 				output = document.getElementById("output");
@@ -827,25 +857,27 @@ function timetest(i,goodscode,goodsDT) {
 <style>
 	.toast #aclick {display: inline-block;float: right;}
 	#aclick:HOVER {text-decoration: underline;pause: 60s;}
-    .wrap {position: absolute;left: 0;bottom: 40px;width: 450px;height: 450px;margin-left: -150px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
-    .wrap .info {width: 450px;height: 450px;border-radius: 5px;border-bottom: 2px solid red;border-right: 1px solid red;overflow: hidden;background: white;}
+	
+	
+	/*  여기서부터 */
+    .wrap {position: absolute;left: 0;bottom: 40px;width: 303px;height: 450px;margin-left: -150px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
+
+    .wrap .info {width: 303px;height: 450px;border-radius: 5px;border-bottom: 2px solid red;border-right: 1px solid red;overflow: hidden;background: red;}
     .wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
-    .info .title {padding: 5px 0 0 10px;height: 30px;background: #FAED7D;border-bottom: 1px solid #ddd;font-size: 20px;font-weight: bold;}
+    .info .title {padding: 5px 0 0 10px;height: 30px;background: #FAED7D;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
     .info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
     .info .close:hover {cursor: pointer;}
     .info .body {position: relative;overflow: hidden;background:white;}
     .info .desc {position: relative;margin: 140px 0 0 6px;height: 135px;}
-    .shopinfo {position: absolute;left: 120px;background:white;overflow: hidden;font-size: 16px;width:320px;height:132px;text-overflow: ellipsis;line-height:150%}
-    .desc .goodsinfo {top: 6px;left: 5px;text-overflow: goodsinfo;width: 440px;height: 130px;border: 1px solid #ddd;color: #888;font-size: 15px;overflow-y:scroll}
+    .shopinfo {position: absolute;left: 120px;background:white;overflow: hidden;}
+    .desc .goodsinfo {top: 6px;left: 5px;text-overflow: goodsinfo;width: 289px;height: 130px;border: 1px solid #ddd;color: #888;}
     .info .img2 {position: absolute;width: 120px;height: 130px;overflow: hidden;}
-    .info .img {position: absolute;top: 6px;left: 6px;width: 440px;height: 130px;border: 1px solid #ddd;color: #888;overflow: hidden;background:yellow;}
+    .info .img {position: absolute;top: 6px;left: 6px;width: 289px;height: 130px;border: 1px solid #ddd;color: #888;overflow: hidden;background:gray;}
    .prd_box {position:relative;} 
    .prd_over {position:absolute; width:100%; height:50px; top:95px; bottom:0; left:0; opacity:0; background:url('/shop/data/skin/apple_tree_C/img/djds/etc/prd_over.png') 0 0 no-repeat;}    
    .thth {position:relative; display:inline-block}
    .thth span {visibility:hidden; position:absolute; margin-top:0; margin-left:-20px;}
    .thth:hover span {visibility:visible}
-   .comments{width:440px; height:100px;}
-
 
 </style>
 
@@ -902,6 +934,6 @@ function timetest(i,goodscode,goodsDT) {
 <input type="hidden" id = "buyerid" value="${custid }">
 
 <div id="sellergoods" style="width:100%;height:300px;"></div>
-<input type="button" value="얍" id="sibal">
+<input type="button" value="123" id="890">
 </body>
 </html>
