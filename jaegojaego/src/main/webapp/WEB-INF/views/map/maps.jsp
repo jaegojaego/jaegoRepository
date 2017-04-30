@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Insert title hereee</title>
 <style>
 
 table {
@@ -25,6 +25,7 @@ td {
 }
 
 </style>
+
 <script type="text/javascript" src="./resources/js/jquery-3.1.1.js"> </script>
 <link rel="stylesheet" href="./resources/css/jquery.toast.min.css" />
 <script type="text/javascript" src="./resources/js/jquery.toast.js"></script>
@@ -32,6 +33,15 @@ td {
 
 <script type="text/javascript" src="./resources/js/function.js"> </script>
 <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=98b5ff77fd0570ce46f2ef84207626b0&libraries=services"></script>
+
+    <link href="./resources/bootstrap/css/application.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="img/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
 
 
 <script>
@@ -891,6 +901,7 @@ function timetest(i,goodscode,goodsDT) {
 <body>
 
 
+
 <div id="wrap">
     <header>
         <div class="inner relative"><div style="top:10px; height:30px; background-color: black"><a class="tob">카페</a><br><a class="tob">베이커리</a><br><a class="tob">식당</a>
@@ -935,5 +946,8 @@ function timetest(i,goodscode,goodsDT) {
 
 <div id="sellergoods" style="width:100%;height:300px;"></div>
 <input type="button" value="123" id="890">
+
+
+
 </body>
 </html>
