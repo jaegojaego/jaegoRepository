@@ -7,18 +7,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="<c:url value="./resources/js/jquery-3.1.1.js"/>"></script>
- <!-- 구글차트주석 -->
- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
- <!-- 그래프파일위치 -->
-
-   <script src="./resources/js/todaycricleChart.js"></script>
-  
-           
+<!-- 구글차트주석 -->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<!-- 그래프파일위치 -->
+<script src="./resources/js/todaycricleChart.js"></script>
 </head>
 <body>
-     
- 	 <div id="tiechart_3d" style="width: 900px; height: 500px;"></div>
- 	
-  </body>
+	<div id="tiechart_3d" style="width: 900px; height: 500px;"></div>
+</body>
 </html>

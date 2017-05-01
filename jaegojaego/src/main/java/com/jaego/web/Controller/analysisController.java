@@ -1,7 +1,9 @@
 //권록헌 매출분석
 package com.jaego.web.Controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -42,41 +44,44 @@ public class analysisController {
 
 	@ResponseBody
 	@RequestMapping(value = "analysismoney", method = RequestMethod.GET)		//라인 차트
-	public List<HashMap> analysismoney(HttpSession session) {
+	public List<HashMap> analysismoney(HttpSession session,String date1,String date2) {
+		System.out.println("날짜 왔음?"+date1+","+date2);
 		String sellerId = (String)session.getAttribute("custid");
 		String sellerCRN=dao.select(sellerId);
-		System.out.println(sellerCRN);
+		System.out.println("sellerCRN이야"+sellerCRN);
 
-		List<HashMap> result = dao.allmoney(sellerCRN);
+		List<HashMap> result = dao.allmoney(sellerCRN,date1,date2);
 		System.out.println(result);
 		return result;
 	}
 	
 	@RequestMapping(value = "goodsanalysis", method = RequestMethod.GET)
 	public String goodsanalysis() {
-		return "./analysis/goodsanalysis";
+		return "./analysis/goodsanalysis";//총판매수량(원형)
 	}
 	@RequestMapping(value = "goodsanalysis2", method = RequestMethod.GET)
 	public String goodsanalysis2() {
-		return "./analysis/goodsanalysis2";
+		return "./analysis/goodsanalysis2";//오늘 판매수량(원형)
 	}
 	@RequestMapping(value = "goodsanalysis3", method = RequestMethod.GET)
 	public String goodsanalysis3() {
-		return "./analysis/goodsanalysis3";
+		return "./analysis/goodsanalysis3";//품목별 총 판매수익(점선)
 	}
 	@RequestMapping(value = "goodsanalysis4", method = RequestMethod.GET)
 	public String goodsanalysis4() {
-		return "./analysis/goodsanalysis4";
+		return "./analysis/goodsanalysis4";//일별(막대)
 	}
 	
 	@ResponseBody
 	@RequestMapping(value = "circle", method = RequestMethod.GET)
-	public ArrayList<Object> circle(HttpSession session) {//총수량
-
+	public ArrayList<Object> circle(HttpSession session,String date1,String date2) {//총수량
+		System.out.println("원형날짜 왔음?"+date1+","+date2);
 		String sellerId = (String)session.getAttribute("custid");
 		String sellerCRN=dao.select(sellerId);
+		System.out.println("sellerCRN이지 : "+sellerCRN);
 		
-		List<HashMap> result = dao.circle(sellerCRN);
+		List<HashMap> result = dao.circle(sellerCRN,date1,date2);
+		System.out.println("sql 실행 잘핸? : "+ result);
 		
 		ArrayList<String> aList = new ArrayList();//  상품타이틀 리스트
 		System.out.println("result="+result);
@@ -96,19 +101,27 @@ public class analysisController {
 		}
 		System.out.println("bList="+bList);
 		System.out.println("cList="+cList);
-		
+		/*if(cList.size()==1){
+			bList.add("자료없음");
+			bList.add(0);
+			cList.add(bList);
+			dList.add(cList);
+			System.out.println("록체크"+dList);
+			return dList;
+			
+		}*/
 		dList.add(cList);
-		System.out.println("dList="+dList);
+		System.out.println("리턴할겅dList="+dList);
 		return dList;
-		
 	}
+	
 	@ResponseBody
 	@RequestMapping(value = "todaycircle", method = RequestMethod.GET)
 	public ArrayList<Object> todaycircle(HttpSession session) {//오늘 수량
 
 		String sellerId = (String)session.getAttribute("custid");
 		String sellerCRN=dao.select(sellerId);
-
+		
 		List<HashMap> result = dao.tcircle(sellerCRN);
 		
 		ArrayList<String> aList = new ArrayList();//  상품타이틀 리스트
@@ -129,11 +142,10 @@ public class analysisController {
 		}
 		System.out.println("bList="+bList);
 		System.out.println("cList="+cList);
-		
 		dList.add(cList);
 		System.out.println("dList="+dList);
-		return dList;
 		
+		return dList;
 	}
 
 	

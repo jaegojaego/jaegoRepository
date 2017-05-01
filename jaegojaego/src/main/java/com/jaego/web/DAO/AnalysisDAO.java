@@ -24,17 +24,17 @@ public class AnalysisDAO {
 		
 	}
 	
-	public List<HashMap> allmoney(String sellerCRN){
+	public List<HashMap> allmoney(String sellerCRN,String date1,String date2){
 		AnalysisMapper mapper= sqlsession.getMapper(AnalysisMapper.class);
-		return mapper.allmoney(sellerCRN);
+		return mapper.allmoney(sellerCRN,date1,date2);
 	}
 	public List<HashMap> month(String sellerCRN){
 		AnalysisMapper mapper= sqlsession.getMapper(AnalysisMapper.class);
 		return mapper.month(sellerCRN);
 	}
-	public List<HashMap> circle(String sellerCRN){
+	public List<HashMap> circle(String sellerCRN,String date1,String date2){
 		AnalysisMapper mapper= sqlsession.getMapper(AnalysisMapper.class);
-		return mapper.circle(sellerCRN);
+		return mapper.circle(sellerCRN,date1,date2);
 	}
 	public List<HashMap> tcircle(String sellerCRN){
 		AnalysisMapper mapper= sqlsession.getMapper(AnalysisMapper.class);
