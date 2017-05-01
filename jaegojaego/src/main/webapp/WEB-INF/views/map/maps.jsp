@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%><%--흐엉--%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 5 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Insert title hereee</title>
 <style>
 
 table {
@@ -25,6 +25,7 @@ td {
 }
 
 </style>
+
 <script type="text/javascript" src="./resources/js/jquery-3.1.1.js"> </script>
 <link rel="stylesheet" href="./resources/css/jquery.toast.min.css" />
 <script type="text/javascript" src="./resources/js/jquery.toast.js"></script>
@@ -32,6 +33,15 @@ td {
 
 <script type="text/javascript" src="./resources/js/function.js"> </script>
 <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=98b5ff77fd0570ce46f2ef84207626b0&libraries=services"></script>
+
+    <link href="./resources/bootstrap/css/application.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="img/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
 
 
 <script>
@@ -301,6 +311,9 @@ function timetest(i,goodscode,goodsDT) {
                             
                              markers.push(marker);
                        
+                            
+                             //레이아웃 css 설정
+                            
                            var content = '<div class="wrap">' + 
                             '    <div class="info">' + 
                             '      <div class="title">' + 
@@ -310,7 +323,7 @@ function timetest(i,goodscode,goodsDT) {
                             '      <div class="body">' + 
                             '      <div class="img"><div class="img2">' +
                             '      <img src="shopimg?sellerCRN='+position.CRN+'" width="120" height="130"></img>' +
-                            '      </div> <div class="shopinfo" style="width:170px;height:132px;text-overflow: ellipsis;line-height:200%">업종:'+position.tob+'<br>주소:'+position.shopaddress+'<br>전화번호:'+position.phone+'<br><div class="star" style="width=20px;">별점</div><span class="addshop" style="font-weight:bolder;font-color:black"><관심매장추가></span></div></div>' + 
+                            '      </div> <div class="shopinfo" style="width:170px;height:132px;text-overflow: ellipsis;line-height:200%">업종:'+position.tob+'<br>주소:'+position.shopaddress+'<br>전화번호:'+position.phone+'<br><div class="star" style="width=20px;">별점</div><span class="addshop" style="font-weight:bolder;font-color:black"><관심매장추가></span><span class="delshop" style="font-weight:bolder;font-color:black"><관심매장삭제></span></div></div>' + 
                             '      <div class="desc">' + 
 
                             '<div class="goodsinfo" id="'+position.CRN+'" style="overflow-y:scroll">'+
@@ -408,6 +421,9 @@ function timetest(i,goodscode,goodsDT) {
                                             });
                                             
                                           });
+                                         
+                                         //레이아웃 css 설정
+                                         
                                          var content0 = '<div class="goodsinfo" id="'+position.CRN+'" style="overflow-y:scroll">'+
                                          			'<table><tr><th>품명</th><th>가격</th><th>개수</th><th>유통기한</th><th>이미지</th></tr>';
                                          for (var i = 0, len = glist.length; i < len; i++) {
@@ -588,6 +604,36 @@ function timetest(i,goodscode,goodsDT) {
                                 });
                     });
                                 
+                                
+                                
+                                
+                                
+                                $(".delshop").on("click",function(){
+                                    ///
+                               
+                                     $.ajax({//type필수임
+                                         type : "get",   //RequestMethod Type
+                                         url: "delshop", //RequestMapping value
+                                         data:{
+                                            sellerCRN:position.CRN
+                                         },
+                                         
+                                       success:function(data){
+                                             alert(JSON.stringify(data));
+                                          },                             
+                                       error:function(e){
+                                          console.log(e);
+                                       }
+                                 });
+                     });
+
+                                
+                                
+                                
+                                
+                                
+                                
+                                
                             });
                         },
                         error : function(e){
@@ -706,7 +752,7 @@ function timetest(i,goodscode,goodsDT) {
 				dosend();	
 			}
            
-			var wsUri = "ws://10.10.7.40:8889/web/echo.do";
+			var wsUri = "ws://203.233.196.93:8888/web/echo.do";
            
 			function init() {				//yc>이게 시작이 되는가? 왜 이게 시작이 되지?  ->> 아마 socket 핸들러에서 보낸거가  여기로 들어오는듯..
 				output = document.getElementById("output");
@@ -821,9 +867,12 @@ function timetest(i,goodscode,goodsDT) {
 <style>
 	.toast #aclick {display: inline-block;float: right;}
 	#aclick:HOVER {text-decoration: underline;pause: 60s;}
+	
+	
+	/*  여기서부터 */
     .wrap {position: absolute;left: 0;bottom: 40px;width: 303px;height: 450px;margin-left: -150px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
 
-    .wrap .info {width: 303px;height: 450px;border-radius: 5px;border-bottom: 2px solid red;border-right: 1px solid red;overflow: hidden;background: white;}
+    .wrap .info {width: 303px;height: 450px;border-radius: 5px;border-bottom: 2px solid red;border-right: 1px solid red;overflow: hidden;background: red;}
     .wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
     .info .title {padding: 5px 0 0 10px;height: 30px;background: #FAED7D;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
     .info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
@@ -850,6 +899,7 @@ function timetest(i,goodscode,goodsDT) {
 </style>
 </head>
 <body>
+
 
 
 <div id="wrap">
@@ -896,5 +946,8 @@ function timetest(i,goodscode,goodsDT) {
 
 <div id="sellergoods" style="width:100%;height:300px;"></div>
 <input type="button" value="123" id="890">
+
+
+
 </body>
 </html>

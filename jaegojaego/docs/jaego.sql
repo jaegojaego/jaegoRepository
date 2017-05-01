@@ -59,7 +59,8 @@ create table Goods(
 	goodsDateOfUpload date default sysdate not null,
 	goodsDateOfUpdate date,
 	goodsStatus varchar2(200) default 'off',
-	goodsInfo varchar2(4000) not null
+	goodsInfo varchar2(4000) not null,
+	expiredDate date not null
 );
 
 create table CSBoard(
@@ -85,6 +86,4 @@ create table CSReply(
 
 create sequence CSBoard_seq start with 1 increment BY 1;
 create sequence CSReply_seq start with 1 increment BY 1;
-
-
 

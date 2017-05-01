@@ -17,6 +17,7 @@
     <meta name="author" content="">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<script src='<c:url value="/resources/js/jquery-3.1.1.js"/>' ></script>    
     <script>
         /* yeah we need this empty stylesheet here. It's cool chrome & chromium fix
            chrome fix https://code.google.com/p/chromium/issues/detail?id=167083
@@ -43,6 +44,7 @@
 			    var goodsPrice=document.getElementById('goodsPrice');
 			    var goodsQuantity=document.getElementById('goodsQuantity');
 			    var goodsInfo=document.getElementById('goodsInfo').value;
+			    var expiredDate=document.getElementById('expiredDate').value;
 			   if(goodsName==""){
 			     alert("상품이름을 입력하지 않았습니다.");
 			     return false;
@@ -53,6 +55,13 @@
 			    
 			     return false;
 			    }
+			   
+			   else if(expiredDate==''){
+				     alert("상품 유통기한을 입력하지 않았습니다.");
+				    
+				     return false;
+				    }
+			   
 			   
 			   else if(isNaN(goodsPrice.value)){
 			      alert("상품가격에 숫자아닌값이 있습니다 확인해주세요");
@@ -966,6 +975,14 @@
                                     
                                     <div class="col-sm-8">
                                         <input type="text" rows="4" class="form-control" <%--id="default-textarea"--%> id="goodsQuantity" name="goodsQuantity">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="default-textarea">상품 유통기한</label>
+                                    
+                                    <div class="col-sm-8">
+                                        <input type="text" rows="4" class="form-control" <%--id="default-textarea"--%> id="expiredDate" name="expiredDate">
                                     </div>
                                 </div>
                                 

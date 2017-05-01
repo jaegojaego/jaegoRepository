@@ -70,7 +70,7 @@ public class mapsController {
 			e.printStackTrace();
 		}
 		//����� ���� ���
-		String fullPath = uploadPath +"/"+seller.getSellerShopSimg()+".jpg";
+		String fullPath = uploadPath +"/"+seller.getSellerShopSimg();
 		
 		
 		//������ ������ ���� �Է� ��Ʈ��
@@ -103,7 +103,7 @@ public class mapsController {
 			e.printStackTrace();
 		}
 		//����� ���� ���
-		String fullPath = uploadPath +"/"+goods.getGoodsSimage()+".jpg";
+		String fullPath = uploadPath +"/"+goods.getGoodsSimage();
 		
 		
 		//������ ������ ���� �Է� ��Ʈ��
@@ -160,7 +160,32 @@ public class mapsController {
 		 //3개이상은 안됩니다 
 		
 	}
-	
+
+
+
+	//20170429 박진우 - 관심매장 삭제
+	@ResponseBody
+	@RequestMapping(value="delshop", method=RequestMethod.GET)
+	public String delshop(String sellerCRN,HttpSession session,Model model){
+		Favorite favorite = new Favorite();
+		String buyerid = (String) session.getAttribute("custid");
+		favorite.setSellerCRN(sellerCRN);
+		favorite.setBuyerId(buyerid);
+
+		int result = dao.findfav(favorite);
+		if(result!=0){
+			//지워야겠지...
+			
+			dao.delshop(favorite);
+			return "관심매장에서 삭제하였습니다.";
+		}else{
+			return "관심매장으로 추가되있지 않습니다.";
+		} 
+
+	}
+
+
+
 	@ResponseBody
 	@RequestMapping(value="gradelist", method=RequestMethod.GET)
 	public ArrayList<Grade> gradelist(String sellerCRN,HttpSession session){

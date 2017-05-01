@@ -83,6 +83,8 @@ public class LoginController {
 	public String logout(HttpSession session) {
 		session.removeAttribute("custid");
 		session.removeAttribute("name");
+		session.removeAttribute("sellerCRN");
+		session.removeAttribute("type");		
 		return "redirect:/";	
 	}
 	

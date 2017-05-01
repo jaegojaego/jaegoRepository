@@ -1059,7 +1059,7 @@
         		doSend();
         	}
            
-            var wsUri = "ws://10.10.7.40:8889/web/echo.do";
+            var wsUri = "ws://10.10.12.177:8889/web/echo.do";
            
             function init() {
 				output = document.getElementById("output");

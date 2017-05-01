@@ -20,9 +20,11 @@ public interface MapsMapper {
 	public int markimg(String sellerCRN);
 	public int findfav(Favorite favorite);
 	public int findfavs(Favorite favorite);
+	public int delshop(Favorite favorite);
 	public int addshop(Favorite favorite);
 	public ArrayList<Grade> gradelist(String sellerCRN);
 	public void addcomment(Grade grade);
 	public double starsac(String sellerCRN);
 	public int nostar(String sellerCRN,String buyerId);
+
 }
