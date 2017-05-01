@@ -13,7 +13,7 @@
 <script src="./resources/js/send.js"></script>
 <!-- 달력 -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
 <link rel="stylesheet" href="/resources/demos/style.css">
 
 <script type="text/javascript">
@@ -903,8 +903,8 @@ google.charts.load('current', {'packages':['corechart']});
 <div class="loader-wrap hiding hide">
     <i class="fa fa-circle-o-notch fa-spin-fast"></i>
 </div>
-<!-- common libraries. required for every page-->
-<!-- <script src="./resources/bootstrap/vendor/jquery/dist/jquery.min.js"></script>
+<!-- common libraries. required for every page -->
+<script src="./resources/bootstrap/vendor/jquery/dist/jquery.min.js"></script>
 <script src="./resources/bootstrap/vendor/jquery-pjax/jquery.pjax.js"></script>
 <script src="./resources/bootstrap/vendor/bootstrap-sass/assets/javascripts/bootstrap/transition.js"></script>
 <script src="./resources/bootstrap/vendor/bootstrap-sass/assets/javascripts/bootstrap/collapse.js"></script>
@@ -917,11 +917,11 @@ google.charts.load('current', {'packages':['corechart']});
 <script src="./resources/bootstrap/vendor/pace.js/pace.js" data-pace-options='{ "target": ".content-wrap", "ghostTime": 1000 }'></script>
 <script src="./resources/bootstrap/vendor/jquery-touchswipe/jquery.touchSwipe.js"></script>
 
-common app js
+<!-- common app js -->
 <script src="./resources/bootstrap/js/settings.js"></script>
 <script src="./resources/bootstrap/js/app.js"></script>
 
-page specific libs
+<!-- page specific libs -->
 <script src="./resources/bootstrap/vendor/underscore/underscore-min.js"></script>
 <script src="./resources/bootstrap/vendor/backbone/backbone.js"></script>
 <script src="./resources/bootstrap/vendor/backbone.paginator/lib/backbone.paginator.min.js"></script>
@@ -931,7 +931,8 @@ page specific libs
 <script src="./resources/bootstrap/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
 
 
-page specific js
-<script src="./resources/bootstrap/js/tables-dynamic.js"></script> -->
+<!-- page specific js -->
+<script src="./resources/bootstrap/js/tables-dynamic.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 </body>
 </html>

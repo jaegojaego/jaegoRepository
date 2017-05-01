@@ -14,6 +14,7 @@
 	</script>
 
 <script type="text/javascript" src="<c:url value="./resources/js/jquery-3.1.1.js"/>"></script>
+
 <!-- 구글차트주석 -->
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <!-- 그래프파일위치 -->
@@ -21,7 +22,6 @@
 
 <!-- 달력 -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <link rel="stylesheet" href="/resources/demos/style.css">
 
 	<script type="text/javascript">
@@ -884,7 +884,8 @@
 <div class="loader-wrap hiding hide">
     <i class="fa fa-circle-o-notch fa-spin-fast"></i>
 </div>
-<%-- 
+<script src="./resources/bootstrap/vendor/bootstrap-sass/assets/javascripts/bootstrap/button.js"></script>
+
 <!-- common libraries. required for every page-->
 <script src="./resources/bootstrap/vendor/jquery/dist/jquery.min.js"></script>
 <script src="./resources/bootstrap/vendor/jquery-pjax/jquery.pjax.js"></script>
@@ -911,9 +912,11 @@
 <script src="./resources/bootstrap/vendor/backgrid-paginator/backgrid-paginator.js"></script>
 <script src="./resources/bootstrap/vendor/datatables/media/js/jquery.dataTables.js"></script>
 <script src="./resources/bootstrap/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
- --%>
+
 <!-- page specific js -->
-<%--<script src="./resources/bootstrap/js/tables-dynamic.js"></script>--%>
+<script src="./resources/bootstrap/js/tables-dynamic.js"></script>
+
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 </body>
 </html>
 
