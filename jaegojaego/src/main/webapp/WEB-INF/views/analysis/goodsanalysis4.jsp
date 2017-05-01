@@ -482,12 +482,10 @@
 <div class="content-wrap">
 	<main id="content" class="content" role="main">
 		<ol class="breadcrumb">
-<%--
-			<li>YOU ARE HERE</li>
-			<li class="active">블라블라블라</li>
---%>			
+			<li>현재 위치</li>
+			<li class="active">매출 분석</li>
 		</ol>
-		<h1 class="page-title"><%--그래프 : --%><span class="fw-semi-bold">4번 그래프</span></h1>
+		<h1 class="page-title">매출 분석 - <span class="fw-semi-bold">4번 그래프</span></h1>
 
 
 

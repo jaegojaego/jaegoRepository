@@ -52,6 +52,12 @@ public class CSBoardDAO {
 		return csboard;
 	}
 	
+	//20170501 박진우 : 게시물 조회수 증가
+	public void updateHits(int boardnum) {
+		CSBoardMapper mapper = sqlsession.getMapper(CSBoardMapper.class);
+		mapper.updateHits(boardnum);
+	}
+	
 	public void insertCSReply (CSReply csreply) {
 		CSBoardMapper mapper = sqlsession.getMapper(CSBoardMapper.class);
 		mapper.insertCSReply(csreply);

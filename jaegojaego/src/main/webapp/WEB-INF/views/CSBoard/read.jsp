@@ -581,12 +581,10 @@ function deleteReply(replynum, boardnum){
     <!-- main page content. the place to put widgets in. usually consists of .row > .col-md-* > .widget.  -->
     <main id="content" class="content" role="main">
         <ol class="breadcrumb">
-<%--
-            <li>YOU ARE HERE</li>
-            <li class="active">고객상담</li>
---%>
+            <li>현재 위치</li>
+            <li class="active">고객 상담</li>
         </ol>
-        <h1 class="page-title">게시판 - <span class="fw-semi-bold">읽기</span></h1>
+        <h1 class="page-title">고객 상담 - <span class="fw-semi-bold">게시물 읽기</span></h1>
        
         
         

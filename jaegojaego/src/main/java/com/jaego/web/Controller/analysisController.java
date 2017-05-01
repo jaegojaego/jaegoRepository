@@ -30,6 +30,9 @@ public class analysisController {
 	
 	@Autowired
 	private AnalysisDAO dao;
+	
+	@Autowired
+	private SellerDAO sdao;
 
 	@RequestMapping(value = "analysis", method = RequestMethod.GET)
 	public String analysis() {

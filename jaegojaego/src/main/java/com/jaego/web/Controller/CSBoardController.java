@@ -21,10 +21,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.jaego.web.DAO.CSBoardDAO;
+import com.jaego.web.DAO.SellerDAO;
 import com.jaego.web.Util.FileService;
 import com.jaego.web.Util.PageNavigator;
 import com.jaego.web.VO.CSBoard;
 import com.jaego.web.VO.CSReply;
+import com.jaego.web.VO.Seller;
 
 @Controller
 public class CSBoardController {
@@ -35,12 +37,17 @@ public class CSBoardController {
 
 	@Autowired
 	private CSBoardDAO dao;
+	
+	@Autowired
+	private SellerDAO sdao;
 
 	@RequestMapping(value="csboardlist", method=RequestMethod.GET)
-	public String csboardlist(Model model, @RequestParam(value="page",defaultValue="1") int page, @RequestParam(value="searchText", defaultValue="") String searchText/*검색값이 넘어올 수도, 안 넘어올 수도 있으므로 searchText의 기본값을 빈 값으로 설정*/) {		
+	public String csboardlist(HttpSession session, Model model, @RequestParam(value="page",defaultValue="1") int page, @RequestParam(value="searchText", defaultValue="") String searchText/*검색값이 넘어올 수도, 안 넘어올 수도 있으므로 searchText의 기본값을 빈 값으로 설정*/) {		
 																/*page라고 들어온 값이 있으면 그걸 주고, 없으면 기본값으로 1을 줌*/
 																/*RequestParam에 설정한 내용이 int page로 들어감*/
-
+        String sellerId = (String)session.getAttribute("custid");
+        Seller seller=sdao.selectOne(sellerId);
+        model.addAttribute("seller",seller);
 
 
 		int total = dao.getAllCount(searchText);		//전체 글 개수 가져오는 명령어
@@ -91,6 +98,8 @@ public class CSBoardController {
 		if (csboard == null) {
 			return "redirect:csboardlist";
 		}
+		
+		dao.updateHits(boardnum);
 		
 		//리플 가져오는 부분 추가(리플 개수를 예측할 수 없으므로 ArrayList로 받음)
 		ArrayList<CSReply> csreplylist = dao.getCSReplylist(boardnum);	/*dao의 함수를 호출(매개변수는 boardnum)*/

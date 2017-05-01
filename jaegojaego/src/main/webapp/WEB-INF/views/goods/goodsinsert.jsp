@@ -573,12 +573,10 @@
     <!-- main page content. the place to put widgets in. usually consists of .row > .col-md-* > .widget.  -->
     <main id="content" class="content" role="main">
         <ol class="breadcrumb">
-<%--
-            <li>YOU ARE HERE</li>
-            <li class="active">상품등록</li>
---%>
+            <li>현재 위치</li>
+            <li class="active">상품 목록</li>
         </ol>
-        <h1 class="page-title">게시판 - <span class="fw-semi-bold">상품등록</span></h1>
+        <h1 class="page-title">상품 목록 - <span class="fw-semi-bold">상품 추가</span></h1>
        
         
 

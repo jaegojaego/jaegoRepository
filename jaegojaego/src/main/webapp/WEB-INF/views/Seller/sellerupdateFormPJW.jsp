@@ -526,7 +526,7 @@ jQuery(document).ready(function() {
                 <li class="dropdown">
 					<a href="#" class="dropdown-toggle dropdown-toggle-notifications" id="notifications-dropdown-toggle" data-toggle="dropdown">
                         <span class="thumb-sm avatar pull-left">
-                            <img class="img-circle" src="./resources/bootstrap/demo/img/people/a5.jpg" alt="...">
+                        	<img class="img-circle" src="./resources/bootstrap/demo/img/people/a5.jpg" alt="...">
                         </span>
                         &nbsp;
                         ${sessionScope.name} <strong>${sessionScope.sellerShopName}</strong>&nbsp;
