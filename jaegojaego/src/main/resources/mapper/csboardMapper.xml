@@ -21,6 +21,16 @@
 		where
 			boardnum = #{boardnum}
 	</select>
+
+	<!-- 20170501 박진우 : 조회수 증가 -->		
+	<update id="updateHits" parameterType="int">
+		update
+			csboard
+		set
+			hits = nvl(hits, 0) + 1
+		where
+			boardnum = #{boardnum}
+	</update>
 	
 	<insert id="write" parameterType="CSBoard">
 		insert into

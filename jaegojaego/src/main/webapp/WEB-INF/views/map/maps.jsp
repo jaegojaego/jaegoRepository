@@ -356,7 +356,7 @@ function newfunction2(imgCode){
                             '      <div class="close" title="닫기"></div>' + 
                             '      </div>' + 
                             '      <div class="body">' + 
-                            '      <div class="img"><div class="shopinfo" style="width:390px;height:132px;text-overflow: ellipsis;line-height:190%">업종:'+position.tob+'<br>주소:'+position.shopaddress+'<br>전화번호:'+position.phone+'<br><div class="star" style="width:20px;">별점</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+                            '      <div class="img"><div class="shopinfo" style="width:390px;height:132px;text-overflow: ellipsis;line-height:190%">업종:'+position.tob+'<br>주소:'+position.shopaddress+'<br>전화번호:'+position.phone+'<br><div class="star" style="width:20px;">별점</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
                             +'<span class="addshop" style="font-weight:bolder;font-color:black;">[관심매장추가/</span><span class="delshop">삭제]</span></div></div>' + 
                             '      <div class="desc">' + 
 
@@ -988,7 +988,7 @@ function newfunction2(imgCode){
 <body>
 
 
-
+<%-- 20170502 박진우 : 여기가 위에 바... --%>
 <div id="wrap">
     <header>
         <div class="inner relative"><div style="top:10px; height:30px; background-color: black"><a class="tob">카페</a><br><a class="tob">베이커리</a><br><a class="tob">식당</a>
@@ -1028,6 +1028,7 @@ function newfunction2(imgCode){
     </header>
     </div>
 </div>
+
 <div id="map" style="width:100%;height:700px;" ></div>
 <input type="hidden" id = "buyerid" value="${custid }">
 

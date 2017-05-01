@@ -21,5 +21,6 @@ public interface CSBoardMapper {
 	public void deleteAllCSBoard(int boardnum);	//몸글 삭제 전 댓글 삭제
 	public CSReply getCSReply(int replynum);
 	public void deleteCSReply(CSReply csreply);
+	public void updateHits(int boardnum);		//20170501 박진우 : 조회수 증가
 
 }

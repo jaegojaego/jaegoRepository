@@ -440,7 +440,7 @@
                             <img class="img-circle" src="./resources/bootstrap/demo/img/people/a5.jpg" alt="...">
                         </span>
                         &nbsp;
-                        박진우 <strong>커피커피</strong>&nbsp;
+                        ${sessionScope.name} <strong>${sessionScope.sellerShopName}</strong>&nbsp;
 
                         <b class="caret"></b></a>
                     <ul class="dropdown-menu">
@@ -707,7 +707,7 @@
 			$(this).find("span:last").remove();
 		});
 	})  */
-	
+/*	
 	function imghover(goodsCode){
 		alert("gg");
 		alert(goodsCode);
@@ -716,7 +716,7 @@
 		},function(){
 			$(this).removeClass('.imghover');
 		});
-	}
+	}*/
 </script>
 
 
@@ -748,7 +748,7 @@
         		doSend();
         	}
            
-            var wsUri = "ws://203.233.196.92:8889/web/echo.do";
+            var wsUri = "ws://203.233.196.93:8888/web/echo.do";
            
             function init() {
 				output = document.getElementById("output");
@@ -964,14 +964,10 @@
         
 <%--=========================================================================== --%>
         <ol class="breadcrumb">
-<%--
             <li>현재 위치</li>
             <li class="active">상품 목록</li>
---%>            
         </ol>
-
-
-		<h1 class="page-title">Tables - <span class="fw-semi-bold">상품 목록 </span></h1>
+        <h1 class="page-title">상품 목록 - <span class="fw-semi-bold">상품 현황</span></h1>
 
 		<div class="row">
 			<div class="col-md-12">

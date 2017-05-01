@@ -6,6 +6,8 @@
 <head>
     <title>Sing - Tables Dynamic</title>
 
+<script type="text/javascript" src="<c:url value="./resources/js/jquery-3.1.1.js"/>"></script>
+
 	<script>
 	function goodslist() {
 		location.href='goodslist';
@@ -430,10 +432,10 @@
                 <li class="dropdown">
 					<a href="#" class="dropdown-toggle dropdown-toggle-notifications" id="notifications-dropdown-toggle" data-toggle="dropdown">
                         <span class="thumb-sm avatar pull-left">
-                            <img class="img-circle" src="./resources/bootstrap/demo/img/people/a5.jpg" alt="...">
+							<img class="img-circle" src="./resources/bootstrap/demo/img/people/a5.jpg" alt="...">
                         </span>
                         &nbsp;
-                        박진우 <strong>커피커피</strong>&nbsp;
+                        ${sessionScope.name} <strong>${sessionScope.sellerShopName}</strong>&nbsp;
 
                         <b class="caret"></b></a>
                     <ul class="dropdown-menu">
@@ -478,7 +480,7 @@
             <li>현재 위치</li>
             <li class="active">고객 상담</li>
         </ol>
-        <h1 class="page-title">게시판 - <span class="fw-semi-bold">고객 상담</span></h1>
+        <h1 class="page-title">고객 상담 - <span class="fw-semi-bold">게시판</span></h1>
 <%--        <section class="widget">
             <header>
                 <h4>
