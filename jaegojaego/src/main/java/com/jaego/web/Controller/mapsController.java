@@ -95,9 +95,9 @@ public class mapsController {
 	}
 	
 	@RequestMapping(value="goodsimg", method=RequestMethod.GET)
-	public String download2(String sellerCRN,String goodsCode,HttpServletResponse response){
+	public String download2(String goodsCode,HttpServletResponse response){
 		String uploadPath = "/goodsfile";
-		Goods goods = dao.goodsimg(sellerCRN, goodsCode);
+		Goods goods = dao.goodsimg(goodsCode);
 		try {
 			response.setHeader("Content-Disposition", "attachment;filename="+URLEncoder.encode(goods.getGoodsOimage(), "UTF-8"));
 		} catch (Exception e) {

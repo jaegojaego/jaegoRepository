@@ -44,10 +44,10 @@ public class MapsDao {
 		return s;
 	}
 	
-	public Goods goodsimg(String sellerCRN,String goodsCode){
+	public Goods goodsimg(String goodsCode){
 
 		MapsMapper mapper = sqlsession.getMapper(MapsMapper.class);
-		Goods g = mapper.goodsimg(sellerCRN, goodsCode);
+		Goods g = mapper.goodsimg(goodsCode);
 
 		return g;
 	}

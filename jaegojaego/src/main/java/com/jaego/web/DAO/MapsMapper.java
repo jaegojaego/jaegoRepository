@@ -16,7 +16,7 @@ public interface MapsMapper {
 	public ArrayList<Seller> Shoplist(String sellerTOB); 
 	public ArrayList<Goods> Goodslist(String sellerCRN);
 	public Seller shopimg(String sellerCRN);
-	public Goods goodsimg(String sellerCRN,String goodsCode);
+	public Goods goodsimg(String goodsCode);
 	public int markimg(String sellerCRN);
 	public int findfav(Favorite favorite);
 	public int findfavs(Favorite favorite);
