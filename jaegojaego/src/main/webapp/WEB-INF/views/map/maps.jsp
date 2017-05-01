@@ -24,15 +24,19 @@ td {
 	text-align: center;
 }
 
+
+
 </style>
 
 <script type="text/javascript" src="./resources/js/jquery-3.1.1.js"> </script>
+<script src="./resources/dist/sweetalert.min.js"></script>
+<link rel="stylesheet" type="text/css" href="./resources/dist/sweetalert.css">
 <link rel="stylesheet" href="./resources/css/jquery.toast.min.css" />
 <script type="text/javascript" src="./resources/js/jquery.toast.js"></script>
 <script type="text/javascript" src="./resources/js/jquery.toast.min.js"></script>     
 
 <script type="text/javascript" src="./resources/js/function.js"> </script>
-<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=98b5ff77fd0570ce46f2ef84207626b0&libraries=services"></script>
+<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=a14aced40ff3bc7cb1d2485146b53b0a&libraries=services"></script>
 
     <link href="./resources/bootstrap/css/application.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="img/favicon.png">
@@ -321,13 +325,12 @@ function timetest(i,goodscode,goodsDT) {
                             '      <div class="close" title="닫기"></div>' + 
                             '      </div>' + 
                             '      <div class="body">' + 
-                            '      <div class="img"><div class="img2">' +
-                            '      <img src="shopimg?sellerCRN='+position.CRN+'" width="120" height="130"></img>' +
-                            '      </div> <div class="shopinfo" style="width:170px;height:132px;text-overflow: ellipsis;line-height:200%">업종:'+position.tob+'<br>주소:'+position.shopaddress+'<br>전화번호:'+position.phone+'<br><div class="star" style="width=20px;">별점</div><span class="addshop" style="font-weight:bolder;font-color:black"><관심매장추가></span><span class="delshop" style="font-weight:bolder;font-color:black"><관심매장삭제></span></div></div>' + 
+                            '      <div class="img"><div class="shopinfo" style="width:390px;height:132px;text-overflow: ellipsis;line-height:190%">업종:'+position.tob+'<br>주소:'+position.shopaddress+'<br>전화번호:'+position.phone+'<br><div class="star" style="width:20px;">별점</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+                            +'<span class="addshop" style="font-weight:bolder;font-color:black;">[관심매장추가/</span><span class="delshop">삭제]</span></div></div>' + 
                             '      <div class="desc">' + 
 
-                            '<div class="goodsinfo" id="'+position.CRN+'" style="overflow-y:scroll">'+
-                            '<table><tr><th>품명</th><th>가격</th><th>개수</th><th>이미지</th><th>유통기한</th></tr>';
+                            '<div class="goodsinfo" id="'+position.CRN+'" style="overflow-y:scroll;overflow-x:hidden">'+
+                            '<table width="100%"><tr><th>품명</th><th>가격</th><th>개수</th><th>이미지</th><th>유통기한</th></tr>';
                             
                             for (var i = 0, len = glist.length; i < len; i++) {
                               //  total+= glist[i].GN;
@@ -339,8 +342,8 @@ function timetest(i,goodscode,goodsDT) {
                             
                             content += '</table></div></div>' + 
                             '           </div>' + 
-                            '        <div class="comments" style="overflow-y:scroll;margin:auto; border: 1px solid #ddd;width:289px; height:100px;"></div><div align="center" style="background-color: black;width:289px;margin:auto;"><select class="starcheck" align="center"><option value="1">★</option><option value="2">★★</option>'+
-                            '<option value="3">★★★</option><option value="4">★★★★</option><option value="5">★★★★★</option></select><input type="text" class="comment" style="width:152px"><input type="button" class="bnt" value="입력"></div></div>' + 
+                            '        <div class="comments"></div><div align="center" style="width:289px;position: relative;top: 5px;left:3px" class="starcomment"><select class="starcheck" align="center" style="height:24px;border: 0px;color:#EDA900"><option value="1">★</option><option value="2">★★</option>'+
+                            '<option value="3">★★★</option><option value="4">★★★★</option><option value="5">★★★★★</option></select>&nbsp;<input type="text" class="comment" placeholder="평점을 선택 후 댓글을 입력해주세요" style="width:267px;height:24px;border: 0px;font-size:13px">&nbsp;<input type="button" class="bnt" value="입력" style="border: 0px;height:24px;background:#EDA900;color:white;font-size:13px"></div></div>' + 
                             
                             '    </div>' +    
                             '</div> <div class="goodsimg"></div>';
@@ -424,12 +427,12 @@ function timetest(i,goodscode,goodsDT) {
                                          
                                          //레이아웃 css 설정
                                          
-                                         var content0 = '<div class="goodsinfo" id="'+position.CRN+'" style="overflow-y:scroll">'+
-                                         			'<table><tr><th>품명</th><th>가격</th><th>개수</th><th>유통기한</th><th>이미지</th></tr>';
+                                         var content0 = '<div class="goodsinfo" id="'+position.CRN+'" style="overflow-y:scroll;overflow-x:hidden">'+
+                                         			'<table width="100%"><tr><th>품명</th><th>가격</th><th>개수</th><th>유통기한</th><th>이미지</th></tr>';
                                          for (var i = 0, len = glist.length; i < len; i++) {
                                    		
                                          content0 += '<tr><th>'+glist[i].GN+'</th><th>'+glist[i].GP+"</th><th>"+glist[i].GQ
-                                         +'</th><th><p name="demo" id="'+glist[i].GC+'" class="demos" attr="'+glist[i].GC+'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></th><th><div class="thth"><img src="./resources/image/picture.png" width="20px" height="20px" class="abcd" imgData="goodsimg?sellerCRN='+position.CRN+'&goodsCode='+glist[i].GC+'">'+
+                                         +'</th><th><div name="demo" id="'+glist[i].GC+'" class="demos" attr="'+glist[i].GC+'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></th><th><div class="thth"><img src="./resources/image/picture.png" width="20px" height="20px" class="abcd" imgData="goodsimg?sellerCRN='+position.CRN+'&goodsCode='+glist[i].GC+'">'+
                                          '<span class="immm"><img src="goodsimg?sellerCRN='+position.CRN+'&goodsCode='+glist[i].GC+'" width="90px" height="70px" > </span></div></th></tr>';
                                         
                                          
@@ -490,8 +493,7 @@ function timetest(i,goodscode,goodsDT) {
                                          
                                        success:function(data){
                                           
-                                          var htm = "<span style='font-weight:bold;text-align:center'><댓글보기></span>";
-                                             htm += '<table><tr><th>작성자</th><th>댓글</th></tr>';
+                                          var htm = '<table><tr><th>작성자</th><th>댓글</th></tr>';
                                        
                                           $.each(data,function(index,item){                                             
                                                 htm += '<tr><td>'+item.buyerId+'</td><td>'+item.ment+'</td></tr>';
@@ -596,7 +598,14 @@ function timetest(i,goodscode,goodsDT) {
                                         },
                                         
                                       success:function(data){
-                                            alert(JSON.stringify(data));
+                                           
+                                            
+                                            swal({
+                                     		   title: JSON.stringify(data),
+                                     		   confirmButtonColor: "#FFBB00",
+                                     		   showConfirmButton: true
+                                     		 });
+                                            
                                          },                             
                                       error:function(e){
                                          console.log(e);
@@ -614,12 +623,21 @@ function timetest(i,goodscode,goodsDT) {
                                      $.ajax({//type필수임
                                          type : "get",   //RequestMethod Type
                                          url: "delshop", //RequestMapping value
+                 
                                          data:{
                                             sellerCRN:position.CRN
                                          },
                                          
                                        success:function(data){
-                                             alert(JSON.stringify(data));
+                                           
+                                    	   swal({
+                                    		   title: JSON.stringify(data),
+                                    		   confirmButtonColor: "#FFBB00",
+                                    		   showConfirmButton: true
+                                    		 });
+                                    	   
+                                    	   /* 
+                                             swal(JSON.stringify(data)); */
                                           },                             
                                        error:function(e){
                                           console.log(e);
@@ -752,7 +770,7 @@ function timetest(i,goodscode,goodsDT) {
 				dosend();	
 			}
            
-			var wsUri = "ws://203.233.196.92:8889/web/echo.do";
+			var wsUri = "ws://203.233.196.93:8888/web/echo.do";
            
 			function init() {				//yc>이게 시작이 되는가? 왜 이게 시작이 되지?  ->> 아마 socket 핸들러에서 보낸거가  여기로 들어오는듯..
 				output = document.getElementById("output");
@@ -870,24 +888,26 @@ function timetest(i,goodscode,goodsDT) {
 	
 	
 	/*  여기서부터 */
-    .wrap {position: absolute;left: 0;bottom: 40px;width: 303px;height: 450px;margin-left: -150px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
+    .wrap {position: absolute;left: 0;bottom: 40px;width: 400px;height: 450px;margin-left: -200px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;border-color: black;border: 1px}
 
-    .wrap .info {width: 303px;height: 450px;border-radius: 5px;border-bottom: 2px solid red;border-right: 1px solid red;overflow: hidden;background: red;}
+    .wrap .info {width: 400px;height: 450px;border-radius: 5px;border-bottom: 2px solid red;overflow: hidden;background: #EAEAEA;}
     .wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
-    .info .title {padding: 5px 0 0 10px;height: 30px;background: #FAED7D;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
+    .info .title {padding: 5px 0 0 6px;height: 35px;background: #FFBB00;font-size: 18px;font-weight: bold;}
     .info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
     .info .close:hover {cursor: pointer;}
     .info .body {position: relative;overflow: hidden;background:white;}
-    .info .desc {position: relative;margin: 140px 0 0 6px;height: 135px;}
-    .shopinfo {position: absolute;left: 120px;background:white;overflow: hidden;}
-    .desc .goodsinfo {top: 6px;left: 5px;text-overflow: goodsinfo;width: 289px;height: 130px;border: 1px solid #ddd;color: #888;}
+    .info .desc {position: relative;margin: 140px 0 0 6px;height: 112px;}
+    .shopinfo {position: absolute;background:#FFBB00;overflow: hidden;color:white;left:7px;font-size: 14px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;border-bottom: thick;}
+    .desc .goodsinfo {left: 2px;text-overflow: goodsinfo;width: 394px;height: 110px;color: #888;font-size: 14px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;}
     .info .img2 {position: absolute;width: 120px;height: 130px;overflow: hidden;}
-    .info .img {position: absolute;top: 6px;left: 6px;width: 289px;height: 130px;border: 1px solid #ddd;color: #888;overflow: hidden;background:gray;}
+    .info .img {position: absolute;width: 400px;height: 138px;color: #888;overflow: hidden;background:#FFBB00;}
    .prd_box {position:relative;} 
    .prd_over {position:absolute; width:100%; height:50px; top:95px; bottom:0; left:0; opacity:0; background:url('/shop/data/skin/apple_tree_C/img/djds/etc/prd_over.png') 0 0 no-repeat;}    
    .thth {position:relative; display:inline-block}
    .thth span {visibility:hidden; position:absolute; margin-top:0; margin-left:-20px;}
    .thth:hover span {visibility:visible}
+   .starcomment{top:10px;}
+   .comments{overflow-y:scroll;margin:auto;height:120px;width:391px;position:relative;left:4px;font-size: 14px}
 
 </style>
 
@@ -941,13 +961,11 @@ function timetest(i,goodscode,goodsDT) {
     </header>
     </div>
 </div>
-<div id="map" style="width:100%;height:700px;"></div>
+<div id="map" style="width:100%;height:700px;" ></div>
 <input type="hidden" id = "buyerid" value="${custid }">
 
 <div id="sellergoods" style="width:100%;height:300px;"></div>
 <input type="button" value="123" id="890">
-
-
 
 </body>
 </html>

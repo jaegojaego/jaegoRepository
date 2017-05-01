@@ -136,7 +136,7 @@ public class mapsController {
 	
 	
 	@ResponseBody
-	@RequestMapping(value="addshop", method=RequestMethod.GET)
+	@RequestMapping(value="addshop", method=RequestMethod.GET,produces="application/text;charset=UTF-8")
 	public String addshop(String sellerCRN,HttpSession session,Model model){
 		Favorite favorite = new Favorite();
 
@@ -148,12 +148,12 @@ public class mapsController {
 			int result2 =dao.findfavs(favorite);
 			if(result2<3){
 				dao.addshop(favorite);
-				return "add succeed";
+				return "관심매장으로 추가되었습니다.";
 			}else{
-				return "take under 3 please";
+				return "관심매장을 3개 이하로 선택해주세요.";
 			}
 		}else{
-			return "This shop is already added";
+			return "이미 추가된 매장입니다.";
 			
 		} 
 		//같은샵이있습니다
@@ -165,7 +165,7 @@ public class mapsController {
 
 	//20170429 박진우 - 관심매장 삭제
 	@ResponseBody
-	@RequestMapping(value="delshop", method=RequestMethod.GET)
+	@RequestMapping(value="delshop", method=RequestMethod.GET, produces="application/text;charset=UTF-8")
 	public String delshop(String sellerCRN,HttpSession session,Model model){
 		Favorite favorite = new Favorite();
 		String buyerid = (String) session.getAttribute("custid");
@@ -179,7 +179,7 @@ public class mapsController {
 			dao.delshop(favorite);
 			return "관심매장에서 삭제하였습니다.";
 		}else{
-			return "관심매장으로 추가되있지 않습니다.";
+			return "관심매장이 아닙니다.";
 		} 
 
 	}
