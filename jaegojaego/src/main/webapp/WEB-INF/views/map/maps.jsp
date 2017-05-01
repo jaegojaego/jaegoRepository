@@ -826,7 +826,7 @@ function newfunction2(imgCode){
 				dosend();	
 			}
            
-			var wsUri = "ws://192.168.10.104:8889/web/echo.do";
+			var wsUri = "ws://203.233.196.93:8888/web/echo.do";
            
 			function init() {				//yc>이게 시작이 되는가? 왜 이게 시작이 되지?  ->> 아마 socket 핸들러에서 보낸거가  여기로 들어오는듯..
 				output = document.getElementById("output");
@@ -975,7 +975,8 @@ function newfunction2(imgCode){
 <body>
 
 
-
+<%-- 20170502 박진우 : 여기가 위에 바... ============================================================================================================================--%>
+<%--
 <div id="wrap">
     <header>
         <div class="inner relative"><div style="top:10px; height:30px; background-color: black"><a class="tob">카페</a><br><a class="tob">베이커리</a><br><a class="tob">식당</a>
@@ -1015,6 +1016,114 @@ function newfunction2(imgCode){
     </header>
     </div>
 </div>
+--%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="container-fluid">
+        <!-- this part is hidden for xs screens -->
+        <div class="collapse navbar-collapse">
+            <!-- search form! link it to your search server -->
+
+            <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <div class="input-group input-group-no-border">
+                        <%--
+                        <span class="input-group-addon">
+                        	<i class="fa fa-search"></i>
+                        </span>
+                        --%>
+                        <label class="form-control">이 세상의 모든 재고가 사라지는 날까지!　<span class="fw-semi-bold">最後の在庫</span><%--<input class="form-control" type="text" placeholder="Search Dashboard">--%>                        
+                    </div>
+                </div>
+            </form>
+
+			<ul class="nav navbar-nav">
+
+                <li class="ml-sm mr-n-xs hidden-xs">
+                	<a href="#">
+                		<i class="fa fa-refresh fa-lg"> 허르!</i>
+                	</a>
+                </li>
+
+                <li class="ml-n-xs hidden-xs">
+                	<a href="#"><i class="fa fa-times fa-lg"> 에쿠스</i>
+                	</a>
+               	</li>
+               	
+               	<li class="ml-n-xs hidden-xs">
+                	<a href="#"><i class="fa fa-times fa-lg"> 엥?</i>
+                	</a>
+               	</li>
+			</ul>
+			
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+					<a href="#" class="dropdown-toggle dropdown-toggle-notifications" id="notifications-dropdown-toggle" data-toggle="dropdown">
+                        <span class="thumb-sm avatar pull-left">
+							<img class="img-circle" src="./resources/bootstrap/demo/img/people/a5.jpg" alt="...">
+                        </span>
+                        &nbsp;
+                        ${sessionScope.name} <strong>흐럴럴</strong>&nbsp;
+
+                        <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="sellerupdatePJW"><i class="glyphicon glyphicon-user"></i> &nbsp; 회원정보</a></li>
+                        <li class="divider"></li>
+<%--
+                        <li><a href="#">Calendar</a></li>
+                        <li><a href="#">Inbox &nbsp;&nbsp;<span class="badge bg-danger animated bounceIn">9</span></a></li>
+                        <li class="divider"></li>
+--%>                        
+                        <li><a href="logout"><i class="fa fa-sign-out"></i> &nbsp; 로그아웃</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 <div id="map" style="width:100%;height:700px;" ></div>
 <input type="hidden" id = "buyerid" value="${custid }">
 

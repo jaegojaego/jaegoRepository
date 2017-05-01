@@ -748,7 +748,7 @@
         		doSend();
         	}
            
-            var wsUri = "ws://192.168.10.104:8889/web/echo.do";
+            var wsUri = "ws://203.233.196.93:8888/web/echo.do";
            
             function init() {
 				output = document.getElementById("output");
