@@ -57,15 +57,9 @@
     <div class="js-sidebar-content">
         <header class="logo hidden-xs">
             <a href="/web/">saiko</a>
-            
-
-            
 				<a class="hidden-sm hidden-xs" id="nav-state-toggle" href="#" title="슬라이드 메뉴 고정 on/off" data-placement="bottom">
 					<i class="fa fa-bars fa-lg"></i>
 				</a>
-            
-
-            
         </header>
         <!-- seems like lots of recent admin template have this feature of user info in the sidebar.
              looks good, so adding it and enhancing with notifications -->
@@ -89,15 +83,6 @@
         <ul class="sidebar-nav">
 
             <li>
-                <a class="collapsed" href="analysis1">
-                    <span class="icon">
-                        <i class="glyphicon glyphicon-stats"></i>
-                    </span>
-                    매출 분석
-                </a>                
-            </li>
-
-            <li>
                 <!-- an example of nested submenu. basic bootstrap collapse component -->
                 <a href="" <%--data-toggle="collapse" data-parent="#sidebar"--%> onclick="goodslist()">
                     <span class="icon">
@@ -112,7 +97,26 @@
                 </ul>--%>
             </li>
 
+            <li class="active">
+                <a class="collapsed" href="analysis1">
+                    <span class="icon">
+                        <i class="glyphicon glyphicon-stats"></i>
+                    </span>
+                    매출 분석
+                </a>                
+            </li>
 
+            <li>
+                <a href="/web/csboardlist">
+                    <span class="icon">
+                        <i class="glyphicon glyphicon-user"></i>
+                    </span>
+                    고객 상담
+<%--                    <sup class="text-warning fw-semi-bold">
+                        new
+                    </sup>--%>	<%-- new 표시 주석 처리 --%>
+                </a>
+            </li>
 
 <%--
             <li>
@@ -128,44 +132,33 @@
             </li>
 --%>
 
-
-
-            <li>
-                <a class="collapsed" href="charts.html">
-                    <span class="icon">
-                        <i class="glyphicon glyphicon-stats"></i>
-                    </span>
-                    매출 분석
-                </a>                
-            </li>
-            
-
-
-
-            <li class="active">
-                <a href="/web/csboardlist">
-                    <span class="icon">
-                        <i class="glyphicon glyphicon-user"></i>
-                    </span>
-                    고객 상담
-<%--                    <sup class="text-warning fw-semi-bold">
-                        new
-                    </sup>--%>	<%-- new 표시 주석 처리 --%>
-                </a>
-            </li>
         </ul>
 
 
 
 
 
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%--↓================================================================================================================================--%>        
+<%--
         <!-- every .sidebar-nav may have a title -->
         <h5 class="sidebar-nav-title">템플릿 <a class="action-link" href="#"><i class="glyphicon glyphicon-refresh"></i></a></h5>
         <ul class="sidebar-nav">
-
-
-
+--%>
 <%--
             <li>
                 <!-- an example of nested submenu. basic bootstrap collapse component -->
@@ -182,9 +175,6 @@
                     <li><a href="form_wizard.html">Form Wizard</a></li>
                 </ul>
             </li>
-
-
-
 
             <li>
                 <a class="collapsed" href="#sidebar-ui" data-toggle="collapse" data-parent="#sidebar">
@@ -204,8 +194,6 @@
                 </ul>
             </li>
 
-
-
             <li>
                 <a href="grid.html">
                     <span class="icon">
@@ -216,29 +204,23 @@
             </li>
 --%>
 
+<%--             <li>
+                <a class="collapsed" href="http://www.naver.com/#sidebar-maps" data-toggle="collapse" data-parent="#sidebar">
 
-
-
-            <li>
-                <a <%--class="collapsed"--%> href="http://www.naver.com/<%--#sidebar-maps--%>" <%--data-toggle="collapse"--%> <%--data-parent="#sidebar"--%>>
                     <span class="icon">
                         <i class="glyphicon glyphicon-map-marker"></i>
                     </span>
                     지도호우
+ --%>
                     <%--<i class="toggle fa fa-angle-down"></i>--%>	<%--하향 화살표 삭제--%>
-                </a>
+<%--                </a>--%>
                 <%--<ul id="sidebar-maps" class="collapse">
                     <!-- data-no-pjax turns off pjax loading for this link. Use in case of complicated js loading on the
                          target page -->
                     <li><a href="maps_google.html" data-no-pjax>Google Maps</a></li>
                     <li><a href="maps_vector.html">Vector Maps</a></li>
-                </ul>--%>
+                </ul>
             </li>
-
-
-
-
-
 
 <%--
             <li>
@@ -259,10 +241,8 @@
                     <li><a href="time_line.html" data-no-pjax>Time Line</a></li>
                 </ul>
             </li>
-
-
 --%>
-            <li>
+<!--             <li>
                 <a class="collapsed" href="#sidebar-levels" data-toggle="collapse" data-parent="#sidebar">
                     <span class="icon">
                         <i class="fa fa-folder-open"></i>
@@ -283,8 +263,24 @@
                         </ul>
                     </li>
                 </ul>
-            </li>
+            </li> -->
         </ul>
+<%--↑================================================================================================================================--%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -335,13 +331,18 @@
             </div>
         </div>
 --%>
-
-
-
-
-        
     </div>
 </nav>
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -358,6 +359,7 @@
         <!-- .navbar-header contains links seen on xs & sm screens -->
 
         <div class="navbar-header">
+<%--
             <ul class="nav navbar-nav">
                 <li>
                     <!-- whether to automatically collapse sidebar on mouseleave. If activated acts more like usual admin templates -->
@@ -373,6 +375,9 @@
                 <li class="ml-sm mr-n-xs hidden-xs"><a href="#"><i class="fa fa-refresh fa-lg"></i></a></li>
                 <li class="ml-n-xs hidden-xs"><a href="#"><i class="fa fa-times fa-lg"></i></a></li>
             </ul>
+--%>
+
+<%--
             <ul class="nav navbar-nav navbar-right visible-xs">
                 <li>
                     <!-- toggles chat -->
@@ -381,6 +386,7 @@
                     </a>
                 </li>
             </ul>
+--%>            
             <!-- xs & sm screen logo -->
             <a class="navbar-brand visible-xs" href="index.html">
                 <i class="fa fa-circle text-gray mr-n-sm"></i>
@@ -397,16 +403,33 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <!-- this part is hidden for xs screens -->
         <div class="collapse navbar-collapse">
             <!-- search form! link it to your search server -->
             <form class="navbar-form navbar-left" role="search">
                 <div class="form-group">
                     <div class="input-group input-group-no-border">
+                        <%--
                         <span class="input-group-addon">
-                            <i class="fa fa-search"></i>
+                        	<i class="fa fa-search"></i>
                         </span>
-                        <input class="form-control" type="text" placeholder="Search Dashboard">
+                        --%>
+                        <label class="form-control">이 세상의 모든 재고가 사라지는 날까지!　<span class="fw-semi-bold">最後の在庫</span></h1></label><%--<input class="form-control" type="text" placeholder="Search Dashboard">--%>                        
                     </div>
                 </div>
             </form>
@@ -422,34 +445,35 @@
 
                         <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#"><i class="glyphicon glyphicon-user"></i> &nbsp; My Account</a></li>
+                        <li><a href="sellerupdatePJW"><i class="glyphicon glyphicon-user"></i> &nbsp; 회원정보</a></li>
                         <li class="divider"></li>
+<%--
                         <li><a href="#">Calendar</a></li>
                         <li><a href="#">Inbox &nbsp;&nbsp;<span class="badge bg-danger animated bounceIn">9</span></a></li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out"></i> &nbsp; Log Out</a></li>
+--%>                        
+                        <li><a href="logout"><i class="fa fa-sign-out"></i> &nbsp; 로그아웃</a></li>
                     </ul>
                 </li>
             </ul>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </div>
 </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -458,10 +482,12 @@
 <div class="content-wrap">
 	<main id="content" class="content" role="main">
 		<ol class="breadcrumb">
+<%--
 			<li>YOU ARE HERE</li>
 			<li class="active">블라블라블라</li>
+--%>			
 		</ol>
-		<h1 class="page-title">그래프 : <span class="fw-semi-bold">그래프 선택</span></h1>
+		<h1 class="page-title"><%--그래프 : --%><span class="fw-semi-bold">그래프 선택</span></h1>
 
 
 
@@ -474,6 +500,26 @@
 
 	</main>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- The Loader. Is shown when pjax happens -->
 <div class="loader-wrap hiding hide">
     <i class="fa fa-circle-o-notch fa-spin-fast"></i>
