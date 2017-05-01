@@ -5,7 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title>Sing - Forms 상품추가</title>
+    <title>Sing - Forms 상품추가1</title>
     <link href="./resources/bootstrap/css/application.min.css" rel="stylesheet">
     <!-- as of IE9 cannot parse css files with more that 4K classes separating in two files -->
     <!--[if IE 9]>
@@ -17,7 +17,7 @@
     <meta name="author" content="">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-   <script src='<c:url value="/resources/js/jquery-3.1.1.js"/>' ></script>    
+	<script src='<c:url value="/resources/js/jquery-3.1.1.js"/>' ></script>    
     <script>
         /* yeah we need this empty stylesheet here. It's cool chrome & chromium fix
            chrome fix https://code.google.com/p/chromium/issues/detail?id=167083
@@ -25,106 +25,106 @@
         */
     </script>
     <script>
-   function goodslist() {
-      location.href='goodslist';
-   }
-   ///web/goodslist3
-   </script>
-         <script>
-         
-         
-         
-         
-         
-         
-         function beforeSubmit() {
-             //상품이름 입력여부 검사
-            
-             var goodsName=document.getElementById('goodsName').value;
-             var goodsPrice=document.getElementById('goodsPrice');
-             var goodsQuantity=document.getElementById('goodsQuantity');
-             var goodsInfo=document.getElementById('goodsInfo').value;
-             var expiredDate=document.getElementById('expiredDate').value;
-            if(goodsName==""){
-              alert("상품이름을 입력하지 않았습니다.");
-              return false;
-             }
-             
-            else if(goodsPrice.value==''){
-              alert("상품 가격을 입력하지 않았습니다.");
-             
-              return false;
-             }
-            
-            else if(expiredDate==''){
-                 alert("상품 유통기한을 입력하지 않았습니다.");
-                
-                 return false;
-                }
-            
-            
-            else if(isNaN(goodsPrice.value)){
-               alert("상품가격에 숫자아닌값이 있습니다 확인해주세요");
-               return false;
-            }
-            else if(goodsQuantity.value==''){
-              alert("상품수량을 입력하지 않았습니다.");
-              return false;
-             }
-            else if(isNaN(goodsQuantity.value)){
-               alert("상품수량에 숫자아닌값이 있습니다 확인해주세요");
-               return false;
-            }
+	function goodslist() {
+		location.href='goodslist';
+	}
+	///web/goodslist3
+	</script>
+			<script>
+			
+			
+			
+			
+			
+			
+			function beforeSubmit() {
+			    //상품이름 입력여부 검사
+			   
+			    var goodsName=document.getElementById('goodsName').value;
+			    var goodsPrice=document.getElementById('goodsPrice');
+			    var goodsQuantity=document.getElementById('goodsQuantity');
+			    var goodsInfo=document.getElementById('goodsInfo').value;
+			    var expiredDate=document.getElementById('expiredDate').value;
+			   if(goodsName==""){
+			     alert("상품이름을 입력하지 않았습니다.");
+			     return false;
+			    }
+			    
+			   else if(goodsPrice.value==''){
+			     alert("상품 가격을 입력하지 않았습니다.");
+			    
+			     return false;
+			    }
+			   
+			   else if(expiredDate==''){
+				     alert("상품 유통기한을 입력하지 않았습니다.");
+				    
+				     return false;
+				    }
+			   
+			   
+			   else if(isNaN(goodsPrice.value)){
+			      alert("상품가격에 숫자아닌값이 있습니다 확인해주세요");
+			      return false;
+			   }
+			   else if(goodsQuantity.value==''){
+			     alert("상품수량을 입력하지 않았습니다.");
+			     return false;
+			    }
+			   else if(isNaN(goodsQuantity.value)){
+			      alert("상품수량에 숫자아닌값이 있습니다 확인해주세요");
+			      return false;
+			   }
 
-            else if(goodsInfo==""){
-              alert("상품설명을 입력하지 않았습니다.");
-              return false;
-             } 
-            return true;
-         }
-         
-         
-         
-         
-         
-         
-/*            var upload = document.getElementsByTagName('input')[0], 
-            holder = document.getElementById('holder'), 
-            state = document.getElementById('status');
+			   else if(goodsInfo==""){
+			     alert("상품설명을 입력하지 않았습니다.");
+			     return false;
+			    } 
+			   return true;
+			}
+			
+			
+			
+			
+			
+			
+/*				var upload = document.getElementsByTagName('input')[0], 
+				holder = document.getElementById('holder'), 
+				state = document.getElementById('status');
 
-            if (typeof window.FileReader === 'undefined') {
-               state.className = 'fail';
-            } else {
-               state.className = 'success';
-               state.innerHTML = '이미지';
-            }
+				if (typeof window.FileReader === 'undefined') {
+					state.className = 'fail';
+				} else {
+					state.className = 'success';
+					state.innerHTML = '이미지';
+				}
 
-            upload.onchange = function(e) {
-               e.preventDefault();
+				upload.onchange = function(e) {
+					e.preventDefault();
 
-               var file = upload.files[0], reader = new FileReader();
-               reader.onload = function(event) {
-                  var img = new Image();
-                  img.src = event.target.result;
-                  img.height=200;
-                  img.width=250;
+					var file = upload.files[0], reader = new FileReader();
+					reader.onload = function(event) {
+						var img = new Image();
+						img.src = event.target.result;
+						img.height=200;
+						img.width=250;
                      // note: no onload required since we've got the dataurl...I think! :)
-                  if (img.width > 260) { // holder width
-                     img.width = 260;
-                  }
-                     holder.innerHTML = '';
-                     holder.appendChild(img);
-                  };
-                  reader.readAsDataURL(file);
-                  return false;
-            };*/
+						if (img.width > 260) { // holder width
+							img.width = 260;
+						}
+							holder.innerHTML = '';
+							holder.appendChild(img);
+						};
+						reader.readAsDataURL(file);
+						return false;
+				};*/
             </script>
 </head>
 <body>
 <jsp:scriptlet>
-   pageContext.setAttribute("cr","\r");
-   pageContext.setAttribute("lf","\n");
-   pageContext.setAttribute("crlf","\r\n");
+	pageContext.setAttribute("cr","\r");
+	pageContext.setAttribute("lf","\n");
+	pageContext.setAttribute("crlf","\r\n");
 </jsp:scriptlet>
 <!--
   Main sidebar seen on the left. may be static or collapsing depending on selected state.
@@ -146,9 +146,9 @@
             
 
             
-            <a class="hidden-sm hidden-xs" id="nav-state-toggle" href="#" title="슬라이드 메뉴 고정 on/off" data-placement="bottom">
-               <i class="fa fa-bars fa-lg"></i>
-            </a>
+				<a class="hidden-sm hidden-xs" id="nav-state-toggle" href="#" title="슬라이드 메뉴 고정 on/off" data-placement="bottom">
+					<i class="fa fa-bars fa-lg"></i>
+				</a>
             
 
             
@@ -242,7 +242,7 @@
                     고객 상담
 <%--                    <sup class="text-warning fw-semi-bold">
                         new
-                    </sup>--%>   <%-- new 표시 주석 처리 --%>
+                    </sup>--%>	<%-- new 표시 주석 처리 --%>
                 </a>
             </li>
         </ul>
@@ -317,7 +317,7 @@
                         <i class="glyphicon glyphicon-map-marker"></i>
                     </span>
                     지도호우
-                    <%--<i class="toggle fa fa-angle-down"></i>--%>   <%--하향 화살표 삭제--%>
+                    <%--<i class="toggle fa fa-angle-down"></i>--%>	<%--하향 화살표 삭제--%>
                 </a>
                 <%--<ul id="sidebar-maps" class="collapse">
                     <!-- data-no-pjax turns off pjax loading for this link. Use in case of complicated js loading on the
@@ -729,4 +729,437 @@
                 <%--<img class="img-circle" src="demo/img/people/a4.jpg" alt="...">--%>
                 </span>
                     <h5 class="message-sender">Mike Lewis</h5>
-                    <p class="message-preview">Just ain't sure about the weekend now. 90
+                    <p class="message-preview">Just ain't sure about the weekend now. 90% I'll make it.</p>
+                </a>
+            </div>
+            <h5 class="sidebar-nav-title">Last Week</h5>
+            <div class="list-group chat-sidebar-user-group">
+                <a class="list-group-item" href="#chat-sidebar-user-6">
+                    <i class="fa fa-circle text-gray-light pull-right"></i>
+                <span class="thumb-sm pull-left mr">
+                <%--<img class="img-circle" src="demo/img/people/a6.jpg" alt="...">--%>
+                </span>
+                    <h5 class="message-sender">Freda Edison</h5>
+                    <p class="message-preview">Hey what's up? Me and Monica going for a lunch somewhere. Wanna join?</p>
+                </a>
+                <a class="list-group-item" href="#chat-sidebar-user-7">
+                    <i class="fa fa-circle text-success pull-right"></i>
+                <span class="thumb-sm pull-left mr">
+                <%--<img class="img-circle" src="demo/img/people/a5.jpg" alt="...">--%>
+                </span>
+                    <h5 class="message-sender">Livia Walsh</h5>
+                    <p class="message-preview">Check out my latest email plz!</p>
+                </a>
+                <a class="list-group-item" href="#chat-sidebar-user-8">
+                    <i class="fa fa-circle text-warning pull-right"></i>
+                <span class="thumb-sm pull-left mr">
+                <%--<img class="img-circle" src="demo/img/people/a3.jpg" alt="...">--%>
+                </span>
+                    <h5 class="message-sender">Jaron Fitzroy</h5>
+                    <p class="message-preview">What about summer break?</p>
+                </a>
+                <a class="list-group-item" href="#chat-sidebar-user-9">
+                    <i class="fa fa-circle text-gray-light pull-right"></i>
+                <span class="thumb-sm pull-left mr">
+                <%--<img class="img-circle" src="img/avatar.png" alt="...">--%>
+                </span>
+                    <h5 class="message-sender">Mike Lewis</h5>
+                    <p class="message-preview">Just ain't sure about the weekend now. 90% I'll make it.</p>
+                </a>
+            </div>
+        </div>
+        <div class="chat-sidebar-chat chat-sidebar-panel" id="chat-sidebar-user-1">
+            <h5 class="title">
+                <a class="js-back" href="#">
+                    <i class="fa fa-angle-left mr-xs"></i>
+                    Chris Gray
+                </a>
+            </h5>
+            <ul class="message-list">
+                <li class="message">
+                    <span class="thumb-sm">
+                    <%--<img class="img-circle" src="demo/img/people/a2.jpg" alt="...">--%>
+                    </span>
+                    <div class="message-body">
+                        Hey! What's up?
+                    </div>
+                </li>
+                <li class="message">
+                    <span class="thumb-sm">
+                    <%--<img class="img-circle" src="demo/img/people/a2.jpg" alt="...">--%>
+                    </span>
+                    <div class="message-body">
+                        Are you there?
+                    </div>
+                </li>
+                <li class="message">
+                    <span class="thumb-sm">
+                    <%--<img class="img-circle" src="demo/img/people/a2.jpg" alt="...">--%>
+                    </span>
+                    <div class="message-body">
+                        Let me know when you come back.
+                    </div>
+                </li>
+                <li class="message from-me">
+                    <span class="thumb-sm">
+                    <%--<img class="img-circle" src="img/avatar.png" alt="...">--%>
+                    </span>
+                    <div class="message-body">
+                        I am here!
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="chat-sidebar-chat chat-sidebar-panel" id="chat-sidebar-user-2">
+            <h5 class="title">
+                <a class="js-back" href="#">
+                    <i class="fa fa-angle-left mr-xs"></i>
+                    Jamey Brownlow
+                </a>
+            </h5>
+            <ul class="message-list">
+            </ul>
+        </div>
+        <div class="chat-sidebar-chat chat-sidebar-panel" id="chat-sidebar-user-3">
+            <h5 class="title">
+                <a class="js-back" href="#">
+                    <i class="fa fa-angle-left mr-xs"></i>
+                    Livia Walsh
+                </a>
+            </h5>
+            <ul class="message-list">
+            </ul>
+        </div>
+        <div class="chat-sidebar-chat chat-sidebar-panel" id="chat-sidebar-user-4">
+            <h5 class="title">
+                <a class="js-back" href="#">
+                    <i class="fa fa-angle-left mr-xs"></i>
+                    Jaron Fitzroy
+                </a>
+            </h5>
+            <ul class="message-list">
+            </ul>
+        </div>
+        <div class="chat-sidebar-chat chat-sidebar-panel" id="chat-sidebar-user-5">
+            <h5 class="title">
+                <a class="js-back" href="#">
+                    <i class="fa fa-angle-left mr-xs"></i>
+                    Mike Lewis
+                </a>
+            </h5>
+            <ul class="message-list">
+            </ul>
+        </div>
+        <div class="chat-sidebar-chat chat-sidebar-panel" id="chat-sidebar-user-6">
+            <h5 class="title">
+                <a class="js-back" href="#">
+                    <i class="fa fa-angle-left mr-xs"></i>
+                    Freda Edison
+                </a>
+            </h5>
+            <ul class="message-list">
+            </ul>
+        </div>
+        <div class="chat-sidebar-chat chat-sidebar-panel" id="chat-sidebar-user-7">
+            <h5 class="title">
+                <a class="js-back" href="#">
+                    <i class="fa fa-angle-left mr-xs"></i>
+                    Livia Walsh
+                </a>
+            </h5>
+            <ul class="message-list">
+            </ul>
+        </div>
+        <div class="chat-sidebar-chat chat-sidebar-panel" id="chat-sidebar-user-8">
+            <h5 class="title">
+                <a class="js-back" href="#">
+                    <i class="fa fa-angle-left mr-xs"></i>
+                    Jaron Fitzroy
+                </a>
+            </h5>
+            <ul class="message-list">
+            </ul>
+        </div>
+        <div class="chat-sidebar-chat chat-sidebar-panel" id="chat-sidebar-user-9">
+            <h5 class="title">
+                <a class="js-back" href="#">
+                    <i class="fa fa-angle-left mr-xs"></i>
+                    Mike Lewis
+                </a>
+            </h5>
+            <ul class="message-list">
+            </ul>
+        </div>
+        <footer class="chat-sidebar-footer form-group">
+            <input class="form-control input-dark fs-mini" id="chat-sidebar-input" type="text"  placeholder="Type your message">
+        </footer>
+    </div>
+</div>
+
+<div class="content-wrap">
+    <!-- main page content. the place to put widgets in. usually consists of .row > .col-md-* > .widget.  -->
+    <main id="content" class="content" role="main">
+        <ol class="breadcrumb">
+            <li>YOU ARE HERE</li>
+            <li class="active">상품등록</li>
+        </ol>
+        <h1 class="page-title">게시판 - <span class="fw-semi-bold">상품등록</span></h1>
+       
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+
+        <div class="row">
+            <div class="col-md-6">
+                <section class="widget">
+                    <header>
+                        <h5>
+                            Simple <strong>file uploads</strong>
+                        </h5>
+                    </header>
+                    <div class="widget-body">
+                        <form class="form-horizontal" role="form" action="rgoodsinsert" method="post" enctype="multipart/form-data" onsubmit="return beforeSubmit();">
+	<div id="salesTable"><%--록--%>
+		<div id="salesContent"><%--록--%>
+			<p id="status"></p><%--록--%>
+			<div id="holder"></div><%--록--%>                        
+                            <fieldset>
+                                <legend>상담 내용 등록</legend>
+                                
+                                
+                                
+				<input type="hidden" id="goodsCode"><%--록--%>
+				<input type="hidden" id="goodsDateOfUpload"><%--록--%>
+				<input type="hidden" id="goodsDateOfUpdate"><%--록--%>
+				<input type="hidden" id="goodsStatus" value="off"><%--록--%>
+                                
+                                
+                                
+
+								<div class="form-group">
+                                    <label class="col-sm-3 control-label" for="default-textarea">상품 이름</label>
+                                    
+                                    <div class="col-sm-8">
+                                        <input type="text" rows="4" class="form-control" <%--id="default-textarea"--%> id="goodsName" name="goodsName" placeholder="이름을 입력하세요">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="default-textarea">상품 가격</label>
+                                    
+                                    <div class="col-sm-8">
+                                        <input type="text" rows="4" class="form-control" <%--id="default-textarea"--%> id="goodsPrice" name="goodsPrice" placeholder="가격은 원단위를사용합니다. ex)1000원일시 1000입력">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="default-textarea">상품 수량</label>
+                                    
+                                    <div class="col-sm-8">
+                                        <input type="text" rows="4" class="form-control" <%--id="default-textarea"--%> id="goodsQuantity" name="goodsQuantity" placeholder="상품수량은 갯수(숫자)만 적어주세요">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="default-textarea">상품 유통기한</label>
+                                    
+                                    <div class="col-sm-8">
+                                        <input type="text" rows="4" class="form-control" <%--id="default-textarea"--%> id="expiredDate" name="expiredDate" placeholder="유통기한 예)2017-05-01 17:00:00">
+                                    </div>
+                                </div>
+                                
+                        <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="default-textarea">상품설명</label>
+                                    <div class="col-sm-8">
+                                        <textarea style="width:100%;" rows="12" class="form-con   trol" <%--id="default-textarea"--%> id="goodsInfo" name="goodsInfo"></textarea>
+                                    </div>
+                                </div>                                         
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="default-textarea">
+                                        파일 첨부
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                                            <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                                                <img data-src="holder.js/100%x100%" alt="..." src="">
+                                            </div>
+                                            <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+                                            <div>
+                                                <span class="btn btn-default btn-file"><span class="fileinput-new">이미지 첨부</span><span class="fileinput-exists">변경</span><input type="file" name="upload" id="salesUpload"></span>
+                                                <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">취소</a>
+                                            </div>
+                                        </div>
+                                        <span class="help-block">작성이 완료되면 '등록' 버튼을 눌러주세요.</span>
+			                            <div class="form-actions">
+			                                <div class="row">
+			                                    <div class="col-sm-offset-4 col-sm-7">
+			                                        <button type="submit" class="btn btn-primary">등록</button>
+			                                        <button type="button" class="btn btn-inverse">취소</button>
+			                                    </div>
+			                                </div>
+			                            </div>                                        
+                                    </div>
+                                </div>
+                            </fieldset>
+		</div><%--록--%>
+	</div><%--록--%>                            
+                        </form>
+                    </div>
+                </section>
+            </div>
+            
+            
+
+            
+            
+            
+        </div>
+    </main>
+</div>
+<!-- The Loader. Is shown when pjax happens -->
+<div class="loader-wrap hiding hide">
+    <i class="fa fa-circle-o-notch fa-spin-fast"></i>
+</div>
+
+<!-- common libraries. required for every page-->
+<script src="./resources/bootstrap/vendor/jquery/dist/jquery.min.js"></script>
+<script src="./resources/bootstrap/vendor/jquery-pjax/jquery.pjax.js"></script>
+<script src="./resources/bootstrap/vendor/bootstrap-sass/assets/javascripts/bootstrap/transition.js"></script>
+<script src="./resources/bootstrap/vendor/bootstrap-sass/assets/javascripts/bootstrap/collapse.js"></script>
+<script src="./resources/bootstrap/vendor/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js"></script>
+<script src="./resources/bootstrap/vendor/bootstrap-sass/assets/javascripts/bootstrap/button.js"></script>
+<script src="./resources/bootstrap/vendor/bootstrap-sass/assets/javascripts/bootstrap/tooltip.js"></script>
+<script src="./resources/bootstrap/vendor/bootstrap-sass/assets/javascripts/bootstrap/alert.js"></script>
+<script src="./resources/bootstrap/vendor/slimScroll/jquery.slimscroll.min.js"></script>
+<script src="./resources/bootstrap/vendor/widgster/widgster.js"></script>
+<script src="./resources/bootstrap/vendor/pace.js/pace.js" data-pace-options='{ "target": ".content-wrap", "ghostTime": 1000 }'></script>
+<script src="./resources/bootstrap/vendor/jquery-touchswipe/jquery.touchSwipe.js"></script>
+<!-- common app js -->
+<script src="./resources/bootstrap/js/settings.js"></script>
+<script src="./resources/bootstrap/js/app.js"></script>
+
+<!-- page specific libs -->
+<script src="./resources/bootstrap/vendor/bootstrap-sass/assets/javascripts/bootstrap/tooltip.js"></script>
+<script src="./resources/bootstrap/vendor/bootstrap-sass/assets/javascripts/bootstrap/modal.js"></script>
+<script src="./resources/bootstrap/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+<script src="./resources/bootstrap/vendor/jquery-autosize/jquery.autosize.min.js"></script>
+<script src="./resources/bootstrap/vendor/bootstrap3-wysihtml5/lib/js/wysihtml5-0.3.0.min.js"></script>
+<script src="./resources/bootstrap/vendor/bootstrap3-wysihtml5/src/bootstrap3-wysihtml5.js"></script>
+<script src="./resources/bootstrap/vendor/select2/select2.min.js"></script>
+<script src="./resources/bootstrap/vendor/switchery/dist/switchery.min.js"></script>
+<script src="./resources/bootstrap/vendor/moment/min/moment.min.js"></script>
+<script src="./resources/bootstrap/vendor/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+<script src="./resources/bootstrap/vendor/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+<script src="./resources/bootstrap/vendor/jasny-bootstrap/js/inputmask.js"></script>
+<script src="./resources/bootstrap/vendor/jasny-bootstrap/js/fileinput.js"></script>
+<script src="./resources/bootstrap/vendor/holderjs/holder.js"></script>
+<script src="./resources/bootstrap/vendor/dropzone/dist/min/dropzone.min.js"></script>
+<script src="./resources/bootstrap/vendor/markdown/lib/markdown.js"></script>
+<script src="./resources/bootstrap/vendor/bootstrap-markdown/js/bootstrap-markdown.js"></script>
+<script src="./resources/bootstrap/vendor/seiyria-bootstrap-slider/dist/bootstrap-slider.min.js"></script>
+
+<!-- page specific js -->
+<script src="./resources/bootstrap/js/form-elements.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+
+</html>
