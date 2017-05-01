@@ -707,7 +707,7 @@
 			$(this).find("span:last").remove();
 		});
 	})  */
-	
+/*	
 	function imghover(goodsCode){
 		alert("gg");
 		alert(goodsCode);
@@ -716,7 +716,7 @@
 		},function(){
 			$(this).removeClass('.imghover');
 		});
-	}
+	}*/
 </script>
 
 
