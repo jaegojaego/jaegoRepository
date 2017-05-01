@@ -113,9 +113,10 @@ function newfunction(imgtitle,imgcrn){
 
 
 
+
 function newfunction2(imgCode){
 	
-
+    alert(imgCode);
 	swal({
 		  title: "<상세사진>",
 		  text: "<img src='goodsimg?goodsCode="+imgCode+"' width='300' height='200'>",
@@ -429,14 +430,18 @@ function newfunction2(imgCode){
                                         newfunction(imgtitle,imgcrn);
                                   });
                                 
-                                $(".getgoodsimg").on("click",function(){
+                                /* $(".getgoodsimg").on("click",function(){
+                                	
+                                	alert("꺙");
                                   	 
-                                	var imgcode = $(this).attr("goodsimgcode");
+                                	/* var imgcode = $(this).attr("goodsimgcode");
                                 	
                                 	
-                                        newfunction2(imgcode);
-                                  });
+                                        newfunction2(imgcode); */
+                                 // });
+                                 
                                 
+							
                                 
                                 
                                 
@@ -483,7 +488,7 @@ function newfunction2(imgCode){
                                          for (var i = 0, len = glist.length; i < len; i++) {
                                    		
                                          content0 += '<tr><th>'+glist[i].GN+'</th><th>'+glist[i].GP+"</th><th>"+glist[i].GQ
-                                         +'</th><th><div name="demo" id="'+glist[i].GC+'" class="demos" attr="'+glist[i].GC+'"></div></th><th><img src="./resources/image/picture.png" width="20px" height="20px" class="getgoodsimg" goodsimgcode="'+glist[i].GC+'>'+
+                                         +'</th><th><div name="demo" id="'+glist[i].GC+'" class="demos" attr="'+glist[i].GC+'"></div></th><th><img src="./resources/image/picture.png" width="20px" height="20px" class="getgoodsimg" goodsimgcode="'+glist[i].GC+'">'+
                                          '</th></tr>';
                                         
                                          
@@ -494,6 +499,19 @@ function newfunction2(imgCode){
                                          $(".desc").html(content0); 
                                          
                                          ///////////////////////////////////////////////////
+                                         
+                                         
+                                         $(".getgoodsimg").on("click",function(){
+                                	
+                                
+                                  	 
+		                                	var imgcode = $(this).attr("goodsimgcode");
+		                                	
+		                                	
+		                                        newfunction2(imgcode); 
+		                                 });
+		                                 
+                                         
                                          
                                              	
                                      },error:function(e){
@@ -954,9 +972,7 @@ function newfunction2(imgCode){
     .info .img {position: absolute;width: 400px;height: 138px;color: #888;overflow: hidden;background:#FFBB00;}
    .prd_box {position:relative;} 
    .prd_over {position:absolute; width:100%; height:50px; top:95px; bottom:0; left:0; opacity:0; background:url('/shop/data/skin/apple_tree_C/img/djds/etc/prd_over.png') 0 0 no-repeat;}    
-   .thth {position:relative; display:inline-block}
-   .thth span {visibility:hidden; position:absolute; margin-top:0; margin-left:-20px;}
-   .thth:hover span {visibility:visible}
+
    .starcomment{top:10px;}
    .comments{overflow-y:scroll;margin:auto;height:120px;width:391px;position:relative;left:4px;font-size: 14px}
 
