@@ -87,6 +87,8 @@
 			goods
 		where
 			sellerCRN=#{sellerCRN}
+		order by 
+			expiredDate
 	</select>
 	
 	<select id="selectPic" resultType="Goods">

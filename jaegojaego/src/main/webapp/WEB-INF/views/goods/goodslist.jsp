@@ -156,7 +156,7 @@
                     <span class="icon">
                         <i class="glyphicon glyphicon-user"></i>
                     </span>
-                    고객 상담
+                    상품 목록
 <%--                    <sup class="text-warning fw-semi-bold">
                         new
                     </sup>--%>	<%-- new 표시 주석 처리 --%>
@@ -810,7 +810,6 @@
 
 <script type="text/javascript" src="./resources/js/jquery-3.1.1.js"></script>
 <script type="text/javascript">
-
 	$(function() {
 		$('.bplus').click(function() {
 			var n = $('.bplus').index(this);
@@ -1274,43 +1273,8 @@
 <%--=========================================================================== --%>
         <ol class="breadcrumb">
             <li>현재 위치</li>
-            <li class="active">고객 상담</li>
+            <li class="active">상품 목록</li>
         </ol>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 		<h1 class="page-title">Tables - <span class="fw-semi-bold">상품 목록 </span></h1>
@@ -1325,22 +1289,23 @@
 				</header>
 				
 				<div class="table-responsive">
-					<table class="table table-hover">
+					<table class="table table-hover tablesorter" id="tableapi">
 						<thead>
 							<tr>
-								<th>이미지</th>
+								<th style="padding-left: 12px;">이미지</th>
 								<th>상품명</th>
 								<th>상품코드</th>
 								<th>판매가격</th>
-								<th>업로드 날짜</th>
+								<th style="padding-left: 34px;">업로드 날짜</th>
+								<th style="padding-left: 41px;">유통기한</th>
 								<th>현재수량</th>
 								<th>변동수량</th>
 								<th>
 									<span>
-									삭제<input type="checkbox" id="checkboxall" style="width:15px;height:15px">
+									삭제<input type="checkbox" id="checkboxall" style="width:15px;height:15px;margin-left: 5px;">
 									</span>
 								</th>
-								<th>수정</th>
+								<th style="padding-left: 13px;">수정</th>
 								<th>상태</th>
 							</tr>
 						</thead>
@@ -1350,24 +1315,27 @@
 								<td>
 									<img src="download?goodsCode=${map.goodsCode }" width="50" height="30"> 
 								</td>
-								<td class="goodsname">${map.goodsName }</td><!--  -->
-								<td class="goodscode">${map.goodsCode }</td>
-								<td class="goodsprice">${map.goodsPrice  }</td><!--  -->
-								<td>${map.goodsDateOfUpload }</td>
-								<td class="beforeQ">${map.goodsQuantity  }</td>
+								<td class="goodsname" style="padding-top: 12px;">${map.goodsName }</td><!--  -->
+								<td class="goodscode" style="padding-top: 12px;">${map.goodsCode }</td>
+								<td class="goodsprice" style="padding-top: 12px;padding-left: 19px;">${map.goodsPrice  }</td><!--  -->
+								<td style="padding-top: 12px;">${map.goodsDateOfUpload }</td>
+								<td style="padding-top: 12px;">${map.expiredDate }</td>
+								<td class="beforeQ" style="padding-top: 12px;padding-left: 19px;">${map.goodsQuantity  }</td>
 								<td>
-									<input type="text" size="3" value="${map.goodsQuantity }"class="afterQ"> 
+									<input type="text" size="4" value="${map.goodsQuantity }"class="afterQ"
+									style="margin-top: 2px;margin-left: 3px;"> 
 									<img src="./resources/image/ninus.png" class="bninus" width="10" height="10"> 
 									<img src="./resources/image/plus.png" class="bplus" width="10" height="10">
 								</td>
 								<td>
-									<input type="checkbox" name="checkbox" class="checkbox" style="width:15px;height:15px">
+									<input type="checkbox" name="checkbox" class="checkbox" 
+									style="width:15px;height:15px;margin-top: 15px;margin-left: 13px;">
 								</td>
 								<td>
-									<input type="button" value="수정" class="btnupdate">
+									<input type="button" value="수정" class="btnupdate" style="margin-top: 3px;">
 								</td>
 								<td>
-									<input type="button" value="${map.goodsStatus }" class="status">
+									<input type="button" value="${map.goodsStatus }" class="status" style="margin-top: 3px;">
 								</td>
 							</tr>
 						</c:forEach>
@@ -1387,31 +1355,11 @@
 			</div>
 		</div>
 		<input type="hidden" id="sellerCRN" value="${sessionScope.sellerCRN}">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		
 
 
 <%--================================================================================================================================================--%>
-	</main>
+</main>
 </div>
 <!-- The Loader. Is shown when pjax happens -->
 <div class="loader-wrap hiding hide">
@@ -1447,5 +1395,6 @@
 
 <!-- page specific js -->
 <%--<script src="./resources/bootstrap/js/tables-dynamic.js"></script>--%>
+
 </body>
 </html>
