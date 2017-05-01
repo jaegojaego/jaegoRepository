@@ -529,7 +529,7 @@ jQuery(document).ready(function() {
                             <img class="img-circle" src="./resources/bootstrap/demo/img/people/a5.jpg" alt="...">
                         </span>
                         &nbsp;
-                        박진우 <strong>커피커피</strong>&nbsp;
+                        ${sessionScope.name} <strong>${sessionScope.sellerShopName}</strong>&nbsp;
 
                         <b class="caret"></b></a>
                     <ul class="dropdown-menu">

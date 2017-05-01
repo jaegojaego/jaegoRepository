@@ -48,6 +48,7 @@ public class LoginController {
 				session.setAttribute("custid", seller.getSellerId());
 				session.setAttribute("name", seller.getSellerName());
 				session.setAttribute("sellerCRN", seller.getSellerCRN());
+				session.setAttribute("sellerShopName", seller.getSellerShopName());
 				session.setAttribute("type", "판매자");
 				return "redirect:/goodslist";
 			} else {										//실패
