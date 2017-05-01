@@ -8,21 +8,6 @@
 <title>Insert title hereee</title>
 <style>
 
-table {
-	text-align: center;
-}
-
-tr {
-	text-align: center;
-}
-
-th {
-	text-align: center;
-}
-
-td {
-	text-align: center;
-}
 
 
 
@@ -97,6 +82,9 @@ function timetest(i,goodscode,goodsDT) {
   
   
 }
+
+
+
 
 function newfunction(imgtitle,imgcrn){
 	
@@ -187,7 +175,10 @@ function newfunction2(imgCode){
             a(adrr,flag,sellertob);
        
        });   */
-      $(".tob").on("click",function(){
+      
+     
+       
+       $(".tob").on("click",function(){
       
         sellertob = $(this).text();
         a(adrr,flag,sellertob);
@@ -351,26 +342,15 @@ function newfunction2(imgCode){
                            var content = '<div class="wrap">' + 
                             '    <div class="info">' + 
                             '      <div class="title">' + 
-                            position.title + '<img src="./resources/image/picture.png" width="20px" height="20px" class="getshopimg" imgtitle="'+position.title+'" imgcrn="'+position.CRN+'">'+
+                            position.title + '<img src="./resources/image/pictures.png" width="20px" height="22px" class="getshopimg" imgtitle="'+position.title+'" imgcrn="'+position.CRN+'">'+
                             '      <div class="close" title="닫기"></div>' + 
                             '      </div>' + 
                             '      <div class="body">' + 
                             '      <div class="img"><div class="shopinfo" style="width:390px;height:132px;text-overflow: ellipsis;line-height:190%">업종:'+position.tob+'<br>주소:'+position.shopaddress+'<br>전화번호:'+position.phone+'<br><div class="star" style="width:20px;">별점</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
                             +'<span class="addshop" style="font-weight:bolder;font-color:black;">[관심매장추가/</span><span class="delshop">삭제]</span></div></div>' + 
-                            '      <div class="desc">' + 
-
-                            '<div class="goodsinfo" id="'+position.CRN+'" style="overflow-y:scroll;overflow-x:hidden">'+
-                            '<table width="100%"><tr><th>품명</th><th>가격</th><th>개수</th><th>유통기한</th><th>이미지</th></tr>';
+                            '      <div class="desc">';
                             
-                            for (var i = 0, len = glist.length; i < len; i++) {
-                              //  total+= glist[i].GN;
-                            // 마커를 생성하고 지도위에 표시합니다
-                            content += '<tr><th>'+glist[i].GN+'</th><th>'+glist[i].GP+"</th><th>"+glist[i].GQ
-                            +'</th><th><div class="thth"><img src="./resources/image/picture.png" width="20px" height="20px" class="abcd" imgData="goodsimg?sellerCRN='+position.CRN+'&goodsCode='+glist[i].GC+'">'+
-                            '</div></th></tr>';
-                            }
-                            
-                            content += '</table></div></div>' + 
+                            content += '</div>' + 
                             '           </div>' + 
                             '        <div class="comments"></div><div align="center" style="width:289px;position: relative;top: 5px;left:3px" class="starcomment"><select class="starcheck" align="center" style="height:24px;border: 0px;color:#EDA900"><option value="1">★</option><option value="2">★★</option>'+
                             '<option value="3">★★★</option><option value="4">★★★★</option><option value="5">★★★★★</option></select>&nbsp;<input type="text" class="comment" placeholder="평점을 선택 후 댓글을 입력해주세요" style="width:267px;height:24px;border: 0px;font-size:13px">&nbsp;<input type="button" class="bnt" value="입력" style="border: 0px;height:24px;background:#EDA900;color:white;font-size:13px"></div></div>' + 
@@ -483,11 +463,11 @@ function newfunction2(imgCode){
                                          //레이아웃 css 설정
                                          
                                          var content0 = '<div class="goodsinfo" id="'+position.CRN+'" style="overflow-y:scroll;overflow-x:hidden">'+
-                                         			'<table width="100%"><tr><th>품명</th><th>가격</th><th>개수</th><th>유통기한</th><th>이미지</th></tr>';
+                                         			'<table width="100%" style="text-align:center"><tr><th>품명</th><th>가격</th><th>개수</th><th>유통기한</th><th>이미지</th></tr>';
                                          for (var i = 0, len = glist.length; i < len; i++) {
                                    		
                                          content0 += '<tr><th>'+glist[i].GN+'</th><th>'+glist[i].GP+"</th><th>"+glist[i].GQ
-                                         +'</th><th><div name="demo" id="'+glist[i].GC+'" class="demos" attr="'+glist[i].GC+'"></div></th><th><img src="./resources/image/picture.png" width="20px" height="20px" class="getgoodsimg" goodsimgcode="'+glist[i].GC+'">'+
+                                         +'</th><th><div name="demo" id="'+glist[i].GC+'" class="demos" attr="'+glist[i].GC+'"></div></th><th><img src="./resources/image/picture4.png" width="20px" height="20px" class="getgoodsimg" goodsimgcode="'+glist[i].GC+'">'+
                                          '</th></tr>';
                                         
                                          
@@ -561,7 +541,7 @@ function newfunction2(imgCode){
                                          
                                        success:function(data){
                                           
-                                          var htm = '<table><tr><th>작성자</th><th>댓글</th></tr>';
+                                          var htm = '<table><tr><th width="100px" >작성자</th><th width="280px">댓글</th></tr>';
                                        
                                           $.each(data,function(index,item){                                             
                                                 htm += '<tr><td>'+item.buyerId+'</td><td>'+item.ment+'</td></tr>';
@@ -825,7 +805,15 @@ function newfunction2(imgCode){
          		     }
                } 
 //----------------------------------------------------------------------	
-				
+                $(".getgoodsimg").on("click",function(){
+                	
+                    
+                 	 
+                	var imgcode = $(this).attr("goodsimgcode");
+                	
+                	
+                        newfunction2(imgcode); 
+                 });
 				
 				
 				
@@ -838,7 +826,7 @@ function newfunction2(imgCode){
 				dosend();	
 			}
            
-			var wsUri = "ws://10.10.7.40:8889/web/echo.do";
+			var wsUri = "ws://192.168.10.104:8889/web/echo.do";
            
 			function init() {				//yc>이게 시작이 되는가? 왜 이게 시작이 되지?  ->> 아마 socket 핸들러에서 보낸거가  여기로 들어오는듯..
 				output = document.getElementById("output");
@@ -974,7 +962,7 @@ function newfunction2(imgCode){
 
    .starcomment{top:10px;}
    .comments{overflow-y:scroll;margin:auto;height:120px;width:391px;position:relative;left:4px;font-size: 14px}
-
+   .getshopimg{position: relative;bottom: 2px;left:3px}
 </style>
 
 

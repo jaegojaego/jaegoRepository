@@ -748,7 +748,7 @@
         		doSend();
         	}
            
-            var wsUri = "ws://203.233.196.93:8888/web/echo.do";
+            var wsUri = "ws://192.168.10.104:8889/web/echo.do";
            
             function init() {
 				output = document.getElementById("output");
@@ -821,14 +821,14 @@
                       
                             
                             
-                            var content0 = '<div class="goodsinfo" id="'+CRN+'" style="overflow-y:scroll">'+
-                                         			'<table><tr><th>품명</th><th>가격</th><th>개수</th><th>유통기한</th><th>이미지</th></tr>';
+                            var content0 = '<div class="goodsinfo" id="'+CRN+'" style="overflow-y:scroll;overflow-x:hidden">'+
+                                         			'<table width="100%"><tr><th>품명</th><th>가격</th><th>개수</th><th>유통기한</th><th>이미지</th></tr>';
                                
                                    for (var i = 0, len = glist.length; i < len; i++) {
                                    		
                                          content0 += '<tr><th>'+glist[i].GN+'</th><th>'+glist[i].GP+"</th><th>"+glist[i].GQ
-                                         +'</th><th><p name="demo" id="'+glist[i].GC+'" class="demos" attr="'+glist[i].GC+'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p></th><th><div class="thth"><img src="./resources/image/picture.png" width="20px" height="20px" class="abcd" imgData="goodsimg?sellerCRN='+CRN+'&goodsCode='+glist[i].GC+'">'+
-                                         '<span class="immm"><img src="goodsimg?sellerCRN='+CRN+'&goodsCode='+glist[i].GC+'" width="90px" height="70px" > </span></div></th></tr>';
+                                         +'</th><th><div name="demo" id="'+glist[i].GC+'" class="demos" attr="'+glist[i].GC+'"></div></th><th><img src="./resources/image/picture4.png" width="20px" height="20px" class="getgoodsimg" goodsimgcode="'+glist[i].GC+'">'+
+                                         '</th></tr>';
                                         
                                          
                                          goodstime.push({goodscodes:glist[i].GC,goodsDTs:glist[i].DT});
