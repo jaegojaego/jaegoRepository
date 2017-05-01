@@ -98,8 +98,34 @@ function timetest(i,goodscode,goodsDT) {
   
 }
 
+function newfunction(imgtitle,imgcrn){
+	
 
-   
+	swal({
+		  title: "<"+imgtitle+">",
+		  text: "<img src='shopimg?sellerCRN="+imgcrn+"' width='300' height='200'>",
+		  confirmButtonColor: "#FFBB00",
+		  html: true
+		});
+	
+	
+}
+
+
+
+function newfunction2(imgCode){
+	
+
+	swal({
+		  title: "<상세사진>",
+		  text: "<img src='goodsimg?goodsCode="+imgCode+"' width='300' height='200'>",
+		  confirmButtonColor: "#FFBB00",
+		  html: true
+		});
+	
+	
+}
+
    
    $(function(){
    	
@@ -108,6 +134,10 @@ function timetest(i,goodscode,goodsDT) {
       console.log(adrr);
       a(adrr,flag,sellertob);
       var marker;
+    
+      
+      
+      
       
       /* $("#890").on("click",function(){
       
@@ -321,7 +351,7 @@ function timetest(i,goodscode,goodsDT) {
                            var content = '<div class="wrap">' + 
                             '    <div class="info">' + 
                             '      <div class="title">' + 
-                            position.title + 
+                            position.title + '<img src="./resources/image/picture.png" width="20px" height="20px" class="getshopimg" imgtitle="'+position.title+'" imgcrn="'+position.CRN+'">'+
                             '      <div class="close" title="닫기"></div>' + 
                             '      </div>' + 
                             '      <div class="body">' + 
@@ -330,14 +360,14 @@ function timetest(i,goodscode,goodsDT) {
                             '      <div class="desc">' + 
 
                             '<div class="goodsinfo" id="'+position.CRN+'" style="overflow-y:scroll;overflow-x:hidden">'+
-                            '<table width="100%"><tr><th>품명</th><th>가격</th><th>개수</th><th>이미지</th><th>유통기한</th></tr>';
+                            '<table width="100%"><tr><th>품명</th><th>가격</th><th>개수</th><th>유통기한</th><th>이미지</th></tr>';
                             
                             for (var i = 0, len = glist.length; i < len; i++) {
                               //  total+= glist[i].GN;
                             // 마커를 생성하고 지도위에 표시합니다
                             content += '<tr><th>'+glist[i].GN+'</th><th>'+glist[i].GP+"</th><th>"+glist[i].GQ
                             +'</th><th><div class="thth"><img src="./resources/image/picture.png" width="20px" height="20px" class="abcd" imgData="goodsimg?sellerCRN='+position.CRN+'&goodsCode='+glist[i].GC+'">'+
-                            '<span class="immm"><img src="goodsimg?sellerCRN='+position.CRN+'&goodsCode='+glist[i].GC+'" width="90px" height="70px" > </span></div></th></tr>';
+                            '</div></th></tr>';
                             }
                             
                             content += '</table></div></div>' + 
@@ -390,6 +420,27 @@ function timetest(i,goodscode,goodsDT) {
                                    
                                 }
                         
+                                $(".getshopimg").on("click",function(){
+                               	 
+                                	var imgtitle = $(this).attr("imgtitle");
+                                	var imgcrn = $(this).attr("imgcrn");
+                                	
+                                	
+                                        newfunction(imgtitle,imgcrn);
+                                  });
+                                
+                                $(".getgoodsimg").on("click",function(){
+                                  	 
+                                	var imgcode = $(this).attr("goodsimgcode");
+                                	
+                                	
+                                        newfunction2(imgcode);
+                                  });
+                                
+                                
+                                
+                                
+                                
                
                                 $(".close").on("click",function(){
                                    overlay.setMap(null);
@@ -432,8 +483,8 @@ function timetest(i,goodscode,goodsDT) {
                                          for (var i = 0, len = glist.length; i < len; i++) {
                                    		
                                          content0 += '<tr><th>'+glist[i].GN+'</th><th>'+glist[i].GP+"</th><th>"+glist[i].GQ
-                                         +'</th><th><div name="demo" id="'+glist[i].GC+'" class="demos" attr="'+glist[i].GC+'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></th><th><div class="thth"><img src="./resources/image/picture.png" width="20px" height="20px" class="abcd" imgData="goodsimg?sellerCRN='+position.CRN+'&goodsCode='+glist[i].GC+'">'+
-                                         '<span class="immm"><img src="goodsimg?sellerCRN='+position.CRN+'&goodsCode='+glist[i].GC+'" width="90px" height="70px" > </span></div></th></tr>';
+                                         +'</th><th><div name="demo" id="'+glist[i].GC+'" class="demos" attr="'+glist[i].GC+'"></div></th><th><img src="./resources/image/picture.png" width="20px" height="20px" class="getgoodsimg" goodsimgcode="'+glist[i].GC+'>'+
+                                         '</th></tr>';
                                         
                                          
                                         	 timetest(i, glist[i].GC,glist[i].DT);
@@ -931,8 +982,8 @@ function timetest(i,goodscode,goodsDT) {
             
                         <a href="home">지역선택</a>   
                   <지역검색>
-<input type="text" id="adr">
-<input type="button" name="" id="btn1" value="직접검색">
+<input type="text" id="adr" width="30px">
+<input type="button" id="btn1" value="직접검색">
 
                      
                   
@@ -965,7 +1016,8 @@ function timetest(i,goodscode,goodsDT) {
 <input type="hidden" id = "buyerid" value="${custid }">
 
 <div id="sellergoods" style="width:100%;height:300px;"></div>
-<input type="button" value="123" id="890">
+
+
 
 </body>
 </html>

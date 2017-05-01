@@ -81,7 +81,7 @@
 	</select>
 	
 	
-	<select id="goodsimg" resultType="Goods" >
+	<select id="goodsimg" parameterType="String" resultType="Goods" >
 		select 
 			sellerCRN,
 			goodsName,
@@ -94,7 +94,7 @@
 			goodsDateOfUpdate,
 			goodsStatus
 		from goods
-		where sellerCRN=#{0} and goodsCode=#{1}
+		where goodsCode=#{goodsCode}
 	</select>
 	
 	<select id="markimg" parameterType="String" resultType="int">

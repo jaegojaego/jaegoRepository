@@ -62,7 +62,7 @@ public class mapsController {
 	
 	@RequestMapping(value="shopimg", method=RequestMethod.GET)
 	public String download(String sellerCRN,HttpServletResponse response){
-		String uploadPath = "/sellerImg";
+		String uploadPath = "/sellerShopOimg";
 		Seller seller = dao.shopimg(sellerCRN);
 		try {
 			response.setHeader("Content-Disposition", "attachment;filename="+URLEncoder.encode(seller.getSellerShopOimg(), "UTF-8"));
@@ -72,6 +72,7 @@ public class mapsController {
 		//����� ���� ���
 		String fullPath = uploadPath +"/"+seller.getSellerShopSimg();
 		
+		System.out.println(fullPath);
 		
 		//������ ������ ���� �Է� ��Ʈ��
 		
@@ -95,7 +96,7 @@ public class mapsController {
 	
 	@RequestMapping(value="goodsimg", method=RequestMethod.GET)
 	public String download2(String sellerCRN,String goodsCode,HttpServletResponse response){
-		String uploadPath = "/goodsImg";
+		String uploadPath = "/goodsfile";
 		Goods goods = dao.goodsimg(sellerCRN, goodsCode);
 		try {
 			response.setHeader("Content-Disposition", "attachment;filename="+URLEncoder.encode(goods.getGoodsOimage(), "UTF-8"));
