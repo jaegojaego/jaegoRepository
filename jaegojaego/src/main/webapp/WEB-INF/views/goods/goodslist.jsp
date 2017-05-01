@@ -47,6 +47,7 @@
          https://code.google.com/p/chromium/issues/detail?id=332189
          */
     </script>
+    
 </head>
 <body>
 <!--
@@ -1026,8 +1027,24 @@
 		});
 	})
 	
+/* 	$(function(){
+		$('.imghover').hover(function(){
+			$(this).append($("<span><img src=\"download?goodsCode=${map.goodsCode }\" width=\"100\" height=\"100\"></span>"));
+		},function(){
+			$(this).find("span:last").remove();
+		});
+	})  */
+	
+	function imghover(goodsCode){
+		alert("gg");
+		alert(goodsCode);
+		$('.imghover').hover(function(){
+			$(this).append($("<span><img src=\"download?goodsCode="+goodsCode+"\" width=\"100\" height=\"100\"></span>"));
+		},function(){
+			$(this).removeClass('.imghover');
+		});
+	}
 </script>
-
 
 
 <%--20170422 박진우 박시원 웹소켓 테스트============================================= --%>
@@ -1270,6 +1287,8 @@
 			}
 			window.addEventListener("load", init, false);
         </script>
+        
+        
 <%--=========================================================================== --%>
         <ol class="breadcrumb">
             <li>현재 위치</li>
@@ -1312,7 +1331,7 @@
 						<tbody>
 						<c:forEach var="map" items="${list }">
 							<tr class="tr">
-								<td>
+								<td class="imghover" onmouseover=imghover("${map.goodsCode }")>
 									<img src="download?goodsCode=${map.goodsCode }" width="50" height="30"> 
 								</td>
 								<td class="goodsname" style="padding-top: 12px;">${map.goodsName }</td><!--  -->
@@ -1356,7 +1375,6 @@
 		</div>
 		<input type="hidden" id="sellerCRN" value="${sessionScope.sellerCRN}">
 		
-
 
 <%--================================================================================================================================================--%>
 </main>
