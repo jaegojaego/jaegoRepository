@@ -6,6 +6,8 @@
 <head>
     <title>Sing - Tables Dynamic</title>
 
+<script type="text/javascript" src="<c:url value="./resources/js/jquery-3.1.1.js"/>"></script>
+
 	<script type="text/javascript" src="./resources/js/jquery-3.1.1.js"></script>
 	<script>
  	$(function() {
@@ -14,7 +16,8 @@
 	</script>
 
 	<script>
-	function goodslist() {
+	function tttest() {
+		alert('어찌하스까이이');
 		location.href='goodslist';
 	}
 	///web/goodslist3
@@ -28,9 +31,12 @@
 		form.submit();
 	}
 	</script>
-
+    
     <link href="./resources/bootstrap/css/application.min.css" rel="stylesheet">
-
+    <!-- as of IE9 cannot parse css files with more that 4K classes separating in two files -->
+    <!--[if IE 9]>
+        <link href="css/application-ie9-part2.css" rel="stylesheet">
+    <![endif]-->
 	<link rel="shortcut icon" href="img/favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="">
@@ -43,6 +49,7 @@
          https://code.google.com/p/chromium/issues/detail?id=332189
          */
     </script>
+    
 </head>
 <body>
 <!--
@@ -81,7 +88,7 @@
         <!-- main notification links are placed inside of .sidebar-nav -->
         <ul class="sidebar-nav">
 
-            <li class="active">
+            <li>
                 <!-- an example of nested submenu. basic bootstrap collapse component -->
                 <a href="" <%--data-toggle="collapse" data-parent="#sidebar"--%> onclick="goodslist()">
                     <span class="icon">
@@ -105,7 +112,7 @@
                 </a>                
             </li>
 
-            <li>
+            <li class="active">
                 <a href="/web/csboardlist">
                     <span class="icon">
                         <i class="glyphicon glyphicon-user"></i>
@@ -437,7 +444,7 @@
                 <li class="dropdown">
 					<a href="#" class="dropdown-toggle dropdown-toggle-notifications" id="notifications-dropdown-toggle" data-toggle="dropdown">
                         <span class="thumb-sm avatar pull-left">
-                            <img class="img-circle" src="./resources/bootstrap/demo/img/people/a5.jpg" alt="...">
+							<img class="img-circle" src="./resources/bootstrap/demo/img/people/a5.jpg" alt="...">
                         </span>
                         &nbsp;
                         ${sessionScope.name} <strong>${sessionScope.sellerShopName}</strong>&nbsp;
@@ -699,24 +706,6 @@
 			location.href="goodsupdate?goodsCode="+goodscode;
 		});
 	})
-	
-/* 	$(function(){
-		$('.imghover').hover(function(){
-			$(this).append($("<span><img src=\"download?goodsCode=${map.goodsCode }\" width=\"100\" height=\"100\"></span>"));
-		},function(){
-			$(this).find("span:last").remove();
-		});
-	})  */
-/*	
-	function imghover(goodsCode){
-		alert("gg");
-		alert(goodsCode);
-		$('.imghover').hover(function(){
-			$(this).append($("<span><img src=\"download?goodsCode="+goodsCode+"\" width=\"100\" height=\"100\"></span>"));
-		},function(){
-			$(this).removeClass('.imghover');
-		});
-	}*/
 </script>
 
 
@@ -822,12 +811,12 @@
                             
                             
                             var content0 = '<div class="goodsinfo" id="'+CRN+'" style="overflow-y:scroll;overflow-x:hidden">'+
-                                         			'<table width="100%"><tr><th>품명</th><th>가격</th><th>개수</th><th>유통기한</th><th>이미지</th></tr>';
+                                         			'<table width="100%"><tr><th>품명</th><th>가격</th><th>개수</th><th width="140px">유통기한</th><th>이미지</th></tr>';
                                
                                    for (var i = 0, len = glist.length; i < len; i++) {
                                    		
                                          content0 += '<tr><th>'+glist[i].GN+'</th><th>'+glist[i].GP+"</th><th>"+glist[i].GQ
-                                         +'</th><th><div name="demo" id="'+glist[i].GC+'" class="demos" attr="'+glist[i].GC+'"></div></th><th><img src="./resources/image/picture4.png" width="20px" height="20px" class="getgoodsimg" goodsimgcode="'+glist[i].GC+'">'+
+                                         +'</th><th><div name="demo" id="'+glist[i].GC+'" class="demos" attr="'+glist[i].GC+'"></div></th><th style="position:relative;left:10px"><img src="./resources/image/picture4.png" width="20px" height="20px" class="getgoodsimg" goodsimgcode="'+glist[i].GC+'">'+
                                          '</th></tr>';
                                         
                                          
@@ -967,7 +956,9 @@
             <li>현재 위치</li>
             <li class="active">상품 목록</li>
         </ol>
-        <h1 class="page-title">상품 목록 - <span class="fw-semi-bold">상품 현황</span></h1>
+
+
+		<h1 class="page-title">Tables - <span class="fw-semi-bold">상품 목록 </span></h1>
 
 		<div class="row">
 			<div class="col-md-12">
@@ -1002,7 +993,7 @@
 						<tbody>
 						<c:forEach var="map" items="${list }">
 							<tr class="tr">
-								<td class="imghover" onmouseover=imghover("${map.goodsCode }")>
+								<td>
 									<img src="download?goodsCode=${map.goodsCode }" width="50" height="30"> 
 								</td>
 								<td class="goodsname" style="padding-top: 12px;">${map.goodsName }</td><!--  -->
