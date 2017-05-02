@@ -760,7 +760,7 @@ function newfunction2(imgCode){
 				var times = gaek.fortimes;
 				
 				        		
-//진우 주석		alert("가게 : " + storeid);
+//진우 주석		alert("가게 : " + storeid);//a
 //진우 주석		alert("품목 : " + goodsid);
 				
 				
