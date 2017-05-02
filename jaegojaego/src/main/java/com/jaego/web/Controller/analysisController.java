@@ -39,6 +39,12 @@ public class analysisController {
 		return "./analysis/goodsanalysis";
 	}
 
+	//20170502 박진우 - 테스트
+	@RequestMapping(value = "analysisPJW", method = RequestMethod.GET)
+	public String analysisPJW() {
+		return "./analysis/goodsanalysisPJW";
+	}
+
 
 	@RequestMapping(value = "analysis1", method = RequestMethod.GET)
 	public String analysis1() {

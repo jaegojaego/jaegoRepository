@@ -93,7 +93,7 @@ function formCheck() {
                                 </div>
 
                                 <div class="col-sm-6 col-sm-pull-6">
-                                    <a class="mr-n-lg" href="#">문제가 발생했나요?</a>
+                                    <a class="mr-n-lg" href="sellerJoinForm">신규 가입</a>
                                 </div>
                             </div>
                         </form>

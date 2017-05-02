@@ -26,7 +26,7 @@
 <script type="text/javascript" src="./resources/js/jquery.toast.min.js"></script>     
 
 <script type="text/javascript" src="./resources/js/function.js"> </script>
-<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=a14aced40ff3bc7cb1d2485146b53b0a&libraries=services"></script>
+<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=98b5ff77fd0570ce46f2ef84207626b0&libraries=services"></script>
 
     <link href="./resources/bootstrap/css/application.min.css" rel="stylesheet">
 
@@ -482,6 +482,28 @@ function newfunction2(imgCode){
                                          $(".desc").html(content0); 
                                          
                                          ///////////////////////////////////////////////////
+                                         
+                                         $("area").on("click",function(){
+                                   
+                                   var areas = $(this).attr("title");
+                                
+                                   
+                                    for (var i = 0, len = markers.length; i < len; i++) {
+                                        markerstitle2 = markers[i].getTitle();
+                                    
+                                        
+                                         if(areas==markerstitle2){
+                                           markersposition2 = markers[i].getPosition();
+                                           console.log(markersposition2);
+                                           var moveLatLon = new daum.maps.LatLng(markersposition2.hb,markersposition2.gb);  
+                                           console.log(moveLatLon);
+                                           map.panTo(moveLatLon);     
+                                         }
+                                    } 
+                                    
+                                   
+                                   
+                                });
                                          
                                          
                                          $(".getgoodsimg").on("click",function(){

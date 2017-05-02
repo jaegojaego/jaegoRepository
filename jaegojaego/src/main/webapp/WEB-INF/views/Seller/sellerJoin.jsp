@@ -5,8 +5,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="./resources/js/jquery-3.1.1.js"></script>
+<script>
+$(function() {
+	alert('가입을 축하합니다!');
+	location.href='/web/';
+});
+</script>
 </head>
 <body>
-sellerJoin success!
+
 </body>
 </html>

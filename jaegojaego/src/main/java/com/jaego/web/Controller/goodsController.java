@@ -268,9 +268,9 @@ public class goodsController {
 		
 		HashMap<String, Object>insertpush=dao.insertpush(goodsCode);
 		System.out.println("넣을 정보 뽑아야겐"+insertpush);
-		String shopName = (String)insertpush.get("GOODSNAME");
-		String goodsName = (String)insertpush.get("SELLERSHOPNAME");
-		String shopname = shopName+"에서 "+goodsName+"상품이 추가되었습니다.";
+		String goodsName = (String)insertpush.get("GOODSNAME");
+		String shopName = (String)insertpush.get("SELLERSHOPNAME");
+		String shopname = shopName+"에서 "+goodsName+" 상품이 추가되었습니다.";
 		
 		HashMap<String, Object>content = new HashMap<String, Object>();
 		content.put("sellerCRN", sellerCRN);
