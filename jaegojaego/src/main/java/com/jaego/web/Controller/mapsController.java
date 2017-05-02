@@ -49,9 +49,14 @@ public class mapsController {
 	
 	@RequestMapping(value="map1", method=RequestMethod.GET)
 	public String map1(){
-		
 		return "map/maps";
 	}
+	
+	//20170502 박진우 : 시원이 maps 테스트용
+	@RequestMapping(value="mapPSW", method=RequestMethod.GET)
+	public String mapPSW(){
+		return "map/mapPSW";
+	}	
 	
 	@RequestMapping(value="map2", method=RequestMethod.GET)
 	public String map2(){

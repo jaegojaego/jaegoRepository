@@ -47,9 +47,9 @@ public class LoginController {
 			if (seller.getSellerPw().equals(password)) {	//성공
 				session.setAttribute("custid", seller.getSellerId());
 				session.setAttribute("name", seller.getSellerName());
+				session.setAttribute("type", "판매자");				
 				session.setAttribute("sellerCRN", seller.getSellerCRN());
 				session.setAttribute("sellerShopName", seller.getSellerShopName());
-				session.setAttribute("type", "판매자");
 				return "redirect:/goodslist";
 			} else {										//실패
 				model.addAttribute("loginErr","로그인 정보가 틀렸습니다.");		//에러 메시지를 띄우고 싶다면 Model 사용
@@ -84,8 +84,9 @@ public class LoginController {
 	public String logout(HttpSession session) {
 		session.removeAttribute("custid");
 		session.removeAttribute("name");
+		session.removeAttribute("type");				
 		session.removeAttribute("sellerCRN");
-		session.removeAttribute("type");		
+		session.removeAttribute("sellerShopName");		
 		return "redirect:/";	
 	}
 	
