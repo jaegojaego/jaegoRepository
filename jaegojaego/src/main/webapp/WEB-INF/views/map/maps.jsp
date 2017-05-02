@@ -5,13 +5,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title hereee</title>
-<style>
 
 
+    <title>Sing - Tables Dynamics</title>
 
+	<script>
+	function goodslist() {
+		location.href='goodslist';
+	}
+	///web/goodslist3
+	</script>
 
-</style>
+<script type="text/javascript" src="<c:url value="./resources/js/jquery-3.1.1.js"/>"></script>
 
 <script type="text/javascript" src="./resources/js/jquery-3.1.1.js"> </script>
 <script src="./resources/dist/sweetalert.min.js"></script>
@@ -24,14 +29,13 @@
 <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=a14aced40ff3bc7cb1d2485146b53b0a&libraries=services"></script>
 
     <link href="./resources/bootstrap/css/application.min.css" rel="stylesheet">
-    <link rel="shortcut icon" href="img/favicon.png">
+
+	<link rel="shortcut icon" href="img/favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="">
     <meta name="author" content="">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
-
 
 <script>
 
@@ -463,11 +467,11 @@ function newfunction2(imgCode){
                                          //레이아웃 css 설정
                                          
                                          var content0 = '<div class="goodsinfo" id="'+position.CRN+'" style="overflow-y:scroll;overflow-x:hidden">'+
-                                         			'<table width="100%" style="text-align:center"><tr><th>품명</th><th>가격</th><th>개수</th><th>유통기한</th><th>이미지</th></tr>';
+                                         			'<table width="100%" style="text-align:center"><tr><th>품명</th><th>가격</th><th>개수</th><th width="140px">유통기한</th><th>이미지</th></tr>';
                                          for (var i = 0, len = glist.length; i < len; i++) {
                                    		
                                          content0 += '<tr><th>'+glist[i].GN+'</th><th>'+glist[i].GP+"</th><th>"+glist[i].GQ
-                                         +'</th><th><div name="demo" id="'+glist[i].GC+'" class="demos" attr="'+glist[i].GC+'"></div></th><th><img src="./resources/image/picture4.png" width="20px" height="20px" class="getgoodsimg" goodsimgcode="'+glist[i].GC+'">'+
+                                         +'</th><th><div name="demo" id="'+glist[i].GC+'" class="demos" attr="'+glist[i].GC+'"></div></th><th style="position:relative;left:10px"><img src="./resources/image/picture4.png" width="20px" height="20px" class="getgoodsimg" goodsimgcode="'+glist[i].GC+'">'+
                                          '</th></tr>';
                                         
                                          
@@ -596,8 +600,7 @@ function newfunction2(imgCode){
                                          
                                        success:function(data){
                                           console.log(data.star);
-                                          var htm = "<댓글보기>";
-                                             htm += '<table><tr><th>작성자</th><th>댓글</th></tr>';
+                                          var htm = '<table><tr><th width="100px" >작성자</th><th width="280px">댓글</th></tr>';
                                        
                                           $.each(data.gradelist,function(index,item){                                             
                                                 htm += '<tr><td>'+item.buyerId+'</td><td>'+item.ment+'</td></tr>';
@@ -775,10 +778,13 @@ function newfunction2(imgCode){
 				if(crn2==storeid) {
 					$(".desc").html(goodsid);
 					
+					if(times!=null){
+					
 					for (var i = 0, len = times.length; i < len; i++) {
 						
 						timetest(i,times[i].goodscodes,times[i].goodsDTs);
 	
+					}
 					}
 
 				}
@@ -826,7 +832,7 @@ function newfunction2(imgCode){
 				dosend();	
 			}
            
-			var wsUri = "ws://192.168.10.104:8889/web/echo.do";
+			var wsUri = "ws://203.233.196.93:8888/web/echo.do";
            
 			function init() {				//yc>이게 시작이 되는가? 왜 이게 시작이 되지?  ->> 아마 socket 핸들러에서 보낸거가  여기로 들어오는듯..
 				output = document.getElementById("output");

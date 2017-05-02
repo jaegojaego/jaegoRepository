@@ -88,7 +88,7 @@
         <!-- main notification links are placed inside of .sidebar-nav -->
         <ul class="sidebar-nav">
 
-            <li>
+            <li class="active">
                 <!-- an example of nested submenu. basic bootstrap collapse component -->
                 <a href="" <%--data-toggle="collapse" data-parent="#sidebar"--%> onclick="goodslist()">
                     <span class="icon">
@@ -112,7 +112,7 @@
                 </a>                
             </li>
 
-            <li class="active">
+            <li>
                 <a href="/web/csboardlist">
                     <span class="icon">
                         <i class="glyphicon glyphicon-user"></i>
