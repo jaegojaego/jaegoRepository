@@ -49,17 +49,12 @@ public class CSBoardController {
         Seller seller=sdao.selectOne(sellerId);
         model.addAttribute("seller",seller);
 
-
-		int total = dao.getAllCount(searchText);		//전체 글 개수 가져오는 명령어
+        int total = dao.getAllCount(searchText);		//전체 글 개수 가져오는 명령어
 		PageNavigator navi = new PageNavigator(countPerPage, pagePerGroup, page, total);		//★ 이 navi만 있으면 페이징을 처리하는 데에 필요한 모든 정보가 있음 ← 이걸 model에 세팅!
 		System.out.println(navi);
 
-
-
 		ArrayList<CSBoard> csbList = dao.getAll(navi.getStartRecord()/*첫 번째 글번호*/, navi.getCountPerPage()/*페이지당 글 수*/, searchText/*검색 기능 추가를 위한 새 매개변수*/);			//← 페이징에 맞춰서 가져오도록 변경		
 		//↑ navi.getStartRecord()와 navi.getCountPerPage() 대신 RowBounds를 여기서 생성해서 바로 넘겨도 됨(매개변수가 헷갈린다면...) : 하지만 Controller는 가능하면 페이지를 돌려주는 역할만 맡기기 위해 RowBounds를 BoardDao에서 생성하는 것!
-
-
 
 		model.addAttribute("navi", navi);		//실제 페이징 처리를 위해 navi를 model에 attribute함
 		model.addAttribute("csbList", csbList);
@@ -67,10 +62,46 @@ public class CSBoardController {
 		model.addAttribute("total", total);
 		return "/CSBoard/csboardlist";
 	}
+	
+	
+	
+	
+	
+	
+	//20170503 박진우
+	@RequestMapping(value="csboardlist2", method=RequestMethod.GET)
+	public String csboardlist2(HttpSession session, Model model, @RequestParam(value="page",defaultValue="1") int page, @RequestParam(value="searchText", defaultValue="") String searchText/*검색값이 넘어올 수도, 안 넘어올 수도 있으므로 searchText의 기본값을 빈 값으로 설정*/) {		
+																/*page라고 들어온 값이 있으면 그걸 주고, 없으면 기본값으로 1을 줌*/
+																/*RequestParam에 설정한 내용이 int page로 들어감*/
+        String sellerId = (String)session.getAttribute("custid");
+        Seller seller=sdao.selectOne(sellerId);
+        model.addAttribute("seller",seller);
+
+        int total = dao.getAllCount(searchText);		//전체 글 개수 가져오는 명령어
+		PageNavigator navi = new PageNavigator(countPerPage, pagePerGroup, page, total);		//★ 이 navi만 있으면 페이징을 처리하는 데에 필요한 모든 정보가 있음 ← 이걸 model에 세팅!
+		System.out.println(navi);
+
+		ArrayList<CSBoard> csbList = dao.getAll(navi.getStartRecord()/*첫 번째 글번호*/, navi.getCountPerPage()/*페이지당 글 수*/, searchText/*검색 기능 추가를 위한 새 매개변수*/);			//← 페이징에 맞춰서 가져오도록 변경		
+		//↑ navi.getStartRecord()와 navi.getCountPerPage() 대신 RowBounds를 여기서 생성해서 바로 넘겨도 됨(매개변수가 헷갈린다면...) : 하지만 Controller는 가능하면 페이지를 돌려주는 역할만 맡기기 위해 RowBounds를 BoardDao에서 생성하는 것!
+
+		model.addAttribute("navi", navi);		//실제 페이징 처리를 위해 navi를 model에 attribute함
+		model.addAttribute("csbList", csbList);
+		model.addAttribute("searchText", searchText);
+		model.addAttribute("total", total);
+		return "/CSBoard/csboardlist2";
+	}
+	
+	
 
 	@RequestMapping(value="csboardWriteForm", method=RequestMethod.GET)
 	public String csboardWriteForm() {
 		return "CSBoard/csboardWriteForm";
+	}
+	
+	//20170503 박진우
+	@RequestMapping(value="csboardWriteForm2", method=RequestMethod.GET)
+	public String csboardWriteForm2() {
+		return "CSBoard/csboardWriteForm2";
 	}
 
 	@RequestMapping(value="write", method=RequestMethod.POST)
@@ -89,7 +120,11 @@ public class CSBoardController {
 		}
 		
 		dao.write(csboard);
-		return "redirect:csboardlist";
+		if (session.getAttribute("type")=="판매자") {
+			return "redirect:csboardlist";
+		} else {
+			return "redirect:csboardlist2";
+		}
 	}
 
 	@RequestMapping(value="read", method=RequestMethod.GET)
@@ -108,6 +143,25 @@ public class CSBoardController {
 		model.addAttribute("csreplylist", csreplylist);		
 		return "CSBoard/read";
 	}
+	
+	
+	@RequestMapping(value="read2", method=RequestMethod.GET)
+	public String read2(int boardnum, Model model) {
+		CSBoard csboard = dao.selectOne(boardnum);
+		if (csboard == null) {
+			return "redirect:csboardlist";
+		}
+		
+		dao.updateHits(boardnum);
+		
+		//리플 가져오는 부분 추가(리플 개수를 예측할 수 없으므로 ArrayList로 받음)
+		ArrayList<CSReply> csreplylist = dao.getCSReplylist(boardnum);	/*dao의 함수를 호출(매개변수는 boardnum)*/
+		
+		model.addAttribute("csboard", csboard);
+		model.addAttribute("csreplylist", csreplylist);		
+		return "CSBoard/read2";
+	}
+	
 
 	@ResponseBody
 	@RequestMapping(value="csreplyWrite", method=RequestMethod.POST)
@@ -174,12 +228,20 @@ public class CSBoardController {
 		}
 		return null;		//다운로드만 하고 그 페이지를 유지함
 	}
-	
+
 	@RequestMapping(value="editForm", method=RequestMethod.GET)
 	public String editForm(int boardnum, Model model) {	
 		CSBoard csboard = dao.selectOne(boardnum);
 		model.addAttribute("csboard",csboard);
 		return "CSBoard/editForm";
+	}
+	
+	//20170503 박진우
+	@RequestMapping(value="editForm2", method=RequestMethod.GET)
+	public String editForm2(int boardnum, Model model) {	
+		CSBoard csboard = dao.selectOne(boardnum);
+		model.addAttribute("csboard",csboard);
+		return "CSBoard/editForm2";
 	}
 	
 	//수정 함수
@@ -191,7 +253,7 @@ public class CSBoardController {
 		
 		//수정할 글이 본인 글인지 확인
 		if (oldCSBoard == null || !oldCSBoard.getId().equals(id)) {
-			return "redirect:boardlist";
+				return "redirect:boardlist";
 		}
 		
 		//수정할 정보에 세션에서 아이디 받아 셋팅
@@ -214,7 +276,12 @@ public class CSBoardController {
 		
 		dao.updateCSBoard(csboard);
 
-		return "redirect:read?boardnum=" + csboard.getBoardnum();
+		if (session.getAttribute("type")=="판매자") {
+			return "redirect:read?boardnum=" + csboard.getBoardnum();
+		} else {
+			return "redirect:read2?boardnum=" + csboard.getBoardnum();
+		}
+
 	}
 	
 	//댓글 삭제
