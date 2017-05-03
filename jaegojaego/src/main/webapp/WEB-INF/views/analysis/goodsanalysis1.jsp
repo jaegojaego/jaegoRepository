@@ -505,7 +505,7 @@
                 <section class="widget">
                     <header>
                         <h4>
-                            Color <span class="fw-semi-bold">Options</span>
+                            <span class="fw-semi-bold">총 수량</span>
                         </h4>
                     </header>
                     <div class="widget-body">
@@ -515,7 +515,7 @@
                         </p>
                         <p class="text-align-center">
                             <button class="btn btn-default width-100 mb-xs" role="button" id="btn1" onclick="javascript:location.href='goodsanalysis'" value="test1">
-                                Default
+                                	선택
                             </button>
                         </p>
                     </div>
@@ -528,7 +528,7 @@
                 <section class="widget">
                     <header>
                         <h4>
-                            Color <span class="fw-semi-bold">Options</span>
+                            <span class="fw-semi-bold">오늘 수량</span>
                         </h4>
                     </header>
                     <div class="widget-body">
@@ -537,8 +537,8 @@
 <!--Use any of the available button classes to quickly create a styled button. Semantically distinguishable beauty.-->
                         </p>
                         <p class="text-align-center">
-                            <button class="btn btn-default width-100 mb-xs" role="button" id="btn2">
-                                Default
+                            <button class="btn btn-default width-100 mb-xs" role="button" id="btn2" onclick="javascript:location.href='goodsanalysis2'" value="test2">
+                                	선택
                             </button>
                         </p>
                     </div>
@@ -551,7 +551,7 @@
                 <section class="widget">
                     <header>
                         <h4>
-                            Color <span class="fw-semi-bold">Options</span>
+                            <span class="fw-semi-bold">총 수입</span>
                         </h4>
                     </header>
                     <div class="widget-body">
@@ -560,8 +560,8 @@
 <!--Use any of the available button classes to quickly create a styled button. Semantically distinguishable beauty.-->
                         </p>
                         <p class="text-align-center">
-                            <button class="btn btn-default width-100 mb-xs" role="button" id="btn3" onclick="javascript:location.href='goodsanalysis2'" value="test2">
-                                Default
+                            <button class="btn btn-default width-100 mb-xs" role="button" id="btn3" onclick="javascript:location.href='goodsanalysis3'" value="test3">
+                                	선택
                             </button>
                         </p>
                     </div>
@@ -574,7 +574,7 @@
                 <section class="widget">
                     <header>
                         <h4>
-                            Color <span class="fw-semi-bold">Options</span>
+                            <span class="fw-semi-bold">막대</span>
                         </h4>
                     </header>
                     <div class="widget-body">
@@ -584,7 +584,7 @@
                         </p>
                         <p class="text-align-center">
                             <button class="btn btn-default width-100 mb-xs" role="button" id="btn4" onclick="javascript:location.href='goodsanalysis4'" value="test4">
-                                Default
+                                	선택
                             </button>
                         </p>
                     </div>

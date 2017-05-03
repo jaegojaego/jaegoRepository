@@ -44,10 +44,8 @@ $(function() {
 	
 	if (custid != null) {
 		if (type == '판매자') {
-			alert(custid + " " + type);
 			location.href='goodslist';
 		} else if (type == '구매자') {
-			alert(custid + " " + type);
 			location.href='map1';
 		}		
 	} else if (custid == null) {

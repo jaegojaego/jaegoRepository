@@ -578,7 +578,7 @@ jQuery(document).ready(function() {
 			<li class="active">블라블라블라</li>
 --%>
 		</ol>		
-		<h1 class="page-title"><%--그래프 : --%><span class="fw-semi-bold">구매자 수정 (무늬만)</span></h1>
+		<h1 class="page-title"><%--그래프 : --%><span class="fw-semi-bold">구매자 수정 (-)</span></h1>
 
 		<div class="row">
 			<div class="col-md-6">
