@@ -30,7 +30,7 @@
 	}
 	</script>--%>
     
-    <link href="./resources/bootstrap/css/application.min.css" rel="stylesheet">
+    <link href="./resources/bootstrap/css/application_for_graph.min.css" rel="stylesheet">
 
 	<link rel="shortcut icon" href="img/favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -488,11 +488,113 @@
 		<h1 class="page-title">매출 분석 - <span class="fw-semi-bold">그래프 선택</span></h1>
 
 
+<%--총 수량--%><%--오늘 수량--%><%--총 수입--%><%--막대--%>
+<%--
+ 	<input id="btn1" type="button" onclick="javascript:location.href='goodsanalysis'" value="test1">
+ 	<input id="btn2" type="button" onclick="javascript:location.href='goodsanalysis2'" value="test2">
+ 	<input id="btn3" type="button" onclick="javascript:location.href='goodsanalysis3'" value="test3">
+ 	<input id="btn4" type="button" onclick="javascript:location.href='goodsanalysis4'" value="test4">
+--%>
 
- 	<input id="btn1" type="button" onclick="javascript:location.href='goodsanalysis'" value="test1"><%--총 수량--%>
- 	<input id="btn2" type="button" onclick="javascript:location.href='goodsanalysis2'" value="test2"><%--오늘 수량--%>
- 	<input id="btn3" type="button" onclick="javascript:location.href='goodsanalysis3'" value="test3"><%--총 수입--%>
- 	<input id="btn4" type="button" onclick="javascript:location.href='goodsanalysis4'" value="test4"><%--막대--%>
+
+        <div class="row">
+
+
+
+            <div class="col-lg-4 col-md-12">
+                <section class="widget">
+                    <header>
+                        <h4>
+                            Color <span class="fw-semi-bold">Options</span>
+                        </h4>
+                    </header>
+                    <div class="widget-body">
+                        <p class="fs-mini text-muted">
+                        	<br><img src="./resources/image/g1.jpg" alt="..."><br><br>
+<!--Use any of the available button classes to quickly create a styled button. Semantically distinguishable beauty.-->
+                        </p>
+                        <p class="text-align-center">
+                            <button class="btn btn-default width-100 mb-xs" role="button" id="btn1" onclick="javascript:location.href='goodsanalysis'" value="test1">
+                                Default
+                            </button>
+                        </p>
+                    </div>
+                </section>
+            </div>
+
+
+
+            <div class="col-lg-4 col-md-12">
+                <section class="widget">
+                    <header>
+                        <h4>
+                            Color <span class="fw-semi-bold">Options</span>
+                        </h4>
+                    </header>
+                    <div class="widget-body">
+                        <p class="fs-mini text-muted">
+                        	<br><img src="./resources/image/g2.jpg" alt="..."><br><br>
+<!--Use any of the available button classes to quickly create a styled button. Semantically distinguishable beauty.-->
+                        </p>
+                        <p class="text-align-center">
+                            <button class="btn btn-default width-100 mb-xs" role="button" id="btn2">
+                                Default
+                            </button>
+                        </p>
+                    </div>
+                </section>
+            </div>
+
+
+
+            <div class="col-lg-4 col-md-12">
+                <section class="widget">
+                    <header>
+                        <h4>
+                            Color <span class="fw-semi-bold">Options</span>
+                        </h4>
+                    </header>
+                    <div class="widget-body">
+                        <p class="fs-mini text-muted">
+                        	<br><img src="./resources/image/g3.jpg" alt="..."><br><br>
+<!--Use any of the available button classes to quickly create a styled button. Semantically distinguishable beauty.-->
+                        </p>
+                        <p class="text-align-center">
+                            <button class="btn btn-default width-100 mb-xs" role="button" id="btn3" onclick="javascript:location.href='goodsanalysis2'" value="test2">
+                                Default
+                            </button>
+                        </p>
+                    </div>
+                </section>
+            </div>
+
+
+
+            <div class="col-lg-4 col-md-12">
+                <section class="widget">
+                    <header>
+                        <h4>
+                            Color <span class="fw-semi-bold">Options</span>
+                        </h4>
+                    </header>
+                    <div class="widget-body">
+                        <p class="fs-mini text-muted">
+                        	<br><img src="./resources/image/g4.jpg" alt="..."><br><br>
+<!--Use any of the available button classes to quickly create a styled button. Semantically distinguishable beauty.-->
+                        </p>
+                        <p class="text-align-center">
+                            <button class="btn btn-default width-100 mb-xs" role="button" id="btn4" onclick="javascript:location.href='goodsanalysis4'" value="test4">
+                                Default
+                            </button>
+                        </p>
+                    </div>
+                </section>
+            </div>
+
+
+
+
+        </div> 	
 
 
 

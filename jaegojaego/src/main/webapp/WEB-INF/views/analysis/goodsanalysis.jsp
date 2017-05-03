@@ -65,7 +65,7 @@
 	      		if(data=="타이틀,상품"){
 	      			alert("자료가 존재하지 않습니다.");
 	      		}else{
-		      		alert("원형성공?");
+//		      		alert("원형성공?");
 	      		}
 	      		console.log(data);
 	      		ele=data[0];

@@ -70,7 +70,7 @@ google.charts.load('current', {'packages':['corechart']});
 					console.log(eleChart);
 					google.charts.setOnLoadCallback(drawChart);
 				}else{
-				alert("성공?");
+//				alert("성공?");
 				eleChart = [];
 				$.each(result, function(index, item) {
 	   				ele = [item.SALESTIME, item.PRICE];

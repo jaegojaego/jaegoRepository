@@ -86,3 +86,32 @@ create table CSReply(
 
 create sequence CSBoard_seq start with 1 increment BY 1;
 create sequence CSReply_seq start with 1 increment BY 1;
+
+delete from SELLER where sellercrn='111111';
+delete from buyer where buyerid='paki';
+delete from FAVORITE where buyerid='paki';
+select * from buyer;
+
+
+<salesdb>
+ insert into sales values('1111115','쿠키','pYAU1EO7','900','2017/04/05','10');
+ insert into sales values('1111115','바게트','2Z6d2HqZ','1500','2017/04/05','10');
+ insert into sales values('1111115','호밀빵','HagBTHtY','2000','2017/04/05','10');
+
+ insert into sales values('1111115','호밀빵','HagBTHtY','2000','2017/04/30','10');
+ insert into sales values('1111115','바게트','2Z6d2HqZ','1500','2017/04/30','10');
+ insert into sales values('1111115','쿠키','pYAU1EO7','900','2017/04/30','3');
+ insert into sales values('1111115','마카롱','qOGfFjE2','800','2017/04/30','2');
+ insert into sales values('1111115','달팽이빵','5rktcfPA','1900','2017/04/30','16');
+ insert into sales values('1111115','베이글','Gpe7KCUh','2100','2017/04/30','16');
+ insert into sales values('1111115','치즈케이크','uu1BsgiL','11000','2017/04/30','2');
+
+ insert into sales values('1111115','호밀빵','HagBTHtY','2000','2017/05/01','10');
+ insert into sales values('1111115','바게트','Qwz3xSmE','1500','2017/05/01','10');
+ insert into sales values('1111115','쿠키','pYAU1EO7','900','2017/05/01','20');
+ insert into sales values('1111115','마카롱','qOGfFjE2','800','2017/05/01','30');
+ insert into sales values('1111115','달팽이빵','5rktcfPA','1900','2017/05/01','20');
+ insert into sales values('1111115','베이글','Gpe7KCUh','2100','2017/05/01','10');
+ insert into sales values('1111115','치즈케이크','uu1BsgiL','11000','2017/05/01','3');
+
+
