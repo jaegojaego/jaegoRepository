@@ -194,6 +194,13 @@ function newfunction2(imgCode){
          a(adrr,flag,sellertob);
       
       });
+      
+//20170503 박진우
+      $(".regionPJW").on("click",function(){
+         adrr = '서울특별시'
+         a(adrr,flag,sellertob);
+      
+      });      
    
       $("#btn1").on("click",function(){
          adrr = $("#adr").val(); //클래스를 찾자
@@ -1034,6 +1041,13 @@ function newfunction2(imgCode){
         <!-- main notification links are placed inside of .sidebar-nav -->
         <ul class="sidebar-nav">
 
+
+
+
+
+
+
+
             
             <li>
                  <a class="collapsed" href="#sidebar-maps" data-toggle="collapse" data-parent="#sidebar">
@@ -1055,6 +1069,12 @@ function newfunction2(imgCode){
                 </ul>
             </li>
 
+
+
+
+
+
+
             <li>
 
 
@@ -1065,7 +1085,7 @@ function newfunction2(imgCode){
                         <i class="fa fa-leaf"></i>
                     </span>
                     업종 선택
-                    <i class="toggle fa fa-angle-down"></i>
+                    <i class="toggle fa fa-angle-down"></i><%-- 1 --%>
                 </a>
                 <ul id="sidebar-extra" class="collapse">
                     <li><a class="tob">카페</a></li>
@@ -1076,18 +1096,18 @@ function newfunction2(imgCode){
             </li>
 
 
-
+<%--
             <li>
                 <a href="/web/csboardlist">
                     <span class="icon">
                         <i class="glyphicon glyphicon-user"></i>
                     </span>
-                    고객 상담
+                    고객 상담--%>
 <%--                    <sup class="text-warning fw-semi-bold">
                         new
                     </sup>--%>	<%-- new 표시 주석 처리 --%>
-                </a>
-            </li>
+<%--                </a>
+            </li>--%>
 
 <%--
             <li>
@@ -1416,8 +1436,22 @@ function newfunction2(imgCode){
 
                         <b class="caret"></b></a>
                     <ul class="dropdown-menu">
+
+
+
                         <li><a href="buyerupdateFormPJW"><i class="glyphicon glyphicon-user"></i> &nbsp; 회원정보</a></li>
+                        <li><a href="map1"><i class="glyphicon glyphicon-map-marker"></i> &nbsp; 지도</a></li>
+                        <li><a href="csboardlist2"><i class="fa fa-desktop"></i> &nbsp; 고객상담</a></li>
+
                         <li class="divider"></li>
+
+
+
+
+
+
+
+            
 <%--
                         <li><a href="#">Calendar</a></li>
                         <li><a href="#">Inbox &nbsp;&nbsp;<span class="badge bg-danger animated bounceIn">9</span></a></li>

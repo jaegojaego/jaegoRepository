@@ -112,10 +112,17 @@ public class CSBoardController {
 	@ResponseBody
 	@RequestMapping(value="csreplyWrite", method=RequestMethod.POST)
 	public ArrayList<CSReply> csreplyWrite(CSReply csreply, HttpSession session) {
+		System.out.println("들어오나kkkkk");
 		String id = (String)session.getAttribute("custid");
 		csreply.setId(id);
-		System.out.println(csreply);
-		dao.insertCSReply(csreply);
+		System.out.println("csreply : " + csreply);
+		try {
+			dao.insertCSReply(csreply);			
+		} catch(Exception e) {
+			System.out.println("dsafkfjwdljiofwdjwefjwekjl");
+			e.printStackTrace();
+		}
+
 		
 		ArrayList<CSReply> csreplylist = dao.getCSReplylist(csreply.getBoardnum());
 		
