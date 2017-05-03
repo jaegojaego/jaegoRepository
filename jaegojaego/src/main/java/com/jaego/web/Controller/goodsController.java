@@ -222,9 +222,9 @@ public class goodsController {
 		System.out.println("받아온 buyer정보들"+dao.phone(sellerCRN));
 		System.out.println("phone번호들!"+phone);
 			
-		//문자보내기
-		//ExampleSend send = new ExampleSend();//
-		//send.main(text,phone);//
+		//문자보내기-수량 변동시
+//		ExampleSend send = new ExampleSend();
+//		send.main(text,phone);
 		
 		System.out.println("sellerCRN : "+sellerCRN);
 		ArrayList<Buyer> buyer_id = dao.buyer_id(sellerCRN);

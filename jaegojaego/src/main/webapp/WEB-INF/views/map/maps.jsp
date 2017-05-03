@@ -18,15 +18,13 @@
 
 <script type="text/javascript" src="<c:url value="./resources/js/jquery-3.1.1.js"/>"></script>
 
-<script type="text/javascript" src="./resources/js/jquery-3.1.1.js"> </script>
-<script src="./resources/dist/sweetalert.min.js"></script>
-<link rel="stylesheet" type="text/css" href="./resources/dist/sweetalert.css">
-<link rel="stylesheet" href="./resources/css/jquery.toast.min.css" />
-<script type="text/javascript" src="./resources/js/jquery.toast.js"></script>
-<script type="text/javascript" src="./resources/js/jquery.toast.min.js"></script>     
+
+
+
+
 
 <script type="text/javascript" src="./resources/js/function.js"> </script>
-<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=98b5ff77fd0570ce46f2ef84207626b0&libraries=services"></script>
+<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=a14aced40ff3bc7cb1d2485146b53b0a&libraries=services"></script>
 
     <link href="./resources/bootstrap/css/application.min.css" rel="stylesheet">
 
@@ -752,7 +750,7 @@ function newfunction2(imgCode){
                      }          
                   }         
           }else{
-/*20170503 박진우             alert("다시검색해주세요");*/
+alert("다시검색해주세요");
 
           } 
       });    
@@ -891,18 +889,18 @@ function newfunction2(imgCode){
             	client(evt);
             	
             	var message = JSON.parse(evt.data);
-            	//20170503 박진우            	alert("message떠야해: "+message);
+//20170503 박진우            		alert("message떠야해: "+message);
             	var messagesellerCRN = message.sellerCRN;
-            	//20170503 박진우            	alert("sellerCRN떠야해: "+messagesellerCRN);
+            	//20170503 박진우            		alert("sellerCRN떠야해: "+messagesellerCRN);
             	var messagefrom = message.from;
             	var messagecontent = message.message;
-            	/* alert("message내용 : "+messagecontent); */ 
+            	//20170503 박진우            	 alert("message내용 : "+messagecontent);  
             	var tomessage = message.to;
-            	/* alert("buyerid배열"+message.to);  */
+            	//20170503 박진우            	 alert("buyerid배열"+message.to);  
             	
             	var buyerid = document.getElementById("buyerid").value;
-           		/* alert("hidden값 : "+buyerid);
-            	alert("buyerid배열 길이: "+tomessage.length); */
+            	//20170503 박진우           		 alert("hidden값 : "+buyerid);
+//20170503 박진우            	alert("buyerid배열 길이: "+tomessage.length);
             		for(var i = 0 ; i < tomessage.length ; i++){
             			if (buyerid == tomessage[i].buyerId){
             			/* console.log(tomessage[i].buyerId); */
@@ -928,12 +926,12 @@ function newfunction2(imgCode){
 		        				sellerCRN:messagesellerCRN
 		        			},
 		        			success: function(sellerBEA){
-		        				//20170503 박진우		        				alert("잘왔엉"+sellerBEA);
+		        				//20170503 박진우		        						        				alert("잘왔엉"+sellerBEA);
 		        				var adrr = sellerBEA;
 		        				a(adrr,flag,sellertob);
 		        			},
 		        			error: function(e){
-		        				//20170503 박진우		        				alert('머ㅜㄴ데');
+		        				//20170503 박진우		        						        				alert('머ㅜㄴ데');
 		        			}
 		        		});
 		        	}); 
@@ -1612,5 +1610,19 @@ function newfunction2(imgCode){
 <!-- page specific js -->
 <script src="./resources/bootstrap/js/tables-dynamic.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+
+
+
+
+
+<link rel="stylesheet" href="./resources/css/jquery.toast.min.css" />
+<link rel="stylesheet" type="text/css" href="./resources/dist/sweetalert.css">
+<script type="text/javascript" src="./resources/js/jquery.toast.js"></script>
+<script type="text/javascript" src="./resources/js/jquery.toast.min.js"></script>
+<script src="./resources/dist/sweetalert.min.js"></script>
+
+
+
 </body>
 </html>

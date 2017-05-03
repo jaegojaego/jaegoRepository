@@ -559,6 +559,7 @@
 							dosendcontent(jsonContent);
 							//alert("!!!!!");
 							doSend();
+							alert('수량이 변경되었습니다.');
 						},
 						error:function(e){
 							//20170503 박진우							alert("왜??"+e);
@@ -669,6 +670,7 @@
 							dosendcontent(jsonContent);
 							doSend();
 							//location.href="goodslist";
+							alert('상품이 등록되었습니다.');
 						}
 					});
 			 }else{
