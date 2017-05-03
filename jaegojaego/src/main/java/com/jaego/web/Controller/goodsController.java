@@ -223,8 +223,8 @@ public class goodsController {
 		System.out.println("phone번호들!"+phone);
 			
 		//문자보내기-수량 변동시
-//		ExampleSend send = new ExampleSend();
-//		send.main(text,phone);
+		ExampleSend send = new ExampleSend();
+		send.main(text,phone);
 		
 		System.out.println("sellerCRN : "+sellerCRN);
 		ArrayList<Buyer> buyer_id = dao.buyer_id(sellerCRN);
