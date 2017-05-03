@@ -116,7 +116,7 @@
 			if (input.files && input.files[0]) {
 				var reader = new FileReader();
 				reader.onload = function (e) {
-					alert(reader.value);
+					//alert(reader.value);
 					$('#blah').attr('src', e.target.result);
 				}
 				reader.readAsDataURL(input.files[0]);
@@ -249,7 +249,7 @@
 <div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div>
 
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script src="//apis.daum.net/maps/maps3.js?apikey=98b5ff77fd0570ce46f2ef84207626b0&libraries=services"></script>
+<script src="//apis.daum.net/maps/maps3.js?apikey=a14aced40ff3bc7cb1d2485146b53b0a&libraries=services"></script>
 <script>
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div
         mapOption = {

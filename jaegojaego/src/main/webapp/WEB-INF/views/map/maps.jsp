@@ -316,7 +316,7 @@ function newfunction2(imgCode){
                            var imageSize;
                            
                            if(data>0){
-                              imageSrc = "http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+                              imageSrc = "./resources/image/markerStar.png";
                               imageSize = new daum.maps.Size(24, 35);
                            }else{
                               imageSrc = "./resources/image/mark.png";
