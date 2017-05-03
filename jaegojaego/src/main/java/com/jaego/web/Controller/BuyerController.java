@@ -1,8 +1,11 @@
 //박진우 : 구매자 컨트롤러
 package com.jaego.web.Controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -21,6 +24,17 @@ public class BuyerController {
 
 	@Autowired
 	private SellerDAO sdao;
+
+    @RequestMapping(value = "buyerupdateFormPJW", method = RequestMethod.GET)
+    public String buyerupdatePJW(HttpSession session,/*String sellerId,*/Model model) {
+       
+       String buyerId = (String)session.getAttribute("custid");
+       Buyer buyer = bdao.selectOne(buyerId);
+       model.addAttribute("buyer",buyer);
+       
+       System.out.println("들어갈때"+buyer);
+       return "./Buyer/buyerupdateFormPJW";
+    }
 	
 	//박진우 - 20170329 회원가입 : 부트스트랩 적용
 	@RequestMapping(value="buyerJoinForm", method = RequestMethod.GET)

@@ -17,7 +17,7 @@
 
 	<script>
 	function tttest() {
-		alert('어찌하스까이이');
+		//20170503 박진우		alert('어찌하스까이이');
 		location.href='goodslist';
 	}
 	///web/goodslist3
@@ -539,7 +539,7 @@
 				if($('.afterQ').eq(index).val() != $('.beforeQ').eq(index).text()){
 					
 					var ninus = $('.beforeQ').eq(index).text()-$('.afterQ').eq(index).val();
-					alert(ninus); 
+					//20170503 박진우					alert(ninus); 
 					
 					$('.beforeQ').eq(index).text($(this).val());
 					var goodscode = $('.goodscode').eq(index).text();
@@ -561,7 +561,7 @@
 							doSend();
 						},
 						error:function(e){
-							alert("왜??"+e);
+							//20170503 박진우							alert("왜??"+e);
 							console.log(e);
 						}
 					});
@@ -585,7 +585,7 @@
 							location.href="goodslist";
 						}, */
 						error:function(e){
-							alert("오류임");
+							//20170503 박진우							alert("오류임");
 						}
 					});
 				}
@@ -612,12 +612,12 @@
 			var goodscode = $(".goodscode");
 			$(".tr").each(function(index,item) {
 					var checked = checkbox.eq(index).prop("checked");
-					alert(index);
-					alert(checked);
+					//20170503 박진우					alert(index);
+//20170503 박진우					alert(checked);
 					if(checked){
 						var delcode = goodscode.eq(index).text();
-						alert("index야"+index);
-						alert(delcode);
+						//20170503 박진우						alert("index야"+index);
+//20170503 박진우						alert(delcode);
 						$.ajax({
 							type:"GET",
 							url:"del",
@@ -663,7 +663,7 @@
 							goodsStatus:btnstatus
 						},
 						success: function(content){
-							alert("content : "+content);
+							//20170503 박진우							alert("content : "+content);
 							var jsonContent = JSON.parse(content);
 							/* alert("jsonContent : "+jsonContent); */
 							dosendcontent(jsonContent);
@@ -676,7 +676,7 @@
 				  var index = $('.status').index(this);
 			      var btnstatus = $(this).val();
 			      var goodscode = $(".goodscode:eq("+index+")").text();
-			      alert(index);
+			    //20170503 박진우			      alert(index);
 			      $.ajax({
 						type:"GET",
 						url:"updatestatus",
@@ -844,7 +844,7 @@
                                 },
                                 
                                 success : function(data){
-                                	alert(data);
+                                	//20170503 박진우                                	alert(data);
                     				var pk = {storeid : CRN, goodsid : content0,flag:data,fortimes:goodstime};
                     				var jsonstr = JSON.stringify(pk);
                                     websocket.send(jsonstr); // 스트링 배열만들어서 보내면 되겠네...
@@ -931,12 +931,12 @@
 				/* alert("dosendcontent(고객아이디들) : " + content.buyer_id); */
 				var message={};
 				message.sellerCRN = content.sellerCRN;
-				alert("sellerCRN 잘왔네: "+content.sellerCRN);
+				//20170503 박진우				alert("sellerCRN 잘왔네: "+content.sellerCRN);
 				message.from = content.color;
-				alert(content.color);
+				//20170503 박진우				alert(content.color);
 				message.message = content.shopname;
 				message.to = content.buyer_id;
-				alert(JSON.stringify(message));
+				//20170503 박진우				alert(JSON.stringify(message));
 				websocket.send(JSON.stringify(message));
 			}
 			
