@@ -16,7 +16,7 @@
 	</script>
 
 	<script>
-	function tttest() {
+	function goodslist() {
 		//20170503 박진우		alert('어찌하스까이이');
 		location.href='goodslist';
 	}
@@ -975,21 +975,21 @@
 					<table class="table table-hover tablesorter" id="tableapi">
 						<thead>
 							<tr>
-								<th style="padding-left: 12px;">이미지</th>
-								<th>상품명</th>
-								<th>상품코드</th>
-								<th>판매가격</th>
-								<th style="padding-left: 34px;">업로드 날짜</th>
-								<th style="padding-left: 41px;">유통기한</th>
-								<th>현재수량</th>
-								<th>변동수량</th>
+								<th style="padding-left: 12px;">写真</th>
+								<th>商品名</th>
+								<th>商品コード</th>
+								<th>値段</th>
+								<th style="padding-left: 34px;">アップロード日</th>
+								<th style="padding-left: 41px;">賞味期限</th>
+								<th>現在數量</th>
+								<th>変更數量</th>
 								<th>
 									<span>
-									삭제<input type="checkbox" id="checkboxall" style="width:15px;height:15px;margin-left: 5px;">
+									削除<input type="checkbox" id="checkboxall" style="width:15px;height:15px;margin-left: 5px;">
 									</span>
 								</th>
-								<th style="padding-left: 13px;">수정</th>
-								<th>상태</th>
+								<th style="padding-left: 13px;">修正</th>
+								<th>状態</th>
 							</tr>
 						</thead>
 						<tbody>
