@@ -154,7 +154,7 @@ public class mapsController {
 			int result2 =dao.findfavs(favorite);
 			if(result2<3){
 				dao.addshop(favorite);
-				return "관심매장으로 추가되었습니다.";
+				return "この店をブックマークしました。";
 			}else{
 				return "관심매장을 3개 이하로 선택해주세요.";
 			}

@@ -65,13 +65,13 @@ function timetest(i,goodscode,goodsDT) {
 		  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 		  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 	
-		  document.getElementById(goodscode).innerHTML = days + " 일 " + hours + "시간 "
-		  + minutes + "분 " + seconds + "초 ";  
+		  document.getElementById(goodscode).innerHTML = days + "日" + hours + "時"
+		  + minutes + "分" + seconds + "秒";  
 		  
 		
 		  if (distance < 0) {
 		    clearInterval(x);
-		    document.getElementById(goodscode).innerHTML = "기한만료(EXPIRED)"; // 유통기한이 다되면 시간자리에 기한만료가 뜸..
+		    document.getElementById(goodscode).innerHTML = "期限満了(EXPIRED)"; // 유통기한이 다되면 시간자리에 기한만료가 뜸..
 		  }
 		  
 		}, 1000);
@@ -107,7 +107,7 @@ function newfunction(imgtitle,imgcrn){
 function newfunction2(imgCode){
 
 	swal({
-		  title: "<상세사진>",
+		  title: "<詳細写真>",
 		  text: "<img src='goodsimg?goodsCode="+imgCode+"' width='300' height='200'>",
 		  confirmButtonColor: "#FFBB00",
 		  html: true
@@ -355,14 +355,14 @@ function newfunction2(imgCode){
                             '      <div class="close" title="닫기"></div>' + 
                             '      </div>' + 
                             '      <div class="body">' + 
-                            '      <div class="img"><div class="shopinfo" style="width:390px;height:132px;text-overflow: ellipsis;line-height:190%">업종:'+position.tob+'<br>주소:'+position.shopaddress+'<br>전화번호:'+position.phone+'<br><div class="star" style="width:20px;">별점</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
-                            +'<span class="addshop" style="font-weight:bolder;font-color:black;">[관심매장추가/</span><span class="delshop">삭제]</span></div></div>' + 
+                            '      <div class="img"><div class="shopinfo" style="width:390px;height:132px;text-overflow: ellipsis;line-height:190%">業種:'+position.tob+'<br>住所:'+position.shopaddress+'<br>電話番号:'+position.phone+'<br><div class="star" style="width:20px;">評点</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+                            +'<span class="addshop" style="font-weight:bolder;font-color:black;">[ブックマーク設定/</span><span class="delshop">解除]</span></div></div>' + 
                             '      <div class="desc">';
                             
                             content += '</div>' + 
                             '           </div>' + 
                             '        <div class="comments"></div><div align="center" style="width:289px;position: relative;top: 5px;left:3px" class="starcomment"><select class="starcheck" align="center" style="height:24px;border: 0px;color:#EDA900"><option value="1">★</option><option value="2">★★</option>'+
-                            '<option value="3">★★★</option><option value="4">★★★★</option><option value="5">★★★★★</option></select>&nbsp;<input type="text" class="comment" placeholder="평점을 선택 후 댓글을 입력해주세요" style="width:267px;height:24px;border: 0px;font-size:13px">&nbsp;<input type="button" class="bnt" value="입력" style="border: 0px;height:24px;background:#EDA900;color:white;font-size:13px"></div></div>' + 
+                            '<option value="3">★★★</option><option value="4">★★★★</option><option value="5">★★★★★</option></select>&nbsp;<input type="text" class="comment" placeholder="評点を選擇してからコメントを入力して下さい。 선택 후 コメント을 입력해주세요" style="width:267px;height:24px;border: 0px;font-size:13px">&nbsp;<input type="button" class="bnt" value="입력" style="border: 0px;height:24px;background:#EDA900;color:white;font-size:13px"></div></div>' + 
                             
                             '    </div>' +    
                             '</div> <div class="goodsimg"></div>';
@@ -472,7 +472,7 @@ function newfunction2(imgCode){
                                          //레이아웃 css 설정
                                          
                                          var content0 = '<div class="goodsinfo" id="'+position.CRN+'" style="overflow-y:scroll;overflow-x:hidden">'+
-                                         			'<table width="100%" style="text-align:center"><tr><th>품명</th><th>가격</th><th>개수</th><th width="140px">유통기한</th><th>이미지</th></tr>';
+                                         			'<table width="100%" style="text-align:center"><tr><th>商品名</th><th>値段</th><th>數量</th><th width="140px">賞味期限</th><th>写真</th></tr>';
                                          for (var i = 0, len = glist.length; i < len; i++) {
                                    		
                                          content0 += '<tr><th>'+glist[i].GN+'</th><th>'+glist[i].GP+"</th><th>"+glist[i].GQ
@@ -555,7 +555,7 @@ function newfunction2(imgCode){
                                             starsss = "★★★★★"
                                          }
                                          
-                                        $(".star").html("별점:"+starsss);
+                                        $(".star").html("評点:"+starsss);
                                        },                             
                                        error:function(e){
                                           console.log(e);
@@ -572,7 +572,7 @@ function newfunction2(imgCode){
                                          
                                        success:function(data){
                                           
-                                          var htm = '<table><tr><th width="100px" >작성자</th><th width="280px">댓글</th></tr>';
+                                          var htm = '<table><tr><th width="100px" >作成者</th><th width="280px">コメント</th></tr>';
                                        
                                           $.each(data,function(index,item){                                             
                                                 htm += '<tr><td>'+item.buyerId+'</td><td>'+item.ment+'</td></tr>';
@@ -627,7 +627,7 @@ function newfunction2(imgCode){
                                          
                                        success:function(data){
                                           console.log(data.star);
-                                          var htm = '<table><tr><th width="100px" >작성자</th><th width="280px">댓글</th></tr>';
+                                          var htm = '<table><tr><th width="100px" >作成者</th><th width="280px">コメント</th></tr>';
                                        
                                           $.each(data.gradelist,function(index,item){                                             
                                                 htm += '<tr><td>'+item.buyerId+'</td><td>'+item.ment+'</td></tr>';
@@ -650,8 +650,8 @@ function newfunction2(imgCode){
                                                  starsss = "★★★★★"
                                               }
                                               
-                                             $(".star").html("별점:"+starsss);
-                                             alert("등록완료");
+                                             $(".star").html("評点:"+starsss);
+                                             alert("登録完了");
                                              $(".comment").val("");
                                              
                                        },                             
@@ -661,7 +661,7 @@ function newfunction2(imgCode){
                                  });
                                   
                                 
-                                ////////////// 여기 별점 새로 가져오는것도 해야함
+                                ////////////// 여기 評点 새로 가져오는것도 해야함
                                 
                                 }); 
                                 

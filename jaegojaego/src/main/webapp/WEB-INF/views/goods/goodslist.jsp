@@ -480,7 +480,7 @@
                             
                             
                             var content0 = '<div class="goodsinfo" id="'+CRN+'" style="overflow-y:scroll;overflow-x:hidden">'+
-                                         			'<table width="100%"><tr><th>품명</th><th>가격</th><th>개수</th><th width="140px">유통기한</th><th>이미지</th></tr>';
+                                         			'<table width="100%"><tr><th>商品名</th><th>値段</th><th>數量</th><th width="140px">賞味期限</th><th>写真</th></tr>';
                                
                                    for (var i = 0, len = glist.length; i < len; i++) {
                                    		
