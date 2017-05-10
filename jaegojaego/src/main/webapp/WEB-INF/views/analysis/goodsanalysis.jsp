@@ -67,24 +67,17 @@
 	      		}else{
 //		      		alert("원형성공?");
 	      		}
-	      		console.log(data);
+	      		
 	      		ele=data[0];
 	      			
-	      		console.log(ele);
+	      		
 	      		google.charts.setOnLoadCallback(cricleChart);
 	      	}
 		}); 
 	}
 
 </script>
-<%--<script type="text/javascript">
-	function pagingFormSubmit(currentPage) {
-		var form = document.getElementById("pagingForm");
-		var page = document.getElementById("page");
-		page.value = currentPage;
-		form.submit();
-	}
-	</script>--%>
+
     
     <link href="./resources/bootstrap/css/application.min.css" rel="stylesheet">
 

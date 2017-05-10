@@ -32,7 +32,6 @@ public class BuyerController {
        Buyer buyer = bdao.selectOne(buyerId);
        model.addAttribute("buyer",buyer);
        
-       System.out.println("들어갈때"+buyer);
        return "./Buyer/buyerupdateFormPJW";
     }
 	
@@ -70,7 +69,7 @@ public class BuyerController {
 	//박진우 - 20170320 : 판매자 가입
 	@RequestMapping(value="buyerJoin", method = RequestMethod.POST)
 	public String sellerJoin(Buyer buyer, MultipartFile upload) {
-		System.out.println(buyer);
+		
 		bdao.addBuyer(buyer);
 		return "./Buyer/buyerJoin";		//Q) redirect로 바꿀까...
 	}

@@ -101,9 +101,9 @@ public class MapsDao {
 	
 	public double starsac(String sellerCRN){
 		MapsMapper mapper = sqlsession.getMapper(MapsMapper.class);
-		System.out.println("1"+sellerCRN);
+		
 		double starhash = mapper.starsac(sellerCRN);
-		System.out.println("2"+starhash);
+		
 		return starhash;
 		
 		

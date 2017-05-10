@@ -89,7 +89,7 @@ public class goodsController {
 			goods.setGoodsOimage(upload.getOriginalFilename());
 			goods.setGoodsSimage(savedfile);
 		}
-		System.out.println("상품정보 : " + goods);
+		
 		dao.insertGoods(goods);
 		ArrayList<Goods> result = dao.list(sellerCRN);
 		model.addAttribute("list",result);
@@ -99,7 +99,7 @@ public class goodsController {
 	public String goodsupdate(String goodsCode,Model model) {
 		Goods goods=dao.select(goodsCode);
 		model.addAttribute("goods",goods);
-		System.out.println("야호여기야여기"+goods);
+		
 		return "./goods/goodsupdate";
 		
 	}
@@ -109,12 +109,9 @@ public class goodsController {
 		// String sellerCRN=(String) session.getAttribute("0000");
 		String sellerId = (String)session.getAttribute("custid");
 		String sellerCRN = dao.sellerCRN(sellerId);
-		System.out.println("sellerCRN : "+sellerCRN);
-				//String codenum="R3QncP8f";
-				//goods.setGoodsCode(codenum);
+		
 		String codenum=goods.getGoodsCode();
-		System.out.println("goodscode :"+codenum);
-		System.out.println("수정된 상품 : " + goods);
+		
 		//기존에첨부파일있다면 기존에파일을지우는것
 		//새로파일을 작성
 		String savefile = dao.select(codenum).getGoodsSimage();
@@ -126,7 +123,7 @@ public class goodsController {
 			goods.setGoodsSimage(savefile);
 		}
 		goods.setSellerCRN(sellerCRN);
-		System.out.println("최종 수정"+goods);
+		
 		dao.updateGoods(goods);
 		ArrayList<Goods> result = dao.list(sellerCRN);
 		model.addAttribute("list",result);
@@ -145,7 +142,7 @@ public class goodsController {
 		String sellerId = (String)session.getAttribute("custid");
 		String sellerCRN = dao.sellerCRN(sellerId);
 		ArrayList<Goods> result = dao.list(sellerCRN);
-		System.out.println("목록가져왕:"+result);//
+		
 		model.addAttribute("list",result);
 		return "./goods/goodslist";
 	}
@@ -197,8 +194,7 @@ public class goodsController {
 		String sellerId = (String)session.getAttribute("custid");
 		String sellerCRN = dao.sellerCRN(sellerId);
 		ArrayList<HashMap<String,Object>> resultinfo = dao.sendinfo(sellerCRN);
-		System.out.println("favorite상품이야!"+resultinfo);//
-			
+					
 		String text = "";
 		int i;
 		text += "★"+resultinfo.get(0).get("SELLERSHOPNAME")+"의 재고소식★"+"\n";
@@ -208,7 +204,7 @@ public class goodsController {
 			text += "수량 : " + resultinfo.get(i).get("GOODSQUANTITY")+"\n";
 			text += "----------------------------"+"\n";
 		}
-		//System.out.println(text);
+		
 
 		ArrayList<Buyer>buyerphonelist = dao.phone(sellerCRN);
 		String phone = "";
@@ -219,16 +215,12 @@ public class goodsController {
 				phone += buyerphonelist.get(j).getBuyerPhone();
 			}
 		}
-		System.out.println("받아온 buyer정보들"+dao.phone(sellerCRN));
-		System.out.println("phone번호들!"+phone);
-			
+		
 		//문자보내기-수량 변동시
 		ExampleSend send = new ExampleSend();
 		send.main(text,phone);
 		
-		System.out.println("sellerCRN : "+sellerCRN);
-		ArrayList<Buyer> buyer_id = dao.buyer_id(sellerCRN);
-		System.out.println("구매자id들"+buyer_id);
+		ArrayList<Buyer> buyer_id = dao.buyer_id(sellerCRN);		
 		String shopname = resultinfo.get(0).get("SELLERSHOPNAME")+"의 상품목록이 변경되었습니다.";
 		HashMap<String, Object>content = new HashMap<String, Object>();
 		content.put("sellerCRN", sellerCRN);
@@ -236,7 +228,7 @@ public class goodsController {
 		content.put("shopname", shopname);
 		content.put("buyer_id", buyer_id);
 		Gson gson = new Gson();
-		System.out.println("보내는 값(sellerCRN,color,shopname,buyer_id)"+content);
+	
 		return gson.toJson(content);
 		}
 	
@@ -263,11 +255,10 @@ public class goodsController {
 		String sellerId = (String)session.getAttribute("custid");
 		String sellerCRN = dao.sellerCRN(sellerId);
 		ArrayList<Buyer> buyer_id = dao.buyer_id(sellerCRN);
-		System.out.println("구매자id들"+buyer_id);
-		System.out.println("sellerCRN : "+sellerCRN);
+	
 		
 		HashMap<String, Object>insertpush=dao.insertpush(goodsCode);
-		System.out.println("넣을 정보 뽑아야겐"+insertpush);
+		
 		String goodsName = (String)insertpush.get("GOODSNAME");
 		String shopName = (String)insertpush.get("SELLERSHOPNAME");
 		String shopname = shopName+"에서 "+goodsName+" 상품이 추가되었습니다.";
@@ -278,8 +269,7 @@ public class goodsController {
 		content.put("shopname", shopname);
 		content.put("buyer_id", buyer_id);
 		Gson gson = new Gson();
-		System.out.println("보내는 값(sellerCRN,color,shopname,buyer_id)"+content);
-		System.out.println("보내는 content: "+gson.toJson(content));
+
 		return gson.toJson(content);
 	}
 	
@@ -287,7 +277,6 @@ public class goodsController {
 	@RequestMapping(value="selectsellerBEA", method=RequestMethod.GET, produces = "application/text; charset=utf8")
 	public String selectsellerBEA(String sellerCRN){
 		String sellerBEA = dao.selectsellerBEA(sellerCRN);//adsfadsf
-		System.out.println("잘 변환??"+sellerBEA);
 		return sellerBEA;
 	}
 }

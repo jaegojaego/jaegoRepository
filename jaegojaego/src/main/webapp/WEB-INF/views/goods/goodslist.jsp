@@ -95,12 +95,9 @@
                         <i class="fa fa-table"></i>
                     </span>
                     상품 목록
-                    <%--<i class="toggle fa fa-angle-down"></i>--%>
+                   
                 </a>
-                <%--<ul id="sidebar-tables" class="collapse in">
-                    <li><a href="tables_basic.html">Tables Basic</a></li>
-                    <li class="active"><a href="tables_dynamic.html">Tables Dynamic</a></li>
-                </ul>--%>
+             
             </li>
 
             <li>
@@ -118,243 +115,14 @@
                         <i class="glyphicon glyphicon-user"></i>
                     </span>
                     고객 상담
-<%--                    <sup class="text-warning fw-semi-bold">
-                        new
-                    </sup>--%>	<%-- new 표시 주석 처리 --%>
-                </a>
-            </li>
 
-<%--
-            <li>
-                <a href="inbox.html">
-                    <span class="icon">
-                        <i class="fa fa-envelope"></i>
-                    </span>
-                    Email
-                    <span class="label label-danger">
-                        9
-                    </span>
                 </a>
             </li>
---%>
 
         </ul>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<%--↓================================================================================================================================--%>        
-<%--
-        <!-- every .sidebar-nav may have a title -->
-        <h5 class="sidebar-nav-title">템플릿 <a class="action-link" href="#"><i class="glyphicon glyphicon-refresh"></i></a></h5>
-        <ul class="sidebar-nav">
---%>
-<%--
-            <li>
-                <!-- an example of nested submenu. basic bootstrap collapse component -->
-                <a class="collapsed" href="#sidebar-forms" data-toggle="collapse" data-parent="#sidebar">
-                    <span class="icon">
-                        <i class="glyphicon glyphicon-align-right"></i>
-                    </span>
-                    Forms
-                    <i class="toggle fa fa-angle-down"></i>
-                </a>
-                <ul id="sidebar-forms" class="collapse">
-                    <li><a href="form_elements.html">Form Elements</a></li>
-                    <li><a href="form_validation.html">Form Validation</a></li>
-                    <li><a href="form_wizard.html">Form Wizard</a></li>
-                </ul>
-            </li>
-
-            <li>
-                <a class="collapsed" href="#sidebar-ui" data-toggle="collapse" data-parent="#sidebar">
-                    <span class="icon">
-                        <i class="glyphicon glyphicon-tree-conifer"></i>
-                    </span>
-                    UI Elements
-                    <i class="toggle fa fa-angle-down"></i>
-                </a>
-                <ul id="sidebar-ui" class="collapse">
-                    <li><a href="ui_components.html">Components</a></li>
-                    <li><a href="ui_notifications.html">Notifications</a></li>
-                    <li><a href="ui_icons.html">Icons</a></li>
-                    <li><a href="ui_buttons.html">Buttons</a></li>
-                    <li><a href="ui_tabs_accordion.html">Tabs & Accordion</a></li>
-                    <li><a href="ui_list_groups.html">List Groups</a></li>
-                </ul>
-            </li>
-
-            <li>
-                <a href="grid.html">
-                    <span class="icon">
-                        <i class="glyphicon glyphicon-th"></i>
-                    </span>
-                    그리이드
-                </a>
-            </li>
---%>
-
-<%--             <li>
-                <a class="collapsed" href="http://www.naver.com/#sidebar-maps" data-toggle="collapse" data-parent="#sidebar">
-
-                    <span class="icon">
-                        <i class="glyphicon glyphicon-map-marker"></i>
-                    </span>
-                    지도호우
- --%>
-                    <%--<i class="toggle fa fa-angle-down"></i>--%>	<%--하향 화살표 삭제--%>
-<%--                </a>--%>
-                <%--<ul id="sidebar-maps" class="collapse">
-                    <!-- data-no-pjax turns off pjax loading for this link. Use in case of complicated js loading on the
-                         target page -->
-                    <li><a href="maps_google.html" data-no-pjax>Google Maps</a></li>
-                    <li><a href="maps_vector.html">Vector Maps</a></li>
-                </ul>
-            </li>
-
-<%--
-            <li>
-                <a class="collapsed" href="#sidebar-extra" data-toggle="collapse" data-parent="#sidebar">
-                    <span class="icon">
-                        <i class="fa fa-leaf"></i>
-                    </span>
-                    Extra
-                    <i class="toggle fa fa-angle-down"></i>
-                </a>
-                <ul id="sidebar-extra" class="collapse">
-                    <li><a href="calendar.html">Calendar</a></li>
-                    <li><a href="invoice.html">Invoice</a></li>
-                    <li><a href="login.html" target="_blank" data-no-pjax>Login Page</a></li>
-                    <li><a href="error.html" target="_blank" data-no-pjax>Error Page</a></li>
-                    <li><a href="gallery.html">Gallery</a></li>
-                    <li><a href="search.html">Search Results</a></li>
-                    <li><a href="time_line.html" data-no-pjax>Time Line</a></li>
-                </ul>
-            </li>
---%>
-<!--             <li>
-                <a class="collapsed" href="#sidebar-levels" data-toggle="collapse" data-parent="#sidebar">
-                    <span class="icon">
-                        <i class="fa fa-folder-open"></i>
-                    </span>
-                    Menu Levels
-                    <i class="toggle fa fa-angle-down"></i>
-                </a>
-                <ul id="sidebar-levels" class="collapse">
-                    <li><a href="#">Level 1</a></li>
-                    <li>
-                        <a class="collapsed" href="#sidebar-sub-levels" data-toggle="collapse" data-parent="#sidebar-levels">
-                            Level 2
-                            <i class="toggle fa fa-angle-down"></i>
-                        </a>
-                        <ul id="sidebar-sub-levels" class="collapse">
-                            <li><a href="#">Level 3</a></li>
-                            <li><a href="#">Level 3</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </li> -->
-        </ul>
-<%--↑================================================================================================================================--%>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<%--
-        <h5 class="sidebar-nav-title">Labels <a class="action-link" href="#"><i class="glyphicon glyphicon-plus"></i></a></h5>
-        <!-- some styled links in sidebar. ready to use as links to email folders, projects, groups, etc -->
-        <ul class="sidebar-labels">
-            <li>
-                <a href="#">
-                    <!-- yep, .circle again -->
-                    <i class="fa fa-circle text-warning mr-xs"></i>
-                    <span class="label-name">My Recent</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fa fa-circle text-gray mr-xs"></i>
-                    <span class="label-name">Starred</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fa fa-circle text-danger mr-xs"></i>
-                    <span class="label-name">Background</span>
-                </a>
-            </li>
-        </ul>
-        <h5 class="sidebar-nav-title">Projects</h5>
-        <!-- A place for sidebar notifications & alerts -->
-        <div class="sidebar-alerts">
-            <div class="alert fade in">
-                <a href="#" class="close" data-dismiss="alert" aria-hidden="true">&times;</a>
-                <span class="text-white fw-semi-bold">Sales Report</span> <br>
-                <div class="progress progress-xs mt-xs mb-0">
-                    <div class="progress-bar progress-bar-gray-light" style="width: 16%"></div>
-                </div>
-                <small>Calculating x-axis bias... 65%</small>
-            </div>
-            <div class="alert fade in">
-                <a href="#" class="close" data-dismiss="alert" aria-hidden="true">&times;</a>
-                <span class="text-white fw-semi-bold">Personal Responsibility</span> <br>
-                <div class="progress progress-xs mt-xs mb-0">
-                    <div class="progress-bar progress-bar-danger" style="width: 23%"></div>
-                </div>
-                <small>Provide required notes</small>
-            </div>
-        </div>
---%>
     </div>
 </nav>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -365,34 +133,7 @@
         <!-- .navbar-header contains links seen on xs & sm screens -->
 
         <div class="navbar-header">
-<%--
-            <ul class="nav navbar-nav">
-                <li>
-                    <!-- whether to automatically collapse sidebar on mouseleave. If activated acts more like usual admin templates -->
-                    <a class="hidden-sm hidden-xs" id="nav-state-toggle" href="#" title="Turn on/off sidebar collapsing" data-placement="bottom">
-                        <i class="fa fa-bars fa-lg"></i>
-                    </a>
-                    <!-- shown on xs & sm screen. collapses and expands navigation -->
-                    <a class="visible-sm visible-xs" id="nav-collapse-toggle" href="#" title="Show/hide sidebar" data-placement="bottom">
-                        <span class="rounded rounded-lg bg-gray text-white visible-xs"><i class="fa fa-bars fa-lg"></i></span>
-                        <i class="fa fa-bars fa-lg hidden-xs"></i>
-                    </a>
-                </li>
-                <li class="ml-sm mr-n-xs hidden-xs"><a href="#"><i class="fa fa-refresh fa-lg"></i></a></li>
-                <li class="ml-n-xs hidden-xs"><a href="#"><i class="fa fa-times fa-lg"></i></a></li>
-            </ul>
---%>
-
-<%--
-            <ul class="nav navbar-nav navbar-right visible-xs">
-                <li>
-                    <!-- toggles chat -->
-                    <a href="#" data-toggle="chat-sidebar">
-                        <span class="rounded rounded-lg bg-gray text-white"><i class="fa fa-globe fa-lg"></i></span>
-                    </a>
-                </li>
-            </ul>
---%>            
+         
             <!-- xs & sm screen logo -->
             <a class="navbar-brand visible-xs" href="index.html">
                 <i class="fa fa-circle text-gray mr-n-sm"></i>
@@ -404,24 +145,6 @@
                 <i class="fa fa-circle text-gray"></i>
             </a>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         <!-- this part is hidden for xs screens -->
@@ -467,24 +190,6 @@
 </nav>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="content-wrap">
 	<main id="content" class="content" role="main">
 <%--================================================================================================================================================--%>
@@ -524,18 +229,7 @@
 			
 			$.each($('.afterQ'), function(index,item) {
 
-				console.log($(this).val());
-				console.log($('.beforeQ').eq(index).text());
-				
-				///////////////////////////////////////////////////////
-				
-				
- 				//alert(CRN);
-				//doSend();
-				
-				
-				//////////////////////////////////////////////////////////
-				
+
 				if($('.afterQ').eq(index).val() != $('.beforeQ').eq(index).text()){
 					
 					var ninus = $('.beforeQ').eq(index).text()-$('.afterQ').eq(index).val();
@@ -579,14 +273,9 @@
 							salesPrice:goodsprice,
 							salesName:goodsname
 						},
-						/*	석지연 (이거 없앴는데 왜 살아있닝??/2017.04.26)
-						 success:function(){
-							alert("aaa");
-							doSend();
-							location.href="goodslist";
-						}, */
+						
 						error:function(e){
-							//20170503 박진우							alert("오류임");
+						
 						}
 					});
 				}
@@ -713,29 +402,15 @@
 
 <%--20170422 박진우 박시원 웹소켓 테스트============================================= --%>
  <script type="text/javascript">
-	/* 		
- 			var CRN = $(".sellerCRN").val();
- 			console.log(CRN); */
- 			
- 			
- 			//내가 만든 function
+	
       
         	function client(evt){
-        		/* alert(evt);
-        		alert(evt.data);
         		
-        		var gaek = JSON.parse(evt.data);
-
-        		var storeid = gaek.storeid;
-        		var goodsid = gaek.goodsid;
-        		
-        		alert(storeid);
-        		alert(goodsid); */
         	}
         	
         	
         	function seller(){
-        		//뭐시기뭐시기뭐시기 dosend;        		
+        		  		
         		doSend();
         	}
            
@@ -771,14 +446,7 @@
 				writeToScreen('ERROR: ' + evt.data);
 			} 
 			function doSend(str) {
-				//var message = document.getElementById("textID").value;
-				//writeToScreen("Message Sent: " + message);
-				//writeToScreen("뭐보내는지 표시하려고 ");
-				
-				
-				
-				
-				
+			
 				var CRN = document.getElementById("sellerCRN").value;
 				/*//////////////////////////////////////////////////////////////  */
 				
@@ -809,7 +477,6 @@
                              });
                             /////////////////////////////////////////////////////
 
-                      
                             
                             
                             var content0 = '<div class="goodsinfo" id="'+CRN+'" style="overflow-y:scroll;overflow-x:hidden">'+
@@ -834,9 +501,7 @@
                             
                             content0 += '</table></div>';
                             
-                            
-                            
-                            
+                        
                         	
                             $.ajax({//type필수임
                                 type : "post",   //RequestMethod Type
@@ -875,70 +540,18 @@
 
             }
 			
-		/*  	function timetest(i,goodscode,goodsDT) {
-			
-		 		var timegaek=[];
-		 		
-				  
-				  
-				  var countDownDate = new Date(goodsDT).getTime();			
-				///////////////////////
-					
-						// Update the count down every 1 second
-						var x = setInterval(function() {
-						
-						  // Get todays date and time
-						  var now = new Date().getTime();
-						
-						 
-						  // Find the distance between now an the count down date
-						  var distance = countDownDate - now;
-						 
-						
-						  // Time calculations for days, hours, minutes and seconds
-						  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-						  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-						  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-						  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-					
-						 /* 
-						  document.getElementById(goodscode).innerHTML = days + " 일 " + hours + "시간 "
-						  + minutes + "분 " + seconds + "초 ";  
-						  
-						  
-						  
-						  var time = days + " 일 " + hours + "시간 "+ minutes + "분 " + seconds + "초 ";
-						  
-						  if(distance <0){
-								clearInterval(x);
-							    time = "기한만료(EXPIRED)"; // 유통기한이 다되면 시간자리에 기한만료가 뜸..
-							  }
-						  
-						  timegaek.push = {times:time,goodscodes:goodscode};
-						 console.log(timegaek);
-						  
-						  
-						}, 1000);
-
-				  
-				  
-				  //////////////////////////////////////////////////////
-				  
-				  
-				  
-				  
-				}  */
+	
 			
 			function dosendcontent(content){
-				/* alert("dosendcontent(고객아이디들) : " + content.buyer_id); */
+				
 				var message={};
 				message.sellerCRN = content.sellerCRN;
-				//20170503 박진우				alert("sellerCRN 잘왔네: "+content.sellerCRN);
+						
 				message.from = content.color;
-				//20170503 박진우				alert(content.color);
+						
 				message.message = content.shopname;
 				message.to = content.buyer_id;
-				//20170503 박진우				alert(JSON.stringify(message));
+			
 				websocket.send(JSON.stringify(message));
 			}
 			

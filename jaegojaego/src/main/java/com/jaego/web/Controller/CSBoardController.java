@@ -51,7 +51,7 @@ public class CSBoardController {
 
         int total = dao.getAllCount(searchText);		//전체 글 개수 가져오는 명령어
 		PageNavigator navi = new PageNavigator(countPerPage, pagePerGroup, page, total);		//★ 이 navi만 있으면 페이징을 처리하는 데에 필요한 모든 정보가 있음 ← 이걸 model에 세팅!
-		System.out.println(navi);
+		
 
 		ArrayList<CSBoard> csbList = dao.getAll(navi.getStartRecord()/*첫 번째 글번호*/, navi.getCountPerPage()/*페이지당 글 수*/, searchText/*검색 기능 추가를 위한 새 매개변수*/);			//← 페이징에 맞춰서 가져오도록 변경		
 		//↑ navi.getStartRecord()와 navi.getCountPerPage() 대신 RowBounds를 여기서 생성해서 바로 넘겨도 됨(매개변수가 헷갈린다면...) : 하지만 Controller는 가능하면 페이지를 돌려주는 역할만 맡기기 위해 RowBounds를 BoardDao에서 생성하는 것!
@@ -79,7 +79,7 @@ public class CSBoardController {
 
         int total = dao.getAllCount(searchText);		//전체 글 개수 가져오는 명령어
 		PageNavigator navi = new PageNavigator(countPerPage, pagePerGroup, page, total);		//★ 이 navi만 있으면 페이징을 처리하는 데에 필요한 모든 정보가 있음 ← 이걸 model에 세팅!
-		System.out.println(navi);
+		
 
 		ArrayList<CSBoard> csbList = dao.getAll(navi.getStartRecord()/*첫 번째 글번호*/, navi.getCountPerPage()/*페이지당 글 수*/, searchText/*검색 기능 추가를 위한 새 매개변수*/);			//← 페이징에 맞춰서 가져오도록 변경		
 		//↑ navi.getStartRecord()와 navi.getCountPerPage() 대신 RowBounds를 여기서 생성해서 바로 넘겨도 됨(매개변수가 헷갈린다면...) : 하지만 Controller는 가능하면 페이지를 돌려주는 역할만 맡기기 위해 RowBounds를 BoardDao에서 생성하는 것!
@@ -90,8 +90,6 @@ public class CSBoardController {
 		model.addAttribute("total", total);
 		return "/CSBoard/csboardlist2";
 	}
-	
-	
 
 	@RequestMapping(value="csboardWriteForm", method=RequestMethod.GET)
 	public String csboardWriteForm() {
@@ -144,7 +142,6 @@ public class CSBoardController {
 		return "CSBoard/read";
 	}
 	
-	
 	@RequestMapping(value="read2", method=RequestMethod.GET)
 	public String read2(int boardnum, Model model) {
 		CSBoard csboard = dao.selectOne(boardnum);
@@ -166,18 +163,17 @@ public class CSBoardController {
 	@ResponseBody
 	@RequestMapping(value="csreplyWrite", method=RequestMethod.POST)
 	public ArrayList<CSReply> csreplyWrite(CSReply csreply, HttpSession session) {
-		System.out.println("들어오나kkkkk");
+		
 		String id = (String)session.getAttribute("custid");
 		csreply.setId(id);
-		System.out.println("csreply : " + csreply);
+		
 		try {
 			dao.insertCSReply(csreply);			
 		} catch(Exception e) {
-			System.out.println("dsafkfjwdljiofwdjwefjwekjl");
+			
 			e.printStackTrace();
 		}
 
-		
 		ArrayList<CSReply> csreplylist = dao.getCSReplylist(csreply.getBoardnum());
 		
 		return csreplylist;
@@ -192,7 +188,6 @@ public class CSBoardController {
 		//★ 첨부파일이 있는지/없는지도 확인
 		String savedfile = dao.selectOne(boardnum).getSavedfile();
 		
-
 		dao.deleteAllCSBoard(boardnum);		//몸글 삭제 전 댓글 삭제
 		int result = dao.deleteCSBoard(csboard);
 		
@@ -290,17 +285,10 @@ public class CSBoardController {
 	public ArrayList<CSReply> deleteCSReply(CSReply csreply) {
 		
 		dao.deleteCSReply(csreply);
-		
-		
-		
+			
 		ArrayList<CSReply> csreplylist = dao.getCSReplylist(csreply.getBoardnum());
 		return csreplylist;
-		
-		
-		
-		
-		
-//		return "redirect:read?boardnum=" + csreply.getBoardnum();
+			
 	}
 	
 	

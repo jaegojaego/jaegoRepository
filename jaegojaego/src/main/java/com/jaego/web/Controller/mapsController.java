@@ -77,7 +77,7 @@ public class mapsController {
 		//����� ���� ���
 		String fullPath = uploadPath +"/"+seller.getSellerShopSimg();
 		
-		System.out.println(fullPath);
+	
 		
 		//������ ������ ���� �Է� ��Ʈ��
 		
@@ -195,9 +195,8 @@ public class mapsController {
 	@ResponseBody
 	@RequestMapping(value="gradelist", method=RequestMethod.GET)
 	public ArrayList<Grade> gradelist(String sellerCRN,HttpSession session){
-		System.out.println(sellerCRN);
 		ArrayList<Grade> gradelist = dao.gradelist(sellerCRN);
-		System.out.println(gradelist);
+	
 		return gradelist;
 	}
 	
@@ -208,7 +207,7 @@ public class mapsController {
 	
 			String buyerId = (String) session.getAttribute("custid");
 			Grade grade = new Grade();
-			System.out.println("ment"+ment+"sellercrn"+sellerCRN+"id"+buyerId+"star"+star);
+			
 			grade.setBuyerId(buyerId);
 			grade.setMent(ment);
 			grade.setSellerCRN(sellerCRN);
