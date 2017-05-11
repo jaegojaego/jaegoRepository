@@ -137,7 +137,7 @@
                     <span class="icon">
                         <i class="fa fa-table"></i>
                     </span>
-                    상품 목록
+                    商品リスト
                     <%--<i class="toggle fa fa-angle-down"></i>--%>
                 </a>
                 <%--<ul id="sidebar-tables" class="collapse in">
@@ -151,7 +151,7 @@
                     <span class="icon">
                         <i class="glyphicon glyphicon-stats"></i>
                     </span>
-                    매출 분석
+                    賣上分析
                 </a>                
             </li>
 
@@ -160,7 +160,7 @@
                     <span class="icon">
                         <i class="glyphicon glyphicon-user"></i>
                     </span>
-                    고객 상담
+                    カスタマーセンター
 <%--                    <sup class="text-warning fw-semi-bold">
                         new
                     </sup>--%>	<%-- new 표시 주석 처리 --%>

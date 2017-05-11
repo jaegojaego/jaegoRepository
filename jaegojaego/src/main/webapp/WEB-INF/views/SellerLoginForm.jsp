@@ -52,7 +52,7 @@ function formCheck() {
                 </h4>
                 <section class="widget widget-login animated fadeInUp">
                     <header>
-                        <h3>最後の在庫にログインします</h3>
+                        <h3>最後の在庫にログイン</h3>
                     </header>
                     <div class="widget-body">
                         <p class="widget-login-info">
