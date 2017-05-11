@@ -2,13 +2,13 @@ function drawChart() {
 	
 	
     var data = google.visualization.arrayToDataTable([]);
-    data.addColumn('string','일자');
-    data.addColumn('number','총판매가격');
+    data.addColumn('string','日付');
+    data.addColumn('number','総販売価格');
     
     data.addRows(eleChart);
 
     var options = {
-      title: '일자별 총판매수익',
+      title: '日付別総販売収入',
       curveType: 'function',
       legend: { position: 'bottom' }
     };

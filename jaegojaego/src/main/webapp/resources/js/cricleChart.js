@@ -3,7 +3,7 @@ function cricleChart() {
 	var data = google.visualization.arrayToDataTable(ele);
 
 	var options = {
-		title : '총판매수량',
+		title : '総販売商品本数',
 		is3D : true,
 	};
 

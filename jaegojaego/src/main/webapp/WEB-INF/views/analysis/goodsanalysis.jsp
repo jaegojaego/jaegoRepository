@@ -184,218 +184,8 @@
         </ul>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<%--↓================================================================================================================================--%>        
-<%--
-        <!-- every .sidebar-nav may have a title -->
-        <h5 class="sidebar-nav-title">템플릿 <a class="action-link" href="#"><i class="glyphicon glyphicon-refresh"></i></a></h5>
-        <ul class="sidebar-nav">
---%>
-<%--
-            <li>
-                <!-- an example of nested submenu. basic bootstrap collapse component -->
-                <a class="collapsed" href="#sidebar-forms" data-toggle="collapse" data-parent="#sidebar">
-                    <span class="icon">
-                        <i class="glyphicon glyphicon-align-right"></i>
-                    </span>
-                    Forms
-                    <i class="toggle fa fa-angle-down"></i>
-                </a>
-                <ul id="sidebar-forms" class="collapse">
-                    <li><a href="form_elements.html">Form Elements</a></li>
-                    <li><a href="form_validation.html">Form Validation</a></li>
-                    <li><a href="form_wizard.html">Form Wizard</a></li>
-                </ul>
-            </li>
-
-            <li>
-                <a class="collapsed" href="#sidebar-ui" data-toggle="collapse" data-parent="#sidebar">
-                    <span class="icon">
-                        <i class="glyphicon glyphicon-tree-conifer"></i>
-                    </span>
-                    UI Elements
-                    <i class="toggle fa fa-angle-down"></i>
-                </a>
-                <ul id="sidebar-ui" class="collapse">
-                    <li><a href="ui_components.html">Components</a></li>
-                    <li><a href="ui_notifications.html">Notifications</a></li>
-                    <li><a href="ui_icons.html">Icons</a></li>
-                    <li><a href="ui_buttons.html">Buttons</a></li>
-                    <li><a href="ui_tabs_accordion.html">Tabs & Accordion</a></li>
-                    <li><a href="ui_list_groups.html">List Groups</a></li>
-                </ul>
-            </li>
-
-            <li>
-                <a href="grid.html">
-                    <span class="icon">
-                        <i class="glyphicon glyphicon-th"></i>
-                    </span>
-                    그리이드
-                </a>
-            </li>
---%>
-
-<%--             <li>
-                <a class="collapsed" href="http://www.naver.com/#sidebar-maps" data-toggle="collapse" data-parent="#sidebar">
-
-                    <span class="icon">
-                        <i class="glyphicon glyphicon-map-marker"></i>
-                    </span>
-                    지도호우
- --%>
-                    <%--<i class="toggle fa fa-angle-down"></i>--%>	<%--하향 화살표 삭제--%>
-<%--                </a>--%>
-                <%--<ul id="sidebar-maps" class="collapse">
-                    <!-- data-no-pjax turns off pjax loading for this link. Use in case of complicated js loading on the
-                         target page -->
-                    <li><a href="maps_google.html" data-no-pjax>Google Maps</a></li>
-                    <li><a href="maps_vector.html">Vector Maps</a></li>
-                </ul>
-            </li>
-
-<%--
-            <li>
-                <a class="collapsed" href="#sidebar-extra" data-toggle="collapse" data-parent="#sidebar">
-                    <span class="icon">
-                        <i class="fa fa-leaf"></i>
-                    </span>
-                    Extra
-                    <i class="toggle fa fa-angle-down"></i>
-                </a>
-                <ul id="sidebar-extra" class="collapse">
-                    <li><a href="calendar.html">Calendar</a></li>
-                    <li><a href="invoice.html">Invoice</a></li>
-                    <li><a href="login.html" target="_blank" data-no-pjax>Login Page</a></li>
-                    <li><a href="error.html" target="_blank" data-no-pjax>Error Page</a></li>
-                    <li><a href="gallery.html">Gallery</a></li>
-                    <li><a href="search.html">Search Results</a></li>
-                    <li><a href="time_line.html" data-no-pjax>Time Line</a></li>
-                </ul>
-            </li>
---%>
-<!--             <li>
-                <a class="collapsed" href="#sidebar-levels" data-toggle="collapse" data-parent="#sidebar">
-                    <span class="icon">
-                        <i class="fa fa-folder-open"></i>
-                    </span>
-                    Menu Levels
-                    <i class="toggle fa fa-angle-down"></i>
-                </a>
-                <ul id="sidebar-levels" class="collapse">
-                    <li><a href="#">Level 1</a></li>
-                    <li>
-                        <a class="collapsed" href="#sidebar-sub-levels" data-toggle="collapse" data-parent="#sidebar-levels">
-                            Level 2
-                            <i class="toggle fa fa-angle-down"></i>
-                        </a>
-                        <ul id="sidebar-sub-levels" class="collapse">
-                            <li><a href="#">Level 3</a></li>
-                            <li><a href="#">Level 3</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </li> -->
-        </ul>
-<%--↑================================================================================================================================--%>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<%--
-        <h5 class="sidebar-nav-title">Labels <a class="action-link" href="#"><i class="glyphicon glyphicon-plus"></i></a></h5>
-        <!-- some styled links in sidebar. ready to use as links to email folders, projects, groups, etc -->
-        <ul class="sidebar-labels">
-            <li>
-                <a href="#">
-                    <!-- yep, .circle again -->
-                    <i class="fa fa-circle text-warning mr-xs"></i>
-                    <span class="label-name">My Recent</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fa fa-circle text-gray mr-xs"></i>
-                    <span class="label-name">Starred</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fa fa-circle text-danger mr-xs"></i>
-                    <span class="label-name">Background</span>
-                </a>
-            </li>
-        </ul>
-        <h5 class="sidebar-nav-title">Projects</h5>
-        <!-- A place for sidebar notifications & alerts -->
-        <div class="sidebar-alerts">
-            <div class="alert fade in">
-                <a href="#" class="close" data-dismiss="alert" aria-hidden="true">&times;</a>
-                <span class="text-white fw-semi-bold">Sales Report</span> <br>
-                <div class="progress progress-xs mt-xs mb-0">
-                    <div class="progress-bar progress-bar-gray-light" style="width: 16%"></div>
-                </div>
-                <small>Calculating x-axis bias... 65%</small>
-            </div>
-            <div class="alert fade in">
-                <a href="#" class="close" data-dismiss="alert" aria-hidden="true">&times;</a>
-                <span class="text-white fw-semi-bold">Personal Responsibility</span> <br>
-                <div class="progress progress-xs mt-xs mb-0">
-                    <div class="progress-bar progress-bar-danger" style="width: 23%"></div>
-                </div>
-                <small>Provide required notes</small>
-            </div>
-        </div>
---%>
     </div>
 </nav>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -408,34 +198,8 @@
         <!-- .navbar-header contains links seen on xs & sm screens -->
 
         <div class="navbar-header">
-<%--
-            <ul class="nav navbar-nav">
-                <li>
-                    <!-- whether to automatically collapse sidebar on mouseleave. If activated acts more like usual admin templates -->
-                    <a class="hidden-sm hidden-xs" id="nav-state-toggle" href="#" title="Turn on/off sidebar collapsing" data-placement="bottom">
-                        <i class="fa fa-bars fa-lg"></i>
-                    </a>
-                    <!-- shown on xs & sm screen. collapses and expands navigation -->
-                    <a class="visible-sm visible-xs" id="nav-collapse-toggle" href="#" title="Show/hide sidebar" data-placement="bottom">
-                        <span class="rounded rounded-lg bg-gray text-white visible-xs"><i class="fa fa-bars fa-lg"></i></span>
-                        <i class="fa fa-bars fa-lg hidden-xs"></i>
-                    </a>
-                </li>
-                <li class="ml-sm mr-n-xs hidden-xs"><a href="#"><i class="fa fa-refresh fa-lg"></i></a></li>
-                <li class="ml-n-xs hidden-xs"><a href="#"><i class="fa fa-times fa-lg"></i></a></li>
-            </ul>
---%>
 
-<%--
-            <ul class="nav navbar-nav navbar-right visible-xs">
-                <li>
-                    <!-- toggles chat -->
-                    <a href="#" data-toggle="chat-sidebar">
-                        <span class="rounded rounded-lg bg-gray text-white"><i class="fa fa-globe fa-lg"></i></span>
-                    </a>
-                </li>
-            </ul>
---%>            
+   
             <!-- xs & sm screen logo -->
             <a class="navbar-brand visible-xs" href="index.html">
                 <i class="fa fa-circle text-gray mr-n-sm"></i>
@@ -450,23 +214,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <!-- this part is hidden for xs screens -->
         <div class="collapse navbar-collapse"> 
             <!-- search form! link it to your search server -->
@@ -478,7 +225,7 @@
                         	<i class="fa fa-search"></i>
                         </span>
                         --%>
-                        <label class="form-control">이 세상의 모든 재고가 사라지는 날까지!　<span class="fw-semi-bold">最後の在庫</span></h1></label><%--<input class="form-control" type="text" placeholder="Search Dashboard">--%>                        
+                        <label class="form-control">この世界のすべての在庫が消える日まで！　<span class="fw-semi-bold">最後の在庫</span></h1></label><%--<input class="form-control" type="text" placeholder="Search Dashboard">--%>                        
                     </div>
                 </div>
             </form>
@@ -510,37 +257,19 @@
 </nav>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="content-wrap">
 	<main id="content" class="content" role="main">
 		<ol class="breadcrumb">
-			<li>현재 위치</li>
-			<li class="active">매출 분석</li>
+			<li>現在の位置</li>
+			<li class="active">売上分析</li>
 		</ol>
-		<h1 class="page-title">매출 분석 - <span class="fw-semi-bold">총 판매 수량</span></h1>
+		<h1 class="page-title">売上分析 - <span class="fw-semi-bold">総販売商品本数</span></h1>
 
 
 
 
  	<input type="text" id="date1" name="date1">~<input type="text" id="date2">
-	<input type="button" id="ok" value="조회">
+	<input type="button" id="ok" value="照会">
     <div id="piechart_3d" style="width: 900px; height: 500px;"></div>
 
 

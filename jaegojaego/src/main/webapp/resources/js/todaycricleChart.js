@@ -30,7 +30,7 @@ google.charts.load("current", {packages:["corechart"]});
    		  var data = google.visualization.arrayToDataTable(ele);  
 
         var options = {
-          title: '오늘판매수량',
+          title: '今日の販売数量',
           is3D: true,
         };
 

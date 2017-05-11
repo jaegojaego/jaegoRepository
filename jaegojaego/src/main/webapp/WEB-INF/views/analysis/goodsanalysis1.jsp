@@ -165,7 +165,7 @@
                         	<i class="fa fa-search"></i>
                         </span>
                         --%>
-                        <label class="form-control">이 세상의 모든 재고가 사라지는 날까지!　<span class="fw-semi-bold">最後の在庫</span></h1></label><%--<input class="form-control" type="text" placeholder="Search Dashboard">--%>                        
+                        <label class="form-control">この世界のすべての在庫が消える日まで！<span class="fw-semi-bold">最後の在庫</span></h1></label><%--<input class="form-control" type="text" placeholder="Search Dashboard">--%>                        
                     </div>
                 </div>
             </form>
@@ -200,10 +200,10 @@
 <div class="content-wrap">
 	<main id="content" class="content" role="main">
 		<ol class="breadcrumb">
-			<li>현재 위치</li>
-			<li class="active">매출 분석</li>
+			<li>現在の位置</li>
+			<li class="active">売上分析</li>
 		</ol>
-		<h1 class="page-title">매출 분석 - <span class="fw-semi-bold">그래프 선택</span></h1>
+		<h1 class="page-title">売上分析 - <span class="fw-semi-bold">グラフ選択</span></h1>
 
 
 <%--총 수량--%><%--오늘 수량--%><%--총 수입--%><%--막대--%>
@@ -223,7 +223,7 @@
                 <section class="widget">
                     <header>
                         <h4>
-                            <span class="fw-semi-bold">총 수량</span>
+                            <span class="fw-semi-bold">総販売商品本数</span>
                         </h4>
                     </header>
                     <div class="widget-body">
@@ -233,7 +233,7 @@
                         </p>
                         <p class="text-align-center">
                             <button class="btn btn-default width-100 mb-xs" role="button" id="btn1" onclick="javascript:location.href='goodsanalysis'" value="test1">
-                                	선택
+                                	選択
                             </button>
                         </p>
                     </div>
@@ -246,7 +246,7 @@
                 <section class="widget">
                     <header>
                         <h4>
-                            <span class="fw-semi-bold">오늘 수량</span>
+                            <span class="fw-semi-bold">今日の販売数量</span>
                         </h4>
                     </header>
                     <div class="widget-body">
@@ -256,7 +256,7 @@
                         </p>
                         <p class="text-align-center">
                             <button class="btn btn-default width-100 mb-xs" role="button" id="btn2" onclick="javascript:location.href='goodsanalysis2'" value="test2">
-                                	선택
+                                	選択
                             </button>
                         </p>
                     </div>
@@ -269,7 +269,7 @@
                 <section class="widget">
                     <header>
                         <h4>
-                            <span class="fw-semi-bold">총 수입</span>
+                            <span class="fw-semi-bold">日付別総販売収入</span>
                         </h4>
                     </header>
                     <div class="widget-body">
@@ -279,7 +279,7 @@
                         </p>
                         <p class="text-align-center">
                             <button class="btn btn-default width-100 mb-xs" role="button" id="btn3" onclick="javascript:location.href='goodsanalysis3'" value="test3">
-                                	선택
+                                	選択
                             </button>
                         </p>
                     </div>
@@ -292,7 +292,7 @@
                 <section class="widget">
                     <header>
                         <h4>
-                            <span class="fw-semi-bold">막대</span>
+                            <span class="fw-semi-bold">今日の販売収入</span>
                         </h4>
                     </header>
                     <div class="widget-body">
@@ -302,7 +302,7 @@
                         </p>
                         <p class="text-align-center">
                             <button class="btn btn-default width-100 mb-xs" role="button" id="btn4" onclick="javascript:location.href='goodsanalysis4'" value="test4">
-                                	선택
+                                	選択
                             </button>
                         </p>
                     </div>

@@ -34,9 +34,9 @@ $(function(){
     		  var data = google.visualization.arrayToDataTable(tichartList);  
 
         	  var options = {
-        		      title : '당일매출',
-        		      vAxis: {title: "금액"},
-        		      hAxis: {title: '품목'},
+        		      title : '今日売うり出だし',
+        		      vAxis: {title: "金額"},
+        		      hAxis: {title: 'アイテム'},
         		      seriesType: 'bars',
         		    };
 
