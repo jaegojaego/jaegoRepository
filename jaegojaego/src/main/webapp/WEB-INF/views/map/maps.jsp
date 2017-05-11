@@ -355,7 +355,7 @@ function newfunction2(imgCode){
                             '      <div class="close" title="닫기"></div>' + 
                             '      </div>' + 
                             '      <div class="body">' + 
-                            '      <div class="img"><div class="shopinfo" style="width:390px;height:132px;text-overflow: ellipsis;line-height:190%">業種:'+position.tob+'<br>住所:'+position.shopaddress+'<br>電話番号:'+position.phone+'<br><div class="star" style="width:20px;">評点</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+                            '      <div class="img"><div class="shopinfo" style="width:390px;height:132px;text-overflow: ellipsis;line-height:190%">業種:'+position.tob+'<br>住所:'+position.shopaddress+'<br>電話番号:'+position.phone+'<br><div class="star" style="width:20px;">評点</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
                             +'<span class="addshop" style="font-weight:bolder;font-color:black;">[ブックマーク設定/</span><span class="delshop">解除]</span></div></div>' + 
                             '      <div class="desc">';
                             
