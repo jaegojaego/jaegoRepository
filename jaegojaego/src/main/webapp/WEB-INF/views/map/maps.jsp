@@ -1051,19 +1051,19 @@ alert("다시검색해주세요");
                  <a class="collapsed" href="#sidebar-maps" data-toggle="collapse" data-parent="#sidebar">
                     <span class="icon">
                         <i class="glyphicon glyphicon-map-marker"></i>
-                    </span>
-                    지역 선택
-                    <i class="toggle fa fa-angle-down"></i>
+					</span>
+					地域選択
+					<i class="toggle fa fa-angle-down"></i>
                 </a>
                 <ul id="sidebar-maps" class="collapse">
-                    <li><a class="region" data-no-pjax>서울특별시</a></li>
-                    <li><a class="region">경기도</a></li>                           
-                    <li><a class="region">인천광역시</a></li>
-                    <li><a class="region">부산광역시</a></li>
-                    <li><a class="region">울산광역시</a></li>                           
-                    <li><a class="region">대구광역시</a></li>
-                    <li><a class="region">대전광역시</a></li>
-                    <li><a class="region">광주광역시</a></li>                    
+					<li><a class="region" data-no-pjax>ソウル特別市</a></li>
+					<li><a class="region">京畿道</a></li>                           
+					<li><a class="region">仁川広域市</a></li>
+					<li><a class="region">釜山広域市</a></li>
+					<li><a class="region">蔚山広域市</a></li>                           
+					<li><a class="region">大邱広域市</a></li>
+					<li><a class="region">大田広域市</a></li>
+					<li><a class="region">光州広域市</a></li>                    
                 </ul>
             </li>
 
@@ -1086,9 +1086,9 @@ alert("다시검색해주세요");
                     <i class="toggle fa fa-angle-down"></i><%-- 1 --%>
                 </a>
                 <ul id="sidebar-extra" class="collapse">
-                    <li><a class="tob">카페</a></li>
-                    <li><a class="tob">베이커리</a></li>                           
-                    <li><a class="tob">식당</a></li>
+					<li><a class="tob">カフェ</a></li>
+					<li><a class="tob">ベーカリー</a></li>                           
+					<li><a class="tob">食堂</a></li>
                 </ul>
 
             </li>

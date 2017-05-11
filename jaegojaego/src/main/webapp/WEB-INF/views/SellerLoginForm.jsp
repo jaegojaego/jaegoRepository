@@ -52,21 +52,21 @@ function formCheck() {
                 </h4>
                 <section class="widget widget-login animated fadeInUp">
                     <header>
-                        <h3>재고재고에 로그인합니다</h3>
+                        <h3>最後の在庫にログインします</h3>
                     </header>
                     <div class="widget-body">
                         <p class="widget-login-info">
-                            판매자 ID와 비밀번호를 입력하세요.
+販売者IDと暗証番号を入力してください。
                         </p>
                         <p class="widget-login-info">
-                            아직 계정이 없으시다면 '신규 가입'을 클릭하세요.
+まだアカウントが無ければ、'会員登録'をクリックしてください。
                         </p>
                         <form class="login-form mt-lg" action="SellerLogin" method="post" onsubmit="return formCheck()" id="form">
                             <div class="form-group">
-                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="판매자 ID" name="custid" autofocus>
+                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="販売者ID" name="custid" autofocus>
                             </div>
                             <div class="form-group">
-                                <input class="form-control" id="pswd" type="password" placeholder="판매자 비밀번호" name="password"
+                                <input class="form-control" id="pswd" type="password" placeholder="購買者暗証番号" name="password"
                                 onkeypress="javascript:if(event.keyCode == 13){document.getElementById('form').submit();}">
                             </div>
                             <div class="clearfix">
@@ -76,7 +76,7 @@ function formCheck() {
 
                                     <%--<button type="button" class="btn btn-default btn-sm">Create an Account</button>--%>
                                     <%--<a class="btn btn-inverse btn-sm" href="index.html">Login</a>--%>
-                                    <a class="btn btn-inverse btn-sm" onclick="document.getElementById('form').submit();">로그인</a>
+                                    <a class="btn btn-inverse btn-sm" onclick="document.getElementById('form').submit();">ログイン</a>
 
 
 
@@ -87,13 +87,13 @@ function formCheck() {
                                     <div class="clearfix">
                                         <div class="checkbox widget-login-info pull-right ml-n-lg">
                                             <input type="checkbox" id="checkbox1" value="1">
-                                            <label for="checkbox1">로그인 상태 유지 </label>
+                                            <label for="checkbox1">ログイン状態を維持 </label>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col-sm-6 col-sm-pull-6">
-                                    <a class="mr-n-lg" href="sellerJoinForm">신규 가입</a>
+                                    <a class="mr-n-lg" href="sellerJoinForm">会員登録</a>
                                 </div>
                             </div>
                         </form>
