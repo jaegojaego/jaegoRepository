@@ -626,7 +626,7 @@ function newfunction2(imgCode){
                                          },
                                          
                                        success:function(data){
-                                          console.log(data.star);
+                                         
                                           var htm = '<table><tr><th width="100px" >作成者</th><th width="280px">コメント</th></tr>';
                                        
                                           $.each(data.gradelist,function(index,item){                                             
