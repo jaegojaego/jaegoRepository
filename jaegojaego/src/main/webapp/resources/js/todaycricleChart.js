@@ -11,12 +11,11 @@ google.charts.load("current", {packages:["corechart"]});
       		dataType : "json",
       		success : function(data) {
       			
-      			console.log(data);
+      			
       			ele=data[0];
   			
       			
-      			console.log(ele);
-      			console.log(ala);
+      			
       			 google.charts.setOnLoadCallback(todaycricleChart);
       			
       		},

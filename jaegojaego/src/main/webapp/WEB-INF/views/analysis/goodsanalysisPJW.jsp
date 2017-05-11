@@ -66,8 +66,7 @@ google.charts.load('current', {'packages':['corechart']});
 					ele = ['',0];
 					eleChart=[];
 					eleChart.push(ele);
-					console.log(ele);
-					console.log(eleChart);
+					
 					google.charts.setOnLoadCallback(drawChart);
 				}else{
 				alert("성공?");
@@ -76,7 +75,7 @@ google.charts.load('current', {'packages':['corechart']});
 	   				ele = [item.SALESTIME, item.PRICE];
 	   					
 	   				eleChart.push(ele);
-	   				console.log(ele);
+	   				
 	   				google.charts.setOnLoadCallback(drawChart);
    				})
 				}

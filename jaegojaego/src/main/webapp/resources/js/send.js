@@ -1,6 +1,6 @@
 function drawChart() {
 	
-	console.log(eleChart);
+	
     var data = google.visualization.arrayToDataTable([]);
     data.addColumn('string','일자');
     data.addColumn('number','총판매가격');

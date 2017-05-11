@@ -10,13 +10,13 @@ $(function(){
       		url : "analysismonth",
       		dataType : "json",
       		success : function(data) {
-      			console.log(data);
+      			
       			ele=data[0];
       			ala=data[1];
       			
       			tichartList.push(ele);
       			tichartList.push(ala);
-      			console.log(tichartList);
+      			
       			google.charts.setOnLoadCallback(barmonth);
       		},
       		error : function(e) {
@@ -30,9 +30,7 @@ $(function(){
 	
         // Some raw data (not necessarily accurate)
   
-    	 console.log(ala.length);
-    	
-    	  
+  
     		  var data = google.visualization.arrayToDataTable(tichartList);  
 
         	  var options = {

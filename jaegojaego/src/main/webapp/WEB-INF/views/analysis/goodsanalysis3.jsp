@@ -60,14 +60,13 @@ google.charts.load('current', {'packages':['corechart']});
 				date2:date2
 			},
 			success: function(result){
-				console.log(result);
+				
 				if(result.length==0){
 					alert("자료가 존재하지 않습니다.");
 					ele = ['',0];
 					eleChart=[];
 					eleChart.push(ele);
-					console.log(ele);
-					console.log(eleChart);
+					
 					google.charts.setOnLoadCallback(drawChart);
 				}else{
 //				alert("성공?");
@@ -76,7 +75,7 @@ google.charts.load('current', {'packages':['corechart']});
 	   				ele = [item.SALESTIME, item.PRICE];
 	   					
 	   				eleChart.push(ele);
-	   				console.log(ele);
+	   				
 	   				google.charts.setOnLoadCallback(drawChart);
    				})
 				}

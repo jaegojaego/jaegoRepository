@@ -121,7 +121,7 @@ function newfunction2(imgCode){
    	
 	  var CRN;
       var adrr = "삼성동";
-      console.log(adrr);
+  
       a(adrr,flag,sellertob);
       var marker;
     
