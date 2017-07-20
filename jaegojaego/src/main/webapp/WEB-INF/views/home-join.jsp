@@ -48,8 +48,8 @@ html{
    <hr />
   <div class="wrap">
     <form>
-      <button class="butt3" style="background-color: white"><a href="sellerJoinForm" class="jeju" style="text-decoration: none;">판매자</a></button>
-      <button class="butt3" style="background-color: white"><a href="buyerJoinForm" class="jeju" style="text-decoration: none;">구매자</a></button>
+      <button class="butt3" style="background-color: white"><a href="sellerJoinForm" class="jeju" style="text-decoration: none;">Seller</a></button>
+      <button class="butt3" style="background-color: white"><a href="buyerJoinForm" class="jeju" style="text-decoration: none;">Buyer</a></button>
     </form> 
 
     <p class="meta"><a href="/">HOME</a> </p>

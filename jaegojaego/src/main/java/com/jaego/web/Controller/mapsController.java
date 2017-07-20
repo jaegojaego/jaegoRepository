@@ -159,7 +159,7 @@ public class mapsController {
 				return "관심매장을 3개 이하로 선택해주세요.";
 			}
 		}else{
-			return "이미 추가된 매장입니다.";
+			return "この店をブックマークしました。";
 			
 		} 
 		//같은샵이있습니다

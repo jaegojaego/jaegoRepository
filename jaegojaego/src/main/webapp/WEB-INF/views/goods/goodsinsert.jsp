@@ -178,7 +178,7 @@
                     <span class="icon">
                         <i class="fa fa-table"></i>
                     </span>
-                    상품 목록
+                    商品リスト
                     <%--<i class="toggle fa fa-angle-down"></i>--%>
                 </a>
                 <%--<ul id="sidebar-tables" class="collapse in">
@@ -192,7 +192,7 @@
                     <span class="icon">
                         <i class="glyphicon glyphicon-stats"></i>
                     </span>
-                    매출 분석
+                    賣上分析
                 </a>                
             </li>
 
@@ -201,7 +201,7 @@
                     <span class="icon">
                         <i class="glyphicon glyphicon-user"></i>
                     </span>
-                    고객 상담
+                    カスタマーセンター
 <%--                    <sup class="text-warning fw-semi-bold">
                         new
                     </sup>--%>	<%-- new 표시 주석 처리 --%>
@@ -573,10 +573,10 @@
     <!-- main page content. the place to put widgets in. usually consists of .row > .col-md-* > .widget.  -->
     <main id="content" class="content" role="main">
         <ol class="breadcrumb">
-            <li>현재 위치</li>
-            <li class="active">상품 목록</li>
+            <li>現在の位置</li>
+            <li class="active">商品リスト</li>
         </ol>
-        <h1 class="page-title">상품 목록 - <span class="fw-semi-bold">상품 추가</span></h1>
+        <h1 class="page-title">商品リスト - <span class="fw-semi-bold">商品登録</span></h1>
        
         
 
@@ -605,7 +605,7 @@
                 <section class="widget">
                     <header>
                         <h5>
-                            Simple <strong>file uploads</strong>
+                            <strong>customer service</strong>
                         </h5>
                     </header>
                     <div class="widget-body">
@@ -615,7 +615,7 @@
 			<p id="status"></p><%--록--%>
 			<div id="holder"></div><%--록--%>                        
                             <fieldset>
-                                <legend>상담 내용 등록</legend>
+                                <legend></legend>
                                 
                                 
                                 
@@ -628,39 +628,39 @@
                                 
 
 								<div class="form-group">
-                                    <label class="col-sm-3 control-label" for="default-textarea">상품 이름</label>
+                                    <label class="col-sm-3 control-label" for="default-textarea">商品名</label>
                                     
                                     <div class="col-sm-8">
-                                        <input type="text" rows="4" class="form-control" <%--id="default-textarea"--%> id="goodsName" name="goodsName" placeholder="이름을 입력하세요">
+                                        <input type="text" rows="4" class="form-control" <%--id="default-textarea"--%> id="goodsName" name="goodsName" placeholder="商品名を入力してください">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="col-sm-3 control-label" for="default-textarea">상품 가격</label>
+                                    <label class="col-sm-3 control-label" for="default-textarea">値段</label>
                                     
                                     <div class="col-sm-8">
-                                        <input type="text" rows="4" class="form-control" <%--id="default-textarea"--%> id="goodsPrice" name="goodsPrice" placeholder="가격은 원단위를사용합니다. ex)1000원일시 1000입력">
+                                        <input type="text" rows="4" class="form-control" <%--id="default-textarea"--%> id="goodsPrice" name="goodsPrice" placeholder="値段はウォンで入力してください">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="col-sm-3 control-label" for="default-textarea">상품 수량</label>
+                                    <label class="col-sm-3 control-label" for="default-textarea">數量</label>
                                     
                                     <div class="col-sm-8">
-                                        <input type="text" rows="4" class="form-control" <%--id="default-textarea"--%> id="goodsQuantity" name="goodsQuantity" placeholder="상품수량은 갯수(숫자)만 적어주세요">
+                                        <input type="text" rows="4" class="form-control" <%--id="default-textarea"--%> id="goodsQuantity" name="goodsQuantity" placeholder="数量を数字で入力してください">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="col-sm-3 control-label" for="default-textarea">상품 유통기한</label>
+                                    <label class="col-sm-3 control-label" for="default-textarea">賞味期限</label>
                                     
                                     <div class="col-sm-8">
-                                        <input type="text" rows="4" class="form-control" <%--id="default-textarea"--%> id="expiredDate" name="expiredDate" placeholder="유통기한 예)2017-05-01 17:00:00">
+                                        <input type="text" rows="4" class="form-control" <%--id="default-textarea"--%> id="expiredDate" name="expiredDate" placeholder="賞味期限 例)2017-05-01 17:00:00">
                                     </div>
                                 </div>
                                 
                         <div class="form-group">
-                                    <label class="col-sm-3 control-label" for="default-textarea">상품설명</label>
+                                    <label class="col-sm-3 control-label" for="default-textarea">説明</label>
                                     <div class="col-sm-8">
                                         <textarea style="width:100%;" rows="12" class="form-con   trol" <%--id="default-textarea"--%> id="goodsInfo" name="goodsInfo"></textarea>
                                     </div>
@@ -668,7 +668,7 @@
 
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label" for="default-textarea">
-                                        파일 첨부
+                                        ファイル添付
                                     </label>
                                     <div class="col-sm-8">
                                         <div class="fileinput fileinput-new" data-provides="fileinput">
@@ -677,16 +677,16 @@
                                             </div>
                                             <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
                                             <div>
-                                                <span class="btn btn-default btn-file"><span class="fileinput-new">이미지 첨부</span><span class="fileinput-exists">변경</span><input type="file" name="upload" id="salesUpload"></span>
+                                                <span class="btn btn-default btn-file"><span class="fileinput-new">イメージ添付</span><span class="fileinput-exists">변경</span><input type="file" name="upload" id="salesUpload"></span>
                                                 <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">취소</a>
                                             </div>
                                         </div>
-                                        <span class="help-block">작성이 완료되면 '등록' 버튼을 눌러주세요.</span>
+                                        <span class="help-block">作成が終わりましたら登録ボタンをクリックしてください。</span>
 			                            <div class="form-actions">
 			                                <div class="row">
 			                                    <div class="col-sm-offset-4 col-sm-7">
-			                                        <button type="submit" class="btn btn-primary">등록</button>
-			                                        <button type="button" class="btn btn-inverse">취소</button>
+			                                        <button type="submit" class="btn btn-primary">登録</button>
+			                                        <button type="button" class="btn btn-inverse">キャンセル</button>
 			                                    </div>
 			                                </div>
 			                            </div>                                        

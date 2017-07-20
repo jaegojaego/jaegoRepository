@@ -87,7 +87,7 @@
 <%--        <li>YOU ARE HERE</li>
             <li class="active">Form Elements</li>--%>
         </ol>
-        <h1 class="page-title">회원 가입 : <span class="fw-semi-bold">구매자</span></h1>
+        <h1 class="page-title">会員登録 : <span class="fw-semi-bold">購買者</span></h1>
         <div class="row">
             <div class="col-md-6">
                 <section class="widget">
@@ -113,48 +113,48 @@
                                     <div class="col-sm-7">
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                            <input type="text" name="buyerId_tf" id="buyerId_tf" class="form-control" size="16" disabled="disabled" placeholder="'ID 중복 검사'를 클릭하세요">
+                                            <input type="text" name="buyerId_tf" id="buyerId_tf" class="form-control" size="16" disabled="disabled" placeholder="'IDチェックをクリックしてください">
                                             <input type="hidden" name="buyerId" id="buyerId">
                                         </div>
-                                        <a href="#" onclick="buyerIDcheck()">ID 중복 검사</a>
+                                        <a href="#" onclick="buyerIDcheck()">IDチェック</a>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label" for="password-field">비밀번호</label>
+                                    <label class="col-sm-4 control-label" for="password-field">電話番号</label>
                                     <div class="col-sm-7">
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                            <input type="password" class="form-control" name="buyerPw" id="buyerPw" placeholder='영문 or 숫자 6자 이상'>
+                                            <input type="password" class="form-control" name="buyerPw" id="buyerPw" placeholder='アルファベットや数字で６字以上'>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label" for="password-field">비밀번호 확인</label>
+                                    <label class="col-sm-4 control-label" for="password-field">暗証番号(再入力)</label>
                                     <div class="col-sm-7">
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                            <input type="password" class="form-control" id="buyerPw2" placeholder="비밀번호 재입력">
+                                            <input type="password" class="form-control" id="buyerPw2" placeholder="暗証番号を再入力してください">
                                         </div>
                                     </div>
                                 </div>
                                 
                                 <div class="form-group">
                                     <label for="hint-field" class="col-sm-4 control-label">
-                                        성명
+                                        名前
                                         <%--<span class="help-block">Some help text</span>--%>
                                     </label>
                                     <div class="col-sm-7">
-                                        <input type="text" name="buyerName" id="buyerName" class="form-control" placeholder='대표자 성명'>
+                                        <input type="text" name="buyerName" id="buyerName" class="form-control" placeholder='代表者の名前'>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="hint-field" class="col-sm-4 control-label">
-                                        전화번호
+                                        電話番号
                                         <%--<span class="help-block">-를 제외한 번호만 입력하세요</span>--%>
                                     </label>
                                     <div class="col-sm-7">
-                                        <input type="text" name="buyerPhone" id="buyerPhone" class="form-control" placeholder='-를 제외한 번호만 입력하세요'>
+                                        <input type="text" name="buyerPhone" id="buyerPhone" class="form-control" placeholder='-を除外して入力してください'>
                                     </div>
                                 </div>
 
@@ -171,8 +171,8 @@
                             <div class="form-actions">
                                 <div class="row">
                                     <div class="col-sm-offset-4 col-sm-7">
-                                        <button type="submit" onclick="return beforeSubmit()" class="btn btn-primary">가입</button>
-                                        <button type="button" class="btn btn-inverse">취소</button>
+                                        <button type="submit" onclick="return beforeSubmit()" class="btn btn-primary">登録</button>
+                                        <button type="button" class="btn btn-inverse">キャンセル</button>
                                     </div>
                                 </div>
                             </div>

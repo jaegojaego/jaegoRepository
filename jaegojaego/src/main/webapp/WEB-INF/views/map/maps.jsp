@@ -182,13 +182,14 @@ function newfunction2(imgCode){
        
        $(".tob").on("click",function(){
       
-        sellertob = $(this).text();
+        sellertob = $(this).attr("type");
         a(adrr,flag,sellertob);
       });
       
       
       $(".region").on("click",function(){
-         adrr = $(this).text();
+         //adrr = $(this).text();
+         adrr= $(this).attr("region");
          a(adrr,flag,sellertob);
       
       });
@@ -907,13 +908,13 @@ alert("다시검색해주세요");
             			/* alert(tomessage[i].buyerId); */
             				if(messagefrom == "on"){//상품등록
 	            				$.toast(messagecontent+"<div id=\"aclick\">click</div>",{
-	            						duration: 3000,
+	            						duration: 10000,
 	        			          		type: 'info'
 	            				 });
             				}else{
             					//20170503 박진우            				 	alert("list");//수량변경
 	            				 $.toast(messagecontent+"<div id=\"aclick\">click</div>",{
-	            						 duration: 3000
+	            						 duration: 10000
 	            			     });
             				}
             			}
@@ -937,7 +938,7 @@ alert("다시검색해주세요");
 		        	}); 
             }
             
-            function onError(evt) {  // 전송 에러 발생
+            function onError(evt) {  // 전송 에러 발생.
                 writeToScreen('ERROR: ' + evt.data);
             } 
   /*           function doSend(str) {
@@ -1056,11 +1057,11 @@ alert("다시검색해주세요");
 					<i class="toggle fa fa-angle-down"></i>
                 </a>
                 <ul id="sidebar-maps" class="collapse">
-					<li><a class="region" data-no-pjax>ソウル特別市</a></li>
-					<li><a class="region">京畿道</a></li>                           
-					<li><a class="region">仁川広域市</a></li>
-					<li><a class="region">釜山広域市</a></li>
-					<li><a class="region">蔚山広域市</a></li>                           
+					<li><a class="region" region="서울특별시">ソウル特別市</a></li>
+					<li><a class="region" region="경기도">京畿道</a></li>                           
+					<li><a class="region" region="인천광역시">仁川広域市</a></li>
+					<li><a class="region" region="부산광역시">釜山広域市</a></li>
+					<li><a class="region" region="울산광역시">蔚山広域市</a></li>                           
 					<li><a class="region">大邱広域市</a></li>
 					<li><a class="region">大田広域市</a></li>
 					<li><a class="region">光州広域市</a></li>                    
@@ -1082,13 +1083,13 @@ alert("다시검색해주세요");
                     <span class="icon">
                         <i class="fa fa-leaf"></i>
                     </span>
-                    업종 선택
+                    業種選択
                     <i class="toggle fa fa-angle-down"></i><%-- 1 --%>
                 </a>
                 <ul id="sidebar-extra" class="collapse">
-					<li><a class="tob">カフェ</a></li>
-					<li><a class="tob">ベーカリー</a></li>                           
-					<li><a class="tob">食堂</a></li>
+					<li><a class="tob" type="카페">カフェ</a></li>
+					<li><a class="tob" type="베이커리">ベーカリー</a></li>                           
+					<li><a class="tob" type="식당">食堂</a></li>
                 </ul>
 
             </li>
@@ -1418,7 +1419,7 @@ alert("다시검색해주세요");
                         	<i class="fa fa-search"></i>
                         </span>
                         --%>
-                        <label class="form-control">이 세상의 모든 재고가 사라지는 날까지!　<span class="fw-semi-bold">最後の在庫</span></h1></label><%--<input class="form-control" type="text" placeholder="Search Dashboard">--%>                        
+                        <label class="form-control">この世ですべての在庫が消える日まで!　<span class="fw-semi-bold">最後の在庫</span></h1></label><%--<input class="form-control" type="text" placeholder="Search Dashboard">--%>
                     </div>
                 </div>
             </form>

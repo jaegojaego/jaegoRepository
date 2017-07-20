@@ -89,7 +89,7 @@
                     <span class="icon">
                         <i class="glyphicon glyphicon-map-marker"></i>
                     </span>
-                    지역 선택
+                    地域選択
                     <i class="toggle fa fa-angle-down"></i>
                 </a>
                 <ul id="sidebar-maps" class="collapse">
@@ -119,7 +119,7 @@
                     <span class="icon">
                         <i class="fa fa-leaf"></i>
                     </span>
-                    업종 선택
+                    業種選択
                     <i class="toggle fa fa-angle-down"></i><%-- 1 --%>
                 </a>
                 <ul id="sidebar-extra" class="collapse">
@@ -455,7 +455,7 @@
                         	<i class="fa fa-search"></i>
                         </span>
                         --%>
-                        <label class="form-control">이 세상의 모든 재고가 사라지는 날까지!　<span class="fw-semi-bold">最後の在庫</span></h1></label><%--<input class="form-control" type="text" placeholder="Search Dashboard">--%>                        
+                        <label class="form-control">この世ですべての在庫が消える日まで!　<span class="fw-semi-bold">最後の在庫</span></h1></label><%--<input class="form-control" type="text" placeholder="Search Dashboard">--%>                        
                     </div>
                 </div>
             </form>
@@ -535,10 +535,10 @@
     <!-- main page content. the place to put widgets in. usually consists of .row > .col-md-* > .widget.  -->
     <main id="content" class="content" role="main">
         <ol class="breadcrumb">
-            <li>현재 위치</li>
-            <li class="active">고객 상담</li>
+            <li>現在の位置</li>
+            <li class="active">カスタマーサービス</li>
         </ol>
-        <h1 class="page-title">고객 상담 - <span class="fw-semi-bold">게시판</span></h1>
+        <h1 class="page-title">カスタマーサービス - <span class="fw-semi-bold">掲示板</span></h1>
 <%--        <section class="widget">
             <header>
                 <h4>
@@ -574,19 +574,19 @@
             </header>
             <div class="widget-body">
                 <p>
-                    기타 문의사항은 080-123-4567로 전화해주세요<br>
-                    <a href="csboardWriteForm2">글쓰기 폼 이동</a>
+                    詳しいことは080-123-4567にご連絡ください<br>
+                    <a href="csboardWriteForm2">投稿</a>
                 </p>
                 <div class="mt">
                     <table id="datatable-table" class="table table-striped table-hover">
                         <thead>
                         <tr>
-                            <th class="no-sort hidden-xs">번호</th>
-                            <th class="no-sort hidden-xs">제목</th>
-                            <th class="no-sort hidden-xs">분류</th>
-                            <th class="no-sort hidden-xs">이름</th>
-                            <th class="no-sort hidden-xs">조회수</th>
-                            <th class="no-sort hidden-xs">작성일시</th>
+                            <th class="no-sort hidden-xs">番号</th>
+                            <th class="no-sort hidden-xs">タイトル</th>
+                            <th class="no-sort hidden-xs">分類</th>
+                            <th class="no-sort hidden-xs">名前</th>
+                            <th class="no-sort hidden-xs">クリック数</th>
+                            <th class="no-sort hidden-xs">登録日時</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -644,8 +644,8 @@
                     
                     <form action="csboardlist" method="get" id="pagingForm" align="center">
 						<input type="hidden" id="page" name="page">		<%-- name에 있는 page는 BoardController에 들어갈 RequestParam의 page와 연결됨 --%>
-						제목 : <input type="text" name="searchText" value="${searchText}">	<%-- ← 넘어갈 수도, 안 넘어갈 수도 있는 항목 (Controller의 @RequestParam defaultValue를 활용해서...) / value를 넣어준 건 검색 결과 화면에서 화살표를 눌러도 이동폭을 검색 결과 내로 제한하기 위함--%>
-						<input type="button" value="검색" onclick="pagingFormSubmit(1)">		<%-- 검색 결과의 1 페이지부터 보여준다는 뜻 --%>	
+						タイトル : <input type="text" name="searchText" value="${searchText}">	<%-- ← 넘어갈 수도, 안 넘어갈 수도 있는 항목 (Controller의 @RequestParam defaultValue를 활용해서...) / value를 넣어준 건 검색 결과 화면에서 화살표를 눌러도 이동폭을 검색 결과 내로 제한하기 위함--%>
+						<input type="button" value="検索" onclick="pagingFormSubmit(1)">		<%-- 검색 결과의 1 페이지부터 보여준다는 뜻 --%>	
 					</form>
                 </div>
             </div>

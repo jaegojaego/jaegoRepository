@@ -31,6 +31,11 @@ create table Favorite(
 	sellerCRN varchar2(30) constraint fk_sellerCRN_favorite references Seller(sellerCRN) not null
 );
 
+
+delete from FAVORITE where buyerid='';
+select * from FAVORITE where sellercrn='1111115';
+select buyerid from buyer where buyerPhone='';
+
 create table Grade(
 	stars number not null,
 	ment varchar2(200) not null,
@@ -38,6 +43,8 @@ create table Grade(
 	sellerCRN varchar2(30) constraint fk_sellerCRN_grade references Seller(sellerCRN) not null,
 	inputDate date default sysdate not null
 );
+select * from grade where sellercrn='1111115';
+delete from grade where sellercrn='1111115';
 
 create table Sales(
 	sellerCRN varchar2(30) constraint fk_sellerCRN_sales references Seller(sellerCRN) not null,
@@ -48,6 +55,7 @@ create table Sales(
 	salesQuantity number not null
 );
 
+select * from sales where sellercrn='1111115';
 create table Goods(
 	sellerCRN varchar2(30) constraint fk_sellerCRN_goods references Seller(sellerCRN) not null,
 	goodsName varchar2(50) not null,
@@ -62,6 +70,10 @@ create table Goods(
 	goodsInfo varchar2(4000) not null,
 	expiredDate date not null
 );
+
+select goodsName, expiredDate from goods where sellercrn='1111115';
+update goods set expiredDate='2017-06-06' where goodsName='마카롱' ;
+update goods set goodsQuantity='1' where goodsName='베이글' ;
 
 create table CSBoard(
 	boardnum number primary key,
@@ -81,17 +93,18 @@ create table CSReply(
 	references CSboard(boardnum) on delete cascade,
 	id varchar2(20) not null,
 	text varchar2(200) not null,
-	inputdate date default sysdate not null
+	inputdate date default sysdate n+6t null
 );
-
 create sequence CSBoard_seq start with 1 increment BY 1;
 create sequence CSReply_seq start with 1 increment BY 1;
 
 delete from SELLER where sellercrn='111111';
-delete from buyer where buyerid='paki';
-delete from FAVORITE where buyerid='paki';
-select * from buyer;
+delete from buyer where buyerid='niceman';
+delete from FAVORITE where buyerid='niceman';
+delete from grade where buyerid='niceman';
 
+select * from buyer;
+select * from seller;
 
 <salesdb>
  insert into sales values('1111115','쿠키','pYAU1EO7','900','2017/04/05','10');
@@ -114,4 +127,19 @@ select * from buyer;
  insert into sales values('1111115','베이글','Gpe7KCUh','2100','2017/05/01','10');
  insert into sales values('1111115','치즈케이크','uu1BsgiL','11000','2017/05/01','3');
 
+
+
+select
+			buyerPhone
+		from
+			Buyer b, FAVORITE f
+		where
+			b.buyerId = f.buyerId
+		and 
+			f.buyerId 
+		in 
+			(select buyerId from favorite where sellerCRN = '1111115')
+		group by 
+			b.buyerPhone;
+			
 

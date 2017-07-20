@@ -217,8 +217,8 @@ public class goodsController {
 		}
 		
 		//문자보내기-수량 변동시
-		ExampleSend send = new ExampleSend();
-		send.main(text,phone);
+		/*ExampleSend send = new ExampleSend();
+		send.main(text,phone);*/
 		
 		ArrayList<Buyer> buyer_id = dao.buyer_id(sellerCRN);		
 		String shopname = resultinfo.get(0).get("SELLERSHOPNAME")+"의 상품목록이 변경되었습니다.";
