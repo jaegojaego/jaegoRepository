@@ -1032,7 +1032,8 @@ alert("다시검색해주세요");
                     13
                 </span>
                 &nbsp;
-                Philip <strong>Smith</strong>
+                <%--Philip <strong>Smith</strong>--%>
+                ${sessionScope.name}
                 <b class="caret"></b>
             </a>
             <!-- #notifications-dropdown-menu goes here when screen collapsed to xs or sm -->
